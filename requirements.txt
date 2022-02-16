@@ -1,0 +1,9 @@
+numpy
+scikit-learn
+
+# module data
+classla
+torch
+transformers
+
+# module clustering
