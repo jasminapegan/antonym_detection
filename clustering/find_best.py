@@ -2,7 +2,7 @@ from itertools import product
 
 import file_helpers
 from clustering.clusters import get_clusters_by_word, get_word_data
-from scoring import get_avg_scores, score_clustering
+from clustering.scoring import get_avg_scores, score_clustering
 
 
 def find_best_params_main(data_file, words_json_file, validation_file, out_dir, missing=[], use_algorithms=['kmeans']):

@@ -7,7 +7,7 @@ from data import grouped_file
 import file_helpers
 from clustering.clusters_v2 import get_clusters_by_word_v2
 from data.embeddings import WordEmbeddings
-from scoring import get_avg_scores
+from clustering.scoring import get_avg_scores
 
 
 def find_best_params_main_v2(data_file: str,

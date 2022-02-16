@@ -5,7 +5,7 @@ import sklearn
 from scipy import spatial
 
 from data.grouped_file import WordData
-from scoring import score_clustering
+from clustering.scoring import score_clustering
 
 
 class ClusteringAlgorithm:
