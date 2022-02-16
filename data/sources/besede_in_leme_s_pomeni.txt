@@ -1,0 +1,3775 @@
+lemma	iztočnica	besedna vrsta	številka pomena	indikator
+oaza	oaza	samostalnik	1	območje v puščavi
+oaza	oaza	samostalnik	2	ozelenel prostor
+oaza	oaza	samostalnik	3	spokojen prostor; zatočišče;
+računalništvo	računalništvo	samostalnik	1	veda
+agrum	agrum	samostalnik	1	sadež
+agrum	agrum	samostalnik	2	sadno drevo
+macola	macola	samostalnik	1	težko kladivo
+macola	macola	samostalnik	2	silovit ali neusmiljen način
+malopridnež	malopridnež	samostalnik	1	kršitelj, storilec
+malopridnež	malopridnež	samostalnik	2	ničvrednež, pokvarjenec
+meander	meander	samostalnik	1	rečni zavoj
+meander	meander	samostalnik	2	okrasni vzorec
+meander	meander	samostalnik	3	stranska zgodba; zastranitev;
+meander	meander	samostalnik	4	vijuga, lok
+milenij	milenij	samostalnik	1	časovno obdobje
+milenij	milenij	samostalnik	2	prelom tisočletja
+milenij	milenij	samostalnik	3	obdobje vladanja Kristusa
+multikulturnost	multikulturnost	samostalnik	1	o več kulturah
+pašček	pašček	samostalnik	1	pripomoček za pritrjevanje
+pašček	pašček	samostalnik	2	za okoli pasu
+perutnička	perutnička	samostalnik	1	jed
+perutnička	perutnička	samostalnik	2	del telesa
+petdesetletnik	petdesetletnik	samostalnik	1	kdor je star 50
+petdesetletnik	petdesetletnik	samostalnik	2	kdor je star med 50 in 59 let
+pilotiranje	pilotiranje	samostalnik	1	upravljanje zračnih vozil in vesoljskih ladij
+pilotiranje	pilotiranje	samostalnik	2	daljinsko upravljanje naprav, navadno modelov
+pilotiranje	pilotiranje	samostalnik	3	upravljanje ladij s sidrišča v pristanišče in obratno
+pilotiranje	pilotiranje	samostalnik	4	nameščanje pilotov
+plavutek	plavutka	samostalnik	1	pripomoček za plavanje
+plavutek	plavutka	samostalnik	2	majhna plavut, zlasti pri ribah
+ranica	ranica	samostalnik	1	majhna rana
+samohranilec	samohranilec	samostalnik	1	edini otrokov skrbnik
+samoljubje	samoljubje	samostalnik	1	pretiran občutek lastne vrednosti
+samoljubje	samoljubje	samostalnik	2	egocentričnost
+pilotka	pilotka	samostalnik	1	ženska, ki je usposobljena za upravljanje zračnega plovila
+balinček	balinček	samostalnik	1	športni rekvizit
+četveroboj	četveroboj	samostalnik	1	tekmovanje
+kadrovnik	kadrovnik	samostalnik	1	v podjetju ali športnem klubu
+rak	rakov	pridevnik	1	o živali
+rak	rakov	pridevnik	2	v kulinariki
+rak	rakov	pridevnik	3	o bolezni
+olesenel	olesenel	pridevnik	1	spremenjen v les
+olesenel	olesenel	pridevnik	2	negiben, tog
+olesenel	olesenel	pridevnik	3	zastal, otrpel
+olesenel	olesenel	pridevnik	4	zaostal v razvoju ali okorel
+zadirčnost	zadirčnost	samostalnik	1	o načinu izražanja
+nadstrankarski	nadstrankarski	pridevnik	1	nevtralen
+pobahata	pobahati	glagol	1	pohvaliti se, važiti se
+nadrobiti	nadrobiti	glagol	1	zdrobiti
+nadrobiti	nadrobiti	glagol	2	povedati
+piarovka	piarovka	samostalnik	1	strokovnjakinja za odnose z javnostmi
+poliglot	poliglot	samostalnik	1	kdor zna več jezikov
+amortizer	amortizer	samostalnik	1	blažilnik
+amortizer	amortizer	samostalnik	2	kar ublaži učinek nečesa
+četverček	četverček	samostalnik	1	eden od štirih sorojencev
+četverček	četverček	samostalnik	2	skupina štirih
+četverček	četverček	samostalnik	3	o avtomobilu
+četverček	četverček	samostalnik	4	stanovanjska zgradba
+semiš	semiš	samostalnik	1	usnje
+varčevanje	varčevanje	samostalnik	1	shranjevanje denarja
+varčevanje	varčevanje	samostalnik	2	omejitev porabe, ekonomično ravnanje
+razboleti	razbolel	pridevnik	1	o fizični bolečini
+razboleti	razbolel	pridevnik	2	o duševni bolečini
+amortizirati	amortizirati	glagol	1	o sili ali sunku
+amortizirati	amortizirati	glagol	2	omiliti
+amortizirati	amortizirati	glagol	3	odpisati vrednost
+amortizirati	amortizirati	glagol	4	o povrnitvi vložka
+deber	deber	samostalnik	1	soteska
+psevdonim	psevdonim	samostalnik	1	izmišljeno ime
+psevdonim	psevdonim	samostalnik	2	tipičen primer, sinonim
+melišče	melišče	samostalnik	1	grušč
+dražilec	dražilec	samostalnik	1	kdor sodeluje na dražbi
+dražilec	dražilec	samostalnik	2	voditelj dražbe
+dražilec	dražilec	samostalnik	3	snov
+dražilec	dražilec	samostalnik	4	kar spodbudi reakcijo
+burleska	burleska	samostalnik	1	komično delo
+burleska	burleska	samostalnik	2	absurdna situacija, farsa
+burleska	burleska	samostalnik	3	varietejska predstava, pogosto z vložki striptiza
+burleska	burleska	samostalnik	4	vrsta skladbe
+glavarina	glavarina	samostalnik	1	plačilo na osebo
+bakrorez	bakrorez	samostalnik	1	grafična tehnika
+bakrorez	bakrorez	samostalnik	2	izdelek
+kantor	kantor	samostalnik	1	vodilni pevec pri bogoslužju
+izmenoma	izmenoma	prislov	1	izmenično
+čičimak	čičimak	samostalnik	1	drevo ali grm
+čičimak	čičimak	samostalnik	2	plod
+anekdota	anekdota	samostalnik	1	duhovita zgodba
+pisati	pisalo	samostalnik	1	pripomoček za pisanje
+čoln	čoln	samostalnik	1	manjše plovilo
+čoln	čoln	samostalnik	2	tiskarski pripomoček
+kapalka	kapalka	samostalnik	1	cevka za odmerjanje
+pošiljatelj	pošiljatelj	samostalnik	1	kdor pošilja
+naročilnica	naročilnica	samostalnik	1	dokument
+brezvetrje	brezvetrje	samostalnik	1	odsotnost vetra
+brezvetrje	brezvetrje	samostalnik	2	stanje neaktivnosti
+obrtnik	obrtnik	samostalnik	1	kdor vodi obrt
+preprodajalec	preprodajalec	samostalnik	1	kdor preprodaja
+berljiv	berljiv	pridevnik	1	o zahtevnosti in prijetnosti
+berljiv	berljiv	pridevnik	2	o vizualnosti, čitljivosti
+berljiv	berljiv	pridevnik	3	o načinu branja podatkov
+prekupčevalec	prekupčevalec	samostalnik	1	kdor prekupčuje
+pravnomočnost	pravnomočnost	samostalnik	1	pravna veljavnost
+književnik	književnik	samostalnik	1	pisatelj
+grb	grb	samostalnik	1	simbol
+grb	grb	samostalnik	2	kot nagrada ali priznanje
+detergent	detergent	samostalnik	1	čistilno sredstvo
+balinar	balinar	samostalnik	1	kdor balina
+balinarka	balinarka	samostalnik	1	ženska, ki balina
+atletsko	atletsko	prislov	1	o atletiki
+atletsko	atletsko	prislov	2	športno
+gimnastičen	gimnastično	prislov	1	o športu
+gimnastičen	gimnastično	prislov	2	gibalno, telesno
+losjon	losjon	samostalnik	1	kozmetično sredstvo
+driska	driska	samostalnik	1	o bolezni
+driska	driska	samostalnik	2	tekoče blato
+driska	driska	samostalnik	3	žaljivka
+driska	driska	samostalnik	4	o situaciji ali dogajanju
+hinavski	hinavski	pridevnik	1	o človeku
+hinavski	hinavski	pridevnik	2	kar se zdi nenevarno
+kolosej	kolosej	samostalnik	1	zgradba
+ravnik	ravnik	samostalnik	1	ravno površje
+ravnik	ravnik	samostalnik	2	ekvator
+priklon	priklon	samostalnik	1	o nagibu telesa
+priklon	priklon	samostalnik	2	o pohvali
+spužva	spužva	samostalnik	1	morski organizem
+spužva	spužva	samostalnik	2	pripomoček za umivanje
+spužva	spužva	samostalnik	3	o človeku
+krinolina	krinolina	samostalnik	1	oblačilo
+krinolina	krinolina	samostalnik	2	ogrodje pod krilom
+livrej	livreja	samostalnik	1	uniforma
+livrej	livreja	samostalnik	2	o dizajnu in barvah
+tog	toga	samostalnik	1	uradno oblačilo
+tog	toga	samostalnik	2	antično oblačilo
+plastično	plastično	prislov	1	nazorno
+plastičen	plastično	prislov	2	o videzu
+hlačke	hlačke	samostalnik	1	žensko spodnje perilo
+hlačka	hlačke	samostalnik	2	kratke hlače
+hlačka	hlačke	samostalnik	3	otroško spodnje perilo
+sečnica	sečnica	samostalnik	1	del sečil
+sečnica	sečnica	samostalnik	2	premica
+peča	peča	samostalnik	1	tradicionalno žensko pokrivalo
+peča	peča	samostalnik	2	del trebušne mrene
+presadek	presadek	samostalnik	1	pri presaditvi
+kvadriceps	kvadriceps	samostalnik	1	mišica
+dimelj	dimlje	samostalnik	1	del telesa
+petelinček	petelinček	samostalnik	1	manjši petelin
+petelinček	petelinček	samostalnik	2	predmet
+petelinček	petelinček	samostalnik	3	napihnjen človek
+petelinček	petelinček	samostalnik	4	metulj
+petelinček	petelinček	samostalnik	5	cvetlica
+petelinček	petelinček	samostalnik	6	športna igra
+petelinček	petelinček	samostalnik	7	o zavezovanju peče
+petelinček	petelinček	samostalnik	8	frizura
+griža	griža	samostalnik	1	črevesna bolezen
+griža	griža	samostalnik	2	siten človek
+limonada	limonada	samostalnik	1	pijača
+limonada	limonada	samostalnik	2	televizijska nadaljevanka
+limonada	limonada	samostalnik	3	kar je vsebinsko prazno
+telegraf	telegraf	samostalnik	1	naprava
+telegraf	telegraf	samostalnik	2	urad
+dvanajsterec	dvanajsterec	samostalnik	1	geometrijsko telo
+dvanajsterec	dvanajsterec	samostalnik	2	verz
+štručka	štručka	samostalnik	1	pekovsko pecivo
+štručka	štručka	samostalnik	2	dojenček
+začaran	začaran	pridevnik	1	pod vplivom čarobnega uroka
+začaran	začaran	pridevnik	2	očaran; prevzet;
+začaran	začaran	pridevnik	3	čarobno lep
+začaran	začaran	pridevnik	4	neugoden
+začaran	začaran	pridevnik	5	o brezizhodnosti
+pisnit	pisniti	glagol	1	izdati informacijo
+pisnit	pisniti	glagol	2	izpustiti zvok
+pijanček	pijanček	samostalnik	1	kdor rad popiva
+plinar	plinar	samostalnik	1	igralec Geoplina Slovana
+plinar	plinar	samostalnik	2	podjetje
+plinar	plinar	samostalnik	3	delavec v plinarni
+dingo	dingo	samostalnik	1	žival
+nezavesten	nezavesten	pridevnik	1	v nezavesti
+nezavesten	nezavesten	pridevnik	2	nezaveden; nenameren;
+nezavesten	nezavesten	pridevnik	3	nezavestna oseba
+piranha	piranha	samostalnik	1	riba
+kovanec	kovanec	samostalnik	1	kovan denar
+svetovalec	svetovalec	samostalnik	1	poklic
+dvojček	dvojček	samostalnik	1	otrok
+dvojček	dvojček	samostalnik	2	astrološko znamenje
+dvojček	dvojček	samostalnik	3	hiša
+dvojček	dvojček	samostalnik	4	nebotičnik
+dvojček	dvojček	samostalnik	5	telekomunikacijski paket
+dvojček	dvojček	samostalnik	6	v košarki
+dvojček	dvojček	samostalnik	7	dve povezani zadevi
+dvojček	dvojček	samostalnik	8	o podobnosti nečesa
+dvojček	dvojček	samostalnik	9	o kristalu
+dvojček	dvojček	samostalnik	10	o telefonski liniji
+funkcionalen	funkcionalen	pridevnik	1	uporaben
+funkcionalen	funkcionalen	pridevnik	2	o delovanju organizma
+funkcionalen	funkcionalen	pridevnik	3	delujoč
+opazovati	opazovati	glagol	1	gledati
+opazovati	opazovati	glagol	2	spremljati potek ali razvoj
+bik	bik	samostalnik	1	žival
+bik	bik	samostalnik	2	astrološko znamenje
+bik	bik	samostalnik	3	neumen človek
+bik	bik	samostalnik	4	veliko zvišanje tečajev
+pristanišče	pristanišče	samostalnik	1	luka
+pristanišče	pristanišče	samostalnik	2	letališče
+obala	obala	samostalnik	1	pas zemlje ob vodi
+plešast	plešast	pridevnik	1	brez las
+plešast	plešast	pridevnik	2	o površini
+prehlad	prehlad	samostalnik	1	bolezen
+prehlad	prehlad	samostalnik	2	v botaniki
+priseljenec	priseljenec	samostalnik	1	imigrant
+prognoza	prognoza	samostalnik	1	napoved
+prognoza	prognoza	samostalnik	2	v medicini
+sir	sir	samostalnik	1	mlečni izdelek
+sir	sir	samostalnik	2	angleški plemiški naziv
+stereotip	stereotip	samostalnik	1	o vnaprejšnji sodbi
+stereotip	stereotip	samostalnik	2	o osebi
+stereotip	stereotip	samostalnik	3	tiskovna forma
+škof	škof	samostalnik	1	cerkveni dostojanstvenik
+terorist	terorist	samostalnik	1	politični skrajnež
+terorist	terorist	samostalnik	2	ustrahovalec
+trening	trening	samostalnik	1	o športu
+trening	trening	samostalnik	2	o spretnosti ali veščini
+financiranje	financiranje	samostalnik	1	zagotavljanje denarnih sredstev
+fotografija	fotografija	samostalnik	1	fotografski posnetek
+fotografija	fotografija	samostalnik	2	dejavnost
+globalen	globalen	pridevnik	1	o svetu kot povezani celoti
+globalen	globalen	pridevnik	2	o segrevanju Zemlje
+globalen	globalen	pridevnik	3	celostni
+grad	grad	samostalnik	1	utrdba
+grad	grad	samostalnik	2	kar ima obliko gradu
+grad	grad	samostalnik	3	veliko bivališče
+hierarhija	hierarhija	samostalnik	1	razvrstitev po položaju ali funkciji
+hierarhija	hierarhija	samostalnik	2	vodstvo organizacije
+hierarhija	hierarhija	samostalnik	3	razvrstitev česa po pomembnosti
+hierarhija	hierarhija	samostalnik	4	o organiziranosti elementov
+hierarhija	hierarhija	samostalnik	5	sistem redov angelov
+humanitaren	humanitaren	pridevnik	1	človekoljuben
+humanitaren	humanitaren	pridevnik	2	o stiski ljudi
+istočasno	istočasno	prislov	1	hkrati; sočasno;
+istočasno	istočasno	prislov	2	uvaja dodatno dejstvo ali nasprotje
+izrecno	izrecno	prislov	1	jasno
+izrecen	izrecno	prislov	2	izključno
+nosečnost	nosečnost	samostalnik	1	telesno stanje
+pes	pes	samostalnik	1	žival
+pes	pes	samostalnik	2	žaljivka
+peščen	peščen	pridevnik	1	o pesku
+peščen	peščen	pridevnik	2	o barvi
+porod	porod	samostalnik	1	proces rojevanja
+porod	porod	samostalnik	2	nastanek
+poroka	poroka	samostalnik	1	o zakonski zvezi
+poroka	poroka	samostalnik	2	združitev
+rumen	rumen	pridevnik	1	o barvi
+rumen	rumen	pridevnik	2	o tisku
+rumen	rumen	pridevnik	3	kot opozorilo
+rumen	rumen	pridevnik	4	posušen ali star
+sestra	sestra	samostalnik	1	sorodnica
+sestra	sestra	samostalnik	2	poklic
+sestra	sestra	samostalnik	3	redovnica
+sestra	sestra	samostalnik	4	sorodna stvar
+sestra	sestra	samostalnik	5	o povezanosti ali skupni izkušnji
+sin	sin	samostalnik	1	sorodnik
+sin	sin	samostalnik	2	o Jezusu
+sin	sin	samostalnik	3	o geopolitični pripadnosti
+sin	sin	samostalnik	4	ki prevzame lastnost
+sin	sin	samostalnik	5	dobrohoten, rahlo pokroviteljski nagovor starejše osebe do mlajše
+diskvalificirati	diskvalificirati	glagol	1	izločiti zaradi kršenja pravil
+diskvalificirati	diskvalificirati	glagol	2	vzeti veljavo
+drža	drža	samostalnik	1	o telesu
+drža	drža	samostalnik	2	stališče
+drža	drža	samostalnik	3	o predmetu
+kmetijstvo	kmetijstvo	samostalnik	1	gospodarska dejavnost
+koledar	koledar	samostalnik	1	o merjenju časa
+koledar	koledar	samostalnik	2	publikacija
+koledar	koledar	samostalnik	3	računalniška aplikacija
+koledar	koledar	samostalnik	4	razpored dejavnosti
+ladja	ladja	samostalnik	1	plovilo
+ladja	ladja	samostalnik	2	prostor v cerkvi
+ladja	ladja	samostalnik	3	o organizirani skupini
+ladja	ladja	samostalnik	4	velik avto
+nafta	nafta	samostalnik	1	naravni vir
+nafta	nafta	samostalnik	2	gorivo
+naften	naften	pridevnik	1	o naravnem viru
+naften	naften	pridevnik	2	o vrsti goriva
+najemnik	najemnik	samostalnik	1	oseba, ki kaj najame
+najemnik	najemnik	samostalnik	2	vojak
+nakup	nakup	samostalnik	1	dejanje
+nakup	nakup	samostalnik	2	kupljeno blago
+novinar	novinar	samostalnik	1	pisec člankov v medijih
+novinarski	novinarski	pridevnik	1	o novinarjih
+obljubiti	obljubiti	glagol	1	zagotoviti
+ocean	ocean	samostalnik	1	morje
+ocean	ocean	samostalnik	2	velika količina
+nedvomno	nedvomno	prislov	1	gotovo
+nedvomno	nedvomno	prislov	2	brez dvoma; neizpodbitno;
+oklevati	oklevati	glagol	1	omahovati
+rumen	rumena	samostalnik	1	v prometu
+rumen	rumena	samostalnik	2	barva
+rumen	rumena	samostalnik	3	o tisku
+patriarhat	patriarhat	samostalnik	1	družbeni sistem
+patriarhat	patriarhat	samostalnik	2	o ozemlju
+pokopališče	pokopališče	samostalnik	1	prostor za pokop
+pokopališče	pokopališče	samostalnik	2	odlagališče vozil
+pokopališče	pokopališče	samostalnik	3	o odvečnosti ali zastarelosti
+potrošnik	potrošnik	samostalnik	1	kupec
+potrošnik	potrošnik	samostalnik	2	porabnik; odjemalec;
+potrošnik	potrošnik	samostalnik	3	o napravi
+potrošnik	potrošnik	samostalnik	4	rastlina
+recept	recept	samostalnik	1	za izdajo zdravila
+recept	recept	samostalnik	2	pri kuhanju
+recept	recept	samostalnik	3	navodilo za pripravo
+recept	recept	samostalnik	4	navodilo; pravilo;
+spleten	spleten	pridevnik	1	o internetu
+vonj	vonj	samostalnik	1	zaznavna lastnost
+vonj	vonj	samostalnik	2	dišava
+vonj	vonj	samostalnik	3	voh
+vonj	vonj	samostalnik	4	o občutku
+dneven	dneven	pridevnik	1	o dnevu kot 24-urni enoti
+dneven	dneven	pridevnik	2	vsakodneven
+dneven	dneven	pridevnik	3	o aktivnem delu dneva
+dneven	dneven	pridevnik	4	podnevi
+dneven	dneven	pridevnik	5	o živali
+doktor	doktor	samostalnik	1	znanstveni naziv
+doktor	doktor	samostalnik	2	zdravnik
+doktor	doktor	samostalnik	3	o obvladovanju področja ali spretnosti
+doživeti	doživeti	glagol	1	izkusiti; biti deležen;
+doživeti	doživeti	glagol	2	o telesnih stanjih
+doživeti	doživeti	glagol	3	zgoditi se
+doživeti	doživeti	glagol	4	o čustvih
+doživeti	doživeti	glagol	5	dočakati določeno starost
+film	film	samostalnik	1	posneta zgodba
+film	film	samostalnik	2	ustvarjalna dejavnost
+film	film	samostalnik	3	trak za snemanje
+film	film	samostalnik	4	tanek sloj
+film	film	samostalnik	5	miselna predstava
+izolirati	izolirati	glagol	1	pri bolezni
+izolirati	izolirati	glagol	2	izločiti iz družbe
+izolirati	izolirati	glagol	3	z zaščitnim materialom
+izolirati	izolirati	glagol	4	izločiti snov
+izolirati	izolirati	glagol	5	razločiti od celote
+klik	klik	samostalnik	1	pri računalniku
+klik	klik	samostalnik	2	zvok
+klik	klik	samostalnik	3	miselni preskok
+koncentracija	koncentracija	samostalnik	1	miselna zbranost
+koncentracija	koncentracija	samostalnik	2	o količini snovi
+koncentracija	koncentracija	samostalnik	3	zgoščenost
+kos	kos	samostalnik	1	del celote
+kos	kos	samostalnik	2	izdelek; primerek;
+kos	kos	samostalnik	3	o določeni količini
+kraljica	kraljica	samostalnik	1	vladarka
+kraljica	kraljica	samostalnik	2	kraljeva žena
+kraljica	kraljica	samostalnik	3	najpomembnejša predstavnica
+kraljica	kraljica	samostalnik	4	zmagovalka tekmovanja
+kraljica	kraljica	samostalnik	5	pomembna panoga ali disciplina
+kraljica	kraljica	samostalnik	6	šahovska figura
+kraljica	kraljica	samostalnik	7	samica
+kraljica	kraljica	samostalnik	8	igralna karta
+kralj	kralj	samostalnik	1	vladar
+kralj	kralj	samostalnik	2	najpomembnejši predstavnik
+kralj	kralj	samostalnik	3	šahovska figura
+kralj	kralj	samostalnik	4	igralna karta
+ljubezenski	ljubezenski	pridevnik	1	o ljubezni
+ljubezenski	ljubezenski	pridevnik	2	o spolnem odnosu
+finansiranje	finansiranje	samostalnik	1	zagotavljanje denarnih sredstev
+spleten	spleten	pridevnik	1	o pletenih oblačilih
+spleten	spleten	pridevnik	2	kot kita
+spleten	spleten	pridevnik	3	kot mreža
+spleten	spleten	pridevnik	4	o prepletu različnih elementov
+sir	sir	samostalnik	1	angleški plemiški naziv
+kos	kos	samostalnik	1	ptica
+grški	grški	pridevnik	1	o Grčiji in Grkih
+grški	grški	pridevnik	2	o Antični Grčiji in Grkih
+egiptovski	egiptovski	pridevnik	1	o Egiptu in Egipčanih
+egiptovski	egiptovski	pridevnik	2	o Starem Egiptu in Egipčanih
+egipčanski	egipčanski	pridevnik	1	o Starem Egiptu in Egipčanih
+egipčanski	egipčanski	pridevnik	2	o Egiptu in Egipčanih
+kitajski	kitajski	pridevnik	1	o Kitajski in Kitajcih
+mehiški	mehiški	pridevnik	1	o Mehiki in Mehičanih
+kitajski	kitajska	samostalnik	1	restavracija
+kitajski	kitajska	samostalnik	2	hrana
+tetica	tetica	samostalnik	1	sorodnica
+tetica	tetica	samostalnik	2	ženska, gospa
+paleolitik	paleolitik	samostalnik	1	obdobje prazgodovine
+spletka	spletka	samostalnik	1	o neodkritem delovanju
+spletka	spletka	samostalnik	2	spletna stran
+plašč	plašč	samostalnik	1	oblačilo
+plašč	plašč	samostalnik	2	prekrivna plast
+plašč	plašč	samostalnik	3	pri kolesu
+plašč	plašč	samostalnik	4	ploskev
+plašč	plašč	samostalnik	5	o krinki
+plašč	plašč	samostalnik	6	o zavetju
+plašč	plašč	samostalnik	7	plast v notranjosti planeta
+plašč	plašč	samostalnik	8	pri mehkužcih
+invalidnost	invalidnost	samostalnik	1	zdravstveno stanje
+invalidnost	invalidnost	samostalnik	2	o nesposobnosti
+atlas	atlas	samostalnik	1	knjiga zemljevidov
+atlas	atlas	samostalnik	2	zbirka iz neke stroke
+atlas	atlas	samostalnik	3	blago
+atlas	atlas	samostalnik	4	vretence
+atlas	atlas	samostalnik	5	avto
+atlas	atlas	samostalnik	6	o topološki ploskvi
+atlas	atlas	samostalnik	7	metulj
+atlas	atlas	samostalnik	8	v arhitekturi
+tilnik	tilnik	samostalnik	1	del vratu
+stopalo	stopalo	samostalnik	1	del noge
+stopalo	stopalo	samostalnik	2	del nogavice
+stopalo	stopalo	samostalnik	3	pedal
+črevesje	črevesje	samostalnik	1	organ
+črevesje	črevesje	samostalnik	2	notranjost
+slina	slina	samostalnik	1	telesna tekočina
+oblačilo	oblačilo	samostalnik	1	izdelek iz blaga
+oblačilo	oblačilo	samostalnik	2	zunanja podoba
+rokav	rokav	samostalnik	1	del oblačila
+rokav	rokav	samostalnik	2	stranska struga
+evolucija	evolucija	samostalnik	1	biološki proces
+evolucija	evolucija	samostalnik	2	postopen razvoj
+musliman	musliman	samostalnik	1	pripadnik muslimanske vere
+matematik	matematik	samostalnik	1	strokovnjak
+matematik	matematik	samostalnik	2	kdor dobro računa
+kanonik	kanonik	samostalnik	1	škofov svetovalec
+ambivalenten	ambivalenten	pridevnik	1	razdvojen; nasprotujoč;
+balin	balin	samostalnik	1	najmanjša krogla pri balinanju
+samozavest	samozavest	samostalnik	1	prepričanost vase
+dolar	dolar	samostalnik	1	valuta
+direkcija	direkcija	samostalnik	1	državna ustanova
+direkcija	direkcija	samostalnik	2	vodstvo podjetja ali dogodka
+esej	esej	samostalnik	1	literarno delo
+esej	esej	samostalnik	2	pisni izdelek v šolstvu
+digitalen	digitalen	pridevnik	1	o načinu zapisa podatkov
+digitalen	digitalen	pridevnik	2	ki ima zaslon s številkami
+doktorat	doktorat	samostalnik	1	stopnja izobrazbe
+doktorat	doktorat	samostalnik	2	podiplomski študij
+doktorat	doktorat	samostalnik	3	raziskovalno delo
+rokenrol	rokenrol	samostalnik	1	vrsta glasbe
+rokenrol	rokenrol	samostalnik	2	ples
+gruzinščina	gruzinščina	samostalnik	1	gruzinski jezik
+fag	fag	samostalnik	1	vrsta virusa
+RNA	RNA	samostalnik	1	organska spojina
+evharistija	evharistija	samostalnik	1	zakrament
+evharistija	evharistija	samostalnik	2	posvečena hostija
+fant	fantje	samostalnik	1	športna kategorija
+leper	lepra	samostalnik	1	bolezen
+dietileter	dietileter	samostalnik	1	tekočina
+zajedalec	zajedalec	samostalnik	1	rastlinski ali živalski organizem
+zajedalec	zajedalec	samostalnik	2	izkoriščevalska oseba
+carina	carina	samostalnik	1	dajatev
+carina	carina	samostalnik	2	organizacija
+carina	carina	samostalnik	3	zgradba; območje;
+drsalec	drsalec	samostalnik	1	športnik
+drsalec	drsalec	samostalnik	2	kdor drsa
+koncern	koncern	samostalnik	1	združba podjetij
+encim	encim	samostalnik	1	snov
+olimpijada	olimpijada	samostalnik	1	olimpijske igre
+olimpijada	olimpijada	samostalnik	2	tekmovanje v stari Grčiji
+olimpijada	olimpijada	samostalnik	3	večje tekmovanje
+olimpiada	olimpiada	samostalnik	1	olimpijske igre
+olimpiada	olimpiada	samostalnik	2	tekmovanje v stari Grčiji
+olimpiada	olimpiada	samostalnik	3	večje tekmovanje
+akulturacija	akulturacija	samostalnik	1	prilagoditev kulturnemu okolju
+podbradek	podbradek	samostalnik	1	odebeljena koža pod brado
+podbradek	podbradek	samostalnik	2	del glave
+podbradek	podbradek	samostalnik	3	pri živalih
+podbradek	podbradek	samostalnik	4	sestavni del godal
+ribištvo	ribištvo	samostalnik	1	športna in gospodarska dejavnost
+odstaviti	odstaviti	glagol	1	umakniti s štedilnika
+odstaviti	odstaviti	glagol	2	odstraniti s položaja
+odstaviti	odstaviti	glagol	3	prenehati dojiti
+asignacija	asignacija	samostalnik	1	nakaznica
+izgnanstvo	izgnanstvo	samostalnik	1	zaradi prisilnega izgona
+izgnanstvo	izgnanstvo	samostalnik	2	zaradi situacije ali namena
+izgnanstvo	izgnanstvo	samostalnik	3	izobčenje
+pridevnik	pridevnik	samostalnik	1	besedna vrsta
+figa	figa	samostalnik	1	plod
+figa	figa	samostalnik	2	drevo ali grm
+figa	figa	samostalnik	3	vrsta pričeske
+figa	figa	samostalnik	4	iztrebek
+abiturient	abiturient	samostalnik	1	maturant
+opazovališče	opazovališče	samostalnik	1	kraj za opazovanje
+anarhist	anarhist	samostalnik	1	privrženec anarhizma
+trska	trska	samostalnik	1	morska riba
+zelenika	zelenika	samostalnik	1	sladkovodna riba
+kovač	kovač	samostalnik	1	morska riba
+kozica	kozica	samostalnik	1	močvirska ptica
+bahavost	bahavost	samostalnik	1	razkazovanje; hvalisanje;
+padalka	padalka	samostalnik	1	športnica
+debelokožen	debelokožen	pridevnik	1	o tipu kože
+ravs	ravs	samostalnik	1	prepir; pretep;
+ravsanje	ravsanje	samostalnik	1	pretepanje; prepiranje;
+zvončkljanje	zvončkljanje	samostalnik	1	o zvoku
+kaloričen	kaloričen	pridevnik	1	o hrani
+kaloričen	kaloričen	pridevnik	2	o kurivih
+kosec	kosec	samostalnik	1	ptica
+rajni	rajni	samostalnik	1	umrla oseba
+malopriden	malopriden	pridevnik	1	ničvreden, pokvarjen
+malopriden	malopriden	pridevnik	2	nezakonit
+ženskost	ženskost	samostalnik	1	lastnosti žensk
+ženskost	ženskost	samostalnik	2	žensko spolovilo
+alienacija	alienacija	samostalnik	1	odtujenost
+alienacija	alienacija	samostalnik	2	odmik
+jedilo	jedilo	samostalnik	1	jed
+falos	falos	samostalnik	1	moški spolni ud
+falus	falus	samostalnik	1	moški spolni ud
+zakonol	zakonolom	samostalnik	1	izvenzakonsko razmerje, prešuštvo
+zakonolomec	zakonolomec	samostalnik	1	prešuštnik
+zakonolomstvo	zakonolomstvo	samostalnik	1	izvenzakonsko razmerje, prešuštvo
+jadikovati	jadikovati	glagol	1	tarnati
+kompromis	kompromis	samostalnik	1	dogovor
+kompromis	kompromis	samostalnik	2	srednja pot; rešitev;
+kompromis	kompromis	samostalnik	3	o nižanju standardov
+teta	teta	samostalnik	1	sorodnica
+teta	teta	samostalnik	2	ženska; gospa;
+farsa	farsa	samostalnik	1	absurdna situacija
+farsa	farsa	samostalnik	2	dramsko delo
+okupirati	okupirati	glagol	1	zavzeti z vojaško silo
+okupirati	okupirati	glagol	2	množično zasesti
+okupirati	okupirati	glagol	3	zahtevati veliko pozornosti
+seksapil	seksapil	samostalnik	1	spolna privlačnost
+banana	banana	samostalnik	1	plod
+banana	banana	samostalnik	2	rastlina
+banana	banana	samostalnik	3	blokada
+banana	banana	samostalnik	4	plovilo v obliki banane
+banana	banana	samostalnik	5	vrsta pričeske
+dren	dren	samostalnik	1	grm
+dren	dren	samostalnik	2	gneča
+plastificiran	plastificiran	pridevnik	1	prevlečen s slojem plastike
+plastificiran	plastificiran	pridevnik	2	pakiran v plastično embalažo
+zamočiti	zamočiti	glagol	1	narediti napako
+zamočiti	zamočiti	glagol	2	prepojiti z vodo
+zabušant	zabušant	samostalnik	1	kdor se izmika delu, lenuh
+zabušavanje	zabušavanje	samostalnik	1	izmikanje delu, lenarjenje
+zabušavati	zabušavati	glagol	1	izogibati se delu, lenariti
+mahnjen	mahnjen	pridevnik	1	o močni ljubezni, naklonjenosti
+mahnjen	mahnjen	pridevnik	2	nor, čudaški
+furman	furman	samostalnik	1	voznik konjske vprege
+mikrovalovka	mikrovalovka	samostalnik	1	naprava za pripravo hrane
+zašušmariti	zašušmariti	glagol	1	zamočiti, uničiti
+zašuštrati	zašuštrati	glagol	1	slabo narediti, uničiti
+randi	randi	samostalnik	1	zmenek
+randi	randi	samostalnik	2	srečanje
+davkarija	davkarija	samostalnik	1	davčna služba
+mačica	mačica	samostalnik	1	rastlina
+mačic	mačica	samostalnik	2	socvetje
+mačic	mačica	samostalnik	3	mačka
+mačic	mačica	samostalnik	4	mikavna ženska
+srednjeprogašica	srednjeprogašica	samostalnik	1	športnica
+melona	melona	samostalnik	1	plod
+melona	melona	samostalnik	2	rastlina
+melona	melona	samostalnik	3	ženske prsi
+zdrahar	zdrahar	samostalnik	1	kdor povzroča nesoglasja, prepir
+zaspati	zaspati	glagol	1	preiti v stanje počitka
+zaspati	zaspati	glagol	2	ne zbuditi se dovolj zgodaj
+zaspati	zaspati	glagol	3	umreti
+zaspati	zaspati	glagol	4	popustiti v prizadevanjih
+zaspati	zaspati	glagol	5	o delu telesa
+matiran	matiran	pridevnik	1	brez sijaja
+matiran	matiran	pridevnik	2	o položaju kralja v igri
+matiran	matiran	pridevnik	3	premagan
+razbijač	razbijač	samostalnik	1	kdor razbija ali uničuje; nasilnež;
+razbijač	razbijač	samostalnik	2	kdor slovi po moči
+razbijači	razbijač	samostalnik	3	betonska pregrada
+kakec	kakec	samostalnik	1	iztrebek
+šminka	šminka	samostalnik	1	rdečilo za ustnice
+šminka	šminka	samostalnik	2	maska, ličila na obrazu
+šminka	šminka	samostalnik	3	olepšavanje ali prikrivanje česa
+kašča	kašča	samostalnik	1	za shranjevanje žita
+kašča	kašča	samostalnik	2	za naturalne dajatve fevdalcem
+mitnica	mitnica	samostalnik	1	za plačilo mitnine
+mitnica	mitnica	samostalnik	2	za plačilo cestnine
+splavar	splavar	samostalnik	1	v nekdanji transportni dejavnosti
+splavar	splavar	samostalnik	2	kdor vozi splav
+špecerija	špecerija	samostalnik	1	živila
+špecerija	špecerija	samostalnik	2	trgovina z živili
+slonji	slonji	pridevnik	1	o slonu ali slonih
+slonji	slonji	pridevnik	2	o delu slona
+slonji	slonji	pridevnik	3	velik
+slonji	slonji	pridevnik	4	v kulinariki
+ficek	ficek	samostalnik	1	denar
+falot	falot	samostalnik	1	porednež, baraba
+kraval	kraval	samostalnik	1	hrup; razburjanje;
+gosli	gosli	samostalnik	1	violina
+šport	šport	samostalnik	1	telesna dejavnost
+šport	šport	samostalnik	2	o razvedrilni dejavnosti
+ribariti	ribariti	glagol	1	loviti ribe
+ribariti	ribariti	glagol	2	iskati, brskati
+veslati	veslati	glagol	1	premikati plovilo z vesli
+veslati	veslati	glagol	2	plavati
+veslati	veslati	glagol	3	leteti
+čarovnica	čarovnica	samostalnik	1	pravljično bitje
+čarovnica	čarovnica	samostalnik	2	ženska, obsojena čarovništva
+čarovnica	čarovnica	samostalnik	3	ženska
+zamorka	zamorka	samostalnik	1	ženska črne rase
+zamorka	zamorka	samostalnik	2	o zmerjavki
+črnoborzijanec	črnoborzijanec	samostalnik	1	kdor nezakonito trguje s čim
+azijski	azijski	pridevnik	1	o celini
+glicerol	glicerol	samostalnik	1	kemijska spojina
+olefin	olefin	samostalnik	1	nenasičeni ogljikovodik
+dolgorepka	dolgorepka	samostalnik	1	ptica
+čitati	čital	samostalnik	1	jelen
+belorepec	belorepec	samostalnik	1	ptica ujeda
+alkalij	alkalija	samostalnik	1	kemijska spojina
+epileptik	epileptik	samostalnik	1	oseba z epilepsijo
+frigidnost	frigidnost	samostalnik	1	spolna motnja
+akrobatek	akrobatka	samostalnik	1	izvajalka akrobacij
+albinizem	albinizem	samostalnik	1	genetska bolezen
+aluvij	aluvij	samostalnik	1	geološka doba
+aluvij	aluvij	samostalnik	2	naplavina
+anesteziologinj	anesteziologinja	samostalnik	1	zdravnica
+asepsa	asepsa	samostalnik	1	kirurška tehnika
+anesteziolog	anesteziolog	samostalnik	1	zdravnik
+akordeon	akordeon	samostalnik	1	glasbilo
+amputiranec	amputiranec	samostalnik	1	kdor izgubi ud
+antiepileptik	antiepileptik	samostalnik	1	zdravilo
+zobotehnica	zobotehnica	samostalnik	1	poklic
+antiseptik	antiseptik	samostalnik	1	sredstvo za razkuževanje
+dežemer	dežemer	samostalnik	1	merilni instrument
+krastača	krastača	samostalnik	1	dvoživka
+metanol	metanol	samostalnik	1	alkohol
+garje	garje	samostalnik	1	nalezljiva kožna bolezen
+alken	alken	samostalnik	1	nenasičeni ogljikovodik
+oksidant	oksidant	samostalnik	1	snov
+sobolj	sobolj	samostalnik	1	kuna
+soboljevka	soboljevka	samostalnik	1	riba
+ugor	ugor	samostalnik	1	morska riba
+vahnji	vahnja	samostalnik	1	morska riba
+ladinek	ladinka	samostalnik	1	školjka
+strigoš	strigoš	samostalnik	1	hrošč
+golič	golič	samostalnik	1	ptičji mladič
+kozliček	kozliček	samostalnik	1	kozji mladič
+sifilis	sifilis	samostalnik	1	bolezen
+jesen	jesen	samostalnik	1	drevo
+avokadovec	avokadovec	samostalnik	1	drevo
+borovec	borovec	samostalnik	1	drevo
+forzicija	forzicija	samostalnik	1	grm
+octovec	octovec	samostalnik	1	drevo ali grm
+forsitij	forsitija	samostalnik	1	grm
+metanoat	metanoat	samostalnik	1	kemijska spojina
+metanal	metanal	samostalnik	1	plin
+predkambrij	predkambrij	samostalnik	1	geološka doba
+tribus	tribus	samostalnik	1	upravna enota v starem Rimu
+propen	propen	samostalnik	1	ogljikovodik
+vilorog	vilorog	samostalnik	1	žival
+kirnja	kirnja	samostalnik	1	morska riba
+trski	trske	samostalnik	1	družina morskih rib
+postojen	postojna	samostalnik	1	ptica ujeda
+kinin	kinin	samostalnik	1	zdravilo
+bikarbonat	bikarbonat	samostalnik	1	kemijska spojina
+depresija	depresija	samostalnik	1	mentalno stanje ali bolezen
+depresija	depresija	samostalnik	2	obdobje po gospodarski krizi
+depresija	depresija	samostalnik	3	del kopnega
+depresija	depresija	samostalnik	4	vremenski pojav
+javor	javor	samostalnik	1	drevo
+javor	javor	samostalnik	2	les
+tetanus	tetanus	samostalnik	1	bolezen
+gangrena	gangrena	samostalnik	1	odmrtje tkiva
+spinet	spinet	samostalnik	1	glasbilo
+borovina	borovina	samostalnik	1	les
+formaldehid	formaldehid	samostalnik	1	plin
+formaldehid	formaldehid	samostalnik	2	raztopina
+etin	etin	samostalnik	1	ogljikovodik
+žalovalka	žalovalka	samostalnik	1	ženska, ki žaluje
+žalovalka	žalovalka	samostalnik	2	riba
+acetilen	acetilen	samostalnik	1	plin
+kostanjev	kostanjev	pridevnik	1	o drevesu ali delu drevesa
+kostanjev	kostanjev	pridevnik	2	v kulinariki
+kostanjev	kostanjev	pridevnik	3	o barvi
+kostanjev	kostanjev	pridevnik	4	o snovi
+kenozoik	kenozoik	samostalnik	1	geološka doba
+abscisa	abscisa	samostalnik	1	koordinata
+maltoza	maltoza	samostalnik	1	sladni sladkor
+mezozoik	mezozoik	samostalnik	1	geološka doba
+anticiklon	anticiklon	samostalnik	1	območje visokega zračnega pritiska
+paleozoik	paleozoik	samostalnik	1	geološka doba
+prevrtač	prevrtač	samostalnik	1	golob
+zalistje	zalistje	samostalnik	1	del rastline
+žirokompas	žirokompas	samostalnik	1	merilna naprava
+baribal	baribal	samostalnik	1	medved
+diabetes	diabetes	samostalnik	1	sladkorna bolezen
+eten	eten	samostalnik	1	ogljikovodik
+zanohtnica	zanohtnica	samostalnik	1	gnojno vnetje
+jesen	jesen	samostalnik	1	letni čas
+jesen	jesen	samostalnik	2	obdobje glede na dogajanje
+afrikanščina	afrikanščina	samostalnik	1	jezik
+paglavec	paglavec	samostalnik	1	žival
+paglavec	paglavec	samostalnik	2	nagajiv otrok
+pergola	pergola	samostalnik	1	zunanja konstrukcija
+rakun	rakun	samostalnik	1	žival
+svinčnica	svinčnica	samostalnik	1	merilni pripomoček
+aga	aga	samostalnik	1	turški uradniški naziv
+aboridžin	aboridžin	samostalnik	1	avstralski staroselec
+jastog	jastog	samostalnik	1	rak
+jastog	jastog	samostalnik	2	jed
+grobojati	groblja	samostalnik	1	ledeniški nanos
+glicerin	glicerin	samostalnik	1	kemijska spojina
+sepsa	sepsa	samostalnik	1	bolezensko stanje
+trobilka	trobilka	samostalnik	1	mišica
+trobilka	trobilka	samostalnik	2	glasbenica
+moren	morena	samostalnik	1	ledeniški nanos
+moren	morena	samostalnik	2	morska riba
+shizofrenik	shizofrenik	samostalnik	1	duševni bolnik
+shizofrenik	shizofrenik	samostalnik	2	kdor ravna razdvojeno
+senilen	senilen	pridevnik	1	o starostnih spremembah
+triangel	triangel	samostalnik	1	glasbilo
+triangel	triangel	samostalnik	2	skupina treh enot
+triangel	triangel	samostalnik	3	krmilni del zmaja
+glasbilo	glasbilo	samostalnik	1	priprava za izvajanje glasbe
+pikolo	pikolo	samostalnik	1	pihalo
+klavir	klavir	samostalnik	1	glasbilo
+klavir	klavir	samostalnik	2	igranje klavirja
+abraziv	abraziv	samostalnik	1	brusivo
+aerostat	aerostat	samostalnik	1	balon
+akronim	akronim	samostalnik	1	kratica
+bruceloza	bruceloza	samostalnik	1	bolezen
+demograf	demograf	samostalnik	1	strokovnjak
+antracit	antracit	samostalnik	1	premog
+apnica	apnica	samostalnik	1	raztopina
+akcelerometer	akcelerometer	samostalnik	1	merilna naprava
+areometer	areometer	samostalnik	1	merilni instrument
+antipiretik	antipiretik	samostalnik	1	zdravilo
+afazija	afazija	samostalnik	1	govorna motnja
+ablativ	ablativ	samostalnik	1	sklon
+absces	absces	samostalnik	1	ognojek
+adenom	adenom	samostalnik	1	žlezna tvorba
+adsorbent	adsorbent	samostalnik	1	snov
+aeronavt	aeronavt	samostalnik	1	letalec
+dietetik	dietetik	samostalnik	1	strokovnjak
+girokompas	girokompas	samostalnik	1	merilna naprava
+norka	norka	samostalnik	1	kuna
+bobrovka	bobrovka	samostalnik	1	glodavec
+puma	puma	samostalnik	1	velika mačka
+karibu	karibu	samostalnik	1	jelen
+detel	detel	samostalnik	1	ptica
+eland	eland	samostalnik	1	kopenska žival
+gnezdilka	gnezdilka	samostalnik	1	ptica
+iglica	iglica	samostalnik	1	riba
+kragulj	kragulj	samostalnik	1	ptica ujeda
+pižmovka	pižmovka	samostalnik	1	glodavec
+podhujka	podhujka	samostalnik	1	ptica
+nutrija	nutrija	samostalnik	1	glodavec
+mrhar	mrhar	samostalnik	1	ptica ujeda
+pika	pike	samostalnik	1	rod zajcev
+abortiv	abortiv	samostalnik	1	sredstvo za prekinitev nosečnosti
+škarpina	škarpina	samostalnik	1	morska riba
+bimetal	bimetal	samostalnik	1	kovinski trak
+kirij	kirij	samostalnik	1	kemijski element
+alpinizem	alpinizem	samostalnik	1	o plezanju
+atletika	atletika	samostalnik	1	šport
+baseball	baseball	samostalnik	1	šport
+bejzbol	bejzbol	samostalnik	1	šport
+bodibilding	bodibilding	samostalnik	1	šport
+bodybuilding	bodybuilding	samostalnik	1	šport
+bowling	bowling	samostalnik	1	športna igra
+curling	curling	samostalnik	1	športna igra
+drsanje	drsanje	samostalnik	1	športna aktivnost
+gimnastika	gimnastika	samostalnik	1	šport
+gimnastika	gimnastika	samostalnik	2	telovadba
+golf	golf	samostalnik	1	šport
+golf	golf	samostalnik	2	avto
+karting	karting	samostalnik	1	vožnja z gokarti
+kegljanje	kegljanje	samostalnik	1	športna igra
+kickboxing	kickboxing	samostalnik	1	borilni šport
+kolesarstvo	kolesarstvo	samostalnik	1	vožnja s kolesom
+kros	kros	samostalnik	1	tek
+kros	kros	samostalnik	2	o drugih športih
+motokros	motokros	samostalnik	1	šport
+nogomet	nogomet	samostalnik	1	šport
+nogomet	nogomet	samostalnik	2	način igranja
+potapljanje	potapljanje	samostalnik	1	šport
+potapljanje	potapljanje	samostalnik	2	spuščanje pod gladino
+rugby	rugby	samostalnik	1	šport
+sankanje	sankanje	samostalnik	1	športna aktivnost
+smuk	smuk	samostalnik	1	smučarska disciplina
+taekwondo	taekwondo	samostalnik	1	borilna veščina
+veslanje	veslanje	samostalnik	1	športna aktivnost
+alpinist	alpinist	samostalnik	1	plezalec
+alpinistka	alpinistka	samostalnik	1	plezalka
+balonarka	balonarka	samostalnik	1	pilotka balona
+biatlonec	biatlonec	samostalnik	1	športnik
+biatlonka	biatlonka	samostalnik	1	športnica
+bodibilder	bodibilder	samostalnik	1	športnik
+bodibilderka	bodibilderka	samostalnik	1	športnica
+bodybuilder	bodybuilder	samostalnik	1	športnik
+bodybuilderka	bodybuilderka	samostalnik	1	športnica
+boksarka	boksarka	samostalnik	1	športnica
+drsalka	drsalka	samostalnik	1	športna obutev
+drsalka	drsalka	samostalnik	2	športnica
+džoger	džoger	samostalnik	1	rekreativni tekač
+džogerka	džogerka	samostalnik	1	rekreativna tekačica
+gimnastičar	gimnastičar	samostalnik	1	športnik
+gimnastičarka	gimnastičarka	samostalnik	1	športnica
+golfist	golfist	samostalnik	1	igralec golfa
+golfistek	golfistka	samostalnik	1	igralka golfa
+gornica	gornica	samostalnik	1	alpinistka
+jahač	jahač	samostalnik	1	športnik
+jahač	jahač	samostalnik	2	otroški avtomobilski sedež
+jahalec	jahalec	samostalnik	1	športnik
+jamar	jamar	samostalnik	1	raziskovalec jam
+jamarka	jamarka	samostalnik	1	raziskovalka jam
+judoist	judoist	samostalnik	1	športnik
+judoistka	judoistka	samostalnik	1	športnica
+kajakaš	kajakaš	samostalnik	1	športnik
+kajakašica	kajakašica	samostalnik	1	športnica
+kanuist	kanuist	samostalnik	1	športnik
+kanuistek	kanuistka	samostalnik	1	športnica
+kasač	kasač	samostalnik	1	dirkalni konj
+kasač	kasač	samostalnik	2	športnik
+kickboksar	kickboksar	samostalnik	1	športnik
+kickoksarka	kickboksarka	samostalnik	1	športnica
+kikboksar	kikboksar	samostalnik	1	športnik
+kikboksarka	kikboksarka	samostalnik	1	športnica
+kolesar	kolesar	samostalnik	1	športnik
+kolesarka	kolesarka	samostalnik	1	športnica
+kotalkar	kotalkar	samostalnik	1	kdor se kotalka
+kotalkarica	kotalkarica	samostalnik	1	ženska, ki se kotalka
+krosist	krosist	samostalnik	1	športnik
+krosistek	krosistka	samostalnik	1	športnica
+lokostrelek	lokostrelka	samostalnik	1	ženska, ki strelja z lokom
+maratonek	maratonka	samostalnik	1	tekačica
+motokrosist	motokrosist	samostalnik	1	športnik
+motokrosistek	motokrosistka	samostalnik	1	športnica
+nogometašic	nogometašica	samostalnik	1	športnica
+nogometašinja	nogometašinja	samostalnik	1	športnica
+plavalec	plavalec	samostalnik	1	kdor plava
+plavalec	plavalec	samostalnik	2	žival, ki plava
+plavalka	plavalka	samostalnik	1	športnica
+plesalka	plesalka	samostalnik	1	ženska, ki pleše
+pohodnica	pohodnica	samostalnik	1	ženska, ki hodi za rekreacijo
+pohodnik	pohodnik	samostalnik	1	kdor hodi za rekreacijo
+potapljač	potapljač	samostalnik	1	kdor se potaplja
+potapljačica	potapljačica	samostalnik	1	ženska, ki se potaplja
+ribič	ribič	samostalnik	1	kdor lovi ribe
+ribička	ribička	samostalnik	1	ženska, ki lovi ribe
+rokoborec	rokoborec	samostalnik	1	športnik
+rokoborek	rokoborka	samostalnik	1	športnica
+rolar	rolar	samostalnik	1	kdor se vozi z rolerji
+rolar	rolar	samostalnik	2	športna obutev
+rolarka	rolarka	samostalnik	1	ženska, ki se vozi z rolerji
+rolarek	rolarka	samostalnik	2	športna obutev
+rolkarek	rolkarka	samostalnik	1	ženska, ki se vozi z rolko
+sabljač	sabljač	samostalnik	1	kdor sablja
+sabljačica	sabljačica	samostalnik	1	ženska, ki sablja
+smučarka	smučarka	samostalnik	1	ženska, ki smuča
+smukač	smukač	samostalnik	1	športnik
+smukačica	smukačica	samostalnik	1	športnica
+šahist	šahist	samostalnik	1	igralec šaha
+šahistka	šahistka	samostalnik	1	igralka šaha
+športnica	športnica	samostalnik	1	ženska, ki se ukvarja s športom
+tekačica	tekačica	samostalnik	1	športnica
+triatlonec	triatlonec	samostalnik	1	športnik
+triatlonek	triatlonka	samostalnik	1	športnica
+ultramaratonek	ultramaratonka	samostalnik	1	tekačica
+veslač	veslač	samostalnik	1	kdor vesla
+veslačica	veslačica	samostalnik	1	športnica
+žonglerek	žonglerka	samostalnik	1	umetnica metanja predmetov
+žonglerek	žonglerka	samostalnik	2	o spretnem ravnanju
+atletski	atletski	pridevnik	1	o atletiki
+atletski	atletski	pridevnik	2	športen
+gimnastičen	gimnastičen	pridevnik	1	o športu
+gimnastičen	gimnastičen	pridevnik	2	gibalen; telesen;
+jahalen	jahalen	pridevnik	1	o jahanju
+jamarski	jamarski	pridevnik	1	o jamarstvu
+nogometaški	nogometaški	pridevnik	1	o nogometu
+padalski	padalski	pridevnik	1	o športu
+padalski	padalski	pridevnik	2	o vojaški enoti
+plavalen	plavalen	pridevnik	1	o plavanju
+plesen	plesen	pridevnik	1	o plesu
+plezalen	plezalen	pridevnik	1	o plezanju
+potapljaški	potapljaški	pridevnik	1	o športni aktivnosti
+jamarstvo	jamarstvo	samostalnik	1	raziskovanje jam
+balonar	balonar	samostalnik	1	pilot balona
+balonar	balonar	samostalnik	2	plašč
+kikboks	kikboks	samostalnik	1	borilni šport
+jogger	jogger	samostalnik	1	rekreativni tekač
+gorništvo	gorništvo	samostalnik	1	športna aktivnost
+zmajar	zmajar	samostalnik	1	športnik
+ultramaratonec	ultramaratonec	samostalnik	1	tekač
+kotalkanje	kotalkanje	samostalnik	1	športna aktivnost
+kegljačica	kegljačica	samostalnik	1	športnica
+rolkanje	rolkanje	samostalnik	1	športna aktivnost
+rolkar	rolkar	samostalnik	1	kdor se vozi z rolko
+herc	herc	samostalnik	1	merska enota
+etnocid	etnocid	samostalnik	1	etnični genocid
+etnomuzikolog	etnomuzikolog	samostalnik	1	strokovnjak
+flavtistka	flavtistka	samostalnik	1	glasbenica
+generalbas	generalbas	samostalnik	1	basovska melodija
+galenit	galenit	samostalnik	1	rudnina
+fagotist	fagotist	samostalnik	1	glasbenik
+drevesničarstvo	drevesničarstvo	samostalnik	1	gojenje dreves
+dudar	dudar	samostalnik	1	glasbenik
+džoging	džoging	samostalnik	1	lahkoten tek
+džokej	džokej	samostalnik	1	jahač
+eksistencialist	eksistencialist	samostalnik	1	predstavnik eksistencializma
+emisar	emisar	samostalnik	1	odposlanec
+enoboštvo	enoboštvo	samostalnik	1	oblika verovanja
+enokrilnik	enokrilnik	samostalnik	1	vrsta letala
+fotometer	fotometer	samostalnik	1	merilna naprava
+feminist	feminist	samostalnik	1	privrženec feminizma
+adjektiv	adjektiv	samostalnik	1	besedna vrsta
+adoracija	adoracija	samostalnik	1	čaščenje
+aglomerat	aglomerat	samostalnik	1	kamnina
+akupunkturist	akupunkturist	samostalnik	1	zdravilec
+akuzativ	akuzativ	samostalnik	1	sklon
+akvarelist	akvarelist	samostalnik	1	umetnik
+alegorika	alegorika	samostalnik	1	o podobah v umetniškem delu
+alegoričnost	alegoričnost	samostalnik	1	lastnost umetniškega dela
+altist	altist	samostalnik	1	pevec
+altsaksofon	altsaksofon	samostalnik	1	glasbilo
+amilaza	amilaza	samostalnik	1	encim
+anabaptist	anabaptist	samostalnik	1	prekrščevalec
+anglicizem	anglicizem	samostalnik	1	o izrazu
+arabist	arabist	samostalnik	1	strokovnjak
+arhangel	arhangel	samostalnik	1	angel
+arhitrav	arhitrav	samostalnik	1	antični gradbeni element
+arijanstvo	arijanstvo	samostalnik	1	krščanski nauk
+aristokratka	aristokratka	samostalnik	1	plemkinja
+aritmetik	aritmetik	samostalnik	1	strokovnjak
+arianizem	arianizem	samostalnik	1	krščanski nauk
+aristokratinja	aristokratinja	samostalnik	1	plemkinja
+arogantnež	arogantnež	samostalnik	1	aroganten človek
+artilerist	artilerist	samostalnik	1	topničar
+arijanec	arijanec	samostalnik	1	privrženec arijanizma
+žonglerstvo	žonglerstvo	samostalnik	1	fizična veščina ali dejavnost
+žužkoslovec	žužkoslovec	samostalnik	1	strokovnjak
+zunajjezikoven	zunajjezikoven	pridevnik	1	nebeseden
+abolicionist	abolicionist	samostalnik	1	borec proti sistemu ali praksi
+abolicionist	abolicionist	samostalnik	2	o odpravi suženjstva v ZDA
+abotnost	abotnost	samostalnik	1	lastnost
+abotnost	abotnost	samostalnik	2	izjava; ravnanje;
+abrakadabra	abrakadabra	samostalnik	1	čarovnija
+abrakadabra	abrakadabra	samostalnik	2	kot izrek
+adneks	adneks	samostalnik	1	telesni izrastek
+adverb	adverb	samostalnik	1	besedna vrsta
+agronomka	agronomka	samostalnik	1	strokovnjakinja
+alkova	alkova	samostalnik	1	vgradni del sobe
+amfibol	amfibol	samostalnik	1	rudnina
+animist	animist	samostalnik	1	pripadnik animizma
+antifona	antifona	samostalnik	1	napev v bogoslužju
+antiklinala	antiklinala	samostalnik	1	izbočeni del površja
+antikvar	antikvar	samostalnik	1	trgovec
+asignant	asignant	samostalnik	1	nakazovalec
+zadružnica	zadružnica	samostalnik	1	članica zadruge
+zib	zib	samostalnik	1	premik sem in tja
+živobarvnost	živobarvnost	samostalnik	1	o barvah
+živobarvnost	živobarvnost	samostalnik	2	o pestrosti
+žlebak	žlebak	samostalnik	1	žlebasta strešna opeka
+zobovina	zobovina	samostalnik	1	osrednje zobno tkivo
+zvalnik	zvalnik	samostalnik	1	sklon
+žvečilec	žvečilec	samostalnik	1	oseba, ki žveči
+žvečilec	žvečilec	samostalnik	2	žvečilni gumi
+anemona	anemona	samostalnik	1	rastlina
+antikviteta	antikviteta	samostalnik	1	starinski predmet
+dremanje	dremanje	samostalnik	1	kratko spanje
+apnenč	apnenčev	pridevnik	1	o apnencu
+abdomen	abdomen	samostalnik	1	del telesa
+abdomen	abdomen	samostalnik	2	pri žuželkah
+definicija	definicija	samostalnik	1	razlaga; opredelitev;
+definicija	definicija	samostalnik	2	določitev parametrov
+definicija	definicija	samostalnik	3	ločljivost
+deložacija	deložacija	samostalnik	1	prisilna izselitev
+dežnik	dežnik	samostalnik	1	kot zaščita pred dežjem
+dežnik	dežnik	samostalnik	2	senčnik
+dežnik	dežnik	samostalnik	3	obrambni sistem
+dežnik	dežnik	samostalnik	4	okrilje
+dežnik	dežnik	samostalnik	5	skupni pojem
+dežnik	dežnik	samostalnik	6	goba
+diplomant	diplomant	samostalnik	1	kdor zaključi študij
+dvoumnost	dvoumnost	samostalnik	1	nejasnost
+dvoumnost	dvoumnost	samostalnik	2	dvoličnost
+emigracija	emigracija	samostalnik	1	izseljevanje
+emigracija	emigracija	samostalnik	2	življenje v tujini
+emigracija	emigracija	samostalnik	3	izseljenci
+ekolog	ekolog	samostalnik	1	strokovnjak
+grafika	grafik	samostalnik	1	izdelovalec grafik
+jopica	jopica	samostalnik	1	oblačilo
+karikatura	karikatura	samostalnik	1	komična risba
+karikatura	karikatura	samostalnik	2	dejavnost
+karikatura	karikatura	samostalnik	3	popačena različica
+katakomba	katakombe	samostalnik	1	podzemno pokopališče
+kaviar	kaviar	samostalnik	1	jed
+kozmetika	kozmetika	samostalnik	1	izdelki
+kozmetika	kozmetika	samostalnik	2	dejavnost
+kripta	kripta	samostalnik	1	grobnica
+kurzor	kurzor	samostalnik	1	kazalec na zaslonu
+šivilja	šivilja	samostalnik	1	ženska, ki šiva oblačila
+trenirka	trenirka	samostalnik	1	oblačilo
+trener	trener	samostalnik	1	kdor trenira športnike
+uhan	uhan	samostalnik	1	nakit
+urednik	urednik	samostalnik	1	urejevalec besedil
+večerja	večerja	samostalnik	1	obrok hrane
+večerja	večerja	samostalnik	2	dogodek
+zaliv	zaliv	samostalnik	1	del morja ali jezera
+zborovodja	zborovodja	samostalnik	1	vodja pevskega zbora
+arijanizem	arijanizem	samostalnik	1	krščanski nauk
+jogging	jogging	samostalnik	1	lahkoten tek
+jockey	jockey	samostalnik	1	jahač
+hertz	hertz	samostalnik	1	merska enota
+cikorija	cikorija	samostalnik	1	rastlina
+cikorija	cikorija	samostalnik	2	kavni nadomestek
+frufru	frufru	samostalnik	1	frizura
+majorka	majorka	samostalnik	1	vojaški čin
+martina	martini	samostalnik	1	alkoholna pijača
+maslenica	maslenica	samostalnik	1	rastlina
+farmar	farmar	samostalnik	1	lastnik farme
+jazzist	jazzist	samostalnik	1	glasbenik
+jeklarstvo	jeklarstvo	samostalnik	1	gospodarska panoga
+komunikologija	komunikologija	samostalnik	1	veda o komunikacijskih sredstvih
+kortizol	kortizol	samostalnik	1	hormon
+džezist	džezist	samostalnik	1	glasbenik
+hidrokortizon	hidrokortizon	samostalnik	1	hormon
+apreciacija	apreciacija	samostalnik	1	večanje vrednosti valute
+baptisterij	baptisterij	samostalnik	1	krstilnica
+baptisterij	baptisterij	samostalnik	2	antični bazen s toplo vodo
+frazeologija	frazeologija	samostalnik	1	veda
+administratorka	administratorka	samostalnik	1	uslužbenka v pisarni
+administratorka	administratorka	samostalnik	2	skrbnica spletne strani
+dobropis	dobropis	samostalnik	1	o vračilu denarja
+finančnica	finančnica	samostalnik	1	strokovnjakinja
+font	font	samostalnik	1	pisava
+frizerstvo	frizerstvo	samostalnik	1	frizerska dejavnost
+generalpodpolkovnik	generalpodpolkovnik	samostalnik	1	čin
+sikho	sikh	samostalnik	1	pripadnik sikhovske religije
+podprsnica	podprsnica	samostalnik	1	jermen
+žerek	žerka	samostalnik	1	ličinka
+bajaničar	bajaničar	samostalnik	1	iskalec stvari
+jabolčnik	jabolčnik	samostalnik	1	pijača
+divjačina	divjačina	samostalnik	1	meso
+divjačina	divjačina	samostalnik	2	divje živali
+ekstremizem	ekstremizem	samostalnik	1	fanatizem
+ekstremizem	ekstremizem	samostalnik	2	v športu
+stegnenica	stegnenica	samostalnik	1	kost
+toast	toast	samostalnik	1	vrsta kruha
+zgodovinar	zgodovinar	samostalnik	1	strokovnjak
+župan	župan	samostalnik	1	vodja mestne uprave
+pozavnistek	pozavnistka	samostalnik	1	glasbenica
+lutnjark	lutnjarka	samostalnik	1	glasbenica
+lokovanje	lokovanje	samostalnik	1	pri godalih
+napoleondor	napoleondor	samostalnik	1	francoski zlatnik
+trombonistek	trombonistka	samostalnik	1	glasbenica
+hiperen	hipernim	samostalnik	1	o pomenu besede
+slovaropisje	slovaropisje	samostalnik	1	znanstvena dejavnost
+kromiranje	kromiranje	samostalnik	1	kemijski postopek
+šestkotnik	šestkotnik	samostalnik	1	geometrijski lik
+gostiščnica	gostiščnica	samostalnik	1	najpogostejša vrednost
+kostumografinja	kostumografinja	samostalnik	1	strokovnjakinja za oblačila
+operand	operand	samostalnik	1	število v matematični operaciji
+trilček	trilček	samostalnik	1	pojav v skladbi
+krekiranje	krekiranje	samostalnik	1	kemijski postopek
+leksikologij	leksikologija	samostalnik	1	veda
+libretistek	libretistka	samostalnik	1	piska libreta
+pastavek	pastavek	samostalnik	1	vrsta stavka
+podpomenek	podpomenka	samostalnik	1	o pomenu besede
+medpon	medpona	samostalnik	1	del besede
+mimezis	mimezis	samostalnik	1	o posnemanju stvarnosti
+marakas	marakas	samostalnik	1	tolkalo
+odštevanec	odštevanec	samostalnik	1	število, ki se odšteva
+protipomenka	protipomenka	samostalnik	1	o pomenu besede
+kognicija	kognicija	samostalnik	1	spoznavanje; dojemanje;
+tritonus	tritonus	samostalnik	1	o razdalji med tonoma
+mehatronika	mehatronika	samostalnik	1	veda
+špinet	špinet	samostalnik	1	glasbilo
+kvintdec	kvintdecima	samostalnik	1	o razdalji med tonoma
+lokativ	lokativ	samostalnik	1	sklon
+septim	septima	samostalnik	1	o razdalji med tonoma
+kreking	kreking	samostalnik	1	kemijski postopek
+trasat	trasat	samostalnik	1	izdajatelj menice
+nadpomenka	nadpomenka	samostalnik	1	o pomenu besede
+homofonija	homofonija	samostalnik	1	večglasje
+komponistka	komponistka	samostalnik	1	umetnica
+saksofonistek	saksofonistka	samostalnik	1	glasbenica
+razvezaj	razvezaj	samostalnik	1	glasbeni znak
+komutativnost	komutativnost	samostalnik	1	o matematični operaciji
+narator	narator	samostalnik	1	pripovedovalec; bralec spremnega teksta;
+zaklepišče	zaklepišče	samostalnik	1	del strelnega orožja
+maniok	manioka	samostalnik	1	rastlina
+dež	dež	samostalnik	1	padavine
+dež	dež	samostalnik	2	velika količina
+dijak	dijak	samostalnik	1	srednješolec
+elektrarna	elektrarna	samostalnik	1	objekt za proizvodnjo elektrike
+kavč	kavč	samostalnik	1	kos pohištva
+kavč	kavč	samostalnik	2	pri psihiatru
+stevardesa	stevardesa	samostalnik	1	uslužbenka na letalu
+vulkan	vulkan	samostalnik	1	gora, iz katere prodira lava
+vulkan	vulkan	samostalnik	2	nekaj silovitega
+džez	džez	samostalnik	1	glasbena zvrst
+jazz	jazz	samostalnik	1	glasbena zvrst
+kenguru	kenguru	samostalnik	1	vrečar
+kenguru	kenguru	samostalnik	2	za dojenčka
+kenguru	kenguru	samostalnik	3	Avstralec
+košarka	košarka	samostalnik	1	šport
+košarka	košarka	samostalnik	2	način igranja
+aneroid	aneroid	samostalnik	1	merilni instrument
+filc	filc	samostalnik	1	blago
+filolog	filolog	samostalnik	1	strokovnjak
+depreciacija	depreciacija	samostalnik	1	razvrednotenje
+žoga	žoga	samostalnik	1	športni rekvizit
+žoga	žoga	samostalnik	2	podaja; udarec;
+polst	polst	samostalnik	1	blago
+cerkovnik	cerkovnik	samostalnik	1	oskrbnik cerkve
+samozavedanje	samozavedanje	samostalnik	1	zavedanje samega sebe
+carstvo	carstvo	samostalnik	1	dežela, v kateri vlada car
+carstvo	carstvo	samostalnik	2	cesarstvo; imperij;
+carstvo	carstvo	samostalnik	3	območje prevlade
+degustator	degustator	samostalnik	1	pokuševalec
+cinober	cinober	samostalnik	1	opečnato rdeča barva
+cinober	cinober	samostalnik	2	rudnina
+zdravilo	zdravilo	samostalnik	1	snov ali farmacevtski izdelek
+zdravilo	zdravilo	samostalnik	2	kar izboljša stanje
+maniok	maniok	samostalnik	1	rastlina
+inkunabula	inkunabula	samostalnik	1	knjiga
+kravl	kravl	samostalnik	1	pri plavanju
+plamenišče	plamenišče	samostalnik	1	o temperaturi
+aforizem	aforizem	samostalnik	1	literarna forma
+aliteracija	aliteracija	samostalnik	1	pesniško sredstvo
+katarakt	katarakt	samostalnik	1	brzica
+množenec	množenec	samostalnik	1	število, ki se množi
+azimut	azimut	samostalnik	1	o kotu
+antisemitizem	antisemitizem	samostalnik	1	sovražen odnos do Judov
+biosfera	biosfera	samostalnik	1	območje življenja na Zemlji
+besedoslovje	besedoslovje	samostalnik	1	raziskovalno področje
+stranka	stranka	samostalnik	1	politična organizacija
+stranka	stranka	samostalnik	2	uporabnik storitev
+stranka	stranka	samostalnik	3	stran v upravno-pravnih postopkih
+juha	juha	samostalnik	1	jed
+kukavica	kukavica	samostalnik	1	ptica
+kukavica	kukavica	samostalnik	2	rastlina
+kukavica	kukavica	samostalnik	3	o uri
+vizum	vizum	samostalnik	1	dokument
+rogistek	rogistka	samostalnik	1	glasbenica
+tekstualnost	tekstualnost	samostalnik	1	lastnost besedila
+rogist	rogist	samostalnik	1	glasbenik
+sfalerit	sfalerit	samostalnik	1	rudnina
+dražba	dražba	samostalnik	1	javna prodaja blaga
+klient	klient	samostalnik	1	stranka
+klient	klient	samostalnik	2	v sodnih postopkih
+klient	klient	samostalnik	3	program
+slepič	slepič	samostalnik	1	organ
+jajčnik	jajčnik	samostalnik	1	spolni organ
+jajčnik	jajčnik	samostalnik	2	jed
+duda	duda	samostalnik	1	pripomoček za dojenčka
+duda	duda	samostalnik	2	za pitje
+plesalec	plesalec	samostalnik	1	kdor pleše
+ragbi	ragbi	samostalnik	1	šport
+hiperpovezava	hiperpovezava	samostalnik	1	povezava do spletne strani
+čarter	čarter	samostalnik	1	najet letalski ali ladijski prevoz
+žolčnik	žolčnik	samostalnik	1	organ
+želelnik	želelnik	samostalnik	1	glagolski naklon
+fototeka	fototeka	samostalnik	1	zbirka fotografij
+dokumentalist	dokumentalist	samostalnik	1	skrbnik za dokumentacijo
+trpnik	trpnik	samostalnik	1	glagolski način
+ažio	ažio	samostalnik	1	pribitek
+denarnica	denarnica	samostalnik	1	torbica za denar
+denarnica	denarnica	samostalnik	2	količina denarja; premoženje;
+zemljanka	zemljanka	samostalnik	1	ženska
+zemljanka	zemljanka	samostalnik	2	hiša
+pogačica	pogačica	samostalnik	1	kost
+pogačica	pogačica	samostalnik	2	jed
+pogačica	pogačica	samostalnik	3	rastlina
+joga	jogi	samostalnik	1	vzmetnica
+joga	jogi	samostalnik	2	mojster joge
+trepalnica	trepalnica	samostalnik	1	dlaka
+angelika	angelika	samostalnik	1	rastlina
+centil	centil	samostalnik	1	statistična merska enota
+agorafobij	agorafobija	samostalnik	1	strah pred odprtimi prostori
+akolit	akolit	samostalnik	1	mašni pomočnik
+akutnost	akutnost	samostalnik	1	o bolezni
+akutnost	akutnost	samostalnik	2	resnost; težavnost;
+izvleček	izvleček	samostalnik	1	pridobljena snov; ekstrakt;
+izvleček	izvleček	samostalnik	2	del besedila; izpisek;
+izvleček	izvleček	samostalnik	3	priredba
+lajnar	lajnar	samostalnik	1	glasbenik
+mormon	mormon	samostalnik	1	pripadnik verske skupnosti
+mormon	mormon	samostalnik	2	morska ptica
+nadjaz	nadjaz	samostalnik	1	o ponotranjenih normah
+najemnica	najemnica	samostalnik	1	ženska, ki kaj najame
+najemnica	najemnica	samostalnik	2	organizacija
+pajkica	pajkice	samostalnik	1	oblačilo
+panker	panker	samostalnik	1	glasbenik
+panker	panker	samostalnik	2	ljubitelj punk glasbe
+pelerina	pelerina	samostalnik	1	dežno oblačilo
+pelerina	pelerina	samostalnik	2	vrhnje oblačilo
+perjad	perjad	samostalnik	1	večje domače ali divje ptice
+pianino	pianino	samostalnik	1	glasbilo
+pihalec	pihalec	samostalnik	1	glasbenik
+pihalec	pihalec	samostalnik	2	steklopihač
+plet	plet	samostalnik	1	ogrinjalo
+počitnikar	počitnikar	samostalnik	1	dopustnik
+počitnikar	počitnikar	samostalnik	2	kdor ima šolske počitnice
+scenografka	scenografka	samostalnik	1	oblikovalka scene
+debater	debater	samostalnik	1	človek, ki se ukvarja z debatiranjem
+debater	debater	samostalnik	2	razpravljavec
+jestvin	jestvina	samostalnik	1	prehrambeni izdelek
+juta	juta	samostalnik	1	material
+kahlica	kahlica	samostalnik	1	otroško stranišče
+scenografinja	scenografinja	samostalnik	1	oblikovalka scene
+ambrozija	ambrozija	samostalnik	1	rod cvetnic
+ambrozija	ambrozija	samostalnik	2	hrana bogov
+hornistka	hornistka	samostalnik	1	glasbenica
+fagotistek	fagotistka	samostalnik	1	glasbenica
+klarinetistek	klarinetistka	samostalnik	1	glasbenica
+muzikologinj	muzikologinja	samostalnik	1	strokovnjakinja
+enakozvočnica	enakozvočnica	samostalnik	1	o zvoku besede
+živina	živina	samostalnik	1	govedo
+živina	živina	samostalnik	2	pomemben človek
+navijalka	navijalka	samostalnik	1	pripomoček za lase
+pastorka	pastorka	samostalnik	1	hči partnerja
+pastorka	pastorka	samostalnik	2	kar je zapostavljeno
+pastorka	pastorka	samostalnik	3	duhovnica
+pomfrit	pomfrit	samostalnik	1	jed
+simptomatičen	simptomatičen	pridevnik	1	značilen
+simptomatičen	simptomatičen	pridevnik	2	glede na simptome
+varčevalec	varčevalec	samostalnik	1	oseba, ki varčuje
+sintaksa	sintaksa	samostalnik	1	o jezikovnem sistemu
+sintaksa	sintaksa	samostalnik	2	o programskih jezikih
+sintaksa	sintaksa	samostalnik	3	o umetniških stvaritvah
+sklicatelj	sklicatelj	samostalnik	1	pobudnik; organizator;
+slabič	slabič	samostalnik	1	psihično šibka oseba
+slabič	slabič	samostalnik	2	o fizični zmogljivosti
+blokflavt	blokflavta	samostalnik	1	pihalo
+blokflavta	blokflavta	samostalnik	2	igranje blokflavte
+analognost	analognost	samostalnik	1	o podatkih
+analognost	analognost	samostalnik	2	podobnost
+babura	babura	samostalnik	1	ženska
+babura	babura	samostalnik	2	vrsta paprike
+arzenov	arzenov	pridevnik	1	o arzenu
+anketar	anketar	samostalnik	1	kdor anketira
+ragu	ragu	samostalnik	1	jed
+nuklearka	nuklearka	samostalnik	1	vrsta elektroenergetskega objekta
+koplanarnost	koplanarnost	samostalnik	1	geometrijska značilnost
+bižuterij	bižuterija	samostalnik	1	cenen nakit
+bižuterij	bižuterija	samostalnik	2	trgovina
+oboistka	oboistka	samostalnik	1	glasbenica
+šepetalka	šepetalka	samostalnik	1	funkcija v gledališču
+oboist	oboist	samostalnik	1	glasbenik
+sukulenta	sukulenta	samostalnik	1	rastlina
+bantam	bantam	samostalnik	1	borilna veščina
+bantam	bantam	samostalnik	2	pasma kokoši
+akut	akut	samostalnik	1	naglasno znamenje
+kašmir	kašmir	samostalnik	1	tkanina
+ostrivec	ostrivec	samostalnik	1	naglasno znamenje
+dvoglasnik	dvoglasnik	samostalnik	1	glasovna enota
+dialektologija	dialektologija	samostalnik	1	veda
+glagolnik	glagolnik	samostalnik	1	glagolska oblika
+klarinetist	klarinetist	samostalnik	1	glasbenik
+eksosfera	eksosfera	samostalnik	1	zunanja plast atmosfere
+anglikanec	anglikanec	samostalnik	1	pripadnik anglikanske vere
+anglikanka	anglikanka	samostalnik	1	pripadnica anglikanske vere
+biografinja	biografinja	samostalnik	1	avtorica biografij
+narečjeslovje	narečjeslovje	samostalnik	1	veda
+gerundij	gerundij	samostalnik	1	glagolska oblika
+diftong	diftong	samostalnik	1	glasovna enota
+harmonij	harmonij	samostalnik	1	glasbilo
+gokart	gokart	samostalnik	1	majhen dirkalni avto
+gokart	gokart	samostalnik	2	dirkanje z majhnimi avti
+modrček	modrček	samostalnik	1	žensko spodnje perilo
+abdominalen	abdominalen	pridevnik	1	trebušen
+življenjepisen	življenjepisen	pridevnik	1	o življenjepisu
+veterinar	veterinar	samostalnik	1	zdravnik za živali
+zborovodkinja	zborovodkinja	samostalnik	1	vodja pevskega zbora
+živilo	živilo	samostalnik	1	prehrambeni izdelek
+župnik	župnik	samostalnik	1	predstojnik cerkvene skupnosti
+sfinga	sfinga	samostalnik	1	kip
+sfinga	sfinga	samostalnik	2	egipčansko bajeslovno bitje
+sfinga	sfinga	samostalnik	3	grško bajeslovno bitje
+sfinga	sfinga	samostalnik	4	vrsta mačke
+skepticizem	skepticizem	samostalnik	1	dvom
+skepticizem	skepticizem	samostalnik	2	skepsa
+špecerist	špecerist	samostalnik	1	trgovec
+obritoglavec	obritoglavec	samostalnik	1	pripadnik subkulture
+življenjepisec	življenjepisec	samostalnik	1	avtor življenjepisov
+osnovnik	osnovnik	samostalnik	1	oblika pridevnika ali prislova
+sedemdesetletnica	sedemdesetletnica	samostalnik	1	sedemdeseta obletnica
+sedemdesetletnica	sedemdesetletnica	samostalnik	2	sedemdesetletna ženska
+sedemdesetletnica	sedemdesetletnica	samostalnik	3	ženska, stara med 70 in 79 let
+mežnar	mežnar	samostalnik	1	oskrbnik cerkve
+violončelistka	violončelistka	samostalnik	1	glasbenica
+anglist	anglist	samostalnik	1	strokovnjak
+anglistka	anglistka	samostalnik	1	strokovnjakinja
+čekan	čekan	samostalnik	1	zob pri živalih
+čekan	čekan	samostalnik	2	podaljšani podočniki pri živalih
+želodec	želodec	samostalnik	1	organ
+želodec	želodec	samostalnik	2	jed
+želodec	želodec	samostalnik	3	o ljudeh
+žuborenje	žuborenje	samostalnik	1	o vodi
+žuborenje	žuborenje	samostalnik	2	o neizrazitih glasovih
+ječar	ječar	samostalnik	1	paznik v zaporu
+komponist	komponist	samostalnik	1	umetnik
+ameba	ameba	samostalnik	1	enoceličar
+antisemit	antisemit	samostalnik	1	privrženec antisemitizma
+anemometer	anemometer	samostalnik	1	merilni instrument
+avtoštopar	avtoštopar	samostalnik	1	o zastonj prevozu
+bahač	bahač	samostalnik	1	kdor se baha
+bakteriolog	bakteriolog	samostalnik	1	strokovnjak
+banjo	banjo	samostalnik	1	brenkalo
+binkošti	binkošti	samostalnik	1	krščanski praznik
+birmanec	birmanec	samostalnik	1	kdor prejme birmo
+brzinomer	brzinomer	samostalnik	1	merilna naprava
+čeljustnica	čeljustnica	samostalnik	1	kost
+debet	debet	samostalnik	1	dolg
+dekodirnik	dekodirnik	samostalnik	1	naprava za dekodiranje
+derač	derač	samostalnik	1	zob
+diadem	diadem	samostalnik	1	naglavni obroč ali trak
+habit	habit	samostalnik	1	oblačilo
+čudnost	čudnost	samostalnik	1	nenavadnost
+bukolika	bukolika	samostalnik	1	pastirska poezija
+bordun	bordun	samostalnik	1	spremljevalni ton
+anafora	anafora	samostalnik	1	besedna figura
+čelesta	čelesta	samostalnik	1	glasbilo
+atonalnost	atonalnost	samostalnik	1	o tonskem načinu
+cinabarit	cinabarit	samostalnik	1	rudnina
+bendžo	bendžo	samostalnik	1	brenkalo
+abstinentka	abstinentka	samostalnik	1	ženska, ki ne pije alkohola
+adrema	adrema	samostalnik	1	seznam naslovnikov z naslovi
+adular	adular	samostalnik	1	rudnina
+alkalnost	alkalnost	samostalnik	1	lastnost snovi
+avtostopar	avtostopar	samostalnik	1	o zastonj prevozu
+celesta	celesta	samostalnik	1	glasbilo
+levkocit	levkocit	samostalnik	1	krvna celica
+večzložnica	večzložnica	samostalnik	1	o besedi
+albin	albin	samostalnik	1	o pomanjkanju pigmenta
+armafleks	armafleks	samostalnik	1	ležalna podloga
+akvedukt	akvedukt	samostalnik	1	objekt za pretok vode
+plezalka	plezalka	samostalnik	1	športnica
+plezalka	plezalka	samostalnik	2	žival
+plezalka	plezalka	samostalnik	3	rastlina
+plezalka	plezalka	samostalnik	4	športna obutev
+čembalist	čembalist	samostalnik	1	glasbenik
+epigrafika	epigrafika	samostalnik	1	veda
+dodekaeder	dodekaeder	samostalnik	1	geometrijsko telo
+impresionistka	impresionistka	samostalnik	1	predstavnica impresionizma
+lizingodajalec	lizingodajalec	samostalnik	1	kdor daje lizing
+okoljevarstvo	okoljevarstvo	samostalnik	1	skrb za okolje
+harfistka	harfistka	samostalnik	1	glasbenica
+dirigentka	dirigentka	samostalnik	1	vodja orkestra
+dirigentka	dirigentka	samostalnik	2	vodja
+glikogen	glikogen	samostalnik	1	polisaharid
+kitaristka	kitaristka	samostalnik	1	glasbenica
+dialektolog	dialektolog	samostalnik	1	strokovnjak
+medbesedilnost	medbesedilnost	samostalnik	1	lastnost besedila
+ikozaeder	ikozaeder	samostalnik	1	geometrijski lik
+intertekstualnost	intertekstualnost	samostalnik	1	lastnost besedila
+čembalistek	čembalistka	samostalnik	1	glasbenica
+kalvinist	kalvinist	samostalnik	1	pripadnik kalvinizma
+dvojemek	dvojemka	samostalnik	1	prijem
+lizingojemalec	lizingojemalec	samostalnik	1	kdor dobi lizing
+ceremoniar	ceremoniar	samostalnik	1	vodja slavnosti ali obredov
+oplesk	oplesk	samostalnik	1	o barvnem nanosu
+nadpovezava	nadpovezava	samostalnik	1	povezava do spletne strani
+sopomenkati	sopomenka	samostalnik	1	o pomenu besede
+violist	violist	samostalnik	1	glasbenik
+violistek	violistka	samostalnik	1	glasbenica
+votlak	votlak	samostalnik	1	vrsta opeke
+traper	traper	samostalnik	1	lovec, ki lovi s pastmi
+tvornik	tvornik	samostalnik	1	glagolski način
+žongler	žongler	samostalnik	1	umetnik metanja predmetov
+žongler	žongler	samostalnik	2	o spretnem ravnanju
+kotalek	kotalka	samostalnik	1	športna obutev
+entomolog	entomolog	samostalnik	1	strokovnjak
+faktorizirati	faktorizirati	glagol	1	o postopku pretvorbe
+apniteti	apniti	glagol	1	o zemlji
+abstrahirati	abstrahirati	glagol	1	povzeti
+abstrahirati	abstrahirati	glagol	2	izločiti
+abstrahirati	abstrahirati	glagol	3	o abstraktnem prikazu
+alternirati	alternirati	glagol	1	izmenjavati; izmenjavati se;
+armirati	armirati	glagol	1	ojačati
+abortirati	abortirati	glagol	1	splaviti
+abortirati	abortirati	glagol	2	ustaviti; prekiniti;
+amnestirati	amnestirati	glagol	1	podeliti amnestijo
+dezertirati	dezertirati	glagol	1	zapustiti vojsko brez dovoljenja
+aromatizirati	aromatizirati	glagol	1	dati aromo
+cenzurirati	cenzurirati	glagol	1	odstranjevati sporne vsebine
+cenzurirati	cenzurirati	glagol	2	omejevati dejanja ali izjave
+demonstrirati	demonstrirati	glagol	1	protestirati
+demonstrirati	demonstrirati	glagol	2	prikazati
+deževati	deževati	glagol	1	o dežju
+deževati	deževati	glagol	2	o predmetih
+deževati	deževati	glagol	3	zgrinjati se
+diplomirati	diplomirati	glagol	1	zaključiti študij
+diskreditirati	diskreditirati	glagol	1	zmanjšati ugled
+diskreditirati	diskreditirati	glagol	2	vzeti veljavo
+degradirati	degradirati	glagol	1	znižati veljavo
+degradirati	degradirati	glagol	2	o položaju ali delovnem mestu
+degradirati	degradirati	glagol	3	prizadejati škodo
+hirati	hirati	glagol	1	postajati slaboten
+hirati	hirati	glagol	2	propadati
+kamenjata	kamenjati	glagol	1	obmetavati s kamni
+kašljati	kašljati	glagol	1	o človeku
+kašljati	kašljati	glagol	2	o vozilih in motorjih
+večerjati	večerjati	glagol	1	jesti večerjo
+zanositi	zanositi	glagol	1	o ženski
+filozofirati	filozofirati	glagol	1	razglabljati kot filozof
+filozofirati	filozofirati	glagol	2	dolgoveziti
+pordečiti	pordečiti	glagol	1	obarvati z rdečo
+racionirati	racionirati	glagol	1	deliti v omejenih količinah
+kavdrata	kavdrati	glagol	1	o oglašanju
+prevajati	prevajati	glagol	1	o jezikih
+prevajati	prevajati	glagol	2	prenašati energijo
+prevajati	prevajati	glagol	3	prenašati dražljaje
+prevajati	prevajati	glagol	4	o kodi
+prevajati	prevajati	glagol	5	pretvoriti v drugačno obliko
+zahupati	zahupati	glagol	1	potrobiti
+jecljati	jecljati	glagol	1	o govorni napaki
+jecljati	jecljati	glagol	2	nejasno izražati se
+zmnožiti	zmnožiti	glagol	1	pri računanju
+anulirati	anulirati	glagol	1	razveljaviti; preklicati;
+anulirati	anulirati	glagol	2	izničiti
+izjecljati	izjecljati	glagol	1	jecljaje povedati
+kršiti	kršiti	glagol	1	o neupoštevanju pravil
+uročiti	uročiti	glagol	1	začarati z magijo
+uročiti	uročiti	glagol	2	očarati; prevzeti;
+uročiti	uročiti	glagol	3	prinesti nesrečo
+kovati	kovati	glagol	1	načrtovati
+kovati	kovati	glagol	2	ustvarjati
+kovati	kovati	glagol	3	pisati; oblikovati;
+kovati	kovati	glagol	4	izdelovati iz kovine
+maltretirati	maltretirati	glagol	1	grdo ravnati z; trpinčiti;
+nabost	nabosti	glagol	1	natakniti; napičiti;
+nabost	nabosti	glagol	2	narediti več vbodov
+nabost	nabosti	glagol	3	zapičiti; vstaviti;
+nahruliti	nahruliti	glagol	1	nadreti; ostro ošteti;
+paralizirati	paralizirati	glagol	1	ohromiti
+paralizirati	paralizirati	glagol	2	ustaviti; onemogočati;
+dlakocepiti	dlakocepiti	glagol	1	po nepotrebnem komplicirati
+vcepiti	vcepiti	glagol	1	vsaditi v zavest; privzgojiti;
+vcepiti	vcepiti	glagol	2	vnesti v organizem
+vcepiti	vcepiti	glagol	3	narediti, da ima kaj določeno lastnost
+vcepiti	vcepiti	glagol	4	vstaviti cepič v rastlino
+nabasati	nabasati	glagol	1	natrpati
+nabasati	nabasati	glagol	2	naleteti
+sitnarita	sitnariti	glagol	1	nergati
+sitnarita	sitnariti	glagol	2	zahtevati; gnjaviti;
+aproksimirati	aproksimirati	glagol	1	približno oceniti
+anestezirati	anestezirati	glagol	1	dati anestezijo
+anestezirati	anestezirati	glagol	2	narediti neobčutljivo
+sestankovati	sestankovati	glagol	1	imeti sestanek
+zaarati	zaarati	glagol	1	plačati predujem
+sponzorirati	sponzorirati	glagol	1	finančno podpirati
+vlomiti	vlomiti	glagol	1	na silo vstopiti
+zveneti	zveneti	glagol	1	zdeti se
+zveneti	zveneti	glagol	2	oddajati zvok
+demoralizirati	demoralizirati	glagol	1	odvzeti upanje
+adsorbirati	adsorbirati	glagol	1	zgoščevati
+groziti	groziti	glagol	1	o ljudeh ali nasprotnikih
+groziti	groziti	glagol	2	o nesrečah ali katastrofah
+poveriti	poveriti	glagol	1	dodeliti nalogo
+kolesariti	kolesariti	glagol	1	voziti se s kolesom
+kotalkata	kotalkati	glagol	1	voziti se s kotalkami
+rolkati	rolkati	glagol	1	voziti se z rolko
+kegljati	kegljati	glagol	1	podirati keglje
+geometrično	geometrično	prislov	1	o geometriji
+dvoumno	dvoumno	prislov	1	nejasno
+dvoumno	dvoumno	prislov	2	z mešanimi občutki
+junaško	junaško	prislov	1	pogumno
+korenito	korenito	prislov	1	temeljito; radikalno;
+akustično	akustično	prislov	1	zvočno; slušno;
+akustično	akustično	prislov	2	o igranju na akustični inštrument
+analitično	analitično	prislov	1	podrobno
+zaman	zaman	prislov	1	brez uspeha
+zaman	zaman	prislov	2	brez razloga
+konkavno	konkavno	prislov	1	vbočeno
+jalovo	jalovo	prislov	1	brez pozitivnega rezultata
+vestno	vestno	prislov	1	pridno; dosledno;
+pošteno	pošteno	prislov	1	v veliki meri; precej;
+pošteno	pošteno	prislov	2	moralno ustrezno
+pesimistično	pesimistično	prislov	1	negativno
+petdesetkrat	petdesetkrat	prislov	1	s petdesetimi ponovitvami
+razburljivo	razburljivo	prislov	1	na vznemirljiv način
+paralelno	paralelno	prislov	1	hkrati; sočasno;
+paralelno	paralelno	prislov	2	vzporedno; drug ob drugem;
+slovnično	slovnično	prislov	1	glede na slovnico
+malokdaj	malokdaj	prislov	1	redko
+znatno	znatno	prislov	1	precej
+asimetrično	asimetrično	prislov	1	nesomerno
+tipičen	tipično	prislov	1	na značilen način
+tipičen	tipično	prislov	2	običajno
+altruist	altruist	samostalnik	1	altruističen človek
+anarhistek	anarhistka	samostalnik	1	privrženka anarhizma
+apostat	apostat	samostalnik	1	odpadnik
+žeparek	žeparka	samostalnik	1	tatica
+advokatek	advokatka	samostalnik	1	odvetnica
+akviziterstvo	akviziterstvo	samostalnik	1	prodaja po hišah
+zemljepisec	zemljepisec	samostalnik	1	strokovnjak
+bevskanje	bevskanje	samostalnik	1	o oglašanju živali
+bevskanje	bevskanje	samostalnik	2	zadirčno govorjenje
+aspirant	aspirant	samostalnik	1	kandidat
+vrač	vrač	samostalnik	1	plemenski modrec in zdravilec
+zahvala	zahvala	samostalnik	1	izraz hvaležnosti
+zahvala	zahvala	samostalnik	2	listina
+atol	atol	samostalnik	1	koralni otok
+žena	žena	samostalnik	1	soproga
+žena	žena	samostalnik	2	ženska
+konosament	konosament	samostalnik	1	listina
+violinistka	violinistka	samostalnik	1	glasbenica
+violinist	violinist	samostalnik	1	glasbenik
+žepnina	žepnina	samostalnik	1	o otrocih
+žepnina	žepnina	samostalnik	2	o zaslužku
+čelist	čelist	samostalnik	1	glasbenik
+čeber	čeber	samostalnik	1	velika posoda
+arašid	arašid	samostalnik	1	zemeljski orešek
+arašid	arašid	samostalnik	2	rastlina
+percentil	percentil	samostalnik	1	statistična merska enota
+pozavnist	pozavnist	samostalnik	1	glasbenik
+punker	punker	samostalnik	1	glasbenik
+punker	punker	samostalnik	2	ljubitelj punk glasbe
+jasnovidek	jasnovidka	samostalnik	1	napovedovalka prihodnosti
+batik	batik	samostalnik	1	tkanina
+batik	batik	samostalnik	2	tehnika barvanja
+asteroid	asteroid	samostalnik	1	majhen planet
+anatom	anatom	samostalnik	1	strokovnjak
+avdiokaset	avdiokaseta	samostalnik	1	nosilec zvoka
+avtokart	avtokarta	samostalnik	1	zemljevid
+bigamist	bigamist	samostalnik	1	moški z dvema ženama
+agnostik	agnostik	samostalnik	1	privrženec agnosticizma
+bibliobus	bibliobus	samostalnik	1	avtobus s knjižnico
+bikoborec	bikoborec	samostalnik	1	kdor se bori z bikom
+jelenček	jelenček	samostalnik	1	majhen jelen; jelenji mladič;
+jagoda	jagoda	samostalnik	1	rastlina
+jagoda	jagoda	samostalnik	2	plod
+jagoda	jagoda	samostalnik	3	okrogel plod
+jagoda	jagoda	samostalnik	4	droben predmet
+čevljarstvo	čevljarstvo	samostalnik	1	dejavnost
+čevljarstvo	čevljarstvo	samostalnik	2	trgovina ali podjetje
+piccolo	piccolo	samostalnik	1	pihalo
+antidot	antidot	samostalnik	1	protistrup
+antidot	antidot	samostalnik	2	o rešitvi
+adventist	adventist	samostalnik	1	pripadnik verske skupnosti
+biograf	biograf	samostalnik	1	avtor biografij
+bibavica	bibavica	samostalnik	1	plimovanje
+steklopihal	steklopihalec	samostalnik	1	izdelovalec steklenih izdelkov
+apsida	apsida	samostalnik	1	polkrožni prostor
+estuarij	estuarij	samostalnik	1	lijakast izliv reke
+husit	husit	samostalnik	1	pripadnik husitstva
+lutnjar	lutnjar	samostalnik	1	glasbenik
+naftovod	naftovod	samostalnik	1	cevovod za nafto
+žurnalistka	žurnalistka	samostalnik	1	novinarka
+beduin	beduin	samostalnik	1	arabski nomad
+samorog	samorog	samostalnik	1	bajeslovna žival
+samorog	samorog	samostalnik	2	kit
+alegorija	alegorija	samostalnik	1	zgodba ali slika
+alegorija	alegorija	samostalnik	2	prispodoba
+ampula	ampula	samostalnik	1	steklenička
+ampula	ampula	samostalnik	2	posoda za sveto olje
+ampula	ampula	samostalnik	3	del organa
+akviziter	akviziter	samostalnik	1	prodajalec
+amfiteater	amfiteater	samostalnik	1	v antični Grčiji in Rimu
+amfiteater	amfiteater	samostalnik	2	v sodobnosti
+amfiteater	amfiteater	samostalnik	3	naravni prostor okrogle ali ovalne oblike
+senik	senik	samostalnik	1	prostor za seno
+analgetik	analgetik	samostalnik	1	zdravilo
+apokalipsa	apokalipsa	samostalnik	1	konec sveta
+apokalipsa	apokalipsa	samostalnik	2	katastrofa
+aristokracija	aristokracija	samostalnik	1	privilegiran družbeni sloj
+aristokracija	aristokracija	samostalnik	2	izbran krog ljudi
+aristokracija	aristokracija	samostalnik	3	oblika vladavine
+aristokracija	aristokracija	samostalnik	4	aristokratskost
+azil	azil	samostalnik	1	mednarodna zaščita
+azil	azil	samostalnik	2	zavetišče za živali
+azil	azil	samostalnik	3	zavetišče za ljudi
+članarina	članarina	samostalnik	1	denarni prispevek člana
+arboretum	arboretum	samostalnik	1	ustanova za ogled rastlin
+akviziterka	akviziterka	samostalnik	1	prodajalka
+kohorta	kohorta	samostalnik	1	starorimska vojaška enota
+brom	brom	samostalnik	1	kemijski element
+vodik	vodik	samostalnik	1	kemijski element
+radij	radij	samostalnik	1	kemijski element
+radij	radij	samostalnik	2	polmer
+radij	radij	samostalnik	3	območje
+radij	radij	samostalnik	4	o delovanju naprav
+radij	radij	samostalnik	5	o obliki smuči
+kositer	kositer	samostalnik	1	kemijski element
+tantal	tantal	samostalnik	1	kemijski element
+deskar	deskar	samostalnik	1	po snegu
+deskar	deskar	samostalnik	2	po vodi
+deskar	deskar	samostalnik	3	kdor brska po spletu
+deskarek	deskarka	samostalnik	1	pri zimskem športu
+deskarek	deskarka	samostalnik	2	pri vodnem športu
+jahačica	jahačica	samostalnik	1	športnica
+jahačica	jahačica	samostalnik	2	pri spolnem odnosu
+jahalek	jahalka	samostalnik	1	športnica
+klif	klif	samostalnik	1	pečina
+muzikal	muzikal	samostalnik	1	glasbena predstava
+hibiskus	hibiskus	samostalnik	1	rastlina
+breskov	breskov	pridevnik	1	v kulinariki
+breskov	breskov	pridevnik	2	o drevesu
+breskov	breskov	pridevnik	3	o plodu
+breskov	breskov	pridevnik	4	o barvi
+breskov	breskov	pridevnik	5	o snovi
+baobab	baobab	samostalnik	1	drevo
+bodika	bodika	samostalnik	1	drevo ali grm
+bodika	bodika	samostalnik	2	riba
+bukovina	bukovina	samostalnik	1	les
+bukovina	bukovina	samostalnik	2	bukova drevesa
+cibora	cibora	samostalnik	1	plod
+cibora	cibora	samostalnik	2	drevo
+figovec	figovec	samostalnik	1	drevo
+glog	glog	samostalnik	1	drevo ali grm
+glog	glog	samostalnik	2	zdravilni pripravek
+panešplja	panešplja	samostalnik	1	grm
+plutovina	plutovina	samostalnik	1	skorja hrasta plutovca
+plutovina	plutovina	samostalnik	2	kot surovina ali izdelek
+resa	resa	samostalnik	1	grm
+resa	resa	samostalnik	2	okrasni trakec
+resa	resa	samostalnik	3	pri žitu in travah
+resa	resa	samostalnik	4	lasje ali dlake
+lovorov	lovorov	pridevnik	1	o drevesu ali delu drevesa
+kosteničevje	kosteničevje	samostalnik	1	grm
+krčnica	krčnica	samostalnik	1	grm
+krčnica	krčnica	samostalnik	2	obolenje ven
+lovor	lovor	samostalnik	1	drevo ali grm
+lovor	lovor	samostalnik	2	začimba
+lovor	lovor	samostalnik	3	priznanje; naslov;
+malinjak	malinjak	samostalnik	1	grm
+malinjak	malinjak	samostalnik	2	nasad malin
+mangovec	mangovec	samostalnik	1	drevo
+mango	mango	samostalnik	1	drevo
+mango	mango	samostalnik	2	plod
+medvejka	medvejka	samostalnik	1	grm
+mokovec	mokovec	samostalnik	1	drevo
+nagnoj	nagnoj	samostalnik	1	drevo
+oliva	oliva	samostalnik	1	plod
+oliva	oliva	samostalnik	2	drevo
+jadikovec	jadikovec	samostalnik	1	drevo
+jagodičnica	jagodičnica	samostalnik	1	grm
+kapokovec	kapokovec	samostalnik	1	drevo
+pomaranča	pomaranča	samostalnik	1	plod
+pomaranča	pomaranča	samostalnik	2	drevo
+breza	breza	samostalnik	1	drevo
+iglavec	iglavec	samostalnik	1	drevo
+jelka	jelka	samostalnik	1	drevo
+jelka	jelka	samostalnik	2	novoletna jelka
+pomarančen	pomarančen	pridevnik	1	o drevesu ali delu drevesa
+pomarančen	pomarančen	pridevnik	2	v kulinariki
+pomarančen	pomarančen	pridevnik	3	o plodu
+pomarančen	pomarančen	pridevnik	4	o pojavu na koži
+pomarančen	pomarančen	pridevnik	5	o snovi
+brezovina	brezovina	samostalnik	1	les
+brusnica	brusnica	samostalnik	1	plod
+brusnica	brusnica	samostalnik	2	grm
+gvajava	gvajava	samostalnik	1	sadež
+gvajav	gvajava	samostalnik	2	drevo ali grm
+javorovina	javorovina	samostalnik	1	les
+jesenovina	jesenovina	samostalnik	1	les
+palmovec	palmovec	samostalnik	1	drevo
+palmovec	palmovec	samostalnik	2	ptica
+pomarančevec	pomarančevec	samostalnik	1	drevo
+pušpan	pušpan	samostalnik	1	grm
+saguaro	saguaro	samostalnik	1	drevo
+sandalovina	sandalovina	samostalnik	1	les
+sandalovina	sandalovina	samostalnik	2	esenca
+šipek	šipek	samostalnik	1	grm
+šipek	šipek	samostalnik	2	plod
+smokva	smokva	samostalnik	1	plod
+smokva	smokva	samostalnik	2	drevo ali grm
+smokvovec	smokvovec	samostalnik	1	drevo
+smrekovina	smrekovina	samostalnik	1	les
+tikovina	tikovina	samostalnik	1	les
+topolovina	topolovina	samostalnik	1	les
+tulipanovec	tulipanovec	samostalnik	1	drevo
+Višnji	višnja	samostalnik	1	drevo
+Višnji	višnja	samostalnik	2	plod
+vrbovina	vrbovina	samostalnik	1	les
+lešnik	lešnikov	pridevnik	1	v kulinariki
+lešnik	lešnikov	pridevnik	2	o plodu
+lešnik	lešnikov	pridevnik	3	o barvi
+oliven	oliven	pridevnik	1	o barvi
+oliven	oliven	pridevnik	2	v kulinariki
+oliven	oliven	pridevnik	3	v kozmetiki
+oliven	oliven	pridevnik	4	o drevesu
+oreh	orehov	pridevnik	1	v kulinariki
+oreh	orehov	pridevnik	2	o drevesu ali delu drevesa
+oreh	orehov	pridevnik	3	izdelan iz lesa oreha
+oreh	orehov	pridevnik	4	o plodu
+kostanjevina	kostanjevina	samostalnik	1	les
+macesnovina	macesnovina	samostalnik	1	les
+mandarinovec	mandarinovec	samostalnik	1	drevo
+palma	palma	samostalnik	1	drevo
+dren	dren	samostalnik	1	medicinska oprema
+pomarančast	pomarančast	pridevnik	1	o koži
+pomarančast	pomarančast	pridevnik	2	o barvi
+jablana	jablana	samostalnik	1	drevo
+jerebika	jerebika	samostalnik	1	drevo
+jerebika	jerebika	samostalnik	2	plod
+kokos	kokos	samostalnik	1	plod
+kokos	kokos	samostalnik	2	drevo
+ricinus	ricinus	samostalnik	1	olje
+ricinus	ricinus	samostalnik	2	grm
+ringlo	ringlo	samostalnik	1	plod
+ringlo	ringlo	samostalnik	2	drevo
+kalina	kalina	samostalnik	1	grm
+kininovec	kininovec	samostalnik	1	drevo
+oslez	oslez	samostalnik	1	rastlina
+limetin	limetin	pridevnik	1	v kulinariki
+mahagonij	mahagonijev	pridevnik	1	izdelan iz mahagonijevega lesa
+mahagonij	mahagonijev	pridevnik	2	o drevesu ali delu drevesa
+mahagonij	mahagonijev	pridevnik	3	o barvi
+orehovina	orehovina	samostalnik	1	les
+anektirati	anektirati	glagol	1	priključiti
+domnevati	domnevati	glagol	1	predvidevati
+akvamarinski	akvamarinski	pridevnik	1	zelenkasto moder
+abiotski	abiotski	pridevnik	1	o neživem delu narave
+alkoholičen	alkoholičen	pridevnik	1	o alkoholikih
+antitetičen	antitetičen	pridevnik	1	nasprotujoč si
+zemljemerski	zemljemerski	pridevnik	1	o zemljemerstvu
+aforističen	aforističen	pridevnik	1	o aforizmu
+altruističen	altruističen	pridevnik	1	o etični drži
+bifokalen	bifokalen	pridevnik	1	dvožariščen
+flegmatičen	flegmatičen	pridevnik	1	ravnodušen
+adventiven	adventiven	pridevnik	1	nadomesten
+akumulativen	akumulativen	pridevnik	1	o denarnih sredstvih
+akumulativen	akumulativen	pridevnik	2	ki se zbira ali kopiči
+anglofonski	anglofonski	pridevnik	1	o nekdanjih britanskih kolonijah
+antikorozijski	antikorozijski	pridevnik	1	proti rji
+antikvaren	antikvaren	pridevnik	1	o antikvariatu
+arhitektski	arhitektski	pridevnik	1	o arhitektih ali arhitekturi
+aristotelski	aristotelski	pridevnik	1	o Aristotelovi filozofiji
+aseksualen	aseksualen	pridevnik	1	nespolen; ki ga spolnost ne zanima;
+aplikativen	aplikativen	pridevnik	1	o uporabi v praksi
+aplikativen	aplikativen	pridevnik	2	o računalniku
+čuten	čuten	pridevnik	1	povezan s čuti
+čuten	čuten	pridevnik	2	telesen, kot nasprotje umskemu
+čuten	čuten	pridevnik	3	ki vzburja čute
+didaktičen	didaktičen	pridevnik	1	o poučevanju
+didaktičen	didaktičen	pridevnik	2	o literarnih delih
+didaktičen	didaktičen	pridevnik	3	o igračah
+dvoličen	dvoličen	pridevnik	1	hinavski
+hlapen	hlapen	pridevnik	1	ki prehaja v plinsko stanje
+košat	košat	pridevnik	1	o laseh in dlakah
+košat	košat	pridevnik	2	o rastlinah
+košat	košat	pridevnik	3	o oblačilih
+koščen	koščen	pridevnik	1	iz kosti
+koščen	koščen	pridevnik	2	zelo suh
+vsakodneven	vsakodneven	pridevnik	1	ki se dogaja vsak dan
+vsakodneven	vsakodneven	pridevnik	2	običajen
+vzorčast	vzorčast	pridevnik	1	z vzorcem
+aristotelovski	aristotelovski	pridevnik	1	o Aristotelovi filozofiji
+filigranski	filigranski	pridevnik	1	o tehniki izdelovanja okraskov
+filigranski	filigranski	pridevnik	2	zelo natančen in premišljen
+jelenje	jelenji	pridevnik	1	o živali
+jelenje	jelenji	pridevnik	2	v kulinariki
+jelenji	jelenji	pridevnik	3	o izdelkih
+majčken	majčken	pridevnik	1	zelo majhen
+tiptop	tiptop	pridevnik	1	brez napake
+znosen	znosen	pridevnik	1	še sprejemljiv
+zvezdnat	zvezdnat	pridevnik	1	poln zvezd
+zvezdnat	zvezdnat	pridevnik	2	v obliki zvezde
+zvezdnat	zvezdnat	pridevnik	3	čaroben; nepozaben;
+nereaktiven	nereaktiven	pridevnik	1	kemično neodziven
+brezvoden	brezvoden	pridevnik	1	brez vode
+brezvoden	brezvoden	pridevnik	2	ki ne vsebuje vode
+bazičen	bazičen	pridevnik	1	o kemijski sestavi
+bazičen	bazičen	pridevnik	2	o učinku živil na telo
+bazičen	bazičen	pridevnik	3	osnoven; temeljni;
+bazičen	bazičen	pridevnik	4	o športni pripravljenosti
+deževen	deževen	pridevnik	1	o dežju
+deževen	deževen	pridevnik	2	z veliko dežja
+vulkanski	vulkanski	pridevnik	1	o ognjeniški gori
+vulkanski	vulkanski	pridevnik	2	ki je rezultat delovanja ognjeniške gore
+vulkanski	vulkanski	pridevnik	3	silovit
+džezovski	džezovski	pridevnik	1	o džez glasbi
+jalov	jalov	pridevnik	1	ki ne prinese uspeha
+jalov	jalov	pridevnik	2	neuresničen
+jalov	jalov	pridevnik	3	neosnovan
+jalov	jalov	pridevnik	4	nesmiseln; brez vrednosti;
+jalov	jalov	pridevnik	5	neploden
+jalov	jalov	pridevnik	6	nerodoviten
+jantaren	jantaren	pridevnik	1	o snovi
+jantaren	jantaren	pridevnik	2	o barvi
+jajčast	jajčast	pridevnik	1	o obliki
+cerkven	cerkven	pridevnik	1	o zgradbi
+cerkven	cerkven	pridevnik	2	o instituciji
+cerkven	cerkven	pridevnik	3	o obredih in praksah
+cerkven	cerkven	pridevnik	4	o verovanju
+cerkven	cerkven	pridevnik	5	neposveten
+kreativen	kreativen	pridevnik	1	ustvarjalen; inovativen;
+kreativen	kreativen	pridevnik	2	ki razvija nove ideje ali izdelke
+tanljiv	tanljiv	pridevnik	1	o tanjšanju
+vešč	vešč	pridevnik	1	sposoben; spreten;
+gorat	gorat	pridevnik	1	z veliko gorami
+škrobnat	škrobnat	pridevnik	1	ki vsebuje škrob
+karirast	karirast	pridevnik	1	o vzorcu iz kar
+kozmetičen	kozmetičen	pridevnik	1	o negi telesa
+kozmetičen	kozmetičen	pridevnik	2	malenkosten; nebistven;
+časnikarski	časnikarski	pridevnik	1	o časnikarstvu ali časnikarjih
+administracijski	administracijski	pridevnik	1	o upravljanju in organizaciji
+administracijski	administracijski	pridevnik	2	v računalništvu
+rajni	rajni	pridevnik	1	umrli
+rajni	rajni	pridevnik	2	nekdanji
+razbojniški	razbojniški	pridevnik	1	o razbojnikih
+močvirnat	močvirnat	pridevnik	1	močviren
+nečitljiv	nečitljiv	pridevnik	1	neberljiv; nerazločen;
+pankovski	pankovski	pridevnik	1	o glasbi
+pankovski	pankovski	pridevnik	2	o stilu
+paranormalen	paranormalen	pridevnik	1	nadnaraven
+pianističen	pianističen	pridevnik	1	o igranju klavirja
+rahločuten	rahločuten	pridevnik	1	nežen; občutljiv;
+rahločuten	rahločuten	pridevnik	2	razumevajoč
+rahločuten	rahločuten	pridevnik	3	o zgodbi
+rahločuten	rahločuten	pridevnik	4	o zvoku ali podobi
+jasnoviden	jasnoviden	pridevnik	1	o napovedovanju prihodnosti
+sladkosned	sladkosned	pridevnik	1	kdor ima rad sladko
+evfemističen	evfemističen	pridevnik	1	olepševalen
+sajast	sajast	pridevnik	1	ki vsebuje saje
+sajast	sajast	pridevnik	2	umazan zaradi saj
+sajast	sajast	pridevnik	3	o barvi
+nadomestljiv	nadomestljiv	pridevnik	1	pogrešljiv; zamenljiv;
+nadomestljiv	nadomestljiv	pridevnik	2	popravljiv; odpravljiv;
+pacifističen	pacifističen	pridevnik	1	o nasprotovanju vojni
+čeljusten	čeljusten	pridevnik	1	o delu telesa
+deformiran	deformiran	pridevnik	1	nepravilno oblikovan; izmaličen;
+deformiran	deformiran	pridevnik	2	trajno spremenjen
+želodčen	želodčen	pridevnik	1	o organu
+satenast	satenast	pridevnik	1	iz satena
+satenast	satenast	pridevnik	2	gladek in sijoč
+veterinarski	veterinarski	pridevnik	1	o veterini kot vedi in dejavnosti
+zdravstven	zdravstven	pridevnik	1	o zdravstvu
+zdravstven	zdravstven	pridevnik	2	o zdravju ali zdravljenju
+algebrajski	algebrajski	pridevnik	1	o algebri
+centrističen	centrističen	pridevnik	1	o političnem prepričanju
+aksialen	aksialen	pridevnik	1	o osi
+algebrski	algebrski	pridevnik	1	o algebri
+asistentski	asistentski	pridevnik	1	o strokovnem pomočniku
+impliciten	impliciten	pridevnik	1	posredno izražen
+potencialen	potencialen	pridevnik	1	mogoč
+dispergiran	dispergiran	pridevnik	1	o razpršenosti
+slankast	slankast	pridevnik	1	malce slan
+studiozen	studiozen	pridevnik	1	zelo natančen in strokoven
+adiabaten	adiabaten	pridevnik	1	o termodinamičnih procesih
+apologetski	apologetski	pridevnik	1	branilen; opravičevalen;
+apologetski	apologetski	pridevnik	2	povezan z doktrino apologetike
+zunajsezonski	zunajsezonski	pridevnik	1	ki ni v času sezone
+izvensezonski	izvensezonski	pridevnik	1	ki ni v času sezone
+skuštran	skuštran	pridevnik	1	razmršen
+nenaglašen	nenaglašen	pridevnik	1	izgovorjen brez naglasa
+nenaglašen	nenaglašen	pridevnik	2	neizrazit
+neberljiv	neberljiv	pridevnik	1	nerazločen
+neberljiv	neberljiv	pridevnik	2	naporen za branje
+dramski	dramski	pridevnik	1	o dramski umetnosti
+češpljev	češpljev	pridevnik	1	v kulinariki
+češpelj	češpljev	pridevnik	2	o drevesu
+saudski	saudski	pridevnik	1	o Savdski Arabiji in Saudijcih
+gruzijski	gruzijski	pridevnik	1	o Gruziji in Gruzijcih
+francoski	francoski	pridevnik	1	o Franciji in Francozih
+florentinski	florentinski	pridevnik	1	o Firencah in Firenčanih
+rimljanski	rimljanski	pridevnik	1	o Antičnem Rimu in Rimljanih
+samojski	samojski	pridevnik	1	o Samoi in Samojcih
+kamboški	kamboški	pridevnik	1	o Kambodži in Kambodžanih
+šrilanški	šrilanški	pridevnik	1	o Šrilanki in Šrilančanih
+nizozemski	nizozemski	pridevnik	1	o Nizozemski in Nizozemcih
+čilski	čilski	pridevnik	1	o Čilu in Čilencih
+evropejski	evropejski	pridevnik	1	o Evropejcih
+vandalski	vandalski	pridevnik	1	o namernem uničevanju
+vandalski	vandalski	pridevnik	2	o Vandalih
+ameriški	ameriški	pridevnik	1	o ZDA
+ameriški	ameriški	pridevnik	2	o celini
+jamajški	jamajški	pridevnik	1	o Jamajki in Jamajčanih
+helenski	helenski	pridevnik	1	o Helenih
+azerbajdžanski	azerbajdžanski	pridevnik	1	o Azerbajdžanu in Azerbajdžancih
+afganistanski	afganistanski	pridevnik	1	o Afganistanu in Afganistancih
+latvijski	latvijski	pridevnik	1	o Latviji in Latvijcih
+mjanmarski	mjanmarski	pridevnik	1	o Mjanmaru in Mjanmarcih
+vikinški	vikinški	pridevnik	1	o Vikingih
+vikinški	vikinški	pridevnik	2	o lastnosti ali obnašanju
+litovski	litovski	pridevnik	1	o Litvi in Litovcih
+turški	turški	pridevnik	1	o Turčiji in Turkih
+turški	turški	pridevnik	2	o Osmanskem cesarstvu
+germanski	germanski	pridevnik	1	o Germanih
+germanski	germanski	pridevnik	2	o območju
+germanski	germanski	pridevnik	3	o jezikovni skupini
+germanski	germanski	pridevnik	4	o lastnosti
+burski	burski	pridevnik	1	o Burih
+burski	burski	pridevnik	2	o pasmi koz
+latinoameriški	latinoameriški	pridevnik	1	o Latinski Ameriki in Latinoameričanih
+latinskoameriški	latinskoameriški	pridevnik	1	o Latinski Ameriki in Latinskoameričanih
+sirijski	sirijski	pridevnik	1	o Siriji in Sirijcih
+evropski	evropski	pridevnik	1	o celini
+evropski	evropski	pridevnik	2	o Evropski uniji
+sirski	sirski	pridevnik	1	o Siriji in Sircih
+ZDA	ZDA	samostalnik	1	država
+savdski	savdski	pridevnik	1	o Savdski Arabiji in Savdijcih
+firenški	firenški	pridevnik	1	o Firencah in Firenčanih
+kubanka	kubanka	samostalnik	1	cigara
+havanka	havanka	samostalnik	1	cigara
+maltežan	maltežan	samostalnik	1	pes
+samojed	samojed	samostalnik	1	pes
+litvanski	litvanski	pridevnik	1	o Litvi in Litvancih
+škotščina	škotščina	samostalnik	1	jezik
+baget	bageta	samostalnik	1	kruh
+kromanjonec	kromanjonec	samostalnik	1	človek iz poznega paleolitika
+gnom	gnom	samostalnik	1	mitološko bitje
+embriolog	embriolog	samostalnik	1	strokovnjak
+agrikultura	agrikultura	samostalnik	1	dejavnost
+aretiranec	aretiranec	samostalnik	1	aretirana oseba
+agitatorstvo	agitatorstvo	samostalnik	1	novačenje koga za kaj
+cingljanje	cingljanje	samostalnik	1	zvonjenje
+arhaičnost	arhaičnost	samostalnik	1	starinskost
+arhaičnost	arhaičnost	samostalnik	2	zastarelost
+empatija	empatija	samostalnik	1	sočutje
+evro	evro	samostalnik	1	valuta
+evro	evro	samostalnik	2	območje evra
+helikopter	helikopter	samostalnik	1	letalsko prevozno sredstvo
+hišnik	hišnik	samostalnik	1	vzdrževalec objekta
+karizma	karizma	samostalnik	1	značajska lastnost
+karizma	karizma	samostalnik	2	nadnaravna sposobnost
+koreografinja	koreografinja	samostalnik	1	poklic
+korespondenca	korespondenca	samostalnik	1	pisna sporočila
+korespondenca	korespondenca	samostalnik	2	povezava
+tvid	tvid	samostalnik	1	tkanina
+utaja	utaja	samostalnik	1	prikrivanje dohodka
+vnuk	vnuk	samostalnik	1	potomec
+vstopnina	vstopnina	samostalnik	1	plačilo za vstop
+zapestje	zapestje	samostalnik	1	del roke
+magnetofon	magnetofon	samostalnik	1	zvočna naprava
+manikira	manikira	samostalnik	1	kozmetična nega rok
+manikura	manikura	samostalnik	1	kozmetična nega rok
+jecljanje	jecljanje	samostalnik	1	govorna napaka
+jecljanje	jecljanje	samostalnik	2	nejasno izražanje
+cucelj	cucelj	samostalnik	1	za pitje
+cucelj	cucelj	samostalnik	2	kot duda
+krepostnež	krepostnež	samostalnik	1	kreposten človek
+malodušnež	malodušnež	samostalnik	1	malodušen človek
+jamranje	jamranje	samostalnik	1	tarnanje
+gugalnik	gugalnik	samostalnik	1	gugalni stol
+gumijevka	gumijevka	samostalnik	1	policijski pripomoček
+komplementar	komplementar	samostalnik	1	družbenik
+kriptonim	kriptonim	samostalnik	1	skrivno ime
+klimatologija	klimatologija	samostalnik	1	podnebjeslovje
+dialog	dialog	samostalnik	1	med nasprotnima stranema
+dialog	dialog	samostalnik	2	pogovor med osebama
+hijacinta	hijacinta	samostalnik	1	okrasna rastlina
+karies	karies	samostalnik	1	zobna gniloba
+kašelj	kašelj	samostalnik	1	krčevito izdihavanje zraka
+krt	krt	samostalnik	1	žival
+krt	krt	samostalnik	2	vohun
+žarnica	žarnica	samostalnik	1	pripomoček za osvetlitev
+koreograf	koreograf	samostalnik	1	poklic
+altruizem	altruizem	samostalnik	1	nesebičnost
+gojzar	gojzar	samostalnik	1	pohodni čevelj
+jadikovanje	jadikovanje	samostalnik	1	tarnanje
+aspirantek	aspirantka	samostalnik	1	kandidatka
+aspirantek	aspirantka	samostalnik	2	o državi
+prvotisk	prvotisk	samostalnik	1	knjiga
+mezolitik	mezolitik	samostalnik	1	obdobje prazgodovine
+kmetija	kmetija	samostalnik	1	o posestvu
+protirevolucija	protirevolucija	samostalnik	1	nasprotovanje revoluciji
+reeksport	reeksport	samostalnik	1	ponovni izvoz
+virus	virus	samostalnik	1	povzročitelj bolezni
+virus	virus	samostalnik	2	v računalništvu
+virus	virus	samostalnik	3	hitro rastoč trend
+hazarder	hazarder	samostalnik	1	kdor rad stavi
+hazarder	hazarder	samostalnik	2	kdor rad veliko tvega
+ribolov	ribolov	samostalnik	1	lovljenje rib
+termofor	termofor	samostalnik	1	grelni pripomoček
+žalivec	žalivec	samostalnik	1	kdor žali
+trobentica	trobentica	samostalnik	1	rastlina
+timijan	timijan	samostalnik	1	začimbna rastlina
+četverka	četverka	samostalnik	1	skupina štirih
+maltretiranje	maltretiranje	samostalnik	1	grdo ravnanje
+nalivnik	nalivnik	samostalnik	1	pisalo
+parafin	parafin	samostalnik	1	snov
+pastila	pastila	samostalnik	1	zdravilo
+pastinak	pastinak	samostalnik	1	zelenjava
+peščišče	peščišče	samostalnik	1	sredica s pečkami pri sadju
+petrolejk	petrolejka	samostalnik	1	svetilka na petrolej
+pisoar	pisoar	samostalnik	1	moško stranišče
+plastenjak	plastenjak	samostalnik	1	rastlinjak
+podlaket	podlaket	samostalnik	1	del roke
+posvojenka	posvojenka	samostalnik	1	posvojena hči
+kalašnikovka	kalašnikovka	samostalnik	1	avtomatska puška
+kontrarevolucija	kontrarevolucija	samostalnik	1	nasprotovanje revoluciji
+debakel	debakel	samostalnik	1	velik polom ali poraz
+radoživost	radoživost	samostalnik	1	razigranost; živahnost;
+kalitev	kalitev	samostalnik	1	pri rastlinah
+kalitev	kalitev	samostalnik	2	o prekršku
+kancler	kancler	samostalnik	1	predsednik vlade
+jasnovidnost	jasnovidnost	samostalnik	1	sposobnost napovedovanja prihodnosti
+embaliranje	embaliranje	samostalnik	1	opremljanje z embalažo
+jasnovidec	jasnovidec	samostalnik	1	napovedovalec prihodnosti
+histogram	histogram	samostalnik	1	vrsta grafikona
+nadangel	nadangel	samostalnik	1	angel
+plešavost	plešavost	samostalnik	1	neporaščenost lasišča
+raketomet	raketomet	samostalnik	1	orožje
+kadilka	kadilka	samostalnik	1	ženska, ki kadi
+simpatičnost	simpatičnost	samostalnik	1	prijetnost; prikupnost;
+sirar	sirar	samostalnik	1	izdelovalec sira
+skafander	skafander	samostalnik	1	zaščitna obleka
+slonovina	slonovina	samostalnik	1	material
+slum	slum	samostalnik	1	revna mestna četrt
+porečje	porečje	samostalnik	1	rečni sistem
+slačifant	slačifant	samostalnik	1	poklicni plesalec
+striptizer	striptizer	samostalnik	1	performer
+slivovka	slivovka	samostalnik	1	alkoholna pijača
+hipodrom	hipodrom	samostalnik	1	konjsko dirkališče
+voditelj	voditelj	samostalnik	1	v politiki in religiji
+voditelj	voditelj	samostalnik	2	povezovalec programa
+biokemik	biokemik	samostalnik	1	strokovnjak
+bitumen	bitumen	samostalnik	1	vezivna snov
+brusiti	brusilo	samostalnik	1	pripomoček za brušenje
+čemernež	čemernež	samostalnik	1	čemeren človek
+čemernost	čemernost	samostalnik	1	o razpoloženju
+četrtletnik	četrtletnik	samostalnik	1	publikacija
+človekoljub	človekoljub	samostalnik	1	kdor ima rad ljudi
+debelušnost	debelušnost	samostalnik	1	telesna lastnost
+destilaren	destilarna	samostalnik	1	tovarna
+devetdesetletnik	devetdesetletnik	samostalnik	1	devetdesetletni moški
+biokmetijstvo	biokmetijstvo	samostalnik	1	način kmetovanja
+legenda	legenda	samostalnik	1	zgodba
+legenda	legenda	samostalnik	2	slaven človek
+legenda	legenda	samostalnik	3	pojasnilo
+karavel	karavela	samostalnik	1	vrsta jadrnice
+neprilagojenec	neprilagojenec	samostalnik	1	slabo prilagojen človek
+neprisiljenost	neprisiljenost	samostalnik	1	sproščenost
+preračunljivec	preračunljivec	samostalnik	1	preračunljiv človek
+razcapanec	razcapanec	samostalnik	1	razcapan človek
+glavniček	glavniček	samostalnik	1	majhen glavnik
+tristoletnica	tristoletnica	samostalnik	1	tristoletna obletnica
+gornik	gornik	samostalnik	1	alpinist
+monom	monom	samostalnik	1	enočlenik
+pastorek	pastorek	samostalnik	1	sin partnerja
+pastorek	pastorek	samostalnik	2	kar je zapostavljeno
+zakonodajalka	zakonodajalka	samostalnik	1	organizacija
+zakonodajalka	zakonodajalka	samostalnik	2	ženska
+zalezovalka	zalezovalka	samostalnik	1	o ženski
+dlančnik	dlančnik	samostalnik	1	majhen osebni računalnik
+inicialek	inicialka	samostalnik	1	začetna črka
+serigrafij	serigrafija	samostalnik	1	grafična tehnika
+serigrafija	serigrafija	samostalnik	2	odtis
+filmografija	filmografija	samostalnik	1	seznam filmov
+lesorez	lesorez	samostalnik	1	grafična tehnika
+lesorez	lesorez	samostalnik	2	slika
+dinamometer	dinamometer	samostalnik	1	merilna naprava
+asonanca	asonanca	samostalnik	1	vrsta rime
+libreto	libreto	samostalnik	1	dramsko besedilo
+čipkarstvo	čipkarstvo	samostalnik	1	dejavnost
+astronom	astronom	samostalnik	1	strokovnjak
+antonim	antonim	samostalnik	1	o pomenu besede
+fonem	fonem	samostalnik	1	glasovna enota
+libretist	libretist	samostalnik	1	pisec libreta
+astronomek	astronomka	samostalnik	1	strokovnjakinja
+kartuzijan	kartuzijan	samostalnik	1	menih
+cistercijan	cistercijan	samostalnik	1	menih
+harmonikar	harmonikar	samostalnik	1	glasbenik
+jurist	jurist	samostalnik	1	pravnik
+hornist	hornist	samostalnik	1	glasbenik
+harfist	harfist	samostalnik	1	glasbenik
+antologija	antologija	samostalnik	1	zbirka
+fonologij	fonologija	samostalnik	1	veda
+kaligraf	kaligraf	samostalnik	1	lepopisec
+kostumograf	kostumograf	samostalnik	1	strokovnjak za oblačila
+globinomer	globinomer	samostalnik	1	merilna naprava
+impresionist	impresionist	samostalnik	1	predstavnik impresionizma
+aplavz	aplavz	samostalnik	1	ploskanje
+nedoločnik	nedoločnik	samostalnik	1	glagolska oblika
+lignit	lignit	samostalnik	1	premog
+prerija	prerija	samostalnik	1	travnata pokrajina
+mnogoboštvo	mnogoboštvo	samostalnik	1	vera v več bogov
+logopedija	logopedija	samostalnik	1	veda
+nebotičnik	nebotičnik	samostalnik	1	stavba
+lončarstvo	lončarstvo	samostalnik	1	dejavnost
+cistercijanec	cistercijanec	samostalnik	1	menih
+grboslovje	grboslovje	samostalnik	1	veda o grbih
+imenovalnik	imenovalnik	samostalnik	1	sklon
+imenovalnik	imenovalnik	samostalnik	2	deljena lastnost
+infinitiv	infinitiv	samostalnik	1	glagolska oblika
+frotir	frotir	samostalnik	1	tkanina
+depopulacija	depopulacija	samostalnik	1	upadanje prebivalstva
+zvijačnež	zvijačnež	samostalnik	1	o prelisičenju
+muzikolog	muzikolog	samostalnik	1	strokovnjak
+hurikan	hurikan	samostalnik	1	tropski vihar
+zbiratelj	zbiratelj	samostalnik	1	kdor kaj zbira
+ambivalenca	ambivalenca	samostalnik	1	razdvojenost
+ambivalenca	ambivalenca	samostalnik	2	soobstoj dveh nasprotnih zadev
+bakla	bakla	samostalnik	1	svetilo
+veletrgovec	veletrgovec	samostalnik	1	vrsta trgovskega podjetja
+glasoslovje	glasoslovje	samostalnik	1	veda
+delavstvo	delavstvo	samostalnik	1	delavci
+mobitel	mobitel	samostalnik	1	naprava
+mestic	mestic	samostalnik	1	potomec Evropejcev in Indijancev
+optativ	optativ	samostalnik	1	glagolski naklon
+heraldik	heraldika	samostalnik	1	veda o grbih
+kotomer	kotomer	samostalnik	1	merilna naprava
+mizar	mizar	samostalnik	1	izdelovalec pohištva
+inštalater	inštalater	samostalnik	1	monter
+sadjarstvo	sadjarstvo	samostalnik	1	dejavnost
+ilustrator	ilustrator	samostalnik	1	umetnik
+fascikel	fascikel	samostalnik	1	mapa
+dražbar	dražbar	samostalnik	1	voditelj dražbe
+dražbar	dražbar	samostalnik	2	podjetje, ki organizira dražbe
+kasačica	kasačica	samostalnik	1	dirkalna kobila
+kegljač	kegljač	samostalnik	1	športnik
+sumo	sumo	samostalnik	1	rokoborba
+admiral	admiral	samostalnik	1	vojaški čin
+admiral	admiral	samostalnik	2	metulj
+dvoriti	dvoriti	glagol	1	osvajati
+dvoriti	dvoriti	glagol	2	dobrikati se
+abdicirati	abdicirati	glagol	1	odstopiti s položaja
+adekvatnost	adekvatnost	samostalnik	1	ustreznost; primernost;
+akademizem	akademizem	samostalnik	1	v umetnosti
+akademizem	akademizem	samostalnik	2	teoretične, neživljenjske rešitve
+aklamacij	aklamacija	samostalnik	1	glasen pozdrav
+aklamacij	aklamacija	samostalnik	2	sprejetje; izvolitev;
+amaterizem	amaterizem	samostalnik	1	neprofesionalna dejavnost
+amaterizem	amaterizem	samostalnik	2	slabo opravljeno delo
+anestezist	anestezist	samostalnik	1	zdravnik
+anestezistek	anestezistka	samostalnik	1	zdravnica
+apotekar	apotekar	samostalnik	1	lekarnar
+arkadijski	arkadijski	pridevnik	1	idiličen
+arkadijski	arkadijski	pridevnik	2	o Arkadiji
+butelj	butelj	samostalnik	1	neumnež
+dedek	dedek	samostalnik	1	stari oče
+dedek	dedek	samostalnik	2	starec
+dedek	dedek	samostalnik	3	začetnik česa
+dedek	dedek	samostalnik	4	moški z dolgim stažem
+dukat	dukat	samostalnik	1	evropski kovanec
+jazbina	jazbina	samostalnik	1	jazbečje bivališče
+jazbina	jazbina	samostalnik	2	zatočišče; zbirališče;
+kočura	kočura	samostalnik	1	hiša
+močvaro	močvara	samostalnik	1	močviren svet
+močvaro	močvara	samostalnik	2	razmočeno območje
+močvara	močvara	samostalnik	3	o stanju
+pozavna	pozavna	samostalnik	1	trobilo
+pozavna	pozavna	samostalnik	2	igranje pozavne
+pozavna	pozavna	samostalnik	3	glasbenik
+srnjaček	srnjaček	samostalnik	1	srnji mladič
+zašpecati	zašpecati	glagol	1	zatožiti; izdati;
+žongliranje	žongliranje	samostalnik	1	o metanju predmetov
+žongliranje	žongliranje	samostalnik	2	sočasno obvladovanje več zadev
+žongliranje	žongliranje	samostalnik	3	spretna uporaba ali izbira
+čarati	čarati	glagol	1	o nadnaravni moči
+čarati	čarati	glagol	2	znajti se z nezadostnimi sredstvi
+čarati	čarati	glagol	3	odlično obvladati
+čarati	čarati	glagol	4	priklicati vzdušje ali odziv
+čarati	čarati	glagol	5	izvajati trike
+čarati	čarati	glagol	6	prosto ustvarjati
+čarati	čarati	glagol	7	neučinkovito delati
+žiletka	žiletka	samostalnik	1	britvica
+žurirati	žurirati	glagol	1	zabavati se
+zebra	zebra	samostalnik	1	žival
+zebra	zebra	samostalnik	2	prehod za pešce
+biciklist	biciklist	samostalnik	1	kolesar
+boksanje	boksanje	samostalnik	1	borilni šport
+boksanje	boksanje	samostalnik	2	udarjanje
+boksanje	boksanje	samostalnik	3	prerekanje
+kadaver	kadaver	samostalnik	1	truplo
+blagovoliti	blagovoliti	glagol	1	odločiti se narediti
+blagovoliti	blagovoliti	glagol	2	milostno privoliti
+bordat	bordati	glagol	1	deskati na snegu
+orgle	orgle	samostalnik	1	glasbilo
+orgla	orgle	samostalnik	2	igranje orgel
+sloveč	sloveč	pridevnik	1	priznan; ugleden;
+titan	titan	samostalnik	1	kemijski element
+titan	titan	samostalnik	2	o velikosti in moči
+titan	titan	samostalnik	3	bajeslovno bitje
+deček	deček	samostalnik	1	otrok
+deček	deček	samostalnik	2	mlad moški
+deklica	deklica	samostalnik	1	otrok
+deklica	deklica	samostalnik	2	mlada ženska ali dekle
+cincata	cincati	glagol	1	obotavljati se
+cincata	cincati	glagol	2	počasi se premikati
+fejst	fejst	prislov	1	zelo
+fejst	fejst	prislov	2	dobro; privlačno;
+firbčen	firbčen	pridevnik	1	radoveden
+polokati	polokati	glagol	1	spiti; zliti vase;
+rariteta	rariteta	samostalnik	1	redkost
+speleologij	speleologija	samostalnik	1	veda
+dvostišje	dvostišje	samostalnik	1	dvovrstična kitica
+alimentacija	alimentacija	samostalnik	1	preživnina
+anglofil	anglofil	samostalnik	1	navdušenec
+apogej	apogej	samostalnik	1	položaj nebesnega telesa
+žaltavost	žaltavost	samostalnik	1	lastnost maščobe
+žeparjenje	žeparjenje	samostalnik	1	kraje iz žepov
+žeparstvo	žeparstvo	samostalnik	1	kraje iz žepov
+žičnik	žičnik	samostalnik	1	žebelj iz žice
+zemljemerec	zemljemerec	samostalnik	1	strokovnjak
+zemljemerstvo	zemljemerstvo	samostalnik	1	veda
+zlohotnost	zlohotnost	samostalnik	1	zlonamernost; zloba;
+zlovoljnost	zlovoljnost	samostalnik	1	slaba volja
+zverinstvo	zverinstvo	samostalnik	1	okrutno dejanje
+zvezdoslovec	zvezdoslovec	samostalnik	1	strokovnjak
+zvodnica	zvodnica	samostalnik	1	vodja prostitutk
+zvonkost	zvonkost	samostalnik	1	lepa zvenečnost
+afektiranost	afektiranost	samostalnik	1	nenaravnost; izumetničenost;
+dilema	dilema	samostalnik	1	težka izbira; problem;
+kandidat	kandidat	samostalnik	1	za službo ali funkcijo
+kandidat	kandidat	samostalnik	2	na izpitu
+kandidat	kandidat	samostalnik	3	za nagrado
+uspavalo	uspavalo	samostalnik	1	uspavalno sredstvo
+vrelišče	vrelišče	samostalnik	1	temperatura
+vrelišče	vrelišče	samostalnik	2	vrhunec zaostritve
+vrelišče	vrelišče	samostalnik	3	žarišče
+zbadljivec	zbadljivec	samostalnik	1	kdor rad zbada ljudi
+malikovanje	malikovanje	samostalnik	1	čaščenje
+malikovanje	malikovanje	samostalnik	2	pretirano občudovanje
+latrin	latrina	samostalnik	1	stranišče
+odčitek	odčitek	samostalnik	1	odčitana vrednost
+prepirček	prepirček	samostalnik	1	manj resen konflikt
+sonaravnost	sonaravnost	samostalnik	1	trajnostni razvoj
+vpoklicance	vpoklicanec	samostalnik	1	o vojaški dolžnosti
+vtikljivost	vtikljivost	samostalnik	1	osebnostna lastnost
+zalust	zalust	samostalnik	1	zobec na orodju
+štoparica	štoparica	samostalnik	1	vrsta ure
+telemarketing	telemarketing	samostalnik	1	telefonsko trženje
+načitanost	načitanost	samostalnik	1	razgledanost
+opart	opart	samostalnik	1	umetnostna smer
+neoklasicist	neoklasicist	samostalnik	1	predstavnik neoklasicizma
+pointilizem	pointilizem	samostalnik	1	slikarska tehnika
+varianca	varianca	samostalnik	1	mera statistične razpršenosti
+monotipij	monotipija	samostalnik	1	grafična tehnika
+monotipij	monotipija	samostalnik	2	izdelek
+memoriranje	memoriranje	samostalnik	1	učenje
+zavarovatelj	zavarovatelj	samostalnik	1	zavarovalnica
+kaos	kaos	samostalnik	1	zmeda; nered;
+kaos	kaos	samostalnik	2	o vesolju
+zarota	zarota	samostalnik	1	skrivni načrt
+epidemija	epidemija	samostalnik	1	hitro širjenje bolezni
+epidemija	epidemija	samostalnik	2	hiter porast česa
+brifing	brifing	samostalnik	1	sestanek
+naprednost	naprednost	samostalnik	1	razvitost
+naprednost	naprednost	samostalnik	2	napredna miselnost
+jasnina	jasnina	samostalnik	1	o nebu ali ozračju
+jasnina	jasnina	samostalnik	2	jasna izoblikovanost
+zavarovalnina	zavarovalnina	samostalnik	1	plačilo
+zadrga	zadrga	samostalnik	1	del oblačila
+reprivatizacija	reprivatizacija	samostalnik	1	ponovna privatizacija
+publicistka	publicistka	samostalnik	1	ženska, ki piše članke
+slemenitev	slemenitev	samostalnik	1	usmerjenost gorskih grebenov
+somernica	somernica	samostalnik	1	premica
+psalmodij	psalmodija	samostalnik	1	petje psalmov
+trepljaj	trepljaj	samostalnik	1	o človeškem dotiku
+zaporničar	zaporničar	samostalnik	1	upravljavec zapornice
+zaskočka	zaskočka	samostalnik	1	tehnični element
+uganka	uganka	samostalnik	1	miselna igra
+uganka	uganka	samostalnik	2	neznana stvar ali problem
+simetral	simetrala	samostalnik	1	premica
+pacifist	pacifist	samostalnik	1	zagovornik miru
+plastnica	plastnica	samostalnik	1	črta na zemljevidu
+amok	amok	samostalnik	1	blaznost; besnilo;
+akril	akril	samostalnik	1	slikarska tehnika
+akril	akril	samostalnik	2	material
+akril	akril	samostalnik	3	barva
+nabojnik	nabojnik	samostalnik	1	del orožja
+deflator	deflator	samostalnik	1	merilo razmerja cen
+disti	distih	samostalnik	1	dvovrstična kitica
+akvakultur	akvakultura	samostalnik	1	gojenje vodnih organizmov
+astronavtika	astronavtika	samostalnik	1	veda
+biseksualnost	biseksualnost	samostalnik	1	spolna usmerjenost
+boječnost	boječnost	samostalnik	1	plašnost
+brezciljnost	brezciljnost	samostalnik	1	o neosredotočenosti
+centrist	centrist	samostalnik	1	o političnem prepričanju
+dihalka	dihalka	samostalnik	1	športna oprema
+dobesednost	dobesednost	samostalnik	1	o zvestobi izvirniku
+galantnost	galantnost	samostalnik	1	uglajenost
+grozovitost	grozovitost	samostalnik	1	o strašljivosti
+konvencionalnost	konvencionalnost	samostalnik	1	običajnost
+apoteoz	apoteoza	samostalnik	1	poveličevanje
+centrifugiranje	centrifugiranje	samostalnik	1	ločevalna tehnika
+ambitus	ambitus	samostalnik	1	obseg; razpon;
+antropomorfizem	antropomorfizem	samostalnik	1	počlovečevanje
+anotacija	anotacija	samostalnik	1	zaznamek
+abnormalnost	abnormalnost	samostalnik	1	nepravilnost
+izohips	izohipsa	samostalnik	1	črta na zemljevidu
+družabništvo	družabništvo	samostalnik	1	o poslovnem sodelovanju
+destalinizacija	destalinizacija	samostalnik	1	o opuščanju politike
+muzikalnost	muzikalnost	samostalnik	1	glasbenost
+ekspresionistek	ekspresionistka	samostalnik	1	predstavnica ekspresionizma
+dezinflacij	dezinflacija	samostalnik	1	ekonomski proces
+čudodelnik	čudodelnik	samostalnik	1	o nadnaravni sposobnosti
+čudodelnik	čudodelnik	samostalnik	2	o veliki spretnosti
+diferenciranje	diferenciranje	samostalnik	1	razlikovalni proces
+mozoljavost	mozoljavost	samostalnik	1	obolenje kože
+nepokornost	nepokornost	samostalnik	1	neubogljivost; neposlušnost;
+prenatrpanost	prenatrpanost	samostalnik	1	o prekomerni količini
+prepirljivost	prepirljivost	samostalnik	1	osebnostna lastnost
+valobran	valobran	samostalnik	1	nasip proti valovom
+razjarjenost	razjarjenost	samostalnik	1	čustveno stanje
+skesanost	skesanost	samostalnik	1	čustveno stanje
+ukazovalnost	ukazovalnost	samostalnik	1	osebnostna lastnost
+urok	urok	samostalnik	1	v magiji
+urok	urok	samostalnik	2	o neuspehu
+zaljubljenka	zaljubljenka	samostalnik	1	zaljubljena ženska
+zaljubljenka	zaljubljenka	samostalnik	2	navdušenka
+antipatija	antipatija	samostalnik	1	odpor
+bis	bis	samostalnik	1	dodatek
+heksameter	heksameter	samostalnik	1	vrsta verza
+davkoplačevalec	davkoplačevalec	samostalnik	1	kdor plačuje davke
+eklog	ekloga	samostalnik	1	vrsta pesmi
+menjševik	menjševik	samostalnik	1	pripadnik menjševizma
+uglaševalka	uglaševalka	samostalnik	1	poklic
+saje	saje	samostalnik	1	produkt zgorevanja
+mikročitalec	mikročitalec	samostalnik	1	čitalnik za mikrofilme
+zatrjevati	zatrjevati	glagol	1	trditi; vztrajati;
+zavestno	zavestno	prislov	1	namerno
+zavestno	zavestno	prislov	2	z zavedanjem; po lastni volji;
+preddelavec	preddelavec	samostalnik	1	delovodja
+preddelavek	preddelavka	samostalnik	1	delovodja
+algebraičen	algebraičen	pridevnik	1	o algebri
+sitotisk	sitotisk	samostalnik	1	grafična tehnika
+sitotisk	sitotisk	samostalnik	2	odtis
+davščina	davščina	samostalnik	1	davek
+silomer	silomer	samostalnik	1	merilna naprava
+germanizacija	germanizacija	samostalnik	1	ponemčevanje
+favna	favna	samostalnik	1	živalstvo
+nominativ	nominativ	samostalnik	1	sklon
+pomišljaj	pomišljaj	samostalnik	1	ločilo
+premogovnik	premogovnik	samostalnik	1	rudnik premoga
+opekarna	opekarna	samostalnik	1	tovarna
+prajezik	prajezik	samostalnik	1	prvotni jezik
+plesišče	plesišče	samostalnik	1	plesni prostor
+odpremnica	odpremnica	samostalnik	1	listina
+perutninarstvo	perutninarstvo	samostalnik	1	dejavnost
+razrednik	razrednik	samostalnik	1	vodja razreda
+ribogojnica	ribogojnica	samostalnik	1	prostor za gojenje rib
+plavž	plavž	samostalnik	1	talilna peč
+dražitelj	dražitelj	samostalnik	1	kdor sodeluje na dražbi
+dražitelj	dražitelj	samostalnik	2	voditelj dražbe
+nadležno	nadležno	prislov	1	moteče; zoprno;
+vrtalnik	vrtalnik	samostalnik	1	orodje
+seciranje	seciranje	samostalnik	1	o truplu
+seciranje	seciranje	samostalnik	2	podrobna analiza
+sebično	sebično	prislov	1	egoistično
+brevir	brevir	samostalnik	1	molitev
+brevir	brevir	samostalnik	2	molitvenik
+brevir	brevir	samostalnik	3	temeljna literatura
+živčevje	živčevje	samostalnik	1	živčni sistem
+živalstvo	živalstvo	samostalnik	1	živali
+jezikoslovec	jezikoslovec	samostalnik	1	strokovnjak
+kronometer	kronometer	samostalnik	1	dirka na čas
+kronometer	kronometer	samostalnik	2	o uri
+konzulat	konzulat	samostalnik	1	predstavništvo tuje države
+razsvetljenstvo	razsvetljenstvo	samostalnik	1	gibanje v Evropi
+kokain	kokain	samostalnik	1	mamilo
+čebelarstvo	čebelarstvo	samostalnik	1	dejavnost
+kolumna	kolumna	samostalnik	1	članek
+heroin	heroin	samostalnik	1	mamilo
+kipar	kipar	samostalnik	1	umetnik
+zdomec	zdomec	samostalnik	1	o preselitvi zaradi dela
+zgodovinopisec	zgodovinopisec	samostalnik	1	strokovnjak
+diapozitiv	diapozitiv	samostalnik	1	fotografija
+diapozitiv	diapozitiv	samostalnik	2	stran predstavitve
+pesticid	pesticid	samostalnik	1	kemično sredstvo
+loto	loto	samostalnik	1	igra na srečo
+pisateljica	pisateljica	samostalnik	1	ženska, ki piše leposlovje
+podtalnica	podtalnica	samostalnik	1	podzemna voda
+restavrator	restavrator	samostalnik	1	obnavljavec
+potopis	potopis	samostalnik	1	opis potovanja
+fonetika	fonetika	samostalnik	1	veda
+pšenica	pšenica	samostalnik	1	žito
+pšenica	pšenica	samostalnik	2	zrnje
+župnija	župnija	samostalnik	1	cerkvenopravna enota
+noviciat	noviciat	samostalnik	1	redovniško pripravništvo
+epicenter	epicenter	samostalnik	1	o potresu
+epicenter	epicenter	samostalnik	2	središče
+programer	programer	samostalnik	1	v računalništvu
+programer	programer	samostalnik	2	organizator
+ekonometrija	ekonometrija	samostalnik	1	področje ekonomije
+kamnosek	kamnosek	samostalnik	1	obdelovalec kamna
+oscilograf	oscilograf	samostalnik	1	merilna naprava
+opreznost	opreznost	samostalnik	1	previdnost
+grosist	grosist	samostalnik	1	velik trgovec
+konservatorij	konservatorij	samostalnik	1	umetniška ustanova
+čtivo	čtivo	samostalnik	1	gradivo za branje
+računovodja	računovodja	samostalnik	1	kdor vodi račune
+poster	poster	samostalnik	1	plakat
+državnik	državnik	samostalnik	1	predstavnik države
+havarij	havarija	samostalnik	1	poškodba ladje ali letala
+havarija	havarija	samostalnik	2	večja nezgoda
+kavarna	kavarna	samostalnik	1	gostinski lokal
+razkužilo	razkužilo	samostalnik	1	dezinfekcijsko sredstvo
+holding	holding	samostalnik	1	vrsta podjetja
+kegelj	kegelj	samostalnik	1	pripomoček za kegljanje
+prostozidar	prostozidar	samostalnik	1	član gibanja
+praktikant	praktikant	samostalnik	1	pripravnik
+docent	docent	samostalnik	1	učiteljski naziv
+politologija	politologija	samostalnik	1	veda
+dobrodelnost	dobrodelnost	samostalnik	1	dobra dela
+predgovor	predgovor	samostalnik	1	uvodni sestavek
+konvertibilnost	konvertibilnost	samostalnik	1	zamenljivost
+kapilarnost	kapilarnost	samostalnik	1	fizikalni pojav
+pripravništvo	pripravništvo	samostalnik	1	usposabljanje pripravnika
+podpisnik	podpisnik	samostalnik	1	kdor kaj podpiše
+klečanje	klečanje	samostalnik	1	dotikanje tal s koleni
+klečanje	klečanje	samostalnik	2	o ponižnosti
+prokurist	prokurist	samostalnik	1	pooblaščenec
+podizvajalec	podizvajalec	samostalnik	1	o vrsti poslovnega sodelovanja
+hipermarket	hipermarket	samostalnik	1	večja trgovina
+jezuit	jezuit	samostalnik	1	član krščanskega reda
+gričevje	gričevje	samostalnik	1	skupina gričev
+konzervatorij	konzervatorij	samostalnik	1	umetniška ustanova
+praktikantka	praktikantka	samostalnik	1	pripravnica
+docentka	docentka	samostalnik	1	učiteljski naziv
+pipeta	pipeta	samostalnik	1	merilni instrument
+zakupodajalec	zakupodajalec	samostalnik	1	o zakupnem razmerju
+aspik	aspik	samostalnik	1	želatina
+slovaropisec	slovaropisec	samostalnik	1	poklic
+zlat	zlato	samostalnik	1	kemijski element
+zlat	zlato	samostalnik	2	prvo mesto
+zlat	zlato	samostalnik	3	dragocenost
+vaditi	vadi	samostalnik	1	suha struga
+redkev	redkev	samostalnik	1	rastlina
+redkev	redkev	samostalnik	2	plod
+samostalnik	samostalnik	samostalnik	1	besedna vrsta
+sapnik	sapnik	samostalnik	1	del telesa
+shizofrenija	shizofrenija	samostalnik	1	duševna motnja
+shizofrenija	shizofrenija	samostalnik	2	razdvojenost
+sleng	sleng	samostalnik	1	neformalna govorica
+sliva	sliva	samostalnik	1	plod
+sliva	sliva	samostalnik	2	drevo
+sliva	sliva	samostalnik	3	o barvi
+taksa	taksa	samostalnik	1	denarni prispevek
+tangica	tangice	samostalnik	1	spodnje perilo
+filatelij	filatelija	samostalnik	1	zbiranje in proučevanje znamk
+flomaster	flomaster	samostalnik	1	pisalo
+fotografirati	fotografirati	glagol	1	narediti posnetek
+fotograf	fotograf	samostalnik	1	kdor se ukvarja s fotografiranjem
+fotokopirati	fotokopirati	glagol	1	narediti papirnato kopijo
+garaža	garaža	samostalnik	1	pri hiši
+garaža	garaža	samostalnik	2	skupna parkirišča
+gosenica	gosenica	samostalnik	1	žival
+gosenica	gosenica	samostalnik	2	del vozila
+gotovina	gotovina	samostalnik	1	fizični denar
+gotovina	gotovina	samostalnik	2	elektronski denar
+grozdje	grozdje	samostalnik	1	sadje
+gurman	gurman	samostalnik	1	ljubitelj hrane in pijače
+gurman	gurman	samostalnik	2	poznavalec
+guru	guru	samostalnik	1	duhovni vodja
+guru	guru	samostalnik	2	poznavalec
+habitat	habitat	samostalnik	1	življenjski prostor
+habitat	habitat	samostalnik	2	okolje
+halucinacija	halucinacija	samostalnik	1	zaznavna motnja
+halucinacija	halucinacija	samostalnik	2	blodnja; izmišljotina;
+histeričen	histeričen	pridevnik	1	o čustvenem odzivu
+histeričen	histeričen	pridevnik	2	o bolezni
+histeričen	histeričen	pridevnik	3	o intenzivnem dogajanju
+histerično	histerično	prislov	1	o čustvenem odzivu
+histerično	histerično	prislov	2	o intenzivnosti ali pretiranosti
+gasilec	gasilec	samostalnik	1	kdor je usposobljen za gašenje
+hoteti	hotel	samostalnik	1	turistični objekt
+iglast	iglast	pridevnik	1	o iglavcih
+iglast	iglast	pridevnik	2	koničast
+iglu	iglu	samostalnik	1	prebivališče iz snega
+interier	interier	samostalnik	1	notranjost prostora
+izobčiti	izobčiti	glagol	1	izločiti
+izobčit	izobčiti	glagol	2	izključiti iz cerkve
+kitarist	kitarist	samostalnik	1	glasbenik
+kljukast	kljukast	pridevnik	1	ukrivljen
+koder	koder	samostalnik	1	o laseh
+koder	koder	samostalnik	2	pes
+korajža	korajža	samostalnik	1	pogum
+lasulja	lasulja	samostalnik	1	umetni lasje
+mandarina	mandarina	samostalnik	1	plod
+mandarina	mandarina	samostalnik	2	drevo
+maskara	maskara	samostalnik	1	ličilo
+matineja	matineja	samostalnik	1	zgodnja predstava
+menstruacija	menstruacija	samostalnik	1	mesečna krvavitev
+motika	motika	samostalnik	1	vrtno orodje
+najemnina	najemnina	samostalnik	1	denar za najem
+naravovarstvenik	naravovarstvenik	samostalnik	1	o varstvu okolja
+ornitolog	ornitolog	samostalnik	1	poznavalec ptic
+pravnik	pravnik	samostalnik	1	strokovnjak
+planota	planota	samostalnik	1	ravnina v hribovju
+evkaliptiti	evkalipt	samostalnik	1	drevo
+evkalipt	evkalipt	samostalnik	2	evkaliptusovo olje
+evkaliptus	evkaliptus	samostalnik	1	drevo
+evkaliptus	evkaliptus	samostalnik	2	evkaliptusovo olje
+redkvica	redkvica	samostalnik	1	rastlina
+frnikola	frnikola	samostalnik	1	kroglica
+ingverjev	ingverjev	pridevnik	1	o hrani
+ingverjev	ingverjev	pridevnik	2	o rastlini
+zmrzel	zmrzel	pridevnik	1	zmrznjen
+anagram	anagram	samostalnik	1	premetanka črk
+citadela	citadela	samostalnik	1	trdnjava
+citadela	citadela	samostalnik	2	temeljni del česa
+nagnit	nagnit	pridevnik	1	gnil
+zlobnica	zlobnica	samostalnik	1	zlobna ženska
+zlobnica	zlobnica	samostalnik	2	o vlogi
+balonarstvo	balonarstvo	samostalnik	1	letenje z balonom
+boks	boks	samostalnik	1	borilni šport
+boks	boks	samostalnik	2	način borbe
+boks	boks	samostalnik	3	na dirkah
+boks	boks	samostalnik	4	ločen prostor
+pohodništvo	pohodništvo	samostalnik	1	rekreativna hoja
+atlet	atlet	samostalnik	1	športnik
+atlet	atlet	samostalnik	2	mišičast človek
+maratonec	maratonec	samostalnik	1	tekač
+maratonec	maratonec	samostalnik	2	o drugih športih
+maratonec	maratonec	samostalnik	3	kdor dolgo dela ali vztraja
+daljnogled	daljnogled	samostalnik	1	optična naprava
+monoteizem	monoteizem	samostalnik	1	vera v enega boga
+dehidracija	dehidracija	samostalnik	1	izguba vode v telesu
+dehidracija	dehidracija	samostalnik	2	postopek izsušitve
+oderuški	oderuški	pridevnik	1	pretirano drag
+oderuški	oderuški	pridevnik	2	ki svoje storitve drago zaračuna
+antifriz	antifriz	samostalnik	1	sredstvo proti zmrzovanju
+enoročno	enoročno	prislov	1	z eno roko
+pijanski	pijanski	pridevnik	1	o pijanosti ali pijancih
+servilnost	servilnost	samostalnik	1	pretirana uslužnost
+pasat	pasat	samostalnik	1	veter
+pasat	pasat	samostalnik	2	avto
+ambicioznež	ambicioznež	samostalnik	1	ambiciozen človek
+kreda	kreda	samostalnik	1	sredstvo za risanje
+kreda	kreda	samostalnik	2	geološka doba
+kreda	kreda	samostalnik	3	kamnina
+boksar	boksar	samostalnik	1	športnik
+boksar	boksar	samostalnik	2	orožje
+bis	bis	medmet	1	o vzkliku
+športen	športen	pridevnik	1	o telesni aktivnosti
+športen	športen	pridevnik	2	o obliki vozila ali njegovih delov
+športen	športen	pridevnik	3	o materialu in kroju
+športen	športen	pridevnik	4	o telesnem videzu
+športen	športen	pridevnik	5	o obnašanju
+športno	športno	prislov	1	o telesni aktivnosti
+športno	športno	prislov	2	o obliki vozila ali njegovih delov
+športno	športno	prislov	3	o stilu oblačenja
+športen	športno	prislov	4	o telesnem videzu
+športen	športno	prislov	5	o obnašanju
+medicinka	medicinka	samostalnik	1	žoga
+medicinka	medicinka	samostalnik	2	o zdravstveni izobrazbi
+češnja	češnja	samostalnik	1	drevo
+češnja	češnja	samostalnik	2	plod
+češnja	češnja	samostalnik	3	les
+lokostrelec	lokostrelec	samostalnik	1	kdor strelja z lokom
+lokostrelec	lokostrelec	samostalnik	2	vojak
+deskati	deskati	glagol	1	voziti se z desko po snegu
+deskati	deskati	glagol	2	voziti se z desko po vodi
+deskati	deskati	glagol	3	brskati po spletu
+pedikura	pedikura	samostalnik	1	kozmetična nega nog
+prestolnica	prestolnica	samostalnik	1	glavno mesto
+prestolnica	prestolnica	samostalnik	2	središče dejavnosti
+sršen	sršen	samostalnik	1	žuželka
+sršen	sršen	samostalnik	2	član košarkarskega kluba
+ironično	ironično	prislov	1	s posmehom
+kolumnist	kolumnist	samostalnik	1	pisec serije člankov
+morilec	morilec	samostalnik	1	storilec umora
+morilec	morilec	samostalnik	2	vzrok smrti
+nadrealist	nadrealist	samostalnik	1	pripadnik nadrealizma
+nadrealizem	nadrealizem	samostalnik	1	umetnostna smer
+osa	osa	samostalnik	1	žuželka
+osa	osa	samostalnik	2	član športnega kluba
+osa	osa	samostalnik	3	orožje
+miš	miš	samostalnik	1	žival
+miš	miš	samostalnik	2	del računalniške opreme
+nakupovalec	nakupovalec	samostalnik	1	kdor nakupuje
+namaz	namaz	samostalnik	1	jed
+glukoza	glukoza	samostalnik	1	monosaharid
+protestant	protestant	samostalnik	1	pripadnik protestantizma
+polnoletnost	polnoletnost	samostalnik	1	o osebi
+polnoletnost	polnoletnost	samostalnik	2	o letih obstoja
+predpogoj	predpogoj	samostalnik	1	temeljni pogoj
+priročnik	priročnik	samostalnik	1	publikacija
+podržavljenje	podržavljenje	samostalnik	1	državni prevzem zasebne lastnine
+vpisnina	vpisnina	samostalnik	1	plačilo za vpis
+naftalin	naftalin	samostalnik	1	snov
+sedanjik	sedanjik	samostalnik	1	glagolski čas
+sedanjik	sedanjik	samostalnik	2	sedanjost
+skladiščnik	skladiščnik	samostalnik	1	skladiščni delavec
+skopuh	skopuh	samostalnik	1	o pretirani varčnosti
+skopuški	skopuški	pridevnik	1	pretirano varčen
+abecednik	abecednik	samostalnik	1	priročnik
+abecednik	abecednik	samostalnik	2	osnove določenega področja
+zloščiti	zloščiti	glagol	1	dati lesk
+zloščiti	zloščiti	glagol	2	izboljšati
+babica	babica	samostalnik	1	mati očeta ali matere
+babica	babica	samostalnik	2	pomočnica pri porodu
+babica	babica	samostalnik	3	starejša ženska
+babica	babica	samostalnik	4	začetnica česa
+babica	babica	samostalnik	5	riba
+birokrat	birokrat	samostalnik	1	državni uradnik
+birokrat	birokrat	samostalnik	2	o togem sledenju pravilom
+bolnik	bolnik	samostalnik	1	kdor je bolan
+bolnik	bolnik	samostalnik	2	kdor je neprijeten ali krut
+čebelnjak	čebelnjak	samostalnik	1	prostor za čebele
+čebelnjak	čebelnjak	samostalnik	2	živahno dogajanje
+čebelnjak	čebelnjak	samostalnik	3	zgoščena skupina bivališč
+čik	čik	samostalnik	1	cigareta; ogorek;
+flavta	flavta	samostalnik	1	pihalo
+flavta	flavta	samostalnik	2	igranje flavte
+flavta	flavta	samostalnik	3	glasbenik
+helebarda	helebarda	samostalnik	1	vrsta orožja
+sufražetka	sufražetka	samostalnik	1	borka za ženske pravice
+rajnki	rajnki	pridevnik	1	umrli
+rajnki	rajnki	pridevnik	2	nekdanji
+rajnki	rajnki	samostalnik	1	umrla oseba
+krtača	krtača	samostalnik	1	pripomoček za čiščenje
+krtača	krtača	samostalnik	2	pripomoček za nego telesa
+gora	gora	samostalnik	1	visoka vzpetina
+gora	gora	samostalnik	2	velika količina
+bajaličar	bajaličar	samostalnik	1	iskalec stvari
+bajaničarka	bajaničarka	samostalnik	1	iskalka stvari
+bukov	bukov	pridevnik	1	o drevesu ali delu drevesa
+bukov	bukov	pridevnik	2	izdelan iz bukovega lesa
+bukov	bukov	pridevnik	3	o barvi
+bukov	bukov	pridevnik	4	neumen; trapast;
+etnologija	etnologija	samostalnik	1	veda
+hliniti	hliniti	glagol	1	pretvarjati se
+eksponat	eksponat	samostalnik	1	razstavni predmet
+glasnik	glasnik	samostalnik	1	glas
+akvarel	akvarel	samostalnik	1	slika
+akvarel	akvarel	samostalnik	2	slikarska tehnika
+stotic	stotica	samostalnik	1	število sto
+stotic	stotica	samostalnik	2	desetiška enota
+tisočic	tisočica	samostalnik	1	število tisoč
+tisočic	tisočica	samostalnik	2	desetiška enota
+tuhtati	tuhtati	glagol	1	premišljevati
+filtrirati	filtrirati	glagol	1	prečistiti snov
+filtrirati	filtrirati	glagol	2	prestreči in izločiti
+filtrirati	filtrirati	glagol	3	z uporabo aplikacije
+filtrirati	filtrirati	glagol	4	izraziti skozi nek kanal
+gneča	gneča	samostalnik	1	o ljudeh
+gneča	gneča	samostalnik	2	o stvareh
+gojen	gojen	pridevnik	1	o rastlinah ali živalih
+gojen	gojen	pridevnik	2	o ravnanju
+idealizirati	idealizirati	glagol	1	olepševati
+elita	elita	samostalnik	1	najvplivnejši posamezniki
+elita	elita	samostalnik	2	najboljši športniki
+pirh	pirh	samostalnik	1	velikonočno jajce
+diskretnost	diskretnost	samostalnik	1	ohranjanje zasebnosti
+diskretnost	diskretnost	samostalnik	2	nevpadljivost
+eteričen	eteričen	pridevnik	1	o rastlinskih izvlečkih
+eteričen	eteričen	pridevnik	2	o duhovnem svetu
+eteričen	eteričen	pridevnik	3	prefinjen
+imeniten	imeniten	pridevnik	1	izvrsten
+imeniten	imeniten	pridevnik	2	ugleden
+nosnica	nosnica	samostalnik	1	nosna kost
+terminologija	terminologija	samostalnik	1	strokovni izrazi
+terminologija	terminologija	samostalnik	2	veda
+klofniti	klofniti	glagol	1	dati klofuto
+klofnit	klofniti	glagol	2	o ukrepu
+ilustrirati	ilustrirati	glagol	1	izdelati risbo
+ilustrirati	ilustrirati	glagol	2	ponazoriti
+titula	titula	samostalnik	1	naziv
+bencin	bencin	samostalnik	1	gorivo
+pater	pater	samostalnik	1	duhovnik
+narodopisje	narodopisje	samostalnik	1	veda o značilnostih ljudstev
+anorak	anorak	samostalnik	1	oblačilo
+baretka	baretka	samostalnik	1	pokrivalo
+bikini	bikini	samostalnik	1	kopalke
+bikini	bikini	samostalnik	2	del telesa
+bikinka	bikinke	samostalnik	1	kopalke
+brezrokaven	brezrokaven	pridevnik	1	ki nima rokavov
+brezrokavnik	brezrokavnik	samostalnik	1	oblačilo
+burnus	burnus	samostalnik	1	tradicionalno oblačilo
+burnus	burnus	samostalnik	2	težek plašč
+frak	frak	samostalnik	1	oblačilo
+gamaš	gamaša	samostalnik	1	zaščita čez čevlje
+gamaš	gamaša	samostalnik	2	oblačilo
+negliž	negliže	samostalnik	1	žensko oblačilo
+pulover	pulover	samostalnik	1	oblačilo
+rever	rever	samostalnik	1	del oblačila
+suknjič	suknjič	samostalnik	1	oblačilo
+nogavica	nogavice	samostalnik	1	oblačilo
+gniti	gniti	glagol	1	razkrajati se
+gniti	gniti	glagol	2	životariti
+golobnjak	golobnjak	samostalnik	1	prostor za golobe
+golobnjak	golobnjak	samostalnik	2	zelo majhen prostor
+hlod	hlod	samostalnik	1	o drevesu
+hlod	hlod	samostalnik	2	o človeku
+kornet	kornet	samostalnik	1	posodica za hrano
+kornet	kornet	samostalnik	2	vrsta sladoleda
+kornet	kornet	samostalnik	3	o obliki
+kornet	kornet	samostalnik	4	trobilo
+kornet	kornet	samostalnik	5	glasbenik
+kornet	kornet	samostalnik	6	vojaški čin
+pleskati	pleskati	glagol	1	o stavbah in delih stavb
+rdečkar	rdečkar	samostalnik	1	komunist
+akrobat	akrobat	samostalnik	1	o izvajanju akrobatskih trikov
+akrobat	akrobat	samostalnik	2	o fizični spretnosti
+akrobat	akrobat	samostalnik	3	o mentalni spretnosti
+akrobat	akrobat	samostalnik	4	akrobatsko letalo
+čekiranje	čekiranje	samostalnik	1	registracija potnikov
+čekiranje	čekiranje	samostalnik	2	preverjanje
+čekiranje	čekiranje	samostalnik	3	pri pokru
+pižama	pižama	samostalnik	1	oblačilo
+rokodelec	rokodelec	samostalnik	1	obrtnik
+rokodelec	rokodelec	samostalnik	2	o naravi dela
+biciklistek	biciklistka	samostalnik	1	kolesarka
+apropriacij	apropriacija	samostalnik	1	prilastitev
+aristokrat	aristokrat	samostalnik	1	oseba visokega rodu
+aristokrat	aristokrat	samostalnik	2	kultiviran človek
+aristokrat	aristokrat	samostalnik	3	izstopajoča oseba ali stvar
+aristokrat	aristokrat	samostalnik	4	kdor ima višji položaj znotraj skupine
+blejati	blejati	glagol	1	o oglašanju ovc
+blejati	blejati	glagol	2	oddati zvok podoben kot pri ovcah
+blejati	blejati	glagol	3	govoriti; izražati;
+alt	alt	samostalnik	1	glas
+alt	alt	samostalnik	2	kdor poje alt
+bordanje	bordanje	samostalnik	1	deskanje na snegu
+bordar	bordar	samostalnik	1	športnik
+bordarka	bordarka	samostalnik	1	športnica
+korzet	korzet	samostalnik	1	oblačilo
+kič	kič	samostalnik	1	cenen izdelek
+kič	kič	samostalnik	2	o izumetničenosti nečesa
+senca	sence	samostalnik	1	del glave
+ličnik	ličnik	samostalnik	1	zob
+modnik	modnik	samostalnik	1	del telesa
+himna	himen	samostalnik	1	del telesa
+moda	modo	samostalnik	1	spolna žleza
+prsnica	prsnica	samostalnik	1	kost
+diafiza	diafiza	samostalnik	1	del kosti
+podlahtnica	podlahtnica	samostalnik	1	kost
+dovodnica	dovodnica	samostalnik	1	žila
+dvanajstnik	dvanajstnik	samostalnik	1	organ
+sapnica	sapnica	samostalnik	1	cevka do pljuč
+sečevod	sečevod	samostalnik	1	cev do mehurja
+larinks	larinks	samostalnik	1	grlo
+pankreas	pankreas	samostalnik	1	žleza
+ekstremitet	ekstremiteta	samostalnik	1	del telesa
+hilus	hilus	samostalnik	1	del organa
+peritonej	peritonej	samostalnik	1	trebušna mrena
+osrčnik	osrčnik	samostalnik	1	srčna membrana
+poprsnica	poprsnica	samostalnik	1	prsna mrena
+cilij	cilija	samostalnik	1	del celice
+obščitnica	obščitnica	samostalnik	1	žleza
+epidermis	epidermis	samostalnik	1	del kože
+epidermis	epidermis	samostalnik	2	del rastline
+gameta	gameta	samostalnik	1	spolna celica
+upogibalka	upogibalka	samostalnik	1	mišica
+gonada	gonada	samostalnik	1	spolna žleza
+odmikalka	odmikalka	samostalnik	1	mišica
+potrebušnica	potrebušnica	samostalnik	1	trebušna mrena
+primikalka	primikalka	samostalnik	1	mišica
+triceps	triceps	samostalnik	1	mišica
+trebušen	trebušna	samostalnik	1	žleza
+bronhij	bronhij	samostalnik	1	cevka do pljuč
+zgagar	zgagar	samostalnik	1	kdor povzroča neprijetnosti
+električar	električar	samostalnik	1	strokovnjak za elektriko
+električar	električar	samostalnik	2	izvajalec elektronske glasbe
+električar	električar	samostalnik	3	avto
+električar	električar	samostalnik	4	igralec kluba Elektra
+temenica	temenica	samostalnik	1	kost
+trtica	trtica	samostalnik	1	kost
+ščitnica	ščitnica	samostalnik	1	žleza
+talamus	talamus	samostalnik	1	del možganov
+lojnica	lojnica	samostalnik	1	žleza
+dekolte	dekolte	samostalnik	1	del prsi
+dekolte	dekolte	samostalnik	2	o obleki
+mečnica	mečnica	samostalnik	1	kost
+obsečnica	obsečnica	samostalnik	1	žleza
+epifiz	epifiza	samostalnik	1	žleza
+epifiza	epifiza	samostalnik	2	del kosti
+temenica	temenice	samostalnik	1	kožno vnetje
+dimeljnic	dimeljnica	samostalnik	1	kost
+češarik	češarika	samostalnik	1	žleza
+zelenjavar	zelenjavar	samostalnik	1	pridelovalec zelenjave
+zelenjavar	zelenjavar	samostalnik	2	prodajalec zelenjave
+zelenjavar	zelenjavar	samostalnik	3	kdor ima rad zelenjavo
+večer	večer	samostalnik	1	del dneva
+večer	večer	samostalnik	2	družaben dogodek
+dojenček	dojenček	samostalnik	1	majhen otrok
+dojenček	dojenček	samostalnik	2	igrača
+dojenček	dojenček	samostalnik	3	o začetni fazi
+dojenček	dojenček	samostalnik	4	nezrel človek
+hlače	hlače	samostalnik	1	oblačilo
+mladoletnik	mladoletnik	samostalnik	1	kdor je mladoleten
+dumping	dumping	samostalnik	1	prodajanje pod ceno
+puli	puli	samostalnik	1	oblačilo
+puli	puli	samostalnik	2	pes
+turban	turban	samostalnik	1	tradicionalno moško pokrivalo
+turban	turban	samostalnik	2	žensko pokrivalo
+turban	turban	samostalnik	3	o obliki
+pihati	pihalo	samostalnik	1	glasbilo
+pihati	pihalo	samostalnik	2	glasbenik
+plenilski	plenilski	pridevnik	1	o živalih
+plenilski	plenilski	pridevnik	2	o roparjih ali ropanju
+plenilski	plenilski	pridevnik	3	izkoriščevalski
+gate	gate	samostalnik	1	spodnje hlače
+uniforma	uniforma	samostalnik	1	uradno oblačilo
+uniforma	uniforma	samostalnik	2	oseba v uniformi
+surfanje	surfanje	samostalnik	1	vodni šport
+surfanje	surfanje	samostalnik	2	brskanje po spletu
+cviliti	cviliti	glagol	1	o ljudeh in živalih
+cviliti	cviliti	glagol	2	o napravah in predmetih
+cviliti	cviliti	glagol	3	tarnati
+cviliti	cviliti	glagol	4	o glasbilih
+dolgočasnež	dolgočasnež	samostalnik	1	kdor je nezanimiv
+živčnež	živčnež	samostalnik	1	živčen človek
+živčnež	živčnež	samostalnik	2	nepotrpežljiv človek
+žlica	žlica	samostalnik	1	del jedilnega pribora
+žlica	žlica	samostalnik	2	merska enota
+žlica	žlica	samostalnik	3	za obuvanje čevljev
+žlica	žlica	samostalnik	4	del stroja
+ženšče	ženšče	samostalnik	1	ženska
+empiričen	empiričen	pridevnik	1	izkustven
+strešnik	strešnik	samostalnik	1	strešni element
+halja	halja	samostalnik	1	oblačilo
+eritrocit	eritrocit	samostalnik	1	krvna celica
+novinarstvo	novinarstvo	samostalnik	1	dejavnost
+čestitati	čestitati	glagol	1	izraziti lepe želje
+čednost	čednost	samostalnik	1	karakterna lastnost
+čednost	čednost	samostalnik	2	lepota
+blokirati	blokirati	glagol	1	zapreti prehod
+blokirati	blokirati	glagol	2	ustaviti
+blokirati	blokirati	glagol	3	o napravah
+blokirati	blokirati	glagol	4	preprečiti izvedbo
+blokirati	blokirati	glagol	5	preprečiti delovanje
+blokirati	blokirati	glagol	6	onemogočiti uporabo
+cigan	cigan	samostalnik	1	Rom
+cigan	cigan	samostalnik	2	podlež; lopov;
+saksofon	saksofon	samostalnik	1	glasbilo
+saksofon	saksofon	samostalnik	2	igranje saksofona
+saksofon	saksofon	samostalnik	3	glasbenik
+padalec	padalec	samostalnik	1	o padalstvu
+padalec	padalec	samostalnik	2	vojak
+padalec	padalec	samostalnik	3	kdor se pojavi nepričakovano
+deskanje	deskanje	samostalnik	1	zimski šport
+deskanje	deskanje	samostalnik	2	vodni šport
+deskanje	deskanje	samostalnik	3	brskanje po spletu
+diskriminacija	diskriminacija	samostalnik	1	nepravična obravnava ljudi
+fermentacija	fermentacija	samostalnik	1	biokemijski proces
+telovnik	telovnik	samostalnik	1	oblačilo
+šah	šah	samostalnik	1	namizna igra
+šah	šah	samostalnik	2	šahovska garnitura
+šah	šah	samostalnik	3	položaj v igri
+šah	šah	samostalnik	4	vladarski naslov
+datljevec	datljevec	samostalnik	1	drevo
+surfar	surfar	samostalnik	1	športnik
+surfar	surfar	samostalnik	2	kdor brska po spletu
+surfer	surfer	samostalnik	1	športnik
+surfer	surfer	samostalnik	2	kdor brska po spletu
+surferka	surferka	samostalnik	1	športnica
+surferka	surferka	samostalnik	2	ženska, ki brska po spletu
+prior	prior	samostalnik	1	predstojnik samostana
+osončje	osončje	samostalnik	1	planetarni sistem
+kiparka	kiparka	samostalnik	1	umetnica
+parfum	parfum	samostalnik	1	kozmetično sredstvo
+piflar	piflar	samostalnik	1	marljiv šolar
+piflar	piflar	samostalnik	2	kdor se rad uči in raziskuje
+piflar	piflar	samostalnik	3	kdor se uči na pamet
+alimenti	alimenti	samostalnik	1	preživnina
+gornik	gornik	samostalnik	1	grm
+gornik	gornik	samostalnik	2	veter
+aerodinamika	aerodinamika	samostalnik	1	fizikalna lastnost
+aerodinamika	aerodinamika	samostalnik	2	veda
+kerling	kerling	samostalnik	1	športna igra
+zborovodja	zborovodja	samostalnik	1	vodja pevskega zbora
+računovodja	računovodja	samostalnik	1	ženska, ki vodi račune
+aga	aga	samostalnik	1	vrsta žabe
+prezbiterij	prezbiterij	samostalnik	1	del cerkve
+bivalen	bivalen	pridevnik	1	o pogojih za bivanje
+bivalen	bivalen	pridevnik	2	namenjen bivanju
+polkovnik	polkovnik	samostalnik	1	vojaški čin
+sklanjati	sklanjati	glagol	1	o glavi
+sklanjati	sklanjati	glagol	2	o rastlini
+sklanjati	sklanjati	glagol	3	spreminjati končnice besede
+cilinder	cilinder	samostalnik	1	del stroja
+cilinder	cilinder	samostalnik	2	moško pokrivalo
+cilinder	cilinder	samostalnik	3	del petrolejske svetilke
+cilinder	cilinder	samostalnik	4	del ključavnice
+avtomobilski	avtomobilski	pridevnik	1	o avtomobilih
+boleti	boleti	glagol	1	o telesni bolečini
+boleti	boleti	glagol	2	o duševni bolečini
+barvica	barvica	samostalnik	1	barvni svinčnik
+barvica	barvica	samostalnik	2	ličilo
+naglušen	naglušen	pridevnik	1	ki ima okvaro sluha
+saharin	saharin	samostalnik	1	umetno sladilo
+obločnica	obločnica	samostalnik	1	svetilka
+bajka	bajka	samostalnik	1	pripovedka
+bajka	bajka	samostalnik	2	izmišljotina
+hladilnik	hladilnik	samostalnik	1	gospodinjski aparat
+hladilnik	hladilnik	samostalnik	2	naprava za hlajenje
+taoizem	taoizem	samostalnik	1	filozofska smer in religija
+CD	CD	samostalnik	1	naprava
+bluza	bluza	samostalnik	1	oblačilo
+avtomatičen	avtomatičen	pridevnik	1	o napravah
+avtomatičen	avtomatičen	pridevnik	2	vnaprej določen
+avtomatičen	avtomatičen	pridevnik	3	nezaveden; refleksen;
+blebetati	blebetati	glagol	1	nesmiselno govoriti
+brezglavo	brezglavo	prislov	1	nepremišljeno
+trohej	trohej	samostalnik	1	vrsta ritma
+blažen	blažen	pridevnik	1	srečen
+blažen	blažen	pridevnik	2	razglašen za zveličanega
+blažen	blažen	pridevnik	3	blagoslovljen
+bucika	bucika	samostalnik	1	igla z glavico
+argument	argument	samostalnik	1	utemeljen razlog
+argument	argument	samostalnik	2	neodvisna spremenljivka
+sodar	sodar	samostalnik	1	izdelovalec sodov
+razvodje	razvodje	samostalnik	1	ozemlje med porečji
+atentat	atentat	samostalnik	1	napad
+atentat	atentat	samostalnik	2	kritiziranje
+vetrovnic	vetrovnica	samostalnik	1	pri kompasu
+sarkazem	sarkazem	samostalnik	1	raba zbadljivih pripomb
+trombonist	trombonist	samostalnik	1	glasbenik
+agraren	agraren	pridevnik	1	poljedelski
+saksofonist	saksofonist	samostalnik	1	glasbenik
+čelo	čelo	samostalnik	1	glasbilo
+čelo	čelo	samostalnik	2	igranje čela
+čelo	čelo	samostalnik	3	kdor igra čelo
+cigareta	cigareta	samostalnik	1	zvitek tobaka
+veseloigra	veseloigra	samostalnik	1	gledališka igra
+blesteti	blesteti	glagol	1	biti zelo uspešen
+blesteti	blesteti	glagol	2	biti zadovoljen; biti ponosen;
+davek	davek	samostalnik	1	denarna dajatev
+davek	davek	samostalnik	2	negativne posledice
+črtast	črtast	pridevnik	1	ki ima vzorec v obliki črt
+barvit	barvit	pridevnik	1	različnih barv; pisan;
+barvit	barvit	pridevnik	2	raznolik
+ambicija	ambicija	samostalnik	1	želja po uspehu
+oksimoron	oksimoron	samostalnik	1	o nesmiselnem izrazu
+oksimoron	oksimoron	samostalnik	2	o nelogični izjavi
+peščenjak	peščenjak	samostalnik	1	kamnina
+hugenot	hugenot	samostalnik	1	francoski protestant
+bojkotirati	bojkotirati	glagol	1	ne udeležiti se
+bojkotirati	bojkotirati	glagol	2	ne kupovati
+bojkotirati	bojkotirati	glagol	3	prekiniti sodelovanje
+aranžma	aranžma	samostalnik	1	turistična ponudba
+aranžma	aranžma	samostalnik	2	ureditev cvetja
+aranžma	aranžma	samostalnik	3	priredba
+aranžma	aranžma	samostalnik	4	sporazum
+nato	NATO	samostalnik	1	mednarodna organizacija
+faktura	faktura	samostalnik	1	račun
+faktura	faktura	samostalnik	2	zgradba umetniškega dela
+komutator	komutator	samostalnik	1	del stroja
+adaptacija	adaptacija	samostalnik	1	prenova stavbe
+adaptacija	adaptacija	samostalnik	2	priredba
+adaptacija	adaptacija	samostalnik	3	prilagoditev
+atest	atest	samostalnik	1	potrdilo
+atest	atest	samostalnik	2	preizkus ustreznosti
+gospodinjstvo	gospodinjstvo	samostalnik	1	dom; hišna opravila;
+gospodinjstvo	gospodinjstvo	samostalnik	2	učni predmet
+gospodinjstvo	gospodinjstvo	samostalnik	3	stanovanjska enota
+bati	bala	samostalnik	1	stisnjena krma
+bati	bala	samostalnik	2	nevestina oprema
+arhiv	arhiv	samostalnik	1	ustanova
+arhiv	arhiv	samostalnik	2	zbirka
+arhiv	arhiv	samostalnik	3	o hrambi datotek
+arhiv	arhiv	samostalnik	4	prostor za hranjenje vin
+arbiter	arbiter	samostalnik	1	razsodnik
+arbiter	arbiter	samostalnik	2	avtoriteta
+anatomija	anatomija	samostalnik	1	znanstvena veda
+anatomija	anatomija	samostalnik	2	zgradba telesa
+čajanka	čajanka	samostalnik	1	kulturna prireditev
+čajanka	čajanka	samostalnik	2	popoldansko pitje čaja
+adolescenca	adolescenca	samostalnik	1	odraščanje
+cvetica	cvetica	samostalnik	1	rastlina s cvetom
+cvetica	cvetica	samostalnik	2	aroma vina
+broširan	broširan	pridevnik	1	mehko vezan
+arheolog	arheolog	samostalnik	1	strokovnjak za arheologijo
+polkovin	polkovina	samostalnik	1	vrsta kemijskega elementa
+avtonomen	avtonomen	pridevnik	1	ki ima politično samoupravo
+avtonomen	avtonomen	pridevnik	2	samostojen; neodvisen;
+avtonomen	avtonomen	pridevnik	3	o stroju ali napravi
+čajnica	čajnica	samostalnik	1	gostinski lokal
+abstraktno	abstraktno	prislov	1	miselno; predstavno;
+abstraktno	abstraktno	prislov	2	nejasno; nenazorno;
+brat	brat	samostalnik	1	sorodnik
+brat	brat	samostalnik	2	pripadnik skupine
+brat	brat	samostalnik	3	pripadnik verskega reda
+brat	brat	samostalnik	4	sorodna stvar
+oktaeder	oktaeder	samostalnik	1	geometrijsko telo
+čelada	čelada	samostalnik	1	zaščitno pokrivalo
+cvet	cvet	samostalnik	1	del rastline
+cvet	cvet	samostalnik	2	cvetlica; roža;
+cvet	cvet	samostalnik	3	najboljši del
+nekrolog	nekrolog	samostalnik	1	članek o umrli osebi
+avokado	avokado	samostalnik	1	sadež
+aorta	aorta	samostalnik	1	žila
+brizgalka	brizgalka	samostalnik	1	v zdravstvu
+brizgalek	brizgalka	samostalnik	2	naprava za brizganje vode
+brizgalek	brizgalka	samostalnik	3	slaščičarski pripomoček
+železobeton	železobeton	samostalnik	1	gradbeni material
+avtoritaren	avtoritaren	pridevnik	1	diktatorski
+avtoritaren	avtoritaren	pridevnik	2	ukazovalen
+civilist	civilist	samostalnik	1	nevojak
+sinagoga	sinagoga	samostalnik	1	verski objekt
+gozdarstvo	gozdarstvo	samostalnik	1	veda in panoga
+bilka	bilka	samostalnik	1	rastlinsko steblo
+barvitost	barvitost	samostalnik	1	barvna raznolikost
+barvitost	barvitost	samostalnik	2	pestrost; značilnost;
+peteroboj	peteroboj	samostalnik	1	tekmovanje v petih panogah
+arheološki	arheološki	pridevnik	1	o arheologiji
+tovarnar	tovarnar	samostalnik	1	lastnik tovarne
+pavek	pavka	samostalnik	1	glasbilo
+avtomatično	avtomatično	prislov	1	vnaprej določeno
+avtomatično	avtomatično	prislov	2	samodejno
+avtomatično	avtomatično	prislov	3	nezavedno; refleksno;
+tvist	tvist	samostalnik	1	ples
+tvist	tvist	samostalnik	2	vrsta glasbe
+tvist	tvist	samostalnik	3	preobrat
+tvist	tvist	samostalnik	4	razpršeni zgledi - možni pomeni
+absurdnost	absurdnost	samostalnik	1	nesmiselnost
+absurdnost	absurdnost	samostalnik	2	smešnost
+sokota	sokot	samostalnik	1	vrsta kota
+avto	avto	samostalnik	1	prevozno sredstvo
+voltmeter	voltmeter	samostalnik	1	merilna naprava
+belina	belina	samostalnik	1	bela barva
+belina	belina	samostalnik	2	kar je bele barve
+belina	belina	samostalnik	3	o nastavitvah
+funkcionar	funkcionar	samostalnik	1	uradnik
+mecen	mecen	samostalnik	1	finančni podpornik
+nadglavišče	nadglavišče	samostalnik	1	o točki na nebu
+scenograf	scenograf	samostalnik	1	oblikovalec scene
+ciklus	ciklus	samostalnik	1	obdobje
+ciklus	ciklus	samostalnik	2	o umetniških delih
+terakot	terakota	samostalnik	1	vrsta lončenine
+neolitik	neolitik	samostalnik	1	obdobje prazgodovine
+jedek	jedek	pridevnik	1	ki razjeda
+jedek	jedek	pridevnik	2	intenziven; oster;
+jedek	jedek	pridevnik	3	zajedljiv; piker;
+badminton	badminton	samostalnik	1	šport
+cunami	cunami	samostalnik	1	popotresni val
+cunami	cunami	samostalnik	2	o negativnih dogodkih
+klavzula	klavzula	samostalnik	1	določba v pogodbi
+aerodinamičen	aerodinamičen	pridevnik	1	učinkovit pri gibanju skozi zrak
+avtomobil	avtomobil	samostalnik	1	prevozno sredstvo
+slovar	slovar	samostalnik	1	jezikovni priročnik
+slovar	slovar	samostalnik	2	besedišče
+častiti	častiti	glagol	1	povabiti in plačati račun
+bolnišnica	bolnišnica	samostalnik	1	zdravstvena ustanova
+česati	česati	glagol	1	urejati lase ali dlako
+česati	česati	glagol	2	o vlaknih
+česati	česati	glagol	3	temeljito preiskovati
+trzalica	trzalica	samostalnik	1	pripomoček za igranje kitare
+cikličen	cikličen	pridevnik	1	ponavljajoč
+cikličen	cikličen	pridevnik	2	vsebinsko povezan v celoto
+cikličen	cikličen	pridevnik	3	o spojini
+cikličen	cikličen	pridevnik	4	iz več povezanih stavkov
+agonija	agonija	samostalnik	1	umiranje
+agonija	agonija	samostalnik	2	težavno obdobje
+arheologija	arheologija	samostalnik	1	znanstvena veda
+trobentar	trobentar	samostalnik	1	glasbenik
+čebula	čebula	samostalnik	1	rastlina
+čistilec	čistilec	samostalnik	1	kdor se ukvarja s čiščenjem
+čistilec	čistilec	samostalnik	2	naprava
+čistilec	čistilec	samostalnik	3	rastlina
+cenen	cenen	pridevnik	1	poceni
+cenen	cenen	pridevnik	2	slabše kakovosti
+cenen	cenen	pridevnik	3	nezahteven; podcenjujoč;
+rodilnik	rodilnik	samostalnik	1	sklon
+skrček	skrčka	samostalnik	1	telovadna prvina
+deaktivirati	deaktivirati	glagol	1	o eksplozivu
+deaktivirati	deaktivirati	glagol	2	o napravi
+deaktivirati	deaktivirati	glagol	3	v kemiji
+škripčevje	škripčevje	samostalnik	1	sistem škripcev
+čarovnik	čarovnik	samostalnik	1	pravljično bitje
+čarovnik	čarovnik	samostalnik	2	umetniški poklic
+čarovnik	čarovnik	samostalnik	3	sposoben človek
+čarovnik	čarovnik	samostalnik	4	program
+alkohol	alkohol	samostalnik	1	alkoholna pijača
+alkohol	alkohol	samostalnik	2	kemična spojina
+jamb	jamb	samostalnik	1	stopica
+arhiviranje	arhiviranje	samostalnik	1	shranjevanje
+arhiviranje	arhiviranje	samostalnik	2	o podatkih
+arhiviranje	arhiviranje	samostalnik	3	o vinu
+čeden	čeden	pridevnik	1	privlačen
+čeden	čeden	pridevnik	2	o veliki količini
+besneti	besneti	glagol	1	jeziti se
+besneti	besneti	glagol	2	o pojavih
+brezplačen	brezplačen	pridevnik	1	ki je zastonj
+blago	blago	samostalnik	1	predmeti za prodajo
+blag	blago	samostalnik	2	tkanina
+anonimnost	anonimnost	samostalnik	1	odsotnost identitete
+anonimnost	anonimnost	samostalnik	2	neuveljavljenost
+anonimnost	anonimnost	samostalnik	3	neopaznost; pustost;
+uglaševaleca	uglaševalec	samostalnik	1	poklic
+armada	armada	samostalnik	1	vojska
+armada	armada	samostalnik	2	velika skupina
+savana	savana	samostalnik	1	tropska pokrajina
+anoreksija	anoreksija	samostalnik	1	motnja hranjenja
+avtoritativen	avtoritativen	pridevnik	1	odločen; vpliven;
+avtoritativen	avtoritativen	pridevnik	2	zanesljiv; verodostojen;
+avtoritativen	avtoritativen	pridevnik	3	diktatorski
+financirati	financirati	glagol	1	zagotoviti denarna sredstva
+biceps	biceps	samostalnik	1	mišica
+informiranje	informiranje	samostalnik	1	obveščanje
+avdicija	avdicija	samostalnik	1	nastop pred komisijo
+vandalizem	vandalizem	samostalnik	1	namerno uničevalno dejanje
+bonbon	bonbon	samostalnik	1	sladkarija
+bazar	bazar	samostalnik	1	orientalska tržnica
+bazar	bazar	samostalnik	2	prireditev
+čistilka	čistilka	samostalnik	1	poklic
+čistilka	čistilka	samostalnik	2	rastlina
+barvast	barvast	pridevnik	1	ki je določene barve
+barvast	barvast	pridevnik	2	različnih barv; pisan;
+blaženost	blaženost	samostalnik	1	občutek sreče
+blaženost	blaženost	samostalnik	2	o stanju po smrti
+cvetličen	cvetličen	pridevnik	1	o cvetlicah
+cvetličen	cvetličen	pridevnik	2	o barvi
+preventiva	preventiva	samostalnik	1	preprečevanje
+prozoren	prozoren	pridevnik	1	o predmetih in snoveh
+prozoren	prozoren	pridevnik	2	o dejanjih
+supermarket	supermarket	samostalnik	1	večja trgovina
+ansambel	ansambel	samostalnik	1	skupina glasbenikov
+ansambel	ansambel	samostalnik	2	skupina plesalcev ali igralcev
+debelina	debelina	samostalnik	1	lastnost predmeta
+primernik	primernik	samostalnik	1	oblika pridevnika
+skladnja	skladnja	samostalnik	1	o organizaciji besed v stavke
+litosfera	litosfera	samostalnik	1	zunanja plast planeta
+karbon	karbon	samostalnik	1	trdna snov
+karbon	karbon	samostalnik	2	geološka doba
+avtonomija	avtonomija	samostalnik	1	samouprava
+avtonomija	avtonomija	samostalnik	2	ozemlje s samoupravo
+avtonomija	avtonomija	samostalnik	3	neodvisnost pri odločanju
+avtonomija	avtonomija	samostalnik	4	o delovanju naprav
+princ	princ	samostalnik	1	član vladarske družine
+princ	princ	samostalnik	2	idealen moški
+princ	princ	samostalnik	3	v pravljici
+bibliografija	bibliografija	samostalnik	1	seznam del
+cenzura	cenzura	samostalnik	1	o spornih vsebinah
+nekropola	nekropola	samostalnik	1	grobišče
+zelen	zelena	samostalnik	1	vrsta zelenjave
+beluš	beluš	samostalnik	1	rastlina
+učenjak	učenjak	samostalnik	1	učen človek; strokovnjak;
+politeizem	politeizem	samostalnik	1	verovanje v več bogov
+psihoterapija	psihoterapija	samostalnik	1	oblika zdravljenja
+embalaža	embalaža	samostalnik	1	material za shranjevanje
+embalaža	embalaža	samostalnik	2	zunanja podoba
+violončelist	violončelist	samostalnik	1	glasbenik
+črtica	črtica	samostalnik	1	majhna črta
+črtica	črtica	samostalnik	2	kratko literarno delo
+absurd	absurd	samostalnik	1	nesmisel
+absurd	absurd	samostalnik	2	umetniško delo
+akuten	akuten	pridevnik	1	o bolezni
+akuten	akuten	pridevnik	2	o problemu
+arhitektura	arhitektura	samostalnik	1	veda in dejavnost
+arhitektura	arhitektura	samostalnik	2	o gradnji stavb
+arhitektura	arhitektura	samostalnik	3	struktura; ureditev;
+arhitektura	arhitektura	samostalnik	4	o sistemu
+burja	burja	samostalnik	1	veter
+atentator	atentator	samostalnik	1	napadalec
+bolniški	bolniški	pridevnik	1	o bolniku
+bolniški	bolniški	pridevnik	2	o bolnišnici
+zlatnik	zlatnik	samostalnik	1	kovanec
+čaroben	čaroben	pridevnik	1	ki ima nadnaravno moč
+čaroben	čaroben	pridevnik	2	ki ima velik učinek
+čaroben	čaroben	pridevnik	3	zelo lep
+brezobziren	brezobziren	pridevnik	1	nesramen
+brezobziren	brezobziren	pridevnik	2	neusmiljen; krut;
+brezbarven	brezbarven	pridevnik	1	ki nima barve
+brezbarven	brezbarven	pridevnik	2	bled
+brezbarven	brezbarven	pridevnik	3	neizrazit; enoličen;
+brezbarven	brezbarven	pridevnik	4	politično neopredeljen
+alergičen	alergičen	pridevnik	1	o človeku
+alergičen	alergičen	pridevnik	2	o obolenju
+alergičen	alergičen	pridevnik	3	o odporu do česa
+arhivski	arhivski	pridevnik	1	o ustanovi
+arhivski	arhivski	pridevnik	2	o zbirki
+arhivski	arhivski	pridevnik	3	o podatkih
+arhivski	arhivski	pridevnik	4	star
+broška	broška	samostalnik	1	nakit
+kurikulum	kurikulum	samostalnik	1	učni načrt
+tonik	tonika	samostalnik	1	stopnja v lestvici
+članek	članek	samostalnik	1	krajše besedilo
+akreditiran	akreditiran	pridevnik	1	uradno pooblaščen
+curry	curry	samostalnik	1	mešanica začimb
+curry	curry	samostalnik	2	azijska jed
+benigen	benigen	pridevnik	1	nenevaren
+benigen	benigen	pridevnik	2	neškodljiv
+blondinka	blondinka	samostalnik	1	svetlolaska
+paracetamol	paracetamol	samostalnik	1	protibolečinsko zdravilo
+čaj	čaj	samostalnik	1	pijača; posušena zelišča;
+čaj	čaj	samostalnik	2	rastlina
+čaj	čaj	samostalnik	3	dogodek
+brazda	brazda	samostalnik	1	dolg ozek rez v zemlji
+brazda	brazda	samostalnik	2	guba na delu telesa
+brazda	brazda	samostalnik	3	vdolbina
+brazda	brazda	samostalnik	4	sled plovila
+brazda	brazda	samostalnik	5	vrhnji del pestiča
+brazda	brazda	samostalnik	6	zapis zvoka
+brazda	brazda	samostalnik	7	o občutjih
+bife	bife	samostalnik	1	gostinski lokal
+bife	bife	samostalnik	2	pripravljena hrana
+bife	bife	samostalnik	3	omarica za pijačo
+tokat	tokata	samostalnik	1	vrsta glasbenega dela
+bridko	bridko	prislov	1	žalostno; nesrečno;
+bridko	bridko	prislov	2	močno; zelo;
+parlamentarizem	parlamentarizem	samostalnik	1	oblika politične ureditve
+trajekt	trajekt	samostalnik	1	plovilo
+alkoholen	alkoholen	pridevnik	1	o pijači
+alkoholen	alkoholen	pridevnik	2	o kemični spojini
+čajnik	čajnik	samostalnik	1	posoda za pripravo čaja
+sociolingvistik	sociolingvistika	samostalnik	1	veja jezikoslovja
+ambiciozen	ambiciozen	pridevnik	1	ki želi uspeti
+ambiciozen	ambiciozen	pridevnik	2	velikopotezen
+hiteti	hiteti	glagol	1	pri dejavnosti
+hiteti	hiteti	glagol	2	o premikanju
+hiteti	hiteti	glagol	3	minevati
+pogozdovanje	pogozdovanje	samostalnik	1	sajenje dreves
+bankomat	bankomat	samostalnik	1	bančna naprava
+briljanten	briljanten	pridevnik	1	izjemen
+briljanten	briljanten	pridevnik	2	iz briljantov
+briljanten	briljanten	pridevnik	3	bleščeč
+viadukt	viadukt	samostalnik	1	most
+bičati	bičati	glagol	1	udarjati z bičem
+bičati	bičati	glagol	2	o naravnih pojavih
+bičati	bičati	glagol	3	ostro kritizirati
+brusiti	brusiti	glagol	1	površino
+brusiti	brusiti	glagol	2	orodje; orožje;
+brusiti	brusiti	glagol	3	del telesa
+brusiti	brusiti	glagol	4	znanje; veščino;
+častiti	častiti	glagol	1	izkazovati spoštovanje
+premetanka	premetanka	samostalnik	1	uganka premešanja črk
+središčnica	središčnica	samostalnik	1	vrednost
+središčnica	središčnica	samostalnik	2	črta
+središčnica	središčnica	samostalnik	3	faza igre
+središčnic	središčnica	samostalnik	4	temeljni del
+cviljenje	cviljenje	samostalnik	1	o oglašanju živali
+cviljenje	cviljenje	samostalnik	2	o napravah ali predmetih
+bobnati	bobnati	glagol	1	igrati bobne
+bobnati	bobnati	glagol	2	udarjati
+bobnati	bobnati	glagol	3	veliko govoriti
+avtomatiziran	avtomatiziran	pridevnik	1	strojno voden
+avtomatiziran	avtomatiziran	pridevnik	2	nezaveden; rutinski;
+nikalnica	nikalnica	samostalnik	1	pri zanikanju
+cedilo	cedilo	samostalnik	1	kuhinjski pripomoček
+avtoriteta	avtoriteta	samostalnik	1	vpliv; moč;
+avtoriteta	avtoriteta	samostalnik	2	priznan strokovnjak
+avtoriteta	avtoriteta	samostalnik	3	oblast; vodstvo;
+podnapis	podnapis	samostalnik	1	pri filmu
+podnapis	podnapis	samostalnik	2	komentar; naslov;
+aluzija	aluzija	samostalnik	1	namigovanje
+cveteti	cveteti	glagol	1	pognati cvetove
+cveteti	cveteti	glagol	2	o algah
+cveteti	cveteti	glagol	3	prinašati dobiček
+cveteti	cveteti	glagol	4	izgledati srečen
+homon	homonim	samostalnik	1	o besedi
+CD	CD	samostalnik	1	podatkovni medij
+bakren	bakren	pridevnik	1	izdelan iz bakra
+bakren	bakren	pridevnik	2	o barvi
+aplikacija	aplikacija	samostalnik	1	računalniški program
+aplikacija	aplikacija	samostalnik	2	uporaba v praksi
+aplikacija	aplikacija	samostalnik	3	vnos v telo
+aplikacija	aplikacija	samostalnik	4	izdelek iz blaga
+debelost	debelost	samostalnik	1	prevelika telesna teža
+debelost	debelost	samostalnik	2	širina; debelina;
+vat	vat	samostalnik	1	enota za moč
+geodezija	geodezija	samostalnik	1	veda
+bresti	bresti	glagol	1	premikati se po razmočeni zemlji
+bresti	bresti	glagol	2	spuščati se v težave
+kari	kari	samostalnik	1	mešanica začimb
+kari	kari	samostalnik	2	azijska jed
+twist	twist	samostalnik	1	ples
+twist	twist	samostalnik	2	vrsta glasbe
+twist	twist	samostalnik	3	preobrat v razpletu
+twist	twist	samostalnik	4	figura pri drsanju
+twist	twist	samostalnik	5	pri jadranju
+rešilec	rešilec	samostalnik	1	vozilo
+terenec	terenec	samostalnik	1	avto
+terenec	terenec	samostalnik	2	med NOB
+terenec	terenec	samostalnik	3	kdor dela na terenu
+starodobnik	starodobnik	samostalnik	1	vozilo
+timpan	timpan	samostalnik	1	glasbilo
+mediana	mediana	samostalnik	1	srednja vrednost
+anonimen	anonimen	pridevnik	1	o neimenovanem avtorju
+anonimen	anonimen	pridevnik	2	še neuveljavljen
+anonimen	anonimen	pridevnik	3	ki zagotavlja skrito identiteto
+anonimen	anonimen	pridevnik	4	neopazen
+tsunami	tsunami	samostalnik	1	popotresni val
+tsunami	tsunami	samostalnik	2	o negativnih dogodkih
+forsirati	forsirati	glagol	1	dajati prednost
+forsirati	forsirati	glagol	2	siliti
+forsirati	forsirati	glagol	3	pretiravati
+fejst	fejst	pridevnik	1	dober; krasen;
+fejst	fejst	pridevnik	2	privlačen; postaven;
+filmotek	filmoteka	samostalnik	1	zbirka filmov
+filmotek	filmoteka	samostalnik	2	izposojevalnica filmov
+izgnanec	izgnanec	samostalnik	1	kdor prisilno biva v tujini
+meka	meka	samostalnik	1	središče dogajanja
+dolgoprogašic	dolgoprogašica	samostalnik	1	v teku
+dolgoprogašica	dolgoprogašica	samostalnik	2	v drugih športih
+plešec	plešec	samostalnik	1	moški brez las
+plešec	plešec	samostalnik	2	rastlina
+plešec	plešec	samostalnik	3	vrsta jastreba
+florentinec	florentinec	samostalnik	1	zrezek
+florentinec	florentinec	samostalnik	2	golob
+florentinec	florentinec	samostalnik	3	piškot
+počitnikovat	počitnikovati	glagol	1	biti na počitnicah
+telegram	telegram	samostalnik	1	sporočilo
+kolaboracija	kolaboracija	samostalnik	1	sodelovanje s sovražnikom
+kolaboracija	kolaboracija	samostalnik	2	sodelovanje
+gruzinski	gruzinski	pridevnik	1	o Gruziji in Gruzincih
+afront	afront	samostalnik	1	napad ali nasprotovanje
+hokejist	hokejist	samostalnik	1	športnik
+grafikon	grafikon	samostalnik	1	grafični prikaz
+amazonka	amazonka	samostalnik	1	o mentalni ali fizični lastnosti
+amazonka	amazonka	samostalnik	2	papiga
+amazonka	amazonka	samostalnik	3	bojevnica
+homoseksualec	homoseksualec	samostalnik	1	kdor je istospolno usmerjen
+nagajiv	nagajiv	pridevnik	1	igriv
+nagajiv	nagajiv	pridevnik	2	o nedisciplini
+nagajiv	nagajiv	pridevnik	3	o spolnosti
+nagajiv	nagajiv	pridevnik	4	o nevšečnosti
+izrazoslovje	izrazoslovje	samostalnik	1	strokovni izrazi
+izrazoslovje	izrazoslovje	samostalnik	2	veda
+izrazoslovje	izrazoslovje	samostalnik	3	o izražanju
+kit	kita	samostalnik	1	o laseh
+kit	kita	samostalnik	2	pri mišicah
+kita	kita	samostalnik	3	o izdelkih
+metropola	metropola	samostalnik	1	glavno mesto
+metropola	metropola	samostalnik	2	središče dejavnosti
+izkoreniniti	izkoreniniti	glagol	1	o slabi stvari
+izkoreniniti	izkoreniniti	glagol	2	o rastlini
+naftar	naftar	samostalnik	1	o podjetju ali lastniku
+jopič	jopič	samostalnik	1	oblačilo
+kočnik	kočnik	samostalnik	1	zob
+pokostnic	pokostnica	samostalnik	1	vezno tkivo na kosti
+sramnic	sramnica	samostalnik	1	kost
+sramnic	sramnica	samostalnik	2	spolovilo
+brbončic	brbončica	samostalnik	1	del telesa
+brbončic	brbončica	samostalnik	2	o okusu
+zatilje	zatilje	samostalnik	1	del glave in vratu
+genitalija	genitalije	samostalnik	1	spolovila
+anus	anus	samostalnik	1	del telesa
+krvnička	krvnička	samostalnik	1	krvna celica
+zigota	zigota	samostalnik	1	oplojeno jajčece
+iztegovalka	iztegovalka	samostalnik	1	mišica
+zadnjik	zadnjik	samostalnik	1	del telesa
+izpljunek	izpljunek	samostalnik	1	izloček iz ust
+spojek	spojek	samostalnik	1	oplojeno jajčece
+hokejistka	hokejistka	samostalnik	1	športnica
+letak	letak	samostalnik	1	reklamni list
+kronist	kronist	samostalnik	1	pisec kronik
+prostata	prostata	samostalnik	1	žleza
+zapisovalka	zapisovalka	samostalnik	1	ženska, ki kaj zapisuje
+začarati	začarati	glagol	1	o nadnaravni moči
+začarati	začarati	glagol	2	očarati; prevzeti;
+začarati	začarati	glagol	3	o domišljijskem svetu
+začarati	začarati	glagol	4	o veliki spremembi
+začarati	začarati	glagol	5	o čarobni lepoti
+začarati	začarati	glagol	6	izvajati trike
+začarati	začarati	glagol	7	onemogočiti zadetek
+izvedenec	izvedenec	samostalnik	1	strokovnjak
+izvedenec	izvedenec	samostalnik	2	dober poznavalec
+tunika	tunika	samostalnik	1	oblačilo
+tunika	tunika	samostalnik	2	antično oblačilo
+tunika	tunika	samostalnik	3	liturgično oblačilo
+tunika	tunika	samostalnik	4	membrana
+sečilo	sečila	samostalnik	1	sistem izločanja seča
+prepucij	prepucij	samostalnik	1	koža na moškem spolnem udu
+jajce	jajce	samostalnik	1	pri pticah in plazilcih
+jajce	jajce	samostalnik	2	v kulinariki
+jajce	jajce	samostalnik	3	predmet ovalne oblike
+deng	denga	samostalnik	1	bolezen
+študij	študija	samostalnik	1	raziskava
+študij	študija	samostalnik	2	krajše znanstveno delo
+študij	študija	samostalnik	3	risba
+študij	študija	samostalnik	4	umetniški prikaz
+antičen	antičen	pridevnik	1	o zgodovinskem obdobju
+antičen	antičen	pridevnik	2	zelo star; zastarel;
+jezikoven	jezikoven	pridevnik	1	o načinu izražanja
+kroničen	kroničen	pridevnik	1	o bolezni in bolnikih
+kroničen	kroničen	pridevnik	2	o problemu
+ponoči	ponoči	prislov	1	čez noč
+neposredno	neposredno	prislov	1	direktno
+neposredno	neposredno	prislov	2	časovno blizu
+neposredno	neposredno	prislov	3	o lokaciji
+neposredno	neposredno	prislov	4	brez dodatnih nastopov
+neposredno	neposredno	prislov	5	odkrito; iskreno;
+neposredno	neposredno	prislov	6	v živo
+neposredno	neposredno	prislov	7	brez vmesnega člena
+atomski	atomski	pridevnik	1	o atomski energiji
+atomski	atomski	pridevnik	2	o atomu
+atomski	atomski	pridevnik	3	o nadpovprečnosti
+celinski	celinski	pridevnik	1	o površju
+celinski	celinski	pridevnik	2	o delu države ali regije
+celinski	celinski	pridevnik	3	o geopolitičnem območju
+kmetijski	kmetijski	pridevnik	1	o kmetijstvu
+kontinent	kontinent	samostalnik	1	površina kopnega
+letališče	letališče	samostalnik	1	o letalih
+občutno	občutno	prislov	1	precej; znatno;
+RNK	RNK	samostalnik	1	organska spojina
+astronomski	astronomski	pridevnik	1	o opazovanju zvezd
+astronomski	astronomski	pridevnik	2	zelo visok
+atenski	atenski	pridevnik	1	o Atenah
+dovoljen	dovoljen	pridevnik	1	o dovoljenju
+dovoljen	dovoljen	pridevnik	2	o omejitvi
+fosil	fosil	samostalnik	1	okamenina
+fosil	fosil	samostalnik	2	o osebi
+jugovzhod	jugovzhod	samostalnik	1	smer
+jugovzhod	jugovzhod	samostalnik	2	območje
+kraton	kraton	samostalnik	1	del celinske plošče
+moto	moto	samostalnik	1	vodilo; načelo;
+moto	moto	samostalnik	2	slogan
+najeti	najeti	glagol	1	o prostoru ali vozilu
+najeti	najeti	glagol	2	o ljudeh
+najeti	najeti	glagol	3	o posojilu
+očitno	očitno	prislov	1	vidno
+očitno	očitno	prislov	2	domnevno
+očitno	očitno	prislov	3	bolj
+pomemben	pomembno	prislov	1	znatno
+pomemben	pomembno	prislov	2	vzvišeno
+pomemben	pomembno	prislov	3	ključno
+viza	viza	samostalnik	1	dokument
+aberacij	aberacija	samostalnik	1	napaka leče
+aberacij	aberacija	samostalnik	2	o premiku zvezde
+aberacij	aberacija	samostalnik	3	lastnost, ki odstopa
+aberacij	aberacija	samostalnik	4	odstopanje; nepravilnost;
+alergijski	alergijski	pridevnik	1	o alergiji
+antagonist	antagonist	samostalnik	1	nasprotnik
+antagonist	antagonist	samostalnik	2	o snovi
+antagonist	antagonist	samostalnik	3	o mišici
+antagonist	antagonist	samostalnik	4	literarni lik
+aretirati	aretirati	glagol	1	odvzeti prostost
+aretirati	aretirati	glagol	2	blokirati
+arhitekturen	arhitekturen	pridevnik	1	o načrtovanju objektov
+arhitekturen	arhitekturen	pridevnik	2	o arhitektih
+atmosferski	atmosferski	pridevnik	1	o plasti planeta
+atmosferski	atmosferski	pridevnik	2	o vzdušju
+atmosferski	atmosferski	pridevnik	3	o napravi
+bezgavka	bezgavka	samostalnik	1	del telesa
+biodizel	biodizel	samostalnik	1	gorivo
+blizu	blizu	prislov	1	o fizični razdalji
+blizu	blizu	prislov	2	o pozitivnem odnosu; povezanosti;
+blizu	blizu	prislov	3	o časovni razdalji
+blizu	blizu	prislov	4	skoraj
+blizu	blizu	prislov	6	o fizični razdalji
+blizu	blizu	prislov	7	o časovni razdalji
+brazgotinjenje	brazgotinjenje	samostalnik	1	o nastanku brazgotin
+brezplačno	brezplačno	prislov	1	zastonj
+carinski	carinski	pridevnik	1	o dejavnosti
+carinski	carinski	pridevnik	2	o dajatvi
+carinski	carinski	pridevnik	3	o zgradbi ali območju
+cepljiv	cepljiv	pridevnik	1	o lastnosti elementa
+cepljiv	cepljiv	pridevnik	2	o lesu
+cesarica	cesarica	samostalnik	1	vladarka
+cesarica	cesarica	samostalnik	2	vladarjeva žena
+cesarica	cesarica	samostalnik	3	mojstrica; virtuozinja;
+cesarski	cesarski	pridevnik	1	o cesarju
+cesarski	cesarski	pridevnik	2	o cesarstvu
+desetkrat	desetkrat	prislov	1	o desetih ponovitvah
+desetkrat	desetkrat	prislov	2	o razmerju
+desetkrat	desetkrat	prislov	3	veliko
+diktatorski	diktatorski	pridevnik	1	o načinu vladanja
+diktatorski	diktatorski	pridevnik	2	ukazovalen
+donatorek	donatorka	samostalnik	1	o finančni podpori
+donatorek	donatorka	samostalnik	2	o telesnih organih
+dvodomen	dvodomen	pridevnik	1	o političnem telesu
+dvodomen	dvodomen	pridevnik	2	o rastlini
+dvoglasen	dvoglasen	pridevnik	1	o petju
+dvoglasen	dvoglasen	pridevnik	2	o dveh glasovih
+dvojezičen	dvojezičen	pridevnik	1	v dveh jezikih
+dvojezičen	dvojezičen	pridevnik	2	ki zna dva jezika
+eksempel	eksempel	samostalnik	1	kratka pripoved
+eksempel	eksempel	samostalnik	2	zgled
+emigrirati	emigrirati	glagol	1	izseliti se v tujino
+endoparazit	endoparazit	samostalnik	1	organizem
+epilepsija	epilepsija	samostalnik	1	bolezen
+evakuirati	evakuirati	glagol	1	preseliti zaradi nevarnosti
+evakuirati	evakuirati	glagol	2	o prostoru
+evakuirati	evakuirati	glagol	3	o snovi
+filmski	filmski	pridevnik	1	o filmu
+filmski	filmski	pridevnik	2	nerealen
+filmski	filmski	pridevnik	3	zelo lep
+flirtata	flirtati	glagol	1	izkazovati seksualni interes
+flirtati	flirtati	glagol	2	biti naklonjen čemu
+flirtata	flirtati	glagol	3	o nevarnosti
+flirtati	flirtati	glagol	4	izzivalno se obnašati
+glasbenica	glasbenica	samostalnik	1	ženska, ki se ukvarja z glasbo
+gnezdišče	gnezdišče	samostalnik	1	o gnezdih živali
+gnezdišče	gnezdišče	samostalnik	2	vir dejavnosti; leglo;
+identificirati	identificirati	glagol	1	enačiti; istovetiti;
+identificirati	identificirati	glagol	2	določiti identiteto
+identificirati	identificirati	glagol	3	odkriti
+identificirati	identificirati	glagol	4	evidentirati
+intravenski	intravenski	pridevnik	1	vbrizgan v veno
+intravenski	intravensko	prislov	1	v veno
+izseljevanje	izseljevanje	samostalnik	1	proces selitev
+izumreti	izumrl	pridevnik	1	o živem bitju
+izumrl	izumrl	pridevnik	2	o dejavnosti ali predmetu
+izumreti	izumrl	pridevnik	3	o kraju
+jugovzhodno	jugovzhodno	prislov	1	o smeri
+jugozahod	jugozahod	samostalnik	1	smer
+jugozahod	jugozahod	samostalnik	2	območje
+južno	južno	prislov	1	o smeri neba
+južno	južno	prislov	2	manj
+kanibalizem	kanibalizem	samostalnik	1	pri človeku
+kanibalizem	kanibalizem	samostalnik	2	pri živalih
+kanibalizem	kanibalizem	samostalnik	3	o uničevanju
+kapelica	kapelica	samostalnik	1	majhna verska zgradba
+karoserija	karoserija	samostalnik	1	ohišje avtomobila
+kolidž	kolidž	samostalnik	1	izobraževalna ustanova
+kontinentalen	kontinentalen	pridevnik	1	o površju
+kontinentalen	kontinentalen	pridevnik	2	o delu države ali regije
+kontinentalen	kontinentalen	pridevnik	3	o geopolitičnem območju
+kontinentalen	kontinentalen	pridevnik	4	o celinskem delu Evrope
+kontingent	kontingent	samostalnik	1	o količini blaga
+kontingent	kontingent	samostalnik	2	delež
+kontingent	kontingent	samostalnik	3	o vojski ali policiji
+kontingent	kontingent	samostalnik	4	o predstavnikih
+kontroverzen	kontroverzen	pridevnik	1	ki deli mnenja; sporen;
+kozmonavt	kozmonavt	samostalnik	1	astronavt
+kriminal	kriminal	samostalnik	1	kazniva dejavnost
+kriminal	kriminal	samostalnik	2	o nesprejemljivosti
+kriminalec	kriminalec	samostalnik	1	zločinec; lopov;
+kurator	kurator	samostalnik	1	skrbnik umetniških del
+kurator	kurator	samostalnik	2	pravni zastopnik
+legendaren	legendaren	pridevnik	1	znamenit; slaven;
+legendaren	legendaren	pridevnik	2	o legendi
+leposlovje	leposlovje	samostalnik	1	umetniška književna dela
+letopis	letopis	samostalnik	1	letna publikacija
+letopis	letopis	samostalnik	2	o pomembnem dosežku
+letopis	letopis	samostalnik	3	letni pregled pomembnih dogodkov
+litovščina	litovščina	samostalnik	1	litovski jezik
+matematičarka	matematičarka	samostalnik	1	strokovnjakinja
+matematičarka	matematičarka	samostalnik	2	ženska, ki dobro računa
+medicinski	medicinski	pridevnik	1	o zdravljenju
+medicinski	medicinski	pridevnik	2	o vedi
+mikroskopski	mikroskopski	pridevnik	1	o mikroskopu
+mikroskopski	mikroskopski	pridevnik	2	ki se ga vidi le z mikroskopom
+mikroskopski	mikroskopski	pridevnik	3	zelo majhen
+mikroskopski	mikroskopski	pridevnik	4	zelo podroben
+monoteističen	monoteističen	pridevnik	1	o veri
+nagrajenka	nagrajenka	samostalnik	1	prejemnica nagrade
+odobriti	odobriti	glagol	1	dati dovoljenje
+odobriti	odobriti	glagol	2	o denarju
+odobriti	odobriti	glagol	3	uslišati prošnjo
+odobriti	odobriti	glagol	4	potrditi veljavnost
+ognojek	ognojek	samostalnik	1	gnojna rana
+očitek	očitek	samostalnik	1	kritika; izraz nezadovoljstva;
+pljučen	pljučen	pridevnik	1	o organu
+pljučen	pljučen	pridevnik	2	o jedi
+pljučen	pljučen	pridevnik	3	za zdravje pljuč
+premier	premier	samostalnik	1	predsednik vlade
+reprezentanca	reprezentanca	samostalnik	1	državna ekipa
+reprezentanca	reprezentanca	samostalnik	2	pogostitev v poslovne namene
+rock'n'roll	rock'n'roll	samostalnik	1	vrsta glasbe
+rock'n'roll	rock'n'roll	samostalnik	2	ples
+traheitis	traheitis	samostalnik	1	bolezen
+trobenta	trobenta	samostalnik	1	glasbilo
+trobenta	trobenta	samostalnik	2	glasbenik
+trobenta	trobenta	samostalnik	3	igranje trobente
+trobenta	trobenta	samostalnik	4	goba
+trobenta	trobenta	samostalnik	5	izpušni sistem
+trobenta	trobenta	samostalnik	6	o zvoku ali obliki trobente
+trobenta	trobenta	samostalnik	7	o propagandi
+zarja	zarja	samostalnik	1	svetlobni pojav
+zarja	zarja	samostalnik	2	o začetku nečesa
+zdravstvo	zdravstvo	samostalnik	1	dejavnost
+zenit	zenit	samostalnik	1	o točki na nebu
+zenit	zenit	samostalnik	2	vrhunec; višek;
+zimzelen	zimzelen	pridevnik	1	o rastlini
+zimzelen	zimzelen	pridevnik	2	dolgo priljubljen
+zimzelen	zimzelen	pridevnik	3	vedno aktualen
+zimzelen	zimzelen	pridevnik	4	dober kljub starosti
+zjutraj	zjutraj	prislov	1	o delu dneva
+znojenje	znojenje	samostalnik	1	telesni proces
+čezatlantski	čezatlantski	pridevnik	1	o sodelovanju z Ameriko
+čezatlantski	čezatlantski	pridevnik	2	o prečkanju Atlantika
+čokat	čokat	pridevnik	1	o postavi
+čokat	čokat	pridevnik	2	o obliki
+premiera	premiera	samostalnik	1	prva predstava umetniškega dela
+premier	premiera	samostalnik	2	o nastopu
+premier	premiera	samostalnik	3	o izdelku
+kapitelj	kapitelj	samostalnik	1	zbor kanonikov
+brodolom	brodolom	samostalnik	1	potop ladje
+brodolom	brodolom	samostalnik	2	o neuspešni aktivnosti
+kongres	kongres	samostalnik	1	srečanje
+kongres	kongres	samostalnik	2	zakonodajno telo
+vstaja	vstaja	samostalnik	1	množični upor
+aretacija	aretacija	samostalnik	1	odvzem prostosti
+direktiva	direktiva	samostalnik	1	uradno navodilo
+dovoljenje	dovoljenje	samostalnik	1	privolitev
+dovoljenje	dovoljenje	samostalnik	2	dokument
+amandma	amandma	samostalnik	1	dopolnilo zakona
+nagovor	nagovor	samostalnik	1	uvodni govor občinstvu
+nagovor	nagovor	samostalnik	2	uvodnik
+nagovor	nagovor	samostalnik	3	o nazivu
+nagovor	nagovor	samostalnik	4	o naslavljanju na osebo
+replika	replika	samostalnik	1	odziv
+replika	replika	samostalnik	2	kopija predmeta
+replika	replika	samostalnik	3	del dialoga
+replika	replika	samostalnik	4	odgovor
+replika	replika	samostalnik	5	posnemanje aktivnosti
+hospitalizacija	hospitalizacija	samostalnik	1	zdravljenje v bolnišnici
+kmetovanje	kmetovanje	samostalnik	1	obdelovanje zemlje
+cirkus	cirkus	samostalnik	1	o potujočih zabavljačih
+cirkus	cirkus	samostalnik	2	o skupini ljudi
+cirkus	cirkus	samostalnik	3	o burni aktivnosti
+cirkus	cirkus	samostalnik	4	arena
+živinoreja	živinoreja	samostalnik	1	dejavnost
+frank	frank	samostalnik	1	valuta
+resolucija	resolucija	samostalnik	1	uradni dokument ali sklep
+resolucija	resolucija	samostalnik	2	ločljivost
+itinerar	itinerar	samostalnik	1	potovalni načrt
+itinerar	itinerar	samostalnik	2	razpored
+itinerar	itinerar	samostalnik	3	zemljevid; vodnik;
+disertacija	disertacija	samostalnik	1	znanstveno delo
+disertacija	disertacija	samostalnik	2	daljše delo ali govor
+insignij	insignija	samostalnik	1	simbolni predmet
+insignij	insignija	samostalnik	2	prepoznavna lastnost
+insignij	insignija	samostalnik	3	model avtomobila
+pomnilnik	pomnilnik	samostalnik	1	del računalnika
+podpornik	podpornik	samostalnik	1	zagovornik
+podpornik	podpornik	samostalnik	2	pokrovitelj
+podpornik	podpornik	samostalnik	3	gradbeni element
+podpornik	podpornik	samostalnik	4	kdor spodbuja
+podpornik	podpornik	samostalnik	5	o računalniškem sistemu
+podpornik	podpornik	samostalnik	6	kar ohranja določeno položaj
+droga	droga	samostalnik	1	mamilo
+droga	droga	samostalnik	2	zdravilna snov
+kontracepcija	kontracepcija	samostalnik	1	preprečevanje zanositve
+kontracepcija	kontracepcija	samostalnik	2	sredstvo
+milo	milo	samostalnik	1	sredstvo za čiščenje
+kolos	kolos	samostalnik	1	velikanski objekt ali predmet
+kolos	kolos	samostalnik	2	ogromna organizacija
+kolos	kolos	samostalnik	3	velik kip
+kolos	kolos	samostalnik	4	velikan; orjak;
+kolos	kolos	samostalnik	5	pomembna oseba
+opera	opera	samostalnik	1	umetniško delo
+opera	opera	samostalnik	2	zgradba
+opera	opera	samostalnik	3	glasbeni žanr
+kočija	kočija	samostalnik	1	prevozno sredstvo
+kočija	kočija	samostalnik	2	veliko vozilo
+avtobus	avtobus	samostalnik	1	prevozno sredstvo
+ladjedelnica	ladjedelnica	samostalnik	1	podjetje
+ladjedelnica	ladjedelnica	samostalnik	2	zgradba
+grobnica	grobnica	samostalnik	1	o pokopavanju mrtvih
+grobnica	grobnica	samostalnik	2	kraj smrti ali konca
+institucija	institucija	samostalnik	1	ustanova
+institucija	institucija	samostalnik	2	družbeno razmerje
+institucija	institucija	samostalnik	3	o namestitvi
+knjigarna	knjigarna	samostalnik	1	prodajalna knjig
+katedrala	katedrala	samostalnik	1	cerkvena stavba
+katedrala	katedrala	samostalnik	2	o izstopajoči zgradbi
+desetletje	desetletje	samostalnik	1	časovno obdobje
+desetletje	desetletje	samostalnik	2	del stoletja
+zrelost	zrelost	samostalnik	1	o mentalni starosti
+zrelost	zrelost	samostalnik	2	o kvalitetnem delovanju
+zrelost	zrelost	samostalnik	3	o primernosti za zaužitje
+zrelost	zrelost	samostalnik	4	o telesni starosti
+zrelost	zrelost	samostalnik	5	življenjsko obdobje
+datum	datum	samostalnik	1	podatek o dnevu ali dogodku
+prestolonaslednik	prestolonaslednik	samostalnik	1	vladarjev naslednik
+branilec	branilec	samostalnik	1	nosilec naslova
+branilec	branilec	samostalnik	2	odvetnik
+branilec	branilec	samostalnik	3	obrambni igralec
+branilec	branilec	samostalnik	4	varuh; zagovornik;
+branilec	branilec	samostalnik	5	pri napadu
+dirigent	dirigent	samostalnik	1	umetniški vodja
+dirigent	dirigent	samostalnik	2	vodja
+zločinec	zločinec	samostalnik	1	kdor zagreši zločin
+bojevnik	bojevnik	samostalnik	1	o boju ali spopadu
+bojevnik	bojevnik	samostalnik	2	borbena oseba
+bojevnik	bojevnik	samostalnik	3	vnet zagovornik
+bojevnik	bojevnik	samostalnik	4	član košarkarskega kluba
+bojevnik	bojevnik	samostalnik	5	vozilo
+bralec	bralec	samostalnik	1	kdor bere publikacijo
+bralec	bralec	samostalnik	2	kdor bere; kdor rad bere;
+bralec	bralec	samostalnik	3	kdor bere drugim
+glasbenik	glasbenik	samostalnik	1	kdor se ukvarja z glasbo
+esejist	esejist	samostalnik	1	pisec
+govorec	govorec	samostalnik	1	kdor govori
+govorec	govorec	samostalnik	2	o jeziku
+govorec	govorec	samostalnik	3	o javnem nastopu
+govorec	govorec	samostalnik	4	predstavnik organizacije
+dramatik	dramatik	samostalnik	1	pisec dramskih del
+vratar	vratar	samostalnik	1	športni igralec
+vratar	vratar	samostalnik	2	poklic
+vratar	vratar	samostalnik	3	del telesa
+zdravnik	zdravnik	samostalnik	1	poklic
+novinarka	novinarka	samostalnik	1	avtorica člankov v medijih
+filozof	filozof	samostalnik	1	strokovnjak
+filozof	filozof	samostalnik	2	o pronicljivem razmišljanju
+filozof	filozof	samostalnik	3	kdor veliko prazno govori
+astronavt	astronavt	samostalnik	1	kdor gre v vesolje
+čevljar	čevljar	samostalnik	1	poklic
+arhitekt	arhitekt	samostalnik	1	kdor načrtuje gradbene projekte
+arhitekt	arhitekt	samostalnik	2	snovalec; idejni vodja;
+hčerka	hčerka	samostalnik	1	sorodnica
+novorojenček	novorojenček	samostalnik	1	novorojeni otrok
+novorojenček	novorojenček	samostalnik	2	o novi stvari
+mrtvorojenec	mrtvorojenec	samostalnik	1	mrtev otrok
+mrtvorojenec	mrtvorojenec	samostalnik	2	o neučinkoviti ideji
+fant	fant	samostalnik	1	moški; mladenič;
+fant	fant	samostalnik	2	otrok
+fant	fant	samostalnik	3	pripadnik skupine
+fant	fant	samostalnik	4	partner
+fant	fant	samostalnik	5	igralna karta
+osebek	osebek	samostalnik	1	organizem
+osebek	osebek	samostalnik	2	oseba
+osebek	osebek	samostalnik	3	stavčni člen
+zajedavec	zajedavec	samostalnik	1	rastlinski ali živalski organizem
+zajedavec	zajedavec	samostalnik	2	izkoriščevalska oseba
+barbar	barbar	samostalnik	1	pripadnik neciviliziranega ljudstva
+barbar	barbar	samostalnik	2	o surovem obnašanju
+bedak	bedak	samostalnik	1	neumen človek
+boginja	boginja	samostalnik	1	žensko božanstvo
+boginja	boginja	samostalnik	2	občudovana ženska
+grofica	grofica	samostalnik	1	plemiški naziv
+grofica	grofica	samostalnik	2	grofova žena
+cesar	cesar	samostalnik	1	vladar
+cesar	cesar	samostalnik	2	vodilna oseba
+bojazen	bojazen	samostalnik	1	tesnoben občutek
+gliva	gliva	samostalnik	1	organizem
+gliva	gliva	samostalnik	2	goba
+zelenjava	zelenjava	samostalnik	1	o rastlinah
+kava	kava	samostalnik	1	pijača
+kava	kava	samostalnik	2	dogodek
+kava	kava	samostalnik	3	zrna kavovca
+kava	kava	samostalnik	4	rastlina
+kava	kava	samostalnik	5	kavni nadomestek
+medicina	medicina	samostalnik	1	veda
+medicina	medicina	samostalnik	2	medicinska fakulteta
+botanika	botanika	samostalnik	1	veda
+jezikoslovje	jezikoslovje	samostalnik	1	veda
+irščina	irščina	samostalnik	1	jezik
+abeceda	abeceda	samostalnik	1	o pisavi
+abeceda	abeceda	samostalnik	2	osnovno znanje
+anamneza	anamneza	samostalnik	1	zdravstvena zgodovina
+anamneza	anamneza	samostalnik	2	analiza pretekle dejavnosti
+anamneza	anamneza	samostalnik	3	spominjanje
+judaizem	judaizem	samostalnik	1	religija
+napuh	napuh	samostalnik	1	o osebnostni lastnosti
+ekvator	ekvator	samostalnik	1	na Zemlji
+ekvator	ekvator	samostalnik	2	na planetu
+ekvator	ekvator	samostalnik	3	nebesni ekvator
+deževje	deževje	samostalnik	1	o dežju
+izumrtje	izumrtje	samostalnik	1	o živih bitjih
+izumrtje	izumrtje	samostalnik	2	o dejavnosti ali predmetu
+izumrtje	izumrtje	samostalnik	3	o kraju
+kanton	kanton	samostalnik	1	upravna enota
+kanton	kanton	samostalnik	2	zvezna dežela v Švici
+nadškofija	nadškofija	samostalnik	1	cerkvena upravna enota
+celina	celina	samostalnik	1	večja površina kopnega
+celina	celina	samostalnik	2	o delu države
+departma	departma	samostalnik	1	upravna enota
+departma	departma	samostalnik	2	vladni oddelek
+atmosfera	atmosfera	samostalnik	1	plast nebesnega telesa
+atmosfera	atmosfera	samostalnik	2	vzdušje
+atmosfera	atmosfera	samostalnik	3	enota za zračni tlak
+atmosfera	atmosfera	samostalnik	4	o nadzorovanem prostoru
+nožnica	nožnica	samostalnik	1	ženski spolni organ
+nožnica	nožnica	samostalnik	2	pripomoček za rezilo
+nožnica	nožnica	samostalnik	3	del lista
+vitica	vitica	samostalnik	1	del rastline
+vitica	vitica	samostalnik	2	o vzorcu
+hruška	hruška	samostalnik	1	sadno drevo
+hruška	hruška	samostalnik	2	sadež
+hruška	hruška	samostalnik	3	vrsta kamiona
+hruška	hruška	samostalnik	4	del vozila
+hruška	hruška	samostalnik	5	pri boksu
+citrus	citrus	samostalnik	1	sadež
+citrus	citrus	samostalnik	2	drevo
+lakota	lakota	samostalnik	1	potreba po hrani
+lakota	lakota	samostalnik	2	pomanjkanje hrane
+lakota	lakota	samostalnik	3	močna želja
+lakota	lakota	samostalnik	4	rastlina
+cerkev	cerkev	samostalnik	1	verska zgradba
+cerkev	cerkev	samostalnik	2	organizacija
+žirija	žirija	samostalnik	1	skupina za ocenjevanje
+žirija	žirija	samostalnik	2	vodstvo tekmovanja
+cvetje	cvetje	samostalnik	1	rože
+cvetje	cvetje	samostalnik	2	množica cvetov
+cvetje	cvetje	samostalnik	3	stanje cvetenja
+flora	flora	samostalnik	1	rastlinstvo
+flora	flora	samostalnik	2	skupek mikroorganizmov
+fenol	fenol	samostalnik	1	snov
+fenol	fenol	samostalnik	2	spojina
+mineral	mineral	samostalnik	1	rudnina
+mineral	mineral	samostalnik	2	hranilo
+bronhitis	bronhitis	samostalnik	1	bolezen
+infekcija	infekcija	samostalnik	1	o vdoru patogenih mikroorganizmov
+infekcija	infekcija	samostalnik	2	bolezensko stanje
+gobavost	gobavost	samostalnik	1	bolezen
+gripa	gripa	samostalnik	1	bolezen
+hipertenzija	hipertenzija	samostalnik	1	zvišan krvni tlak
+državljanstvo	državljanstvo	samostalnik	1	pripadnost državi
+lezija	lezija	samostalnik	1	rana
+brazgotina	brazgotina	samostalnik	1	sled zaceljenega tkiva
+brazgotina	brazgotina	samostalnik	2	o duševnem stanju
+brazgotina	brazgotina	samostalnik	3	o posledicah aktivnosti
+brazgotina	brazgotina	samostalnik	4	del rastline
+bankrot	bankrot	samostalnik	1	finančno stanje
+bankrot	bankrot	samostalnik	2	propad
+žrelo	žrelo	samostalnik	1	del telesa
+žrelo	žrelo	samostalnik	2	pri živali
+žrelo	žrelo	samostalnik	3	del vulkana
+žrelo	žrelo	samostalnik	4	kar vodi v uničenje
+žrelo	žrelo	samostalnik	5	široka odprtina
+žrelo	žrelo	samostalnik	6	del panja
+ličinka	ličinka	samostalnik	1	razvojna stopnja živali
+ličinka	ličinka	samostalnik	2	vaba na trnku
+racman	racman	samostalnik	1	račji samec
+žuželka	žuželka	samostalnik	1	žival
+mravlja	mravlja	samostalnik	1	žuželka
+glista	glista	samostalnik	1	parazitski črv
+glista	glista	samostalnik	2	o človeku
+glista	glista	samostalnik	3	deževnik
+dinozaver	dinozaver	samostalnik	1	izumrli plazilec
+dinozaver	dinozaver	samostalnik	2	o nesodobnosti ali zastarelosti
+leopard	leopard	samostalnik	1	velika mačka
