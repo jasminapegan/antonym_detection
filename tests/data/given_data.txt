@@ -1,0 +1,5 @@
+Amazonka|samostalnik|1|bojevnica
+Amazonka|samostalnik|2|reka
+najemnik|samostalnik|1|kdor nekaj najema
+stanovanje|samostalnik|1|bivalni prostor
+stanovanje|samostalnik|2|dom

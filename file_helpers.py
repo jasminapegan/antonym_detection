@@ -81,6 +81,14 @@ def load_file(file, limit=None, sep='\t'):
     return data
 
 
+def is_empty(filename):
+    with open(filename, encoding='utf8') as f:
+        for line in f:
+            if line.strip() != "":
+                return False
+    return True
+
+
 def file_len(filename):
     i = 0
     with open(filename, encoding='utf8') as f:
@@ -317,7 +325,7 @@ def filter_file_by_words(file, words_file, out_file, word_idx=0, split_by="\t", 
                         outf.write(line)
 
 
-def get_random_part(in_file, out_file1, out_file2, out_file_words1, out_file_words, ratio=0.5):
+def get_random_part(in_file, out_file1, out_file2, out_file_words, ratio=0.5):
     n = file_len(in_file)
     n_part = n * ratio
 
