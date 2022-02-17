@@ -1,0 +1,9 @@
+Amazonka	1	1	Bojevita Amazonka je izhajala iz grške mitologije .
+Amazonka	1	9	Boginja Hera se je bila preoblekla v eno izmed Amazonk , da bi lahko oprezala za Heraklejem .
+Amazonka	2	3	Danes označujemo za Amazonke ženske , ki so se enostransko poistovetile z arhetipom bojevnice .
+Amazonka	2	9	Ženske so rade lepe , v nasprotnem primeru so Amazonke , možače , ki želijo biti podobne moškim .
+Amerika	0	1	V Ameriki si mladostniki filma ne smejo ogledati brez spremstva staršev .
+Amerika	0	9	Ameriška vlada ga je povabila , naj pride v Ameriko na vojno akademijo za profesorja .
+Amerika	1	10	V šoli nas najprej naučijo , da je Kolumb odkril Ameriko .
+Amerika	2	12	Marsikatera delavka mi je povedala , da je bila to zanjo prava Amerika , ker ji ni bilo treba takoj po službi za štedilnik .
+stanovanje	0	4	Najela sem trisobno stanovanje v predmestju Ljubljane.
