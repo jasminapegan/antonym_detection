@@ -6,8 +6,8 @@ def create_val_test_set(in_data: str,
                         given_data: str,
                         val_file: str,
                         test_file: str,
-                        ratio: 0.5,
-                        tmp_dir: "tmp"):
+                        ratio: float=0.5,
+                        tmp_dir: str="tmp"):
     """
     Reads word data from 'in_data' and uses intersection/difference to words in 'given_data' to create validation and
     test set. Intersection words are divided according to 'ratio'. Default ratio will divide common data into equal
