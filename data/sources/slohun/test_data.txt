@@ -1,0 +1,4 @@
+abecednik|samostalnik|1|priročnik
+absolutna vrednost|None|1|pri računanju
+absolutni posluh|None|1|človeška zmožnost
+abstraktno|prislov|1|miselno; predstavno

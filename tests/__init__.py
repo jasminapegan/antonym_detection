@@ -10,8 +10,7 @@ def dataset_test():
 
 def sentences_sample_test():
     gigafida.get_sentences_from_gigafida_multiprocess("data/GF", GIVEN_DATA, "tmp/sentences.txt", "tmp/info.txt",
-                                                      lemmatize=True, tmp_dir="tmp/", sample_size=1, n_folders=1)
-
+                                                      tmp_dir="tmp/GF", sample_size=1, n_folders=1)
 
 
 if __name__ == '__main__':

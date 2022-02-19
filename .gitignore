@@ -4,3 +4,4 @@ venv/
 **/tmp/
 
 data/sources/gigafida/
+data/sources/slohun/slohun_clarin.xml
