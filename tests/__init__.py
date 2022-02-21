@@ -21,9 +21,8 @@ def embeddings_test():
 def clustering_test():
     find_best.find_best_kmeans("tmp/embeddings.txt", GIVEN_DATA, VAL_DATA, "tmp")
 
-
 if __name__ == '__main__':
-    #dataset_test()
-    #sentences_sample_test()
-    #embeddings_test()
+    dataset_test()
+    sentences_sample_test()
+    embeddings_test()
     clustering_test()

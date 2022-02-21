@@ -16,6 +16,7 @@ class ClusteringAlgorithm:
         self.clusterer = None
         self.n_clusters = -1
         self.score = {}
+        self.id = self.get_algorithm_id()
 
     def get_algorithm_id(self):
         """ Get unique string representing algorithm with all the parameters. """
@@ -31,12 +32,13 @@ class ClusteringAlgorithm:
     def predict(self, embeddings: List[List[float]], n_clusters: int):
         pass
 
-    def score_method(self, word_data: WordData, silhouette: float):
+    def score_method(self, word_data: WordData, silhouette: float, n_clusters: int):
         """
         Scores method on 'word_data' and updates score parameter.
 
         :param word_data: chosen word data
         :param silhouette: silhouette score
+        :param n_clusters: number of clusters
         :return: None
         """
 
@@ -50,20 +52,30 @@ class ClusteringAlgorithm:
         #print("f1 score: %f" % f1_score)
         #print(confusion_matrix)
 
-        algo_id = self.get_algorithm_id()
+        algo_id = self.id
         if algo_id not in self.score.keys():
             self.score[algo_id] = {}
 
-        self.score[algo_id][word_data.word] = {
-            'silhouette': silhouette,
-            'rand': rand_score,
-            'adjusted_rand': adj_rand_score,
-            'completeness': completeness_score,
-            'f1_score': f1_score,
-            'n_samples': n_samples,
-            'n_non_null': len(pred_labels)
-        }
+        score_data = {
+                'silhouette': silhouette,
+                'rand': rand_score,
+                'adjusted_rand': adj_rand_score,
+                'completeness': completeness_score,
+                'f1_score': f1_score,
+                'n_samples': n_samples,
+                'n_non_null': len(pred_labels)
+            }
 
+        if word_data.word not in self.score[algo_id].keys():
+            self.score[algo_id][word_data.word] = {n_clusters: score_data}
+        else:
+            self.score[algo_id][word_data.word][n_clusters] = score_data
+
+    def get_best_n_clusters(self, word_data):
+        scores = self.score[self.id][word_data.word].items()
+        sorted_scores = list(scores).sort(key=lambda x: x[1])
+        print(sorted_scores)
+        print("Best n clusters: %d clusters %f silhouette score" *sorted_scores[-1])
 
 class KMeansAlgorithm(ClusteringAlgorithm):
 

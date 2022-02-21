@@ -2,12 +2,8 @@ import os
 import file_helpers
 
 
-def create_val_test_set(in_data: str,
-                        given_data: str,
-                        val_file: str,
-                        test_file: str,
-                        ratio: float=0.5,
-                        tmp_dir: str="tmp"):
+def create_val_test_set(in_data: str, given_data: str, val_file: str, test_file: str,
+                        ratio: float=0.5, tmp_dir: str="tmp"):
     """
     Reads word data from 'in_data' and uses intersection/difference to words in 'given_data' to create validation and
     test set. Intersection words are divided according to 'ratio'. Default ratio will divide common data into equal
@@ -59,10 +55,7 @@ def divide_word_senses(in_file: str, out_file1: str, out_file2: str, ratio=0.5):
 
     n = file_helpers.file_len(in_file)
     n_part = n * ratio
-
-    words_data = file_helpers.load_validation_file_grouped(in_file, all_strings=True)
-    words_count = [(key, len(words_data[key]['sentences'])) for key in words_data.keys()]
-    file_helpers.shuffle(words_count)
+    words_count = list(file_helpers.count_words(in_file).items())
 
     assert len(words_count) >= 2, "Cannot divide less than 2 words."
 

@@ -1,20 +1,18 @@
 """ Version 2 treats number of clusters as an unknown parameter. """
 import os
-from typing import List, Dict
-
-from clustering import algorithms
-from data import word
-
 import file_helpers
-from clustering.clusters_v2 import get_clusters_by_word_v2
-from data.embeddings import WordEmbeddings
+from data import word
+from clustering import algorithms
 from clustering.scoring import get_avg_scores
+from data.embeddings import WordEmbeddings
+from typing import List, Dict
+from sklearn import metrics
 
 
-def find_best_params_main_v2(data_file: str, words_json_file: str, validation_file: str, out_dir: str,
+def find_best_params_main(data_file: str, words_json_file: str, validation_file: str, out_dir: str,
                              use_algorithms: List[str]):
     """
-
+    TODO: split into smaller functions
 
     :param data_file:
     :param words_json_file:
@@ -62,7 +60,6 @@ def find_best_params_main_v2(data_file: str, words_json_file: str, validation_fi
 
             find_best_clustering(data_file, words_json_file, validation_file, "%s/dbscan.txt" % out_dir, dbscan)
 
-
 def find_best_kmeans(data_file: str, words_json_file: str, validation_file: str, out_dir: str):
     """
     Execute search for best kmeans algorithm over predefined parameters. Score word embedding clusterings and write out
@@ -80,7 +77,6 @@ def find_best_kmeans(data_file: str, words_json_file: str, validation_file: str,
     kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=algo, n_inits=n_init)
     find_best_clustering(data_file, words_json_file, validation_file, out_dir, kmeans)
 
-
 def find_best_clustering(data_file: str,
                          words_json_file: str,
                          validation_file: str,
@@ -92,19 +88,57 @@ def find_best_clustering(data_file: str,
     best_clustering = BestClustering(words_json_file, validation_file, data_file)
     best_clustering.find_best(algorithm_list, out_dir)
 
-
 class BestClustering:
 
     Scores = Dict[str, Dict[str, float]]
 
     def __init__(self, words_json_file: str, validation_file: str, data_file: str):
         self.words_json = file_helpers.words_data_to_dict(words_json_file)  #file_helpers.load_json_word_data(words_json_file)
-        self.val_data = file_helpers.load_validation_file_grouped(
-            validation_file, embeddings=False, indices=True, sentence_idx=3)
+        self.val_data = file_helpers.load_validation_file_grouped(validation_file, indices=True, sentence_idx=3)
         self.word_data_generator = word.word_data_gen(data_file)
         self.word_embeddings = WordEmbeddings()
         self.scores = {}
 
+    @staticmethod
+    def get_clusters_by_word(word_data: word.WordData, n_clusters: int, algorithm: algorithms.ClusteringAlgorithm,
+                             out_dir: str) -> (List[int], float):
+        """
+        Execute clustering with given algorithm on given word data.
+
+        :param word_data: word data including sentences and embeddings
+        :param n_clusters: number of clusters to use with algorithm
+        :param algorithm: clustering algorithm to use
+        :param out_dir: directory where scoring files will be created
+        :return: list of labels and silhouette score
+        """
+
+        if word_data.n_sentences < n_clusters:
+            # print("Too little samples for %s: %d samples, %d clusters." % (word_data.word, n_samples, n))
+            return None, None
+
+        else:
+            labels = algorithm.predict(word_data.embeddings, n_clusters)
+
+            with open(os.path.join(out_dir, algorithm.get_algorithm_id()), "a", encoding="utf8") as outf:
+                # out_data = list(zip(labels, [word] * n_samples, sentences)) #, embeddings))
+                # file_helpers.write_grouped_data(outf, sorted(out_data, key=lambda x: x[0])) #, centroids=clusterer.cluster_centers_)
+
+                str_embeddings = [" ".join([str(x) for x in e]) for e in word_data.embeddings]
+                out_data = list(zip([str(x) for x in labels],
+                                    [word_data.word] * word_data.n_sentences,
+                                    word_data.sentences,
+                                    str_embeddings))
+                outf.writelines(["\t".join(line) + "\n" for line in out_data])
+
+            silhouette = None
+
+            try:
+                silhouette = metrics.silhouette_score(word_data.embeddings, labels, metric='cosine')
+                # print("silhouette score: %f" % silhouette)
+            except Exception as e:
+                print("silhouette score could not be calculated: %s" % str(e))
+
+            return labels, silhouette
 
     def find_best(self, algorithm_list: List[algorithms.ClusteringAlgorithm], out_dir: str):
         """
@@ -126,18 +160,7 @@ class BestClustering:
             word_data = self.prepare_word_data(word, word_data)
 
             for algorithm_data in algorithm_list:
-
                 self.execute_clustering(algorithm_data, word_data, out_dir, n)
-
-                """labels, silhouette_score = get_clusters_by_word_v2(word_data, n, algorithm_data, out_dir)
-
-                #if labels is None:
-                #    continue
-
-                word_data.set_predicted_labels(labels)
-
-                if (len(word_data.validation_labels) > 1):
-                    algorithm_data.score_method(word_data, silhouette_score)"""
 
             algorithm_scores = {a.get_algorithm_id(): a.score for a in algorithm_list}
             print(algorithm_scores)
@@ -145,9 +168,7 @@ class BestClustering:
         #self.write_results(os.path.join(out_dir, "results_all.txt"), algorithm_scores, algorithm_list)
         print("\n*****FINISHED*****")
 
-
-    @staticmethod
-    def execute_clustering(algorithm_data: algorithms.ClusteringAlgorithm, word_data: word.WordData,
+    def execute_clustering(self, algorithm_data: algorithms.ClusteringAlgorithm, word_data: word.WordData,
                            out_dir: str, n: int=None):
         """
         Execute clustering with given 'algorithm_data' on given 'word_data', print results into file in 'out_dir'.
@@ -165,14 +186,16 @@ class BestClustering:
             ns = range(10)
 
         for n_clusters in ns:
-            labels, silhouette_score = get_clusters_by_word_v2(word_data, n_clusters, algorithm_data, out_dir)
+            labels, silhouette_score = self.get_clusters_by_word(word_data, n_clusters, algorithm_data, out_dir)
 
             if labels is not None:
                 word_data.set_predicted_labels(labels)
 
                 if (len(word_data.validation_labels) > 1):
-                    algorithm_data.score_method(word_data, silhouette_score)
+                    algorithm_data.score_method(word_data, silhouette_score, n_clusters)
 
+        if not n:
+            algorithm_data.get_best_n_clusters(word_data)
 
     def prepare_word_data(self, word: str, word_data: word.WordData) -> word.WordData:
         """
@@ -198,8 +221,7 @@ class BestClustering:
         return word_data
 
     @staticmethod
-    def write_results(out_file: str, algorithm_scores: Scores,
-                      algorithm_params_list: List[algorithms.ClusteringAlgorithm]):
+    def write_results(out_file: str, algorithm_scores: Scores, algorithm_params_list: List[algorithms.ClusteringAlgorithm]):
         """
         Write scores of given algorithms to 'out_file'.
 

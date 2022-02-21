@@ -1,9 +1,10 @@
 import os
 import pickle
-from random import shuffle
-from typing import List, Dict
+from io import TextIOWrapper
 
 import numpy as np
+from random import shuffle
+from typing import List, Dict
 
 
 def get_words_data_from_file(words_file: str, sep='|') -> List[Dict]:
@@ -119,76 +120,32 @@ def is_empty_or_whitespace(filename: str):
     return True
 
 def file_len(filename: str):
+    # return length of the file
     i = 0
     with open(filename, encoding='utf8') as f:
         for i, l in enumerate(f):
             pass
     return i + 1
 
-def count_lines(folder: str):
-    return sum([file_len(folder + "/" + file) for file in os.listdir(folder)])
+def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bool=False,
+                                 sentence_idx: int=2) -> Dict[str, Dict]:
+    """
+    Parses data in 'file' and returns a dictionary of parsed data per word.
 
-def load_grouped_data(file, start=0, only_word=None):
-    data = []
-    idx = start
-    found = False
-    word = None
+    :param file: input tsv data file
+    :param all_strings: output split data with no conversion? (default False)
+    :param indices: does 'file' contain index of the word in sentence data? (default True)
+    :param sentence_idx: index of sentence (default 2)
+    :return: dictionary of data per word (dict: indices, embeddings, sentences, labels
+    """
 
-    max_idx = file_len(file)
-
-    with open(file, "r", encoding="utf8") as f:
-        for i, line in enumerate(f):
-
-            if i < idx:
-                continue
-
-            data_line = line.strip().split("\t")
-            data_word = data_line[0]
-
-            if word is None or data_word == word:
-                data_line[0] = data_word
-                data.append(data_line)
-                word = data_word
-                found = True
-
-            if found and data_word != word:
-                idx = i
-
-                if only_word:
-                    return data, idx
-
-    return data, max_idx
-
-def load_sentences_embeddings_file_grouped(file, start=0, v2=True, only_word=True):
-    data, idx = load_grouped_data(file, start=start, only_word=only_word)
-
-    words = [d[0] for d in data]
-    sentences = [d[-2] for d in data]
-    embeddings = convert_to_np_array([d[-1] for d in data])
-
-    if v2:
-        return words, sentences, embeddings, idx
-    else:
-        word_forms = [d[1] for d in data]
-        return words, word_forms, sentences, embeddings, idx
-
-def load_validation_file_grouped(file, only_word=None, start=0, all_strings=False, embeddings=True, indices=False, sentence_idx=2):
-    if only_word:
-        data, idx = load_grouped_data(file, start=start, only_word=only_word)
-    else:
-        data = load_file(file, sep='\t')
+    data = load_file(file, sep='\t')
     words_data = {}
 
     for line in data:
 
         word, label, sentence = line[0], line[1], line[sentence_idx]
-        embedding = None
         index = None
-
-        if embeddings:
-            embedding = line[-1]
-            if not all_strings:
-                embedding = convert_to_np_array(line[-1])
 
         if indices:
             index = line[-2]
@@ -196,8 +153,6 @@ def load_validation_file_grouped(file, only_word=None, start=0, all_strings=Fals
                 index = int(line[-2])
 
         if word in words_data.keys():
-            if embeddings:
-                words_data[word]['embeddings'].append(embedding)
             if indices:
                 words_data[word]['indices'].append(index)
             words_data[word]['labels'].append(label)
@@ -205,20 +160,12 @@ def load_validation_file_grouped(file, only_word=None, start=0, all_strings=Fals
 
         else:
             words_data[word] = {'labels': [label], 'sentences': [sentence]}
-            if embeddings:
-                words_data[word]['embeddings'] = [embedding]
             if indices:
                 words_data[word]['indices'] = [index]
 
-    if only_word and only_word in words_data.keys():
-        return words_data[only_word]
-    else:
-        return words_data
+    return words_data
 
-def convert_to_np_array(string_list):
-    return np.array([x.split(' ') for x in string_list], dtype=float)
-
-def write_grouped_data(outf, data, centroid=None):
+def write_grouped_data(outf: TextIOWrapper, data: List, centroid: List=None):
     for label, word, sentence in data: #, embedding
 
         if centroid is not None:
@@ -228,60 +175,50 @@ def write_grouped_data(outf, data, centroid=None):
         #embedding_str = " ".join([str(x) for x in embedding])
         outf.write("\t".join([str(label), word, sentence]) + "\n") #, embedding_str
 
-def write_data_for_classification(outf, data):
+def write_data_for_classification(outf: TextIOWrapper, data: List):
     for label, word, centroid in data:
         centroid_string = " ".join([str(x) for x in centroid])
         outf.write("\t".join([str(label), word, centroid_string]) + "\n")
 
-def concatenate_files(file_list, out_file):
-    with open(out_file, "w", encoding="utf8") as out:
-        for f in file_list:
-            with open(f, "r", encoding="utf8") as in_file:
-                out.writelines(in_file.readlines())
+def count_words(in_file: str, sep='\t') -> Dict[str, int]:
+    """
+    Read data from 'in_file' and return dictionary of word counts.
 
-def remove_duplicate_lines(in_file, out_file, range=None):
-    visited_lines = []
+    :param in_file: file containing word data
+    :param sep: separator of 'in_file' (default '\t')
+    :return: dictionary of word counts
+    """
 
-    with open(in_file, 'r', encoding="utf8") as input:
-        with open(out_file, 'wt', encoding="utf8") as output:
-
-            for line in input.readlines():
-                if line not in visited_lines:
-
-                    output.write(line)
-                    visited_lines.append(line)
-                    if range:
-                        visited_lines = visited_lines[-range:]
-
-def sort_lines(in_file: str, out_file: str, sep='\t'):
-    # sort lines by element at 0
-
-    with open(in_file, 'r', encoding="utf8") as input:
-        with open(out_file, 'wt', encoding="utf8") as output:
-
-            lines = input.readlines()
-            lines.sort(key=lambda x: x.split(sep)[0])
-
-            for line in lines:
-                output.write(line)
-
-def count_words(in_file, out_file):
     words = {}
+
     with open(in_file, 'r', encoding="utf8") as input:
-        with open(out_file, 'w', encoding="utf8") as output:
-            lines = input.readlines()
+        lines = input.readlines()
 
-            for line in lines:
-                word = line.split("\t")[0]
+        for line in lines:
+            word = line.split(sep)[0]
 
-                if word in words.keys():
-                    words[word] += 1
-                else:
-                    words[word] = 1
+            if word in words.keys():
+                words[word] += 1
+            else:
+                words[word] = 1
 
-            output.write("\n".join(["%s %d" % (k, v) for k, v in words.items()]))
+    return words
 
-def filter_file_by_words(file, words_file, out_file, word_idx=0, split_by="\t", complement=False, skip_idx=None):
+def filter_file_by_words(file: str, words_file: str, out_file: str, word_idx: int=0, split_by: str='\t',
+                         complement: bool=False, skip_idx: int=None):
+    """
+    Filter 'file' by words in 'word_file'. Output lines starting with words in 'word_file' to 'out_file'.
+
+    :param file: base file to be filtered
+    :param words_file: containing words to filter by
+    :param out_file: file to output filtered data
+    :param word_idx: index of word in 'words_file' (default 0)
+    :param split_by: separator in 'file' (default '\t')
+    :param complement: if True, keep lines matching filter. If False, filter out these lines (default True)
+    :param skip_idx: if set to integer, skips an index in each line to write to output (default None)
+    :return: None
+    """
+
     words = get_unique_words(words_file)
 
     with open(file, "r", encoding="utf8") as f:
@@ -343,3 +280,43 @@ def get_random_part(in_file: str, out_file1: str, out_file2: str, out_file_words
                         out1.write(line)
                     else:
                         out2.write(line)
+
+def concatenate_files(file_list: List[str], out_file: str):
+    # write content of files in 'file_list' to 'out_file'
+    with open(out_file, "w", encoding="utf8") as out:
+        for f in file_list:
+            with open(f, "r", encoding="utf8") as in_file:
+                out.writelines(in_file.readlines())
+
+def remove_duplicate_lines(in_file: str, out_file: str, range: int=None):
+    # copy 'in_file' to 'out_file' skipping lines that repeat in last 'range' lines
+    visited_lines = []
+
+    with open(in_file, 'r', encoding="utf8") as input:
+        with open(out_file, 'wt', encoding="utf8") as output:
+
+            for line in input.readlines():
+                if line not in visited_lines:
+
+                    output.write(line)
+                    visited_lines.append(line)
+                    if range:
+                        visited_lines = visited_lines[-range:]
+
+def sort_lines(in_file: str, out_file: str, sep='\t'):
+    # sort lines by element at 0
+
+    with open(in_file, 'r', encoding="utf8") as input:
+        with open(out_file, 'wt', encoding="utf8") as output:
+
+            lines = input.readlines()
+            lines.sort(key=lambda x: x.split(sep)[0])
+
+            for line in lines:
+                output.write(line)
+
+def convert_to_np_array(string_list: List[str]):
+    return np.array([x.split(' ') for x in string_list], dtype=float)
+
+def count_lines(folder: str):
+    return sum([file_len(folder + "/" + file) for file in os.listdir(folder)])

@@ -29,16 +29,6 @@ class WordData:
 
     def add_missing_sentences(self, missing_sentences: List[str], word_embeddings, word_val_data: Dict):
         print(missing_sentences)
-        """indices = [i for i, s in zip(word_val_data['indices'], word_val_data['sentences']) if s in missing_sentences]
-        sentences, dataset, _ = word_embeddings.prepare_data(self.word, indices, missing_sentences)
-
-        n_words = len(self.word.split(' '))
-        indices_from_to = [(i, i + n_words) for i in indices]
-
-        with torch.no_grad():
-            outputs = word_embeddings.model(**dataset, output_hidden_states=True)
-
-        results = word_embeddings.get_embeddings_from_results(outputs, self.word, sentences, indices_from_to)"""
         words = len(missing_sentences) * [self.word]
         indices = [i for i, s in zip(word_val_data['indices'], word_val_data['sentences']) if s in missing_sentences]
         results = word_embeddings.get_words_embeddings_2(words, indices, missing_sentences)
@@ -92,6 +82,4 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
                 data.append(data_line)
                 word = data_word
 
-    if len(data) > 0:
-        yield WordData(data)
-    yield WordData([data_line])
+    yield WordData(data + [data_line])
