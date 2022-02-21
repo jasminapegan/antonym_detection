@@ -2,12 +2,8 @@ import os
 import file_helpers
 
 
-def create_val_test_set(in_data: str,
-                        given_data: str,
-                        val_file: str,
-                        test_file: str,
-                        ratio: float=0.5,
-                        tmp_dir: str="tmp"):
+def create_val_test_set(in_data: str, given_data: str, val_file: str, test_file: str,
+                        ratio: float=0.5, tmp_dir: str="tmp"):
     """
     Reads word data from 'in_data' and uses intersection/difference to words in 'given_data' to create validation and
     test set. Intersection words are divided according to 'ratio'. Default ratio will divide common data into equal
@@ -32,7 +28,7 @@ def create_val_test_set(in_data: str,
     file_helpers.filter_file_by_words(in_data, given_data, intersection, skip_idx=1)    # skip classification
     file_helpers.filter_file_by_words(in_data, given_data, difference, skip_idx=1, complement=True)
 
-    assert not file_helpers.is_empty(intersection), "No words in %s and %s are common" % (in_data, given_data)
+    assert not file_helpers.is_empty_or_whitespace(intersection), "No words in %s and %s are common" % (in_data, given_data)
 
     pt1 = os.path.join(tmp_dir, "pt1.txt")
     divide_word_senses(intersection, pt1, test_file, ratio=ratio)
@@ -59,10 +55,7 @@ def divide_word_senses(in_file: str, out_file1: str, out_file2: str, ratio=0.5):
 
     n = file_helpers.file_len(in_file)
     n_part = n * ratio
-
-    words_data = file_helpers.load_validation_file_grouped(in_file, all_strings=True)
-    words_count = [(key, len(words_data[key]['sentences'])) for key in words_data.keys()]
-    file_helpers.shuffle(words_count)
+    words_count = list(file_helpers.count_words(in_file).items())
 
     assert len(words_count) >= 2, "Cannot divide less than 2 words."
 

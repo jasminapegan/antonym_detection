@@ -1,11 +1,20 @@
 import xml.etree.ElementTree as ET
 import re
+from typing import Dict, Iterable, List
 
 import file_helpers
 from data import embeddings
 
 
-def get_slohun_examples(data_file, out_file):
+def get_slohun_examples(data_file: str, out_file: str):
+    """
+    Parse slohun xml 'data_file', read examples and write to 'out_file'.
+
+    :param data_file: slohun xml file
+    :param out_file: examples output file
+    :return: None
+    """
+
     with open(out_file, "w", encoding="utf8") as f:
 
         tree = ET.parse(data_file)
@@ -49,7 +58,16 @@ def get_slohun_examples(data_file, out_file):
                                 print("Failed to write for: " + word_form)
 
 
-def get_slohun_data(data_file, out_file, compound=True):
+def get_slohun_data(data_file: str, out_file: str, compound: bool=True):
+    """
+    Get slohun data and write it to 'out_file'.
+
+    :param data_file: slohun xml file
+    :param out_file: out data file
+    :param compound: consider multiword phrases? (default True)
+    :return:
+    """
+
     with open(out_file, "w", encoding="utf8") as f:
 
         tree = ET.parse(data_file)
@@ -82,34 +100,7 @@ def get_slohun_data(data_file, out_file, compound=True):
                 except ValueError:
                     print("Failed to write for: %s (%s)" % (lemma, indicator))
 
-
-def compare_words_data(file_slohun, file_words):
-    words_data = file_helpers.load_file(file_words, sep='|')
-    slohun_data = file_helpers.load_file(file_slohun, sep='|')
-
-    words_not_in_slohun = [line for line in words_data if line not in slohun_data]
-    slohun_not_in_words = [line for line in slohun_data if line not in words_data]
-    intersection = [line for line in slohun_data if line in words_data]
-    print("Words not in slohun:", len(words_not_in_slohun))
-    print("Slohun not in words:", len(slohun_not_in_words))
-    print("Intersection:", len(intersection))
-
-    words_dict = word_list_to_dict(words_data)
-    slohun_dict = word_list_to_dict(slohun_data)
-
-    count = 0
-    for key in words_dict.keys():
-        if key in slohun_dict.keys():
-            if len(words_dict[key]) != len(slohun_dict[key]):
-                print(key)
-                print(words_dict[key])
-                print(slohun_dict[key])
-                count += 1
-
-    print("# different entries:", count)
-
-
-def compare_words_data_2(file_slohun_examples, file_words):
+def compare_words_data(file_slohun_examples: str, file_words: str):
     words_data = [[line[0], line[2]] for line in file_helpers.load_file(file_words, sep='|')]
     words_count = word_list_to_dict(words_data)
 
@@ -131,14 +122,13 @@ def compare_words_data_2(file_slohun_examples, file_words):
     print("Intersection:", len(intersection), count_senses(slohun_count, intersection))
 
 
-def count_senses(word_count, keys):
+def count_senses(word_count: Dict[str, List[str]], keys: Iterable[str]):
     count = 0
     for key in keys:
         count += len(word_count[key])
     return count
 
-
-def word_list_to_dict(list):
+def word_list_to_dict(list: List):
     list.sort(key=lambda x: x[0])
 
     words_dict = {}
@@ -153,34 +143,3 @@ def word_list_to_dict(list):
             words_dict[word] = [indicator]
 
     return words_dict
-
-
-def create_test_val_dataset(given_words_file, sentences_file, tmp_dir, out_dir):
-    sentences_minus_given =  tmp_dir + "/slohun_sentences_minus_given.txt"
-    sentences_intersect_given =  tmp_dir + "/slohun_sentences_intersect_given.txt"
-    sentences_intersect_given_1 =  tmp_dir + "/slohun_sentences_intersect_given_1.txt"
-    sentences_intersect_given_2 =  tmp_dir + "/slohun_sentences_intersect_given_2.txt"
-    words_intersect_given_1 =  tmp_dir + "/slohun_words_intersect_given_1.txt"
-    validation_dataset_unsorted = tmp_dir + "/validation_dataset.txt"
-    test_dataset_unsorted = tmp_dir + "/validation_dataset.txt"
-
-    validation_dataset = out_dir + "/validation_dataset.txt"
-    test_dataset = out_dir + "/validation_dataset.txt"
-    validation_words = out_dir + "/validation_words.txt"
-    test_words = out_dir + "/test_words.txt"
-
-    file_helpers.filter_file_by_words(sentences_file, given_words_file, sentences_minus_given, skip_idx=1, complement=True)
-    file_helpers.filter_file_by_words(sentences_file, given_words_file, sentences_intersect_given, skip_idx=1, complement=False)
-    file_helpers.get_random_part(sentences_intersect_given, sentences_intersect_given_1, sentences_intersect_given_2, words_intersect_given_1)
-
-
-    word_embeddings = embeddings.WordEmbeddings()
-    word_embeddings.get_words_embeddings()
-    embeddings.get_words_embeddings_v2([sentences_minus_given, sentences_intersect_given_1], validation_dataset_unsorted, batch_size=100)
-    embeddings.get_words_embeddings_v2([sentences_intersect_given_2], test_dataset_unsorted, batch_size=100)
-
-    file_helpers.sort_lines(validation_dataset_unsorted, validation_dataset)
-    file_helpers.sort_lines(test_dataset_unsorted, test_dataset)
-
-    file_helpers.get_unique_words(validation_dataset, validation_words, sep='\t')
-    file_helpers.get_unique_words(test_dataset, test_words, sep='\t')

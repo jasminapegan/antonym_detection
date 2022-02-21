@@ -1,213 +1,247 @@
-from itertools import product
-
+""" Version 2 treats number of clusters as an unknown parameter. """
+import os
 import file_helpers
-from clustering.clusters import get_clusters_by_word, get_word_data
-from clustering.scoring import get_avg_scores, score_clustering
+from data import word
+from clustering import algorithms
+from clustering.scoring import get_avg_scores
+from data.embeddings import WordEmbeddings
+from typing import List, Dict
+from sklearn import metrics
 
 
-def find_best_params_main(data_file, words_json_file, validation_file, out_dir, missing=[], use_algorithms=['kmeans']):
-    r = 42
+def find_best_params_main(data_file: str, words_json_file: str, validation_file: str, out_dir: str,
+                             use_algorithms: List[str]):
+    """
+    TODO: split into smaller functions
+
+    :param data_file:
+    :param words_json_file:
+    :param validation_file:
+    :param out_dir:
+    :param use_algorithms:
+    :return:
+    """
+
     n_init = [25, 50, 75, 100]
-    min_samples = 3
+    min_samples = [3]
 
     if 'kmeans' in use_algorithms:
-        print("starting kmeans ...")
-
         algo = ['full', 'elkan']
 
-        knn = [
-            {'clusterer': None,
-             'algorithm': 'kmeans',
-             'parameters': {'random_state': 42,
-                            'algorithm': 'full',
-                            'n_init': n,
-                            'algorithm': a},
-             'out_file': None} for n, a in product(n_init, algo)
-        ]
+        kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=algo, n_inits=n_init)
 
-        find_best_clustering(data_file, words_json_file, validation_file, "%s/KNN.txt" % out_dir, knn, missing=missing)
-        print("""
-        *****************************\n
-        *******kmeans FINISHED*******\n
-        *****************************\n
-        """)
+        find_best_clustering(data_file, words_json_file, validation_file, "%s/KNN.txt" % out_dir, kmeans)
 
     if 'spectral' in use_algorithms:
-        print("starting spectral ...")
-
         affinity = ['cosine', 'euclidean', 'nearest_neighbors']
+        distance = ['cosine', 'relative_cosine']
         gamma = [0.001, 0.01, 0.1, 1, 10]
         ks = [1, 2, 5, 10]
 
-        spectral = [{'clusterer': None,
-                     'algorithm': 'spectral',
-                     'affinity': a,
-                     'parameters': {'random_state': r,
-                                    'n_neighbors': min_samples},
-                     'out_file': "test"} for a in affinity]
+        spectral = algorithms.SpectralAlgorithm.get_clusterer_list(
+            affinity=affinity, n_neighbors=min_samples, distance=distance, ks=ks, gamma=gamma)
 
-        spectral += [{'clusterer': None,
-                      'algorithm': 'spectral',
-                      'affinity': 'precomputed',
-                      'distance' : 'relative_cosine',
-                      'k': k,
-                      'parameters': {'random_state': r,
-                                     'n_neighbors': min_samples},
-                      'out_file': None} for k in ks]
-
-        spectral += [{'clusterer': None,
-                      'algorithm': 'spectral',
-                      'affinity': 'precomputed',
-                      'distance' : 'cosine',
-                      'parameters': {'random_state': r,
-                                     'n_neighbors': min_samples},
-                      'out_file': None}]
-
-        spectral += [{'clusterer': None,
-                      'algorithm': 'spectral',
-                      'affinity': 'rbf',
-                      'gamma': g,
-                      'parameters': {'random_state': r,
-                                     'n_neighbors': min_samples},
-                      'out_file': None} for g in gamma]
-
-        find_best_clustering(data_file, words_json_file, validation_file, "%s/spectral.txt" % out_dir, spectral, missing=missing)
-        print("""
-        *****************************\n
-        *******spectral FINISHED*****\n
-        *****************************\n
-        """)
+        find_best_clustering(data_file, words_json_file, validation_file, "%s/spectral.txt" % out_dir, spectral)
 
     if 'agglomerative' in use_algorithms:
-        print("starting agglomerative ...")
-
         affinity = ['cosine', 'euclidean', 'nearest_neighbors']
-        linkage = ['complete', 'average']
+        linkage = ['complete', 'average', 'ward']
         ks = [1, 2, 5, 10]
 
-        agglomerative = [{'clusterer': None,
-                          'algorithm': 'agglomerative',
-                          'affinity': a,
-                          'parameters': {'random_state': r,
-                                         'linkage': l},
-                          'out_file': None} for a, l in product(affinity, linkage)]
+        agglomerative = algorithms.AgglomerativeAlgorithm.get_clusterer_list(affinity=affinity, linkage=linkage, ks=ks)
 
-        agglomerative += [{'clusterer': None,
-                           'algorithm': 'agglomerative',
-                           'affinity': 'euclidean',
-                           'parameters': {'random_state': r,
-                                          'linkage': 'ward'},
-                           'out_file': None}]
+        find_best_clustering(data_file, words_json_file, validation_file, "%s/agglomerative.txt" % out_dir, agglomerative)
 
-        agglomerative += [{'clusterer': None,
-                           'algorithm': 'agglomerative',
-                           'affinity': 'precomputed',
-                           'k': k,
-                           'parameters': {'random_state': r},
-                           'out_file': None} for k in ks]
-
-        find_best_clustering(data_file, words_json_file, validation_file, "%s/agglomerative.txt" % out_dir, agglomerative, missing=missing)
-        print("""
-        *****************************\n
-        ***agglomerative FINISHED****\n
-        *****************************\n
-        """)
         if 'dbscan' in use_algorithms:
-            print("starting dbscan ...")
+            eps = [0.1, 0.3, 0.5, 0.7, 0.9]
+            leaf_size = [1, 3, 5, 7]
 
-            eps = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+            dbscan = algorithms.DbscanAlgorithm.get_clusterer_list(eps=eps, min_samples=min_samples, leaf_size=leaf_size)
 
-            dbscan = [{'clusterer': None,
-                       'algorithm': 'dbscan',
-                       'parameters': {'random_state': r,
-                                      'metric': 'cosine',
-                                      'eps': e,
-                                      'min_samples': min_samples},
-                       'out_file': None} for e in eps]
+            find_best_clustering(data_file, words_json_file, validation_file, "%s/dbscan.txt" % out_dir, dbscan)
 
-            find_best_clustering(data_file, words_json_file, validation_file, "%s/dbscan.txt" % out_dir,
-                                 dbscan, missing=missing)
-            print("""
-            *****************************\n
-            *******DBSCAN FINISHED*******\n
-            *****************************\n
-            """)
+def find_best_kmeans(data_file: str, words_json_file: str, validation_file: str, out_dir: str):
+    """
+    Execute search for best kmeans algorithm over predefined parameters. Score word embedding clusterings and write out
+    scores for each algorithm.
 
+    :param data_file: input embeddings file
+    :param words_json_file: words data (used to determine number of senses)
+    :param validation_file: labeled sentences data
+    :param out_dir: output directory for separate algorithm score files
+    :return: None
+    """
 
-def find_best_clustering(data_file, words_json_file, validation_file, out_file, algorithm_params_list, missing=[]):
-    words_json = file_helpers.load_json_word_data(words_json_file)
-    val_data = file_helpers.load_validation_file_grouped(validation_file, embeddings=False, sentence_idx=3)
-    algorithm_scores = {get_algorithm_id(algo): {} for algo in algorithm_params_list}
-    idx = 0
-    max_idx = file_helpers.file_len(data_file)
+    algo = ['full']#, 'elkan']
+    n_init = [25] #, 50, 75, 100]
+    kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=algo, n_inits=n_init)
+    find_best_clustering(data_file, words_json_file, validation_file, out_dir, kmeans)
 
-    while idx < max_idx:
-        word, n_samples, n, words, sentences, embeddings, idx = get_word_data(data_file, words_json, idx)
+def find_best_clustering(data_file: str,
+                         words_json_file: str,
+                         validation_file: str,
+                         out_dir: str,
+                         algorithm_list: List[algorithms.ClusteringAlgorithm]) -> None:
 
-        print("clustering %s ... %d / %d" % (word, idx, max_idx))
+    print("*****\nSTARTING %s" % str([a.get_algorithm_id() for a in algorithm_list]))
 
-        if word == "iztočnica":
-            continue
-        elif word in missing or word not in val_data.keys():
-            continue
-        elif n < 2:
-            continue
+    best_clustering = BestClustering(words_json_file, validation_file, data_file)
+    best_clustering.find_best(algorithm_list, out_dir)
 
-        word_val_data = val_data[word]
-        val_ids = [sentences.index(s) for s in word_val_data['sentences'] if s.strip() in sentences]
+class BestClustering:
 
-        for params in algorithm_params_list:
+    Scores = Dict[str, Dict[str, float]]
 
-            labels, silhouette_score, clusterer = get_clusters_by_word(word, sentences, embeddings, n_samples, n, params)
-            params['clusterer'] = clusterer
+    def __init__(self, words_json_file: str, validation_file: str, data_file: str):
+        self.words_json = file_helpers.words_data_to_dict(words_json_file)  #file_helpers.load_json_word_data(words_json_file)
+        self.val_data = file_helpers.load_validation_file_grouped(validation_file, indices=True, sentence_idx=3)
+        self.word_data_generator = word.word_data_gen(data_file)
+        self.word_embeddings = WordEmbeddings()
+        self.scores = {}
 
-            if labels is None:
+    @staticmethod
+    def get_clusters_by_word(word_data: word.WordData, n_clusters: int, algorithm: algorithms.ClusteringAlgorithm,
+                             out_dir: str) -> (List[int], float):
+        """
+        Execute clustering with given algorithm on given word data.
+
+        :param word_data: word data including sentences and embeddings
+        :param n_clusters: number of clusters to use with algorithm
+        :param algorithm: clustering algorithm to use
+        :param out_dir: directory where scoring files will be created
+        :return: list of labels and silhouette score
+        """
+
+        if word_data.n_sentences < n_clusters:
+            # print("Too little samples for %s: %d samples, %d clusters." % (word_data.word, n_samples, n))
+            return None, None
+
+        else:
+            labels = algorithm.predict(word_data.embeddings, n_clusters)
+
+            with open(os.path.join(out_dir, algorithm.get_algorithm_id()), "a", encoding="utf8") as outf:
+                # out_data = list(zip(labels, [word] * n_samples, sentences)) #, embeddings))
+                # file_helpers.write_grouped_data(outf, sorted(out_data, key=lambda x: x[0])) #, centroids=clusterer.cluster_centers_)
+
+                str_embeddings = [" ".join([str(x) for x in e]) for e in word_data.embeddings]
+                out_data = list(zip([str(x) for x in labels],
+                                    [word_data.word] * word_data.n_sentences,
+                                    word_data.sentences,
+                                    str_embeddings))
+                outf.writelines(["\t".join(line) + "\n" for line in out_data])
+
+            silhouette = None
+
+            try:
+                silhouette = metrics.silhouette_score(word_data.embeddings, labels, metric='cosine')
+                # print("silhouette score: %f" % silhouette)
+            except Exception as e:
+                print("silhouette score could not be calculated: %s" % str(e))
+
+            return labels, silhouette
+
+    def find_best(self, algorithm_list: List[algorithms.ClusteringAlgorithm], out_dir: str):
+        """
+        Find best clustering algorithm from given list of algorithms, output scores into out_dir.
+
+        :param algorithm_list: a list of algorithms to use
+        :param out_dir: directory where scores are saved
+        :return: None
+        """
+
+        for word_data in self.word_data_generator:
+
+            word = word_data.words[0]
+            n = len(self.words_json[word])
+
+            if word not in self.val_data.keys():
                 continue
 
-            predicted_labels = [labels[i] for i in val_ids]
+            word_data = self.prepare_word_data(word, word_data)
 
-            if (len(predicted_labels) != len(word_val_data['labels'])):
-                print("Labels not matching in length!")
+            for algorithm_data in algorithm_list:
+                self.execute_clustering(algorithm_data, word_data, out_dir, n)
 
-            if (len(word_val_data['labels']) > 1):
-                rand_score, adj_rand_score, completeness_score, f1_score, labels, confusion_matrix =\
-                    score_clustering(predicted_labels, word_val_data['labels'])
+            algorithm_scores = {a.get_algorithm_id(): a.score for a in algorithm_list}
+            print(algorithm_scores)
 
-                print("f1 score: %f" % f1_score)
-                print(confusion_matrix)
+        #self.write_results(os.path.join(out_dir, "results_all.txt"), algorithm_scores, algorithm_list)
+        print("\n*****FINISHED*****")
 
-                algorithm_scores[get_algorithm_id(params)][word] = {
-                    'silhouette': silhouette_score,
-                    'rand': rand_score,
-                    'adjusted_rand': adj_rand_score,
-                    'completeness': completeness_score,
-                    'f1_score': f1_score,
-                    'n_samples': n_samples,
-                    'n_non_null': len(predicted_labels)
-                }
+    def execute_clustering(self, algorithm_data: algorithms.ClusteringAlgorithm, word_data: word.WordData,
+                           out_dir: str, n: int=None):
+        """
+        Execute clustering with given 'algorithm_data' on given 'word_data', print results into file in 'out_dir'.
 
-    print(algorithm_scores)
-    write_results(out_file, algorithm_scores, algorithm_params_list)
+        :param algorithm_data: algorithm to be used with values for parameters
+        :param word_data: WordData representing data on selected word
+        :param out_dir: directory where the output file is created
+        :param n: number of clusters. If None, all the values from 1 to 10 are tested. (default None)
+        :return: None
+        """
 
+        if n:
+            ns = [n]
+        else:
+            ns = range(10)
 
-def write_results(out_file, algorithm_scores, algorithm_params_list):
-    with open(out_file, "w", encoding="utf8") as f:
-        for algo in algorithm_params_list:
+        for n_clusters in ns:
+            labels, silhouette_score = self.get_clusters_by_word(word_data, n_clusters, algorithm_data, out_dir)
 
-            algo_id = get_algorithm_id(algo)
-            algo_score = algorithm_scores[algo_id]
-            algo['clusterer'] = None
+            if labels is not None:
+                word_data.set_predicted_labels(labels)
 
-            f.write("Score for %s, %s\n" % (algo_id, str(algo)))
+                if (len(word_data.validation_labels) > 1):
+                    algorithm_data.score_method(word_data, silhouette_score, n_clusters)
 
-            for word in algo_score.keys():
-                f.write("\t'%s': %s\n" % (word, str(algo_score[word])))
+        if not n:
+            algorithm_data.get_best_n_clusters(word_data)
 
-            avg_scores = get_avg_scores(algo_score, ['silhouette', 'rand', 'adjusted_rand', 'completeness', 'f1_score'])
-            f.write("Avg score: %s\n\n" % str(avg_scores))
+    def prepare_word_data(self, word: str, word_data: word.WordData) -> word.WordData:
+        """
+        Check if validation data contains sentences not included in WordData. For each sentence, calculate the observed
+        word's embedding.
 
+        :param word: the observed word
+        :param word_data: already processed word data
+        :return: updated WordData object
+        """
 
-def get_algorithm_id(algo):
-    if 'linkage' not in algo.keys() or algo['linkage'] is None:
-        return algo['algorithm']
-    return " - ".join([algo['algorithm'], algo['linkage']])
+        word_val_data = self.val_data[word]
+
+        # add missing sentences + embeddings
+        missing_sentences = [s for s in word_val_data['sentences'] if s not in word_data.sentences]
+
+        if missing_sentences:
+            word_data.add_missing_sentences(missing_sentences, self.word_embeddings, word_val_data)
+
+        word_data.val_ids = [word_data.sentences.index(s) for s in word_val_data['sentences'] if s in word_data.sentences]
+        word_data.validation_labels = word_val_data['labels']
+
+        return word_data
+
+    @staticmethod
+    def write_results(out_file: str, algorithm_scores: Scores, algorithm_params_list: List[algorithms.ClusteringAlgorithm]):
+        """
+        Write scores of given algorithms to 'out_file'.
+
+        :param out_file: file to write scores to
+        :param algorithm_scores: a dict of scores (dict of float per word) per algorithm
+        :param algorithm_params_list:
+        :return: None
+        """
+
+        with open(out_file, "a", encoding="utf8") as f:
+            for algo in algorithm_params_list:
+
+                algo_id = algo.get_algorithm_id()
+                algo_score = algorithm_scores[algo_id]
+
+                f.write("Score for %s, %s\n" % (algo_id, str(algo)))
+
+                for word in algo_score.keys():
+                    f.write("\t'%s': %s\n" % (word, str(algo_score[word])))
+
+                avg_scores = get_avg_scores(algo_score,
+                                            ['silhouette', 'rand', 'adjusted_rand', 'completeness', 'f1_score'])
+                f.write("Avg score: %s\n\n" % str(avg_scores))
