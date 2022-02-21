@@ -103,7 +103,7 @@ def get_sentences_from_tree(tree: ET.ElementTree, out_file: TextIOWrapper, re_wh
     :param re_whitespace: pre-compiled pattern to match whitespace groups (for speed)
     :param limit: how many word occurences are needed
     :param min_tokens: minimal number of tokens for the sentence to be included (detault 8)
-    :return:
+    :return: None
     """
 
     global words
