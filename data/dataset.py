@@ -32,7 +32,7 @@ def create_val_test_set(in_data: str,
     file_helpers.filter_file_by_words(in_data, given_data, intersection, skip_idx=1)    # skip classification
     file_helpers.filter_file_by_words(in_data, given_data, difference, skip_idx=1, complement=True)
 
-    assert not file_helpers.is_empty(intersection), "No words in %s and %s are common" % (in_data, given_data)
+    assert not file_helpers.is_empty_or_whitespace(intersection), "No words in %s and %s are common" % (in_data, given_data)
 
     pt1 = os.path.join(tmp_dir, "pt1.txt")
     divide_word_senses(intersection, pt1, test_file, ratio=ratio)

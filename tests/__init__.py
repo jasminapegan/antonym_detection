@@ -1,6 +1,11 @@
 from data import dataset, gigafida, embeddings
+from clustering import find_best
 
 GIVEN_DATA = "data/given_data.txt"
+#GIVEN_JSON = "data/given_data.json"
+VAL_DATA = "data/labeled_sentences.txt"
+
+#file_helpers.save_json_word_data_from_multiple(GIVEN_DATA, VAL_DATA, GIVEN_JSON)
 
 def dataset_test():
     dataset.create_val_test_set("data/labeled_sentences.txt", GIVEN_DATA, "tmp/val.txt", "tmp/test.txt")
@@ -11,10 +16,14 @@ def sentences_sample_test():
 
 def embeddings_test():
     word_embeddings = embeddings.WordEmbeddings()
-    word_embeddings.get_words_embeddings(["tmp/sentences.txt"], "tmp/embeddings.txt")
+    word_embeddings.data_file_to_embeddings(["tmp/sentences.txt"], "tmp/embeddings.txt")
+
+def clustering_test():
+    find_best.find_best_kmeans("tmp/embeddings.txt", GIVEN_DATA, VAL_DATA, "tmp")
 
 
 if __name__ == '__main__':
-    dataset_test()
-    sentences_sample_test()
-    embeddings_test()
+    #dataset_test()
+    #sentences_sample_test()
+    #embeddings_test()
+    clustering_test()

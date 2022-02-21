@@ -1,10 +1,10 @@
 from itertools import product
 from typing import Dict, List
 
-import sklearn
+from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering, SpectralClustering
 from scipy import spatial
 
-from data.grouped_file import WordData
+from data.word import WordData
 from clustering.scoring import score_clustering
 
 
@@ -18,6 +18,7 @@ class ClusteringAlgorithm:
         self.score = {}
 
     def get_algorithm_id(self):
+        """ Get unique string representing algorithm with all the parameters. """
         params = self.parameters.copy()
         if 'n_clusters' in params.keys():
             del params['n_clusters']
@@ -30,9 +31,14 @@ class ClusteringAlgorithm:
     def predict(self, embeddings: List[List[float]], n_clusters: int):
         pass
 
-    def score_method(self,
-                     word_data: WordData,
-                     silhouette: float) -> None:
+    def score_method(self, word_data: WordData, silhouette: float):
+        """
+        Scores method on 'word_data' and updates score parameter.
+
+        :param word_data: chosen word data
+        :param silhouette: silhouette score
+        :return: None
+        """
 
         n_samples = word_data.n_sentences
         val_labels = word_data.validation_labels
@@ -73,10 +79,11 @@ class KMeansAlgorithm(ClusteringAlgorithm):
         if 'algorithm' not in parameters.keys():
             parameters['algorithm'] = 'elkan'
 
-        self.clusterer = sklearn.cluster.KMeans(**self.parameters)
+        self.clusterer = KMeans(**self.parameters)
 
     @staticmethod
-    def get_clusterer_list(algorithms=['elkan'], n_inits=[20]):
+    def get_clusterer_list(algorithms: List[str]=['elkan'], n_inits: List[int]=[20]):
+        """ Get a list of clusterers with all possible combinations of given argument ranges. """
         return [
             KMeansAlgorithm({'n_init': n, 'algorithm': a}) for n, a in product(n_inits, algorithms)
         ]
@@ -112,11 +119,14 @@ class SpectralAlgorithm(ClusteringAlgorithm):
             if 'gamma' not in parameters.keys():
                 parameters['gamma'] = 1.0
 
-        self.clusterer = sklearn.cluster.SpectralClustering(**self.parameters)
+        self.clusterer = SpectralClustering(**self.parameters)
 
 
     @staticmethod
-    def get_clusterer_list(affinity=['cosine'], n_neighbors=[5], distance=['cosine'], ks=[3], gamma=[1.0]):
+    def get_clusterer_list(affinity: List[str]=['cosine'], n_neighbors: List[int]=[5], distance: List[str]=['cosine'],
+                           ks: List[int]=[3], gamma: List[float]=[1.0]):
+        """ Get a list of clusterers with all possible combinations of given argument ranges. """
+
         algorithms = []
 
         if 'precomputed' in affinity and 'relative_cosine' in distance:
@@ -194,13 +204,15 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
             if linkage == 'ward':
                 assert affinity == 'euclidean'
 
-        self.clusterer = sklearn.cluster.AgglomerativeClustering(**self.parameters)
+        self.clusterer = AgglomerativeClustering(**self.parameters)
 
     def set_n_clusters(self, n: int):
         self.clusterer.n_clusters = n
 
     @staticmethod
-    def get_clusterer_list(affinity=['cosine'], linkage=['complete'], distance=[], ks=[3]):
+    def get_clusterer_list(affinity: List[str]=['cosine'], linkage: List[str]=['complete'], distance: List[str]=[], ks: List[int]=[3]):
+        """ Get a list of clusterers with all possible combinations of given argument ranges. """
+
         algorithms = []
 
         if 'precomputed' in affinity and 'relative_cosine' in distance:
@@ -262,10 +274,12 @@ class DbscanAlgorithm(ClusteringAlgorithm):
         if 'leaf_size' not in parameters:
             parameters['leaf_size'] = 3
 
-        self.clusterer = sklearn.cluster.DBSCAN(**self.parameters)
+        self.clusterer = DBSCAN(**self.parameters)
 
     @staticmethod
-    def get_clusterer_list(eps=[0.5], min_samples=[5], leaf_size=[3]):
+    def get_clusterer_list(eps: List[float]=[0.5], min_samples: List[int]=[5], leaf_size:List[int]=[3]):
+        """ Get a list of clusterers with all possible combinations of given argument ranges. """
+
         return [DbscanAlgorithm({
             'eps': e,
             'min_samples': s,

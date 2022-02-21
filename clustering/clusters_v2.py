@@ -4,7 +4,7 @@ from typing import List
 from clustering import algorithms
 from sklearn import metrics
 
-from data import grouped_file
+from data import word
 
 
 def kmeans_get_clusters_by_word(word, sentences, embeddings, n_samples, n, params, out_file=None, clusterer=None):
@@ -32,7 +32,7 @@ def kmeans_get_clusters_by_word(word, sentences, embeddings, n_samples, n, param
     return labels, silhouette
 
 
-def get_clusters_by_word_v2(word_data: grouped_file.WordData,
+def get_clusters_by_word_v2(word_data: word.WordData,
                             n: int,
                             algorithm: algorithms.ClusteringAlgorithm,
                             out_dir: str) -> (List[int], float):

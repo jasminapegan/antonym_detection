@@ -1,10 +1,20 @@
 import os
 import pickle
 from random import shuffle
+from typing import List, Dict
+
 import numpy as np
 
 
-def get_words_data_from_file(words_file):
+def get_words_data_from_file(words_file: str, sep='|') -> List[Dict]:
+    """
+    Parse data from 'words_file' into a list of dicts
+
+    :param words_file: file containing words data
+    :param sep: separator in words_file (default '|')
+    :return: a list of dictionaries containing word data: word, word type, sense id, description of sense
+    """
+
     words = []
 
     with open(words_file, "r", encoding="utf8") as in_file:
@@ -12,16 +22,23 @@ def get_words_data_from_file(words_file):
 
             # skip header
             if i != 0:
-                word, word_type, num_of_meaning, description = line.strip().split('|')
+                word, word_type, num_of_meaning, description = line.strip().split(sep)
                 words.append({"word": word,
                               "type": word_type,
                               "num": num_of_meaning,
                               "description": description})
     return words
 
+def words_data_to_dict(words_file: str, sep='|') -> Dict:
+    """
+    Read word data from file and convert a list of dictionaries with sense data to a dictionary of words data
 
-def words_data_to_dict(words_file):
-    words = get_words_data_from_file(words_file)
+    :param words_file: file containing words data
+    :param sep: separator in words_file (default '|')
+    :return: a dictionary with words as keys and values as list of {word, type, sense_id, description}
+    """
+
+    words = get_words_data_from_file(words_file, sep=sep)
     words_dict = {}
 
     for word_data in words:
@@ -32,14 +49,21 @@ def words_data_to_dict(words_file):
             words_dict[word].append(word_data)
     return words_dict
 
-def save_json_word_data(words_file, out_file):
+def save_json_word_data(words_file: str, out_file: str):
+    """
+    Get words data from 'words_file', convert to json form and save to binary 'out_file'.
+
+    :param words_file: file containing words data
+    :param out_file: file to save binary json to
+    :return: None
+    """
+
     words_dict = words_data_to_dict(words_file)
 
     with open(out_file, "wb") as outjson:
         pickle.dump(words_dict, outjson)
 
-
-def save_json_word_data_from_multiple(words_file1, words_file2, out_file):
+def save_json_word_data_from_multiple(words_file1: str, words_file2: str, out_file: str):
     words_dict1 = words_data_to_dict(words_file1)
     words_dict2 = words_data_to_dict(words_file2)
 
@@ -58,17 +82,23 @@ def save_json_word_data_from_multiple(words_file1, words_file2, out_file):
     with open(out_file, "wb") as outjson:
         pickle.dump(words_dict1, outjson)
 
-
-def load_json_word_data(json_file):
+def load_json_word_data(json_file: str):
     with open(json_file, "rb") as words_dict_json:
         return pickle.load(words_dict_json)
 
-
-def get_unique_words(word_file, sep='|'):
+def get_unique_words(word_file: str, sep: str='|'):
     return list(set([line[0] for line in load_file(word_file, sep=sep)]))
 
+def load_file(file: str, limit: int=None, sep: str='\t'):
+    """
+    Read data from 'file', return a list of lines (string lists).
 
-def load_file(file, limit=None, sep='\t'):
+    :param file: file with data to read
+    :param limit: until which line to read. If None, read all lines (default None)
+    :param sep: separator of 'file'
+    :return: a list of lists of string representing lines of data
+    """
+
     data = []
     with open(file, "r", encoding="utf8") as f:
 
@@ -80,24 +110,23 @@ def load_file(file, limit=None, sep='\t'):
 
     return data
 
+def is_empty_or_whitespace(filename: str):
+    # check if file is empty or contains only whitespace
 
-def is_empty(filename):
     with open(filename, encoding='utf8') as f:
         for line in f:
             if line.strip() != "":
                 return False
     return True
 
-
-def file_len(filename):
+def file_len(filename: str):
     i = 0
     with open(filename, encoding='utf8') as f:
         for i, l in enumerate(f):
             pass
     return i + 1
 
-
-def count_lines(folder):
+def count_lines(folder: str):
     return sum([file_len(folder + "/" + file) for file in os.listdir(folder)])
 
 
@@ -265,17 +294,17 @@ def remove_duplicate_lines(in_file, out_file, range=None):
                     if range:
                         visited_lines = visited_lines[-range:]
 
+def sort_lines(in_file: str, out_file: str, sep='\t'):
+    # sort lines by element at 0
 
-def sort_lines(in_file, out_file):
     with open(in_file, 'r', encoding="utf8") as input:
         with open(out_file, 'wt', encoding="utf8") as output:
 
             lines = input.readlines()
-            lines.sort(key=lambda x: x.split("\t")[0])
+            lines.sort(key=lambda x: x.split(sep)[0])
 
             for line in lines:
                 output.write(line)
-
 
 def count_words(in_file, out_file):
     words = {}
@@ -293,7 +322,6 @@ def count_words(in_file, out_file):
 
             output.write("\n".join(["%s %d" % (k, v) for k, v in words.items()]))
 
-
 def create_sample_word_file(file, word, out_file):
     with open(file, "r", encoding="utf8") as f:
         with open(out_file, "w", encoding="utf8") as outf:
@@ -306,7 +334,6 @@ def create_sample_word_file(file, word, out_file):
                     continue
                 else:
                     outf.write(line)
-
 
 def filter_file_by_words(file, words_file, out_file, word_idx=0, split_by="\t", complement=False, skip_idx=None):
     words = get_unique_words(words_file)
@@ -324,8 +351,18 @@ def filter_file_by_words(file, words_file, out_file, word_idx=0, split_by="\t", 
                     else:
                         outf.write(line)
 
+def get_random_part(in_file: str, out_file1: str, out_file2: str, out_file_words: str, ratio: int=0.5):
+    """
+    Get words in contexts and divide words according to ratio.
 
-def get_random_part(in_file, out_file1, out_file2, out_file_words, ratio=0.5):
+    :param in_file: words in context tsv file: word, index,
+    :param out_file1:
+    :param out_file2:
+    :param out_file_words:
+    :param ratio: ratio of
+    :return: None
+    """
+
     n = file_len(in_file)
     n_part = n * ratio
 
@@ -360,7 +397,6 @@ def get_random_part(in_file, out_file1, out_file2, out_file_words, ratio=0.5):
                         out1.write(line)
                     else:
                         out2.write(line)
-
 
 
 if __name__ == '__main__':
