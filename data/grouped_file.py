@@ -1,5 +1,4 @@
 """ Works only with files sorted by words. """
-from difflib import get_close_matches
 from typing import List, Dict
 
 import numpy as np

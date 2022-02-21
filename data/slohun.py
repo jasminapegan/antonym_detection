@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 import re
 
 import file_helpers
+from data import embeddings
 
 
 def get_slohun_examples(data_file, out_file):
@@ -172,8 +173,11 @@ def create_test_val_dataset(given_words_file, sentences_file, tmp_dir, out_dir):
     file_helpers.filter_file_by_words(sentences_file, given_words_file, sentences_intersect_given, skip_idx=1, complement=False)
     file_helpers.get_random_part(sentences_intersect_given, sentences_intersect_given_1, sentences_intersect_given_2, words_intersect_given_1)
 
-    embeddings_v2.get_words_embeddings_v2([sentences_minus_given, sentences_intersect_given_1], validation_dataset_unsorted, batch_size=100)
-    embeddings_v2.get_words_embeddings_v2([sentences_intersect_given_2], test_dataset_unsorted, batch_size=100)
+
+    word_embeddings = embeddings.WordEmbeddings()
+    word_embeddings.get_words_embeddings()
+    embeddings.get_words_embeddings_v2([sentences_minus_given, sentences_intersect_given_1], validation_dataset_unsorted, batch_size=100)
+    embeddings.get_words_embeddings_v2([sentences_intersect_given_2], test_dataset_unsorted, batch_size=100)
 
     file_helpers.sort_lines(validation_dataset_unsorted, validation_dataset)
     file_helpers.sort_lines(test_dataset_unsorted, test_dataset)

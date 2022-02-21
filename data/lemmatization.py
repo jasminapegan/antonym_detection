@@ -1,3 +1,5 @@
+from typing import List
+
 import classla
 
 def lemmatize_source(source_file, lemmatized_file):
@@ -38,12 +40,21 @@ def get_word_lemmas(words_data):
     return words_data
 
 
-def get_word_lemmas_list(words_list, lemmatizer=None):
+def get_word_lemmas_list(words_list: List[str], lemmatizer: classla.Pipeline=None) -> List[str]:
+    """
+    Lemmatizes phrases in 'words_list' word by word. Caution: phrases containing '-' will loose it after lemmatization.
+
+    :param words_list: a list of words and phrases to lemmatize
+    :param lemmatizer: preexisting lemmatizer for efficiency
+    :return: a list of lemmatized phrases
+    """
+
     if not lemmatizer:
         lemmatizer = classla.Pipeline('sl', processors='tokenize,pos,lemma', use_gpu=True)
-    lemmatized = []
 
+    lemmatized = []
     for word in words_list:
+
         doc = lemmatizer(word)
         lemmas = []
 
@@ -58,4 +69,3 @@ def get_word_lemmas_list(words_list, lemmatizer=None):
         lemmatized.append(" ".join(lemmas))
 
     return lemmatized
-

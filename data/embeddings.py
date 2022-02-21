@@ -1,23 +1,26 @@
 import classla
 import torch
+from typing import Iterable, List, Tuple
 from difflib import get_close_matches
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, BatchEncoding
 from file_helpers import load_file
 from data.lemmatization import get_word_lemmas_list
 
 
-def get_token_range(word_tokens, tokens):
-    n = len(word_tokens)
-
-    for idx in (i for i, token in enumerate(tokens) if token == word_tokens[0]):
-        if tokens[idx: idx+n] == word_tokens:
-            return idx, idx + n
-
-    return None
-
-
 # replace word form with lemma
-def prepare_data(word, labels, word_indices, sentences, tokenizer):
+def prepare_data(word: str, labels: Iterable, word_indices: Iterable[int], sentences: Iterable[str],
+                 tokenizer: AutoTokenizer) -> (List[str], BatchEncoding, List[int], Iterable):
+    """
+
+
+    :param word:
+    :param labels:
+    :param word_indices:
+    :param sentences:
+    :param tokenizer:
+    :return:
+    """
+
     original_sentences = sentences[:]
     word_split = word.split(" ")
 
@@ -53,9 +56,31 @@ def prepare_data(word, labels, word_indices, sentences, tokenizer):
 
     return sentences, dataset, indices, labels
 
+def get_token_range(word_tokens, tokens):
+    n = len(word_tokens)
+
+    for idx in (i for i, token in enumerate(tokens) if token == word_tokens[0]):
+        if tokens[idx: idx+n] == word_tokens:
+            return idx, idx + n
+
+    return None
+
 
 # replace word form with lemma
-def get_words_embeddings_v2(files, out_file, batch_size=50, skip_i=0, labeled=False, pseudoword=False):
+def get_words_embeddings_v2(files: Iterable[str], out_file: str, batch_size: int=50, skip_i: int=0,
+                            labeled: bool=False, pseudoword: bool=False):
+    """
+    Iterates through 'files', loads data, calculates embeddings and writes them to 'out_file'.
+
+    :param files:
+    :param out_file:
+    :param batch_size:
+    :param skip_i:
+    :param labeled:
+    :param pseudoword:
+    :return: None
+    """
+
     tokenizer = AutoTokenizer.from_pretrained('EMBEDDIA/crosloengual-bert')
     model = AutoModelForSequenceClassification.from_pretrained('EMBEDDIA/crosloengual-bert', output_hidden_states=True)
     model.eval()
@@ -93,7 +118,7 @@ def write_results_to_file(result, outf):
 
 
 def get_psewdoword_embedding_from_results(outputs, labels, word, sentences, indices, labeled):
-    pass
+    raise NotImplementedError("Pseudoword embeddings are not implemented")
 
 
 def get_embeddings_from_results(outputs, labels, word, sentences, indices, labeled):
@@ -146,17 +171,26 @@ def get_words_labels_indices_sentences(data, labeled):
 
 
 class WordEmbeddings:
+    """ A class for work with contextual word embeddings (BERT). """
 
-    def __init__(self):
+    def __init__(self, model='EMBEDDIA/crosloengual-bert'):
+        """ Initialize lemmatizer, tokenizer and model. """
 
         self.lemmatizer = classla.Pipeline('sl', processors='tokenize,pos,lemma', use_gpu=True)
-        self.tokenizer = AutoTokenizer.from_pretrained('EMBEDDIA/crosloengual-bert')
-        self.model = AutoModelForSequenceClassification.from_pretrained('EMBEDDIA/crosloengual-bert',
-                                                                       output_hidden_states=True)
+        self.tokenizer = AutoTokenizer.from_pretrained(model)
+        self.model = AutoModelForSequenceClassification.from_pretrained(model, output_hidden_states=True)
         self.model.eval()
 
 
-    def get_words_embeddings(self, word, sentences):
+    def get_words_embeddings(self, word: str, sentences: List[str]) -> (List, List[int]):
+        """
+        Given a word and a list of sentences containing this word, calculates embeddings of the word in each sentence.
+
+        :param word: the observed word
+        :param sentences: a list of sentences where observed word is used
+        :return: a list of embeddings and a list of skipped indices due to errors
+        """
+
         word_lemma = get_word_lemmas_list([word], lemmatizer=self.lemmatizer)[0]
         sentences_lemmatized = get_word_lemmas_list(sentences[:], lemmatizer=self.lemmatizer)
         skipped_idx = []
@@ -175,8 +209,6 @@ class WordEmbeddings:
         if len(indices) == 0:
             return []
 
-        # TODO: delete skipped indices
-
         sentences, dataset, indices, labels = prepare_data(word, [], indices, sentences, self.tokenizer)
 
         with torch.no_grad():
@@ -185,3 +217,143 @@ class WordEmbeddings:
         results = get_embeddings_from_results(outputs, labels, word, sentences, indices, False)
 
         return [r[-1] for r in results], skipped_idx
+
+    def get_words_embeddings_v2(self, files: Iterable[str], out_file: str, batch_size: int = 50, skip_i: int = 0,
+                                labeled: bool = False, pseudoword: bool = False):
+        """
+        Iterates through 'files', loads data, calculates embeddings and writes them to 'out_file'.
+
+        :param files:
+        :param out_file:
+        :param batch_size:
+        :param skip_i:
+        :param labeled:
+        :param pseudoword:
+        :return: None
+        """
+
+        with open(out_file, "w", encoding="utf8") as outf:
+
+            for f in files:
+                print(f)
+                data = load_file(f)[skip_i:]
+
+                for i, data_batch in enumerate(batch(data, batch_size)):
+
+                    if i % 100 == 0:
+                        print(i, "/", len(data) // batch_size)
+
+                    word, labels, word_indices, sentences = get_words_labels_indices_sentences(data_batch, labeled)
+                    sentences, dataset, indices = self.prepare_data(word, word_indices, sentences)
+
+                    with torch.no_grad():
+                        outputs = self.model(**dataset, output_hidden_states=True)
+
+                    if pseudoword:
+                        result = get_psewdoword_embedding_from_results(outputs, labels, word, sentences, indices,
+                                                                       labeled)
+                    else:
+                        result = get_embeddings_from_results(outputs, labels, word, sentences, indices, labeled)
+
+                    write_results_to_file(result, outf, labeled)
+
+    @staticmethod
+    def write_results_to_file(result, outf):
+        for line in result:
+            embedding = " ".join([str(float(x)) for x in line[-1]])
+            line[-1] = embedding
+            outf.write("\t".join(line) + "\n")
+
+
+    def prepare_data(self, word: str, word_indices: List[Tuple[int, int]], sentences: Iterable[str]) \
+            -> (List[str], BatchEncoding, List[int]):
+        """
+        Accepts data on usages of a word in sentences and returns sentences where word is switched to its base form,
+        a dataset of tokens representing sentences and indices in the sentence between which the word usage is located.
+
+        :param word: the word senses of which we are observing
+        :param word_indices: index of the first word token in corresponding sentence
+        :param sentences: sentences where the observed word is used
+        :return: tuple (sentences, dataset, indices)
+        """
+
+        original_sentences = sentences[:]
+        word_split = word.split(" ")
+
+        word_tokens = []
+        n = len(word_indices)
+
+        for i in range(n):
+            sentence = sentences[i].split(' ')
+            n_words = len(sentence)
+            idx = word_indices[i]
+
+            sentence[idx: idx + len(word_split)] = word_split  # some data has incorrect indexing: sentence[idx - len(word): idx] = word
+            sentences[i] = " ".join(sentence)
+            word_tokens.append(self.tokenizer.tokenize(word))
+
+            if n_words > 100:
+                j = sentence.index(word_split[0])
+                sentences[i] = ' '.join(sentence[max(0, j - 50): min(n_words, j + 50)])
+
+        dataset = self.tokenizer(sentences, padding='longest', return_tensors="pt", is_split_into_words=False)
+        indices = [get_token_range(word_tokens[k], dataset.tokens(k)) for k in range(n)]
+        sentences = original_sentences
+
+        for k in range(n):
+            dataset['input_ids'][k] = self.trim_index(indices[k][1], dataset['input_ids'][k])
+
+        return sentences, dataset, indices
+
+    @staticmethod
+    def trim_index(idx_to: int, tokens: List, limit: int=512) -> List:
+        """
+        Returns trimmed token list, with regards to index of the word we want to keep in resulting token list.
+
+        :param idx_to: index of the last token we want to keep in resulting token list
+        :param tokens: list of tokens we want trimmed
+        :param limit: how many tokens to trim to (default 512)
+        :return: trimmed token list
+        """
+
+        length = len(tokens)
+
+        if length > limit:
+            diff = length - limit
+
+            if idx_to < 512:
+                return tokens[:limit]
+            else:
+                return tokens[diff:]
+
+        return tokens
+
+    @staticmethod
+    def get_token_range(word_tokens: List, tokens: List) -> (int, int):
+        """
+        Calculates index of first and last token of the word represented by 'word_tokens'.
+
+        :param word_tokens: a list of tokens representing observed word
+        :param tokens: a list of tokens representing observed word in contex, ex. a sentence
+        :return: a tuple containing index of the first word token and index of the last word token in given token list.
+        """
+
+        n = len(word_tokens)
+
+        for idx in (i for i, token in enumerate(tokens) if token == word_tokens[0]):
+            if tokens[idx: idx+n] == word_tokens:
+                return idx, idx + n
+
+        return None
+
+    @staticmethod
+    def get_words_labels_indices_sentences(data, labeled):
+        word = data[0][0]
+        labels = []
+
+        if labeled:
+            labels = [int(d[1]) for d in data]
+
+        word_indices = [int(d[-2]) for d in data]
+        sentences = [d[-1] for d in data]
+        return word, labels, word_indices, sentences
