@@ -112,7 +112,6 @@ def load_file(file: str, limit: int=None, sep: str='\t'):
 
 def is_empty_or_whitespace(filename: str):
     # check if file is empty or contains only whitespace
-
     with open(filename, encoding='utf8') as f:
         for line in f:
             if line.strip() != "":
@@ -128,25 +127,6 @@ def file_len(filename: str):
 
 def count_lines(folder: str):
     return sum([file_len(folder + "/" + file) for file in os.listdir(folder)])
-
-
-def load_sentences_embeddings_file(file, limit=None):
-    data = []
-    with open(file, "r", encoding="utf8") as f:
-
-        for i, line in enumerate(f):
-            data.append(line.strip().split("\t"))
-
-            if i == limit:
-                break
-
-    words = [d[0] for d in data]
-    word_forms = [d[1] for d in data]
-    sentences = [d[2] for d in data]
-    embeddings = convert_to_np_array([d[3] for d in data])
-
-    return words, word_forms, sentences, embeddings
-
 
 def load_grouped_data(file, start=0, only_word=None):
     data = []
@@ -179,7 +159,6 @@ def load_grouped_data(file, start=0, only_word=None):
 
     return data, max_idx
 
-
 def load_sentences_embeddings_file_grouped(file, start=0, v2=True, only_word=True):
     data, idx = load_grouped_data(file, start=start, only_word=only_word)
 
@@ -192,7 +171,6 @@ def load_sentences_embeddings_file_grouped(file, start=0, v2=True, only_word=Tru
     else:
         word_forms = [d[1] for d in data]
         return words, word_forms, sentences, embeddings, idx
-
 
 def load_validation_file_grouped(file, only_word=None, start=0, all_strings=False, embeddings=True, indices=False, sentence_idx=2):
     if only_word:
@@ -237,24 +215,8 @@ def load_validation_file_grouped(file, only_word=None, start=0, all_strings=Fals
     else:
         return words_data
 
-
 def convert_to_np_array(string_list):
     return np.array([x.split(' ') for x in string_list], dtype=float)
-
-
-def write_data(out_file, data, mode="w", centroids=None):
-    visited_labels = []
-    with open(out_file, mode, encoding="utf8") as outf:
-        for label, word, sentence in data: #, embedding
-
-            if centroids is not None and label not in visited_labels:
-                centroid_string = " ".join([str(x) for x in centroids[label]])
-                outf.write("\t".join([str(label), label, centroid_string]) + "\n")
-                visited_labels.append(label)
-
-            #embedding_str = " ".join([str(x) for x in embedding])
-            outf.write("\t".join([str(label), word, sentence]) + "\n") #, embedding_str
-
 
 def write_grouped_data(outf, data, centroid=None):
     for label, word, sentence in data: #, embedding
@@ -266,19 +228,16 @@ def write_grouped_data(outf, data, centroid=None):
         #embedding_str = " ".join([str(x) for x in embedding])
         outf.write("\t".join([str(label), word, sentence]) + "\n") #, embedding_str
 
-
 def write_data_for_classification(outf, data):
     for label, word, centroid in data:
         centroid_string = " ".join([str(x) for x in centroid])
         outf.write("\t".join([str(label), word, centroid_string]) + "\n")
-
 
 def concatenate_files(file_list, out_file):
     with open(out_file, "w", encoding="utf8") as out:
         for f in file_list:
             with open(f, "r", encoding="utf8") as in_file:
                 out.writelines(in_file.readlines())
-
 
 def remove_duplicate_lines(in_file, out_file, range=None):
     visited_lines = []
@@ -321,19 +280,6 @@ def count_words(in_file, out_file):
                     words[word] = 1
 
             output.write("\n".join(["%s %d" % (k, v) for k, v in words.items()]))
-
-def create_sample_word_file(file, word, out_file):
-    with open(file, "r", encoding="utf8") as f:
-        with open(out_file, "w", encoding="utf8") as outf:
-
-            for line in f:
-                data_line = line.strip().split("\t")
-                data_word = data_line[0]
-
-                if data_word != word:
-                    continue
-                else:
-                    outf.write(line)
 
 def filter_file_by_words(file, words_file, out_file, word_idx=0, split_by="\t", complement=False, skip_idx=None):
     words = get_unique_words(words_file)
@@ -397,7 +343,3 @@ def get_random_part(in_file: str, out_file1: str, out_file2: str, out_file_words
                         out1.write(line)
                     else:
                         out2.write(line)
-
-
-if __name__ == '__main__':
-    pass
