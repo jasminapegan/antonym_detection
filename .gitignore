@@ -4,4 +4,6 @@ venv/
 **/tmp/
 
 data/sources/gigafida/
+data/sources/wordsense/
 data/sources/slohun/slohun_clarin.xml
+/data/tmp/

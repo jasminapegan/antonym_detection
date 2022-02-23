@@ -1,4 +1,4 @@
-from data import embeddings, gigafida, slohun, dataset, lemmatization
+from data import embeddings, gigafida, wordsense, dataset, lemmatization
 import file_helpers
 
 source_file = "sources/besede_s_pomeni.txt"
@@ -46,7 +46,7 @@ out_file = "sentences/sentences.txt"
 words = []
 words_lemmatized = None
 words_count = None
-gigafida.get_sentences_from_gigafida_multiprocess(gigafida_dir, "sources/slohun/test_data.txt", "sentences/test/sentences.txt", "sentences/test/info.txt", lemmatize=True, sample_size=1)
+#gigafida.get_sentences_from_gigafida_multiprocess(gigafida_dir, "sources/slohun/test_data.txt", "sentences/test/sentences.txt", "sentences/test/info.txt", lemmatize=True, sample_size=1)
 
 
 #gigafida.get_sentences_from_gigafida(gigafida_dir, "sources/slohun/test_data.txt", "sentences/test/sentences.txt", lemmatize=True)
@@ -54,6 +54,8 @@ gigafida.get_sentences_from_gigafida_multiprocess(gigafida_dir, "sources/slohun/
 
 # KO DOBIM NOVE PODATKE
 # 1. pridobi grupirane stavke
+ws = wordsense.WordSense("sources/wordsense", "tmp")
+ws.get_wordsense_examples("sources/sense_data.txt", "sources/sense_examples.txt")
 
 # 2. razdeli besede na val in test set
 # dataset.create_val_test_set("novi podatki", source_file, "val out", "test out")

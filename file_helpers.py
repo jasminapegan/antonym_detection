@@ -165,6 +165,12 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
 
     return words_data
 
+def write_word_data(out_file: str, word_data: Dict[str, List[Dict]], sep='|'):
+    with open(out_file, "w", encoding="utf8") as f:
+        for word, data_list in sorted(list(word_data.items())):
+            for data in data_list:
+               f.write(sep.join([word, data['type'], data['num'], data['description']]))
+
 def write_grouped_data(outf: TextIOWrapper, data: List, centroid: List=None):
     for label, word, sentence in data: #, embedding
 
