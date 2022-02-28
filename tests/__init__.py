@@ -8,7 +8,7 @@ VAL_DATA = "data/labeled_sentences.txt"
 #file_helpers.save_json_word_data_from_multiple(GIVEN_DATA, VAL_DATA, GIVEN_JSON)
 
 def dataset_test():
-    dataset.create_val_test_set("data/labeled_sentences.txt", GIVEN_DATA, "tmp/val.txt", "tmp/test.txt")
+    dataset.create_val_test_set("data/data_2.txt", GIVEN_DATA, "tmp/val.txt", "tmp/test.txt", "tmp/info_val_test.txt", '|')
 
 def sentences_sample_test():
     gigafida.get_sentences_from_gigafida_multiprocess("data/GF", GIVEN_DATA, "tmp/sentences.txt", "tmp/info.txt",
@@ -23,6 +23,6 @@ def clustering_test():
 
 if __name__ == '__main__':
     dataset_test()
-    sentences_sample_test()
-    embeddings_test()
-    clustering_test()
+    #sentences_sample_test()
+    #embeddings_test()
+    #clustering_test()

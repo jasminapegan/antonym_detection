@@ -1,4 +1,3 @@
-iztočnica|besedna vrsta|številka pomena|indikator
 oaza|samostalnik|1|območje v puščavi
 oaza|samostalnik|2|ozelenel prostor
 oaza|samostalnik|3|spokojen prostor; zatočišče;

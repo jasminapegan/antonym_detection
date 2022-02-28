@@ -10,8 +10,8 @@ from file_helpers import get_unique_words
 from data.lemmatization import get_word_lemmas_list
 
 
-def get_sentences_from_gigafida_multiprocess(gigafida_dir: str, words_file: str, sample_out: str, info_out: str,
-                                             tmp_dir: str="tmp", sample_size: int=100, n_folders: int=100):
+def get_sentences_multiprocess(gigafida_dir: str, words_file: str, sample_out: str, info_out: str,
+                               tmp_dir: str="tmp", sample_size: int=100, n_folders: int=100):
     """
     Searches for word usage samples in GigaFida files.
 
@@ -30,21 +30,17 @@ def get_sentences_from_gigafida_multiprocess(gigafida_dir: str, words_file: str,
     :return: None
     """
 
-    global words
-    global words_lemmatized
-    global words_count
+    #global words
+    #global words_lemmatized
+    #global words_count
 
-    # create a list of words + lemmatized multiwords
-    words = get_unique_words(words_file)
-    words_lemmatized = get_word_lemmas_list([w for w in words if len(w) > 1])
-    words_lemmatized += [w for w in words if len(w) == 1]
-    words_count = {word: 0 for word in words}
+    prepare_word_data(words_file)
 
     pool = Pool(min(20, n_folders))
     for i in range(n_folders):
 
         print("%d / %d" % (i, n_folders))
-        pool.apply_async(get_sentences_from_gigafida_part, (gigafida_dir, tmp_dir, i, sample_size), error_callback=lambda x: print(x))
+        pool.apply_async(get_sentences_part, (gigafida_dir, tmp_dir, i, sample_size), error_callback=lambda x: print("Error:", x))
 
     pool.close()
     pool.join()
@@ -57,7 +53,24 @@ def get_sentences_from_gigafida_multiprocess(gigafida_dir: str, words_file: str,
 
     print("Missing words\n", missing_words(words_file, sample_out))
 
-def get_sentences_from_gigafida_part(gigafida_dir: str, out_path: str, i: int, limit: int):
+def prepare_word_data(words_file: str):
+    global words
+    global words_lemmatized
+    global words_count
+
+    # create a list of words + lemmatized multiwords
+    words = get_unique_words(words_file)
+    phrases = [w for w in words if re.findall("[-\s]", w)]
+    singular_words = [w for w in words if w not in phrases]
+
+    deconstructed_words = [re.sub("-|\s+", " ", w).split(" ") for w in phrases]
+    words_lemmatized = get_word_lemmas_list([" ".join(w) for w in deconstructed_words])
+    words_lemmatized += singular_words
+
+    words = phrases + singular_words
+    words_count = {word: 0 for word in words}
+
+def get_sentences_part(gigafida_dir: str, out_path: str, i: int, limit: int):
     """
     Searches 'i'-th file in 'gigafida_dir' for words (which are stored in global variable 'words') and stores found data
     in a new file in the 'out_path' directory. GigaFida directory contains subdirectories such as 'GF00', therefore
@@ -80,7 +93,7 @@ def get_sentences_from_gigafida_part(gigafida_dir: str, out_path: str, i: int, l
             re_whitespace = re.compile(r"\s+")
 
             for j, file in enumerate(os.listdir(gigafida_subdir)):
-                tree = ET.parse(os.path.join(gigafida_subdir + file))
+                tree = ET.parse(os.path.join(gigafida_subdir, file))
 
                 if len(words) == 0:
                     return
@@ -183,7 +196,7 @@ def parse_paragraph(paragraph: ET.Element, re_whitespace: Pattern) -> (List[str]
 
     return sentences, lemma_sentences
 
-def missing_words(words_file: int, data_file: str) -> List[str]:
+def missing_words(words_file: str, data_file: str) -> List[str]:
     """
     Loops through tsv file 'data_file' contents and counts lines beginning with each word in 'words_file'. Returns a
     list of words that did not occur.
@@ -221,7 +234,7 @@ def gather_sentence_data(files: Iterable[str], tmp_dir: str="tmp"):
     all_sorted = os.path.join(tmp_dir, "sentences_sorted.txt")
     all_deduplicated = os.path.join(tmp_dir, "sentences_deduplicated.txt")
 
-    file_helpers.concatenate_files(files, all_sentences)
+    file_helpers.concatenate_files(list(files), all_sentences)
     file_helpers.sort_lines(all_sentences, all_sorted)
     file_helpers.remove_duplicate_lines(all_sorted, all_deduplicated, range=1)
 

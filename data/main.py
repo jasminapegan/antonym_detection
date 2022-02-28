@@ -1,4 +1,4 @@
-from data import embeddings, gigafida, slohun, dataset, lemmatization
+from data import embeddings, gigafida, wordsense, dataset, lemmatization
 import file_helpers
 
 source_file = "sources/besede_s_pomeni.txt"
@@ -46,7 +46,7 @@ out_file = "sentences/sentences.txt"
 words = []
 words_lemmatized = None
 words_count = None
-gigafida.get_sentences_from_gigafida_multiprocess(gigafida_dir, "sources/slohun/test_data.txt", "sentences/test/sentences.txt", "sentences/test/info.txt", lemmatize=True, sample_size=1)
+#gigafida.get_sentences_from_gigafida_multiprocess(gigafida_dir, "sources/slohun/test_data.txt", "sentences/test/sentences.txt", "sentences/test/info.txt", lemmatize=True, sample_size=1)
 
 
 #gigafida.get_sentences_from_gigafida(gigafida_dir, "sources/slohun/test_data.txt", "sentences/test/sentences.txt", lemmatize=True)
@@ -54,12 +54,18 @@ gigafida.get_sentences_from_gigafida_multiprocess(gigafida_dir, "sources/slohun/
 
 # KO DOBIM NOVE PODATKE
 # 1. pridobi grupirane stavke
+#ws = wordsense.WordSense("sources/wordsense", "tmp")
+#ws.get_wordsense_examples("sources/sense_data.txt", "sources/sense_examples.txt")
+#ws.compare_words_data(source_file, "sources/info_words.txt")
 
 # 2. razdeli besede na val in test set
-# dataset.create_val_test_set("novi podatki", source_file, "val out", "test out")
+#dataset.create_val_test_set("sources/sense_data.txt","sources/sense_examples.txt", source_file, "dataset/val_words.txt",
+#                            "dataset/test_words.txt", "dataset/info.txt", '|')
 
 # 3. pridobi sample dodatnih stavkov
-# gigafida.get_sentences_from_gigafida_multiprocess(gigafida_dir, "sources/nova mapa/nekineki", "sentences/nova mapa/neki", lemmatize=True)
+gigafida.get_sentences_multiprocess(gigafida_dir, "dataset/val.txt", "sample/samples_val.txt", "sample/info_val.txt", tmp_dir="tmp/GF")
+
+#gigafida.get_sentences_multiprocess(gigafida_dir, "dataset/test_words.txt", "sources/sample/samples_test.txt", "sources/sample/info_test.txt", tmp_dir="tmp/GF2)
 
 # 4. stavki --> embeddings
 # embeddings.get_words_embeddings_v2(["dodatni sampli, primeri iz datotek"], "out file")

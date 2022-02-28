@@ -165,6 +165,12 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
 
     return words_data
 
+def write_word_data(out_file: str, word_data: Dict[str, List[Dict]], sep='|'):
+    with open(out_file, "w", encoding="utf8") as f:
+        for word, data_list in sorted(list(word_data.items())):
+            for data in data_list:
+               f.write(sep.join([word, data['type'], data['num'], data['description']]))
+
 def write_grouped_data(outf: TextIOWrapper, data: List, centroid: List=None):
     for label, word, sentence in data: #, embedding
 
@@ -230,7 +236,8 @@ def filter_file_by_words(file: str, words_file: str, out_file: str, word_idx: in
                 if (complement and word not in words) or (not complement and word in words):
                     if skip_idx:
                         split_line = line.split(split_by)
-                        outf.write(split_by.join([x for i, x in enumerate(split_line) if i != skip_idx]))
+                        out_line = split_by.join([x for i, x in enumerate(split_line) if i != skip_idx])
+                        outf.write(out_line)
                     else:
                         outf.write(line)
 
