@@ -1,9 +1,10 @@
 import os
+import random
 import file_helpers
 
 
-def create_val_test_set(in_data: str, given_data: str, val_file: str, test_file: str,
-                        ratio: float=0.5, tmp_dir: str="tmp"):
+def create_val_test_set(in_data: str, in_examples: str, given_data: str, val_file: str, test_file: str, info_file: str,
+                        sep: str, ratio: float=0.5, tmp_dir: str="tmp"):
     """
     Reads word data from 'in_data' and uses intersection/difference to words in 'given_data' to create validation and
     test set. Intersection words are divided according to 'ratio'. Default ratio will divide common data into equal
@@ -11,9 +12,13 @@ def create_val_test_set(in_data: str, given_data: str, val_file: str, test_file:
 
     :param in_data : path to word data file containing '\t'-separated word data: word, location in sentence (index of
                      token), classification of word sense and sentence representing word sense
+    :param in_examples : path to examples data file containing '\t'-separated word data: word, word form, sense label,
+                    location in sentence (index of token) and sentence representing word sense
     :param given_data : path to word data file, containing '|'-separated data: word, POS, sense id, descriptor of sense
     :param val_file : output file location for validation data: '\t'-separated word, location of word, sentence
     :param test_file : output file location for test data: '\t'-separated word, location of word, sentence
+    :param info_file : output file location for info about data
+    :param sep : separator in given files
     :param ratio : validation to test ratio (default 0.5)
     :param tmp_dir : temporary files directory to store intersection, intersection part and difference data
                      (default "tmp")
@@ -25,17 +30,45 @@ def create_val_test_set(in_data: str, given_data: str, val_file: str, test_file:
     intersection = os.path.join(tmp_dir, "intersection.txt")
     difference = os.path.join(tmp_dir, "difference.txt")
 
-    file_helpers.filter_file_by_words(in_data, given_data, intersection, skip_idx=1)    # skip classification
-    file_helpers.filter_file_by_words(in_data, given_data, difference, skip_idx=1, complement=True)
+    file_helpers.filter_file_by_words(in_data, given_data, intersection, skip_idx=2, split_by=sep) # skip classification
+    file_helpers.filter_file_by_words(in_data, given_data, difference, skip_idx=2, split_by=sep, complement=True)
 
     assert not file_helpers.is_empty_or_whitespace(intersection), "No words in %s and %s are common" % (in_data, given_data)
 
     pt1 = os.path.join(tmp_dir, "pt1.txt")
-    divide_word_senses(intersection, pt1, test_file, ratio=ratio)
+
+    intersection_examples = os.path.join(tmp_dir, "intersection_examples.txt")
+    file_helpers.filter_file_by_words("sources/sense_examples.txt", "tmp/intersection.txt", intersection_examples)
+    n_examples = file_helpers.file_len(intersection_examples)
+    print(n_examples / 2, 0.001 * n_examples)
+    i = n_examples
+    while abs(i - n_examples/2) > 0.001 * n_examples:
+        info_data = divide_word_senses(intersection, pt1, test_file, sep, ratio=ratio)
+
+        test_examples_file = os.path.join(tmp_dir, "test.txt")
+        file_helpers.filter_file_by_words(in_examples, test_file, test_examples_file)
+        test_examples = file_helpers.file_len(test_examples_file)
+
+        i = test_examples
+        print(i)
 
     file_helpers.concatenate_files([pt1, difference], val_file)
+    val_examples_file = os.path.join(tmp_dir, "val.txt")
+    file_helpers.filter_file_by_words(in_examples, val_file, val_examples_file)
+    val_examples = file_helpers.file_len(val_examples_file)
 
-def divide_word_senses(in_file: str, out_file1: str, out_file2: str, ratio=0.5):
+    with open(info_file, "w", encoding="utf8") as info:
+        info.write(info_data)
+        info.write("\n")
+        val_words = list(file_helpers.count_words(val_file, sep=sep).items())
+        val_senses = sum([w[1] for w in val_words])
+        info.write("Validation file - words: %d senses: %d examples: %d\n" % (len(val_words), val_senses, val_examples))
+
+        test_words = list(file_helpers.count_words(test_file, sep=sep).items())
+        test_senses = sum([w[1] for w in test_words])
+        info.write("Test file - words: %d senses: %d examples: %d\n" % (len(test_words), test_senses, test_examples))
+
+def divide_word_senses(in_file: str, out_file1: str, out_file2: str, sep: str, ratio=0.5) -> str:
     """
     Divides word senses found in 'in_file' into 'out_file1' and 'out_file2' according to 'ratio'. Senses of the same
     word will not be divided. Because of that, ratio will not necessarily be exactly reached. Atleast 'ratio' of word
@@ -55,30 +88,38 @@ def divide_word_senses(in_file: str, out_file1: str, out_file2: str, ratio=0.5):
 
     n = file_helpers.file_len(in_file)
     n_part = n * ratio
-    words_count = list(file_helpers.count_words(in_file).items())
+    words_count = list(file_helpers.count_words(in_file, sep=sep).items())
+    random.shuffle(words_count)
 
     assert len(words_count) >= 2, "Cannot divide less than 2 words."
 
-    sum = 0
+    sum_senses = 0
     idx = 0
     words_part = []
 
-    while sum < n_part:
+    while sum_senses < n_part:
         word, count = words_count[idx]
         words_part.append(word)
-        sum += count
+        sum_senses += count
         idx += 1
-
-    print("File1: %d, File2: %d, total: %d" % (sum, n-sum, n))
 
     with open(out_file1, "w", encoding="utf8") as out1:
         with open(out_file2, "w", encoding="utf8") as out2:
             with open(in_file, "r", encoding="utf8") as f:
 
                 for line in f:
-                    word = line.split("\t")[0]
+                    word = line.split(sep)[0]
 
                     if word in words_part:
                         out1.write(line)
                     else:
                         out2.write(line)
+
+    n_words = len([w[1] for w in words_count])
+    n_words_pt1 = len([w[1] for w in words_count[:idx]])
+    n_words_pt2 = n_words - n_words_pt1
+
+    info = "Words\tFile1: %d, File2: %d, total: %d\n" % (n_words_pt1, n_words_pt2, n_words)
+    info += "Senses\tFile1: %d, File2: %d, total: %d\n" % (sum_senses, n-sum_senses, n)
+
+    return info

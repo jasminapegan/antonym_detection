@@ -7,15 +7,15 @@ from typing import Dict, Iterable, List
 
 import file_helpers
 
-
+"""
 def write_sense_examples(tree: ET.ElementTree, out_file: TextIOWrapper):
-    """
+    
         Parse wordsense xml tree, read examples and write to 'out_file'.
 
         :param tree: ETree representing wordsense xml file
         :param out_file: examples output file
         :return: None
-    """
+    
     root = tree.getroot()
 
     for entry in root:
@@ -50,16 +50,15 @@ def write_sense_examples(tree: ET.ElementTree, out_file: TextIOWrapper):
                         except ValueError as e:
                             print("Failed to write for: %s. Error: %s" % (word_form, e))
 
-
 def write_sense_data(tree: ET.ElementTree, out_file: TextIOWrapper, compound: bool=True):
-    """
+    
     Get wordsense data and write it to 'out_file'.
 
     :param data_file: wordsense xml file
     :param out_file: out data file
     :param compound: consider multiword phrases? (default True)
     :return:
-    """
+    
 
     root = tree.getroot()
 
@@ -99,38 +98,13 @@ def write_sense_data(tree: ET.ElementTree, out_file: TextIOWrapper, compound: bo
             try:
                 out_file.write("|".join([str(lemma), str(category), str(i+1), str(indicator)]) + "\n")
             except ValueError as e:
-                print("Failed to write for: %s (%s). Error: %s" % (lemma, indicator, e))
-
-
-
-def compare_words_data(file_slohun_examples: str, file_words: str):
-    words_data = [[line[0], line[2]] for line in file_helpers.load_file(file_words, sep='|')]
-    words_count = word_list_to_dict(words_data)
-
-    slohun_data = []
-
-    with open(file_slohun_examples, "r", encoding="utf8") as f:
-        for line in f.readlines():
-            word, sense_id, idx, sentence = line.split("\t")
-            slohun_data += [(word, int(sense_id))]
-
-    slohun_data = set(slohun_data)
-    slohun_count = word_list_to_dict(list(slohun_data))
-
-    words_not_in_slohun = [key for key in words_count.keys() if key not in slohun_count.keys()]
-    slohun_not_in_words = [key for key in slohun_count.keys() if key not in words_count.keys()]
-    intersection = [key for key in slohun_count.keys() if key in words_count.keys()]
-    print("Words not in slohun:", len(words_not_in_slohun), count_senses(words_count, words_not_in_slohun))
-    print("Slohun not in words:", len(slohun_not_in_words), count_senses(slohun_count, slohun_not_in_words))
-    print("Intersection:", len(intersection), count_senses(slohun_count, intersection))
-
+                print("Failed to write for: %s (%s). Error: %s" % (lemma, indicator, e))"""
 
 def count_senses(word_count: Dict[str, List[str]], keys: Iterable[str]):
     count = 0
     for key in keys:
         count += len(word_count[key])
     return count
-
 
 class WordSense:
 
@@ -195,6 +169,8 @@ class WordSense:
         :param examples_out_file: examples output file
         :return: None
         """
+        self.examples_file = examples_out_file
+        self.data_file = examples_out_file
 
         for file in os.listdir(self.clean_dir):
 
@@ -212,7 +188,7 @@ class WordSense:
                         sense_data.write_to_file(f)
 
                         for example in sense_data.examples:
-                            example.write_to_file(g, word)
+                            example.write_to_file(g, word, sense_data.sense_id)
 
     def get_word_data(self, tree: ET.ElementTree):
         root = tree.getroot()
@@ -223,6 +199,34 @@ class WordSense:
                 self.data_dict[word] = sense
             else:
                 self.data_dict[word].merge_duplicate_data(sense)
+
+    def compare_words_data(self, file_words: str, info_file: str):
+        words_data = [[line[0], line[2]] for line in file_helpers.load_file(file_words, sep='|')]
+        words_count = word_list_to_dict(words_data)
+
+        examples_data = []
+
+        with open(self.examples_file, "r", encoding="utf8") as f:
+            for line in f.readlines():
+                if line.count("\t") != 4:
+                    continue
+                word, word_form, sense_id, idx, sentence = line.split("\t")
+                examples_data += [(word, int(sense_id))]
+
+        examples_data = set(examples_data)
+        examples_count = word_list_to_dict(list(examples_data))
+
+        with open(info_file, "w", encoding='utf8') as info:
+            words_not_in_examples = [key for key in words_count.keys() if key not in examples_count.keys()]
+            examples_not_in_words = [key for key in examples_count.keys() if key not in words_count.keys()]
+            intersection = [key for key in examples_count.keys() if key in words_count.keys()]
+            info.write("Given words not in examples: %d %d\n" % (len(words_not_in_examples), count_senses(words_count, words_not_in_examples)))
+            info.write("Examples not in given words: %d %d\n" % (len(examples_not_in_words), count_senses(examples_count, examples_not_in_words)))
+            info.write("Intersection: %d %d\n" % (len(intersection), count_senses(examples_count, intersection)))
+
+            all_count = {**words_count, **examples_count}
+            info.write("# given words: %d %d\n" % (len(words_count), count_senses(all_count, words_count.keys())))
+            info.write("# example words: %d %d\n" % (len(examples_count), count_senses(all_count, examples_count.keys())))
 
 def prepare_tokens(string: str) -> str:
     string = html.unescape(string)
@@ -240,6 +244,8 @@ def write_data_to_check(word_data: Dict[str, List[Dict]], out_file: str):
 def get_text_from_element(element: ET.Element, join_str="") -> str:
     #Returns all the text inside element.
     text = "".join(list(element.itertext())).strip()
+    text.replace("\t", " ")
+    text.replace("  ", " ")
     return text.replace("\n", join_str)
 
 def word_list_to_dict(list: List):
@@ -265,8 +271,8 @@ class Example():
         self.token_idx = idx
         self.sentence = sentence
 
-    def write_to_file(self, outf, lemma):
-        outf.write("\t".join([lemma, self.word_form, str(self.token_idx), self.sentence]) + "\n")
+    def write_to_file(self, outf, lemma, sense_id):
+        outf.write("\t".join([lemma, self.word_form, str(sense_id), str(self.token_idx), self.sentence]) + "\n")
 
 class WordSenseData():
     # specific word sense data including POS tag, sense id, description, examples

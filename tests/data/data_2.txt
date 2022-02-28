@@ -1,0 +1,9 @@
+Amazonka|samostalnik|1|bojevnica
+Amazonka|samostalnik|2|reka
+Amerika|samostalnik|1|ZDA
+Amerika|samostalnik|2|celina
+meander|samostalnik|1|rečni zavoj
+meander|samostalnik|2|okrasni vzorec
+meander|samostalnik|3|stranska zgodba; zastranitev;
+meander|samostalnik|4|vijuga, lok
+najemnik|samostalnik|1|kdor nekaj najema

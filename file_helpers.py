@@ -236,7 +236,8 @@ def filter_file_by_words(file: str, words_file: str, out_file: str, word_idx: in
                 if (complement and word not in words) or (not complement and word in words):
                     if skip_idx:
                         split_line = line.split(split_by)
-                        outf.write(split_by.join([x for i, x in enumerate(split_line) if i != skip_idx]))
+                        out_line = split_by.join([x for i, x in enumerate(split_line) if i != skip_idx])
+                        outf.write(out_line)
                     else:
                         outf.write(line)
 
