@@ -1,7 +1,9 @@
+import json
 import os
 import re
+from datetime import datetime
 from io import TextIOWrapper
-import xml.etree.ElementTree as ET
+from lxml import etree as ET
 from multiprocessing.pool import ThreadPool as Pool
 from typing import Pattern, List, Iterable
 
@@ -10,8 +12,8 @@ from file_helpers import get_unique_words
 from data.lemmatization import get_word_lemmas_list
 
 
-def get_sentences_multiprocess(gigafida_dir: str, words_file: str, sample_out: str, info_out: str,
-                               tmp_dir: str="tmp", sample_size: int=100, n_folders: int=100):
+def get_sentences_multiprocess(gigafida_dir: str, words_file: str, tmp_dir: str="tmp", sample_size: int=100,
+                               folders_range: List[int]=list(range(100)), sep="|"):
     """
     Searches for word usage samples in GigaFida files.
 
@@ -29,46 +31,103 @@ def get_sentences_multiprocess(gigafida_dir: str, words_file: str, sample_out: s
     :param n_folders: number of folders to loop through in GigaFida directory (default 100, which is all)
     :return: None
     """
+    print("[%s] Starting ..." % get_now_string())
 
-    #global words
-    #global words_lemmatized
-    #global words_count
+    preexisting = deserialize_globals()
+    if not preexisting:
 
-    prepare_word_data(words_file)
+        prepare_word_data(words_file, sep=sep)
+        print("[%s] Word data prepared!" % get_now_string())
+        serialize_globals()
 
-    pool = Pool(min(20, n_folders))
-    for i in range(n_folders):
+    pool = Pool(min(20, len(folders_range)))
 
-        print("%d / %d" % (i, n_folders))
-        pool.apply_async(get_sentences_part, (gigafida_dir, tmp_dir, i, sample_size), error_callback=lambda x: print("Error:", x))
+    for i in folders_range:
+        pool.apply_async(get_sentences_part, (gigafida_dir, tmp_dir, i, sample_size),
+                         error_callback=lambda x: print("Error:", x))
 
     pool.close()
     pool.join()
 
-    print("Sentence samples found, sorting and deduplicating ...")
+    serialize_globals()
+    print("[%s] Finished." % get_now_string())
 
-    files = [os.path.join(tmp_dir, "%02d.txt" % i) for i in range(n_folders)]
+def serialize_globals(tmp_folder="tmp"):
+    global words_data
+
+    words_data_copy = {}
+    for word in words_data.keys():
+        words_data_copy[word] = {
+            'lemma': words_data[word]['lemma'],
+            'count': words_data[word]['count']
+        }
+
+    tmp_file = os.path.join(tmp_folder, "globals.txt")
+
+    with open(tmp_file, "w", encoding="utf8") as f:
+        f.write(json.dumps(words_data_copy))
+
+    print("[%s] Globals serialized." % get_now_string())
+
+def deserialize_globals(tmp_folder="tmp"):
+    """global words
+    global words_lemmatized
+    global words_count
+    global patterns"""
+    global words_data
+
+    tmp_file = os.path.join(tmp_folder, "globals.txt")
+
+    if not os.path.exists(tmp_file):
+        words_data = {}
+        return False
+
+    else:
+        with open(tmp_file, "r", encoding="utf8") as f:
+            lines = f.readlines()
+            words_data = json.loads(lines[0])
+
+        for word in words_data.keys():
+            words_data[word]['pattern'] = re.compile(r'\b%s\b' % words_data[word]['lemma'])
+
+        print("[%s] Globals deserialized." % get_now_string())
+        return True
+
+def finalize_sentence_search(words_file: str, sample_out: str, info_out: str, tmp_dir: str="tmp", sample_size: int=100,
+                             folders_range: Iterable[int]=range(100)):
+
+    files = [os.path.join(tmp_dir, "%02d.txt" % i) for i in folders_range]
     all_sentences_file = gather_sentence_data(files, tmp_dir=tmp_dir)
     get_sample_sentences(words_file, all_sentences_file, sample_out, info_out, sample_size=sample_size)
 
-    print("Missing words\n", missing_words(words_file, sample_out))
+    print("[%s] Missing words\n" % get_now_string(), missing_words(words_file, sample_out, sep="\t"))
 
-def prepare_word_data(words_file: str):
-    global words
-    global words_lemmatized
-    global words_count
+def prepare_word_data(words_file: str, sep: str="|"):
+    global words_data
 
-    # create a list of words + lemmatized multiwords
-    words = get_unique_words(words_file)
+    words = get_unique_words(words_file, sep=sep)
     phrases = [w for w in words if re.findall("[-\s]", w)]
     singular_words = [w for w in words if w not in phrases]
 
-    deconstructed_words = [re.sub("-|\s+", " ", w).split(" ") for w in phrases]
+    pattern = re.compile("-|\s+")
+    deconstructed_words = [pattern.split(w) for w in phrases]
+
     words_lemmatized = get_word_lemmas_list([" ".join(w) for w in deconstructed_words])
     words_lemmatized += singular_words
 
+    patterns = [re.compile(r'\b%s\b' % w) for w in words_lemmatized]
+
     words = phrases + singular_words
-    words_count = {word: 0 for word in words}
+
+    words_data = {
+        word: {'lemma': l,
+               'pattern': p,
+               'count': 0}
+        for word, l, p in zip(words, words_lemmatized, patterns)
+    }
+
+    serialize_globals()
+
 
 def get_sentences_part(gigafida_dir: str, out_path: str, i: int, limit: int):
     """
@@ -83,28 +142,30 @@ def get_sentences_part(gigafida_dir: str, out_path: str, i: int, limit: int):
     :return: None
     """
     try:
-        global words
-        global words_count
-        global words_lemmatized
+        global words_data
 
         with open(os.path.join(out_path, "%02d.txt" % i), "w", encoding="utf8") as outf:
+            print("[%s] Opened out-file #%d" % (get_now_string(), i))
 
             gigafida_subdir = os.path.join(gigafida_dir, "GF%02d/" % i)
             re_whitespace = re.compile(r"\s+")
 
             for j, file in enumerate(os.listdir(gigafida_subdir)):
+                if j % 100 == 0:
+                    print("[%s] Opened file #%d / 384 in folder #%d" % (get_now_string(), j, i))
+
                 tree = ET.parse(os.path.join(gigafida_subdir, file))
 
-                if len(words) == 0:
+                if not words_data:
                     return
 
                 get_sentences_from_tree(tree, outf, re_whitespace, limit=limit)
 
-    except (NameError, KeyError) as e:
-        print(e)
-        return
-    except Exception as e2:
-        raise e2
+    except Exception as e:
+        print("[%s] Error:" % get_now_string(), e)
+
+    finally:
+        print("[%s] Closed out-file #%d" % (get_now_string(), i))
 
 def get_sentences_from_tree(tree: ET.ElementTree, out_file: TextIOWrapper, re_whitespace: Pattern, limit: int, min_tokens: int=8):
     """
@@ -119,44 +180,80 @@ def get_sentences_from_tree(tree: ET.ElementTree, out_file: TextIOWrapper, re_wh
     :return: None
     """
 
-    global words
-    global words_count
-    global words_lemmatized
+    global words_data
 
     root = tree.getroot()
     for p in root[1][1]:
 
-        if len(words) == 0:
+        if not words_data:
             return
 
         sentences, lemma_sentences = parse_paragraph(p, re_whitespace)
-        n = len(sentences)
+        process_sentences(sentences, lemma_sentences, min_tokens, limit, out_file)
 
-        for i, (sentence, lemma_sentence) in enumerate(zip(sentences, lemma_sentences)):
-            for word, word_lemmatized in zip(words[::-1], words_lemmatized[::-1]):
+def process_sentences(sentences, lemma_sentences, min_tokens, limit, out_file):
+    global words_data
 
-                j = lemma_sentence.find(word_lemmatized)
-                if j != -1:
+    n = len(sentences)
 
-                    k = i
-                    while sentence.count(' ') < min_tokens and k != 0 and k != n - 1:
-                        if k + 1 < n:
-                            sentence += " " + sentences[k+1]
-                        elif k > 0:
-                            sentence = sentences[k-1] + " " + sentence
+    for i in range(n):
+        sentence = sentences[i]
+        lemma_sentence = lemma_sentences[i]
 
-                    idx = sentence[:j].count(' ')
-                    out_file.write("\t".join([word, str(idx), sentence]) + "\n")
+        for word, word_data in {**words_data}.items(): # no problem if we get too much of some words
+            lemma, pattern = word_data['lemma'], word_data['pattern']
 
-                    words_count[word] += 1
-                    if words_count[word] >= limit:
+            match = pattern.search(lemma_sentence)
 
-                        del words_count[word]
-                        words.remove(word)
-                        words_lemmatized.remove(word_lemmatized)
+            if match:
+                idx = match.start()
+                sentence, idx = lengthen_sentence(sentence, sentences, lemma_sentences, i, min_tokens, idx)
 
-                        if len(words) == 0:
-                            return
+                if sentence.count(' ') < min_tokens:
+                    continue
+
+                spaces = lemma_sentence[:idx].count(' ')
+
+                out_file.write("\t".join([word, str(spaces), sentence]) + "\n")
+
+                update_word_count_in_globals(word, limit)
+
+def lengthen_sentence(sentence: str, sentences: List[str], lemma_sentences: List[str], i: int, min_tokens: int,
+                      idx: int) -> (str, int):
+    n = len(sentences)
+    k = i
+
+    while sentence.count(' ') < min_tokens and k != 0 and k != n - 1:
+
+        if k + 1 < n:
+            sentence += " " + sentences[k + 1]
+
+        elif k > 0:
+            sentence = sentences[k - 1] + " " + sentence
+            idx += len(lemma_sentences[k - 1]) + 1
+
+    return sentence, idx
+
+def update_word_count_in_globals(word: str, limit):
+    global words_data
+
+    try:
+        words_data[word]['count'] += 1
+
+        if words_data[word]['count'] >= limit:
+            del words_data[word]
+
+            n = len(words_data)
+
+            if n % 100 == 0:
+                print("[%s] Finished sampling word '%s'. Remaining %d words." % (get_now_string(), word, n))
+
+            if n == 0:
+                return
+
+    except (ValueError, KeyError) as e:
+        pass #print("Failed removing word '%s' from globals: %s" % (word, e))
+
 
 def parse_paragraph(paragraph: ET.Element, re_whitespace: Pattern) -> (List[str], List[str]):
     """
@@ -188,15 +285,16 @@ def parse_paragraph(paragraph: ET.Element, re_whitespace: Pattern) -> (List[str]
                 sentence += " " + w.text + " "
                 lemmas += " " + w.text + " "
 
-        sentence = re_whitespace.sub(" ", sentence).strip()
-        lemmas = re_whitespace.sub(" ", lemmas).strip()
+        sentence = re_whitespace.sub(" ", sentence.strip())
+        lemmas = re_whitespace.sub(" ", lemmas.strip())
 
-        sentences.append(sentence)
-        lemma_sentences.append(lemmas)
+        if len(sentence) > 0:
+            sentences.append(sentence)
+            lemma_sentences.append(lemmas)
 
     return sentences, lemma_sentences
 
-def missing_words(words_file: str, data_file: str) -> List[str]:
+def missing_words(words_file: str, data_file: str, sep: str="|") -> List[str]:
     """
     Loops through tsv file 'data_file' contents and counts lines beginning with each word in 'words_file'. Returns a
     list of words that did not occur.
@@ -206,7 +304,7 @@ def missing_words(words_file: str, data_file: str) -> List[str]:
     :return: a list of words that did not occur in 'data_file' at index 0
     """
 
-    words = get_unique_words(words_file)
+    words = get_unique_words(words_file, sep=sep)
 
     with open(data_file, "r", encoding="utf8") as f:
 
@@ -253,7 +351,7 @@ def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out
     :return: None
     """
 
-    words = get_unique_words(words_file)
+    words = get_unique_words(words_file, sep="\t")
     words_dict = {w: 0 for w in words}
 
     with open(out_file, "w", encoding="utf8") as outf:
@@ -274,3 +372,6 @@ def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out
     with open(out_info, "w", encoding="utf8") as info_file:
         for key, val in keyval:
             info_file.write("%s\t%d\n" % (key, val))
+
+def get_now_string():
+    return datetime.now().strftime("%d/%m/%Y %H:%M:%S")

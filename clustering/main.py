@@ -1,49 +1,13 @@
-from clustering import clusters, find_best, clusters_v2, find_best_v2
+from clustering import find_best
 
 #word_embeddings = "../data/embeddings/sample_sentences_100_sorted.txt"
 #word_embeddings_v2 = "../data/embeddings/slohun/validation_embeddings.txt"
-from data import grouped_file
 
 validation_embeddings = "data/validation_dataset_complete_sorted.txt"
 validation_embeddings_sample = "data/validation_sample.txt"
 validation_data = "../data/sources/slohun/validation_sentences.txt"
 word_json_file = "../data/sources/vse_besede.json"
 
-
-"""
-kmeans.get_kmeans_clusters(word_embeddings, "kmeans/test.txt")
-
-graph = graph_partitions.build_graph(word_embeddings)
-graph_partitions.pagerank_partitioning(graph, "pagerank/test.txt")
-graph_partitions.community_partitioning(graph, "community/test.txt")
-ensemble_clustering.mdec_ensemble_clustering(word_embeddings, "test.txt", 5.1)
-"""
-
-#clusters.get_clusters_by_word(word_embeddings, word_json_file, "clusters/v2/testSpectral.txt", algorithm='spectral')
-#clusters.get_clusters_by_word(word_embeddings, word_json_file, "clusters/v2/testAgglomerativeWard.txt", algorithm='agglomerative', linkage='ward')
-#clusters.get_clusters_by_word(word_embeddings, word_json_file, "clusters/v2/testAgglomerativeWard.txt", algorithm='agglomerative', linkage='complete')
-#clusters.get_clusters_by_word(word_embeddings, word_json_file, "clusters/v2/testKnn.txt", algorithm='kmeans')
-#clusters.get_clusters_by_word(word_embeddings, word_json_file, "clusters/v2/testKnn_more.txt", algorithm='kmeans')
-#clusters.get_clusters_by_word(word_embeddings, word_json_file, "clusters/v2/testDbscan.txt", algorithm='dbscan')
-
-"""
-clusters.get_clusters_by_word("../data/embeddings/v2/sample_sentences_neposredno.txt", word_json_file, validation_embeddings,
-                              "clusters/v2/neposredno/testKmeans2.txt", algorithm='kmeans')
-
-clusters.get_clusters_by_word("../data/embeddings/v2/sample_sentences_neposredno.txt", word_json_file, validation_embeddings,
-                              "clusters/v2/neposredno/testDbscan.txt", algorithm='dbscan')
-
-clusters.get_clusters_by_word("../data/embeddings/v2/sample_sentences_neposredno.txt", word_json_file, validation_embeddings,
-                              "clusters/v2/neposredno/testSpectral.txt", algorithm='spectral')
-
-clusters.get_clusters_by_word("../data/embeddings/v2/sample_sentences_neposredno.txt", word_json_file, validation_embeddings,
-                              "clusters/v2/neposredno/testAgglomerativeWard.txt",
-                              algorithm='agglomerative', linkage='ward')
-
-clustering.clusters.get_clusters_by_word("../data/embeddings/v2/sample_sentences_neposredno.txt", word_json_file, validation_embeddings,
-                                         "clusters/v2/neposredno/testAgglomerativeComplete.txt",
-                                         algorithm='agglomerative', linkage='complete')
-"""
 
 #clusters.parse_single_cluster_words(word_embeddings, word_json_file, "clusters/v2/single_cluster_words.txt", "clusters/v2/single_cluster_embeddings.txt")
 
@@ -65,4 +29,4 @@ clusters.find_best_clustering(validation_embeddings, word_json_file, validation_
 
 #find_best.find_best_params_main(validation_embeddings, word_json_file, validation_data, "clusters/all", missing=missing_words, use_algorithms=['spectral'])
 
-find_best_v2.find_best_kmeans(validation_embeddings_sample, word_json_file, validation_data, "clusters/kmeans/")
+find_best.find_best_kmeans(validation_embeddings_sample, word_json_file, validation_data, "clusters/kmeans/")

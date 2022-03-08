@@ -1,3 +1,4 @@
+from datetime import datetime
 from io import TextIOWrapper
 
 import classla
@@ -7,6 +8,7 @@ from difflib import get_close_matches
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, BatchEncoding
 from file_helpers import load_file
 from data.lemmatization import get_word_lemmas_list
+from multiprocessing.pool import ThreadPool as Pool
 
 """
 # replace word form with lemma
@@ -215,27 +217,37 @@ class WordEmbeddings:
         with open(out_file, "w", encoding="utf8") as outf:
 
             for f in files:
-                print(f)
+                print("[%s] opened file %s" % (get_now_string(), f))
                 data = load_file(f)
+                batches = self.batch(data, batch_size)
 
-                for i, data_batch in enumerate(self.batch(data, batch_size)):
-
+                for i, data_batch in enumerate(batches):
                     if i % 100 == 0:
-                        print(i, "/", len(data) // batch_size)
+                        print("[%s] %d / %d" % (get_now_string(), i, len(data) // batch_size))
+                    self.data_batch_to_embeddings(data_batch, outf, labeled, pseudoword)
 
-                    words, labels, word_indices, sentences = self.parse_data(data_batch, labeled)
-                    sentences, dataset, indices = self.prepare_data(words, word_indices, sentences)
+    def data_batch_to_embeddings(self, data_batch: List, outf: TextIOWrapper, labeled: bool = False,
+                                 pseudoword: bool = False):
+        """
+        :param data_batch: batch of data to process
+        :param outf: file to write embeddings data
+        :param labeled: do the files contain sense labels?
+        :param pseudoword: use pseudoword embeddings? (default False)
+        :return: None
+        """
+        words, labels, word_indices, sentences = self.parse_data(data_batch, labeled)
+        sentences, dataset, indices = self.prepare_data(words, word_indices, sentences)
 
-                    with torch.no_grad():
-                        outputs = self.model(**dataset, output_hidden_states=True)
+        with torch.no_grad():
+            outputs = self.model(**dataset, output_hidden_states=True)
 
-                    if pseudoword:
-                        raise NotImplementedError("Pseudoword embeddings not implemented")
-                        #result = get_psewdoword_embedding_from_results(outputs, word, sentences, indices)
-                    else:
-                        result = self.get_embeddings_from_results(outputs, words, sentences, indices)
+        if pseudoword:
+            raise NotImplementedError("Pseudoword embeddings not implemented")
+            # result = get_psewdoword_embedding_from_results(outputs, word, sentences, indices)
+        else:
+            result = self.get_embeddings_from_results(outputs, words, sentences, indices)
 
-                    self.write_results_to_file(result, outf)
+        self.write_results_to_file(result, outf)
 
     def get_words_embeddings_2(self, words: List[str], word_indices: List[int], sentences: List[str],
                                pseudoword: bool=False) -> List:
@@ -327,7 +339,9 @@ class WordEmbeddings:
             n_words = len(sentence)
             idx = word_indices[i]
 
+
             sentence[idx: idx + len(word_split)] = word_split  # some data has incorrect indexing: sentence[idx - len(word): idx] = word
+
             sentences[i] = " ".join(sentence)
             word_tokens.append(self.tokenizer.tokenize(words[i]))
 
@@ -340,9 +354,17 @@ class WordEmbeddings:
         sentences = original_sentences
 
         missing_indices = [str(i) for i in range(n) if indices[i] == (-1, -1)]
-        assert len(missing_indices) == 0, "Missing indices: " + ",".join(missing_indices)
+        if missing_indices:
+            print("Missing indices: " + ",".join(missing_indices))
 
-        for k in range(n):
+            for idx in missing_indices:
+                del sentences[int(idx)]
+                del dataset[int(idx)]
+                del indices[int(idx)]
+
+        #assert len(missing_indices) == 0, "Missing indices: " + ",".join(missing_indices)
+
+        for k in range(n - len(missing_indices)):
             dataset['input_ids'][k] = self.trim_index(indices[k][1], dataset['input_ids'][k])
 
         return sentences, dataset, indices
@@ -421,3 +443,6 @@ class WordEmbeddings:
         length = len(iterable)
         for ndx in range(0, length, n):
             yield iterable[ndx:min(ndx + n, length)]
+
+def get_now_string():
+    return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
