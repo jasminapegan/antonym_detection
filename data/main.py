@@ -70,5 +70,11 @@ out_file = "sentences/sentences.txt"
 
 # 4. stavki --> embeddings
 we = embeddings.WordEmbeddings()
-we.data_file_to_embeddings(["sample/val_sample.txt", "dataset/val.txt"], "embeddings/val_embeddings.txt", batch_size=100)
-we.data_file_to_embeddings(["sample/test_sample.txt", "dataset/test.txt"], "embeddings/test_embeddings.txt", batch_size=100)
+#we.data_file_to_embeddings(["sample/val_sample.txt"], "embeddings/val_embeddings.txt", batch_size=1)
+#we.data_file_to_embeddings(["sample/test_sample.txt"], "embeddings/test_embeddings.txt", batch_size=25)
+
+#we.data_file_to_embeddings(["dataset/val.txt"], "embeddings/val_embeddings_2.txt", batch_size=1)
+we.data_file_to_embeddings(["dataset/test.txt"], "embeddings/test_embeddings_2.txt", batch_size=1)
+
+
+

@@ -1793,7 +1793,7 @@ pastorka	pastorko	3	11	Clintonova ga je med drugim kritizirala , da je napadel t
 pastorka	pastorka	3	11	Mlada Anna je po izobrazbi protestantska teologinja , službo dobi kot pastorka v ženskem zaporu .
 pater	Pater	1	0	Pater se med predavanjem ni spuščal v razlaganje zgodovine dežel , njegovo področje je namreč Sveto pismo in vse , kar je z njim povezano .
 pater	patri	1	5	Pred davnimi časi so učeni patri v samostanih svoje ugotovitve zapisovali na pergamente .
-pater	pater	1	4	Blagoslov na slovesnosti je opravil	pater iz samostana na Sveti gori .
+pater	pater	1	5	Blagoslov na slovesnosti je opravil pater iz samostana na Sveti gori .
 patriarhat	patriarhat	1	4	Mislim , da je patriarhat nezadržno povezan z položajem moči .
 patriarhat	patriarhat	1	6	Obstajajo kulture , v katerih je patriarhat še vedno zelo živ in očetova beseda največ velja .
 patriarhat	patriarhat	2	7	Ko je rimska cerkev naposled uničila oglejski patriarhat , ga je nadomestila s cerkvijo beneškega Marka .
@@ -2835,7 +2835,7 @@ semiš	semiš	1	10	Med posameznimi fazami odstranjevanja madeža čevlje krtači
 semiš	semiš	1	5	Priležnica je bila obuta v semiš čevlje z visoko peto , spodrsnilo ji je na mokrem , da je telebnila .
 semiš	semiš	1	5	Svetlo ali obarvano nubuk in semiš usnje lahko po postopku impregnacije potemni .
 sence	sence	1	6	Po kapljico olja si vtrite v sence , narahlo krožno masirajte in bolečina bo popustila .
-senik	senike	1	8	Ob pomoči grabljic so seno spravili v številne 	senike .
+senik	senike	1	8	Ob pomoči grabljic so seno spravili v številne senike .
 senilen	senilni	1	11	Cink in mangan skupaj zelo koristita starejšim ljudem , ki postajajo senilni .
 senilen	senilen	1	14	Skupina zdravnikov je po vrsti psiholoških in nevroloških pregledov ugotovila , da je rahlo senilen .
 senilen	senilni	1	1	Njun senilni dedek jima sicer pospravlja in kuha , a jima je največkrat v napoto .
@@ -3471,7 +3471,7 @@ tunika	tunike	3	17	Visoki cerkveni dostojanstveniki so nosili zapletene vezenine
 tunika	tuniko	3	4	Menih je tiho oblekel tuniko in se z najdeno nagrado v roki odpravil proti Svetemu pismu na oltarju .
 tunika	tuniki	3	8	Za meniha je dovolj , da ima dve tuniki in dve kuti , da ju ponoči zamenja in da v pranje .
 tunika	tuniki	3	13	Papež , ki je prišel od daleč , je moral poseči po največji tuniki .
-turban	turbane	1	9	Sikhizem izhaja iz Indije , pripadniki vere pa 	nosijo turbane .
+turban	turbane	1	9	Sikhizem izhaja iz Indije , pripadniki vere pa nosijo turbane .
 turban	turbane	1	7	Samo neposredni potomci preroka lahko nosijo črne turbane .
 turban	turban	2	6	Na glavi je imela rdeč svilen turban , ki je bil prevezan s trakovi zvite svile .
 turban	turban	2	5	Nadela si je bel svilen turban , ki je imel ob strani širok trak , s katerim si je lahko zakrila usta in brado .

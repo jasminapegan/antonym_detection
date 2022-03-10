@@ -277,7 +277,7 @@ RDF	RDF	1	9	[ELEXIS - WSD - SL] Za podatkovno zbirko oblike RDF uporablja Virtuo
 RNK	RNK	1	14	[ELEXIS - WSD - SL] Druge veje biokemije vključujejo genski kod ( DNK , RNK ) , sintezo beljakovin , transport prek celične membrane in prenos signalov .
 RNK	RNK	1	16	[ELEXIS - WSD - SL] Večina organizmov za genski material uporablja DNK , številni virusi pa RNK .
 RSV	RSV	1	9	[ELEXIS - WSD - SL] Respiratorni sincicijski virus ( RSV ) pa se širi tako z neposrednim stikom kot kapljično .
-Rak	Rak	1	1	Ozvezdje	 Rak je pri nas zvečer vidno od decembra do junija .
+Rak	Rak	1	1	Ozvezdje Rak je pri nas zvečer vidno od decembra do junija .
 Rak	Rak	1	2	Tri ozvezdja Rak , Lev in Devica pripadajo ekliptiškim ozvezdjem ( zodiaku ) .
 Rak	Raku	2	2	Luna v Raku bo v odnose prinesla mnogo več nežnosti , razumevanja in mehkobe .
 Rak	Raku	2	6	Sonce v Vodnarju in Luna v Raku vam dajeta nekaj nasprotujočih si lastnosti .
@@ -3132,7 +3132,7 @@ cepljen	cepljena	3	11	Kakor daleč mi seže spomin , mi je manjkala etika , cepl
 cepljen	cepljena	3	3	Njihova tehnika , cepljena z evropsko hitrostjo , pomeni vrhunec v nogometni igri .
 cepljen	cepljene	4	3	Odstranite odmrle in cepljene konice in začnite z zaščito zdravih las .
 cepljen	cepljeni	4	5	Ob koncu dopusta bodo lasje cepljeni , izsušeni in mrtvi .
-cepljen	cepljene	4	6	Maska je primerna za zelo suhe in	cepljene lase .
+cepljen	cepljene	4	7	Maska je primerna za zelo suhe in cepljene lase .
 cepljen	Cepljeni	4	0	Cepljeni del se hitro širi do zdravega dela lasu , vse više proti korenu las .
 cepljen	cepljena	5	2	Kakovostna , cepljena , suha bukova drva .
 cepljen	cepljenih	5	24	Pretežni del teh prvih so predstavljala rdeča vina prej težkega kot krepkega telesa , kjer so prek sadnih tonov kar silovito sekali odtenki sveže cepljenih polen .
@@ -5002,11 +5002,11 @@ droga	droge	2	8	Več stoletij je kasija spadala med najdražje rastlinske droge 
 droga	droge	2	1	Dragocene droge namreč vedno zdrobimo šele neposredno pred pripravo poparkov , prevretkov ali kopeli .
 droga	droga	2	1	Sveža droga nima neprijetnega vonja , pri staranju pa v eteričnem olju nastaja izovalerna kislina , ki neprijetno diši .
 droga	drogo	2	1	Kot drogo uporabljamo sivkine cvetove in eterično olje , ki ga z destilacijo z vodno paro pridobivamo iz celotne rastline .
-droga	drog	2	15	Z različnimi topili ( voda , razredčen alkohol , olje ali sadni kis ) naredimo iz	drog pripravke , kot so čaj , tinktura , oljni izvleček , izvleček s kisom .
+droga	drog	2	16	Z različnimi topili ( voda , razredčen alkohol , olje ali sadni kis ) naredimo iz drog pripravke , kot so čaj , tinktura , oljni izvleček , izvleček s kisom .
 droga	drogah	2	1	Pri drogah z eteričnimi olji ne uporabljamo čajev v vrečkah , ker je v njih zaradi hlapnosti manj učinkovin .
 droga	droge	2	12	Vsi tisti , ki za nabiranje nimajo časa ali veselja , dobijo droge pri zeliščarjih in v lekarnah , kjer jim iz izbranih receptov pripravijo čajne mešanice .
-droga	Droge	2	0	Droge zaščitenih in redkih rastlin in	droge , ki jih le redko uporabljamo , kupimo v lekarni .
-droga	droga	2	2	Slez je priporočljiva	droga brez nezaželenih učinkov .
+droga	Droge	2	0	Droge zaščitenih in redkih rastlin in droge , ki jih le redko uporabljamo , kupimo v lekarni .
+droga	droga	2	3	Slez je priporočljiva droga brez nezaželenih učinkov .
 droga	drogo	2	2	Po navadi drogo kupimo v lekarni in ne uničujemo mladih hrastovih dreves , razen tam , kjer jih je v obilju .
 droga	droge	2	3	Ščep čaja – droge je toliko , kolikor primemo s tremi prsti ( palcem , kazalcem in sredincem ) .
 droga	droga	2	17	Nabiramo mlade liste , še pred cvetenjem , in si jih precej nasušimo , saj daje takšna droga čaju lepo barvo in prijeten okus .
@@ -6365,7 +6365,7 @@ glista	glista	2	1	Tista glista , tisti majski hrošč , ki ima samo to skrb , da
 glista	gliste	3	1	Po gliste za vabo so hodili v Mestni log .
 glista	Gliste	3	0	Gliste so izvrstni pomočniki pri ustvarjanju komposta . Preberite več o glistah v posebnem prispevku in pripravite svojo gojilnico glist v steklenem kozarcu .
 glista	glist	3	34	Prva varianta je , da v vašem mestnem časopisu objavite oglas , da vaš sosed ali sodelavec kupi hlevski gnoj ali deževnike . Druga varianta je , da jih prodaja , lahko pa namesto glist napišete kakšen predmet , na katerega je še posebno navezan .
-glista	glisto	3	11	Dobro se mi je zdelo , če sem našla kakšnega deževnika oziroma	glisto in jo strgala po kolobarjih .
+glista	glisto	3	12	Dobro se mi je zdelo , če sem našla kakšnega deževnika oziroma glisto in jo strgala po kolobarjih .
 glista	gliste	3	14	Dež je padal in so prišli ven , deževniki se reče lepo in ne gliste .
 glista	gliste	3	7	Otrok se igra na jasi , vleče gliste iz zemlje .
 gliva	glivami	1	6	Nezaščitena bukovina je izpostavljena okužbi z glivami in napadu žuželk in je le zmerno trajna , zato je po poseku potrebno hitro in pravilno ukrepanje .
@@ -8117,13 +8117,13 @@ jabolko	jabolk	2	3	Od 137 hektarjev jabolk imajo pokritih 30 .
 jabolko	jabolk	2	15	Najprej so zasadili 20 hektarjev sliv in ringloja , pred tremi leti še 2 hektarja jabolk , preizkušajo pa tudi hruške , nektarine , breskve in marelice .
 jabolko	jabolka	3	19	Naravno rdečico na ličkih prikličite z rahlim rožnato obarvanim rdečilom , ki ga nanesite pod lično kostjo in na jabolka ličk .
 jabolko	jabolka	3	18	Če želite biti še bolj naravno rdečelične , uporabite kremno rdečilo , ki ga s prsti nanesete na jabolka ličk in razmažete proti vrhu ušesa .
-jabolko	jabolka	3	4	Na vrh lične kosti in	jabolka ličk nanesi sijoče rdečilo v rožnati ali marelični barvi .
+jabolko	jabolka	3	5	Na vrh lične kosti in jabolka ličk nanesi sijoče rdečilo v rožnati ali marelični barvi .
 jabolko	jabolko	3	12	Poglejte se v ogledalo , zasmejte se in si ga nanesite na jabolko ličnice ter ga zabrišite proti lasišču .
 jabolko	jabolk	3	14	Blazinice kazalca in sredinca pomočite v rdečilo in barvo nanesite na najbolj zaobljen del jabolk na ličkih .
 jabolko	jabolko	3	4	Atom ni nobeno majhno jabolko , noben objekt kot na primer droben delček prahu .
 jabolko	Jabolko	3	0	Jabolko : najpomembnejše za ta tip postave je , da oblačila v zgornjem delu niso preveč oprijeta .
 jabolko	Jabolko	3	0	Jabolko ustvarimo iz krogle , ki jo deformiramo , pecelj pa dobimo iz valja , ki ga zvijemo .
-jabolko	jabolka	3	7	Pred leti so računalniki z logotipom ugriznjenega	 jabolka dominirali na izobraževalnem trgu , a situacija spreminja .
+jabolko	jabolka	3	7	Pred leti so računalniki z logotipom ugriznjenega jabolka dominirali na izobraževalnem trgu , a situacija spreminja .
 jabolko	jabolko	3	15	Prižgeš gumb , zaslišiš »tuuuuummm« , na zunanji strani aluminijastega ohišja se diskretno zasveti belo jabolko .
 jabolko	jabolko	4	19	Za hip angel obvisi , da preveri natančnost pristanka , nato pa počasi pogrezne spodnji del križa v pozlačeno jabolko na konici .
 jabolko	jabolku	4	6	Ob dvigu zvonika so v pozlačenem jabolku na vrhu zanamcem pustili povsem drugačno sporočilo , kot so ga našli sami .
@@ -11176,7 +11176,7 @@ mesec	mesecev	2	18	[ELEXIS - WSD - SL] Za krupom zboli približno 15 % otrok , o
 mesec	mesecev	2	17	[ELEXIS - WSD - SL] V redkih primerih se lahko pojavi pri otrocih v starosti od 3 mesecev do 15 let .
 mesec	meseca	2	7	[ELEXIS - WSD - SL] Le dva meseca po zaključku študija je objavil svoj prvi znanstveni članek na temo Einsteinove splošne teorije relativnosti .
 mesec	mesec	3	5	Pot jim je osvetljeval svetel mesec , ki je plaval po jasnem nebu .
-mesec	mesec	3	2	Luni	rečemo tudi mesec . Na njej ni zraka .
+mesec	mesec	3	3	Luni rečemo tudi mesec . Na njej ni zraka .
 mesec	mesec	3	7	Napnite torej oči in sive celice : mesec ob ščipu vzide ob mraku in doseže vrh ob polnoči .
 mesečen	mesečno	1	7	Za številna podjetja bo poteklo 6 - mesečno obdobje prejemanja subvencij za ohranjanje delovnih mest .
 mesečen	mesečni	1	2	11 - mesečni otrok , ki se je igral s telefonom , je povsem naključno zavrtel številko policije .
@@ -12216,7 +12216,7 @@ nimfa	nimf	4	7	Povzročitelj bolezni se lahko prek larv , nimf in spolno zrelih 
 nimfa	nimfe	4	16	Povzročitelj borelioze vztraja v klopu na vseh stopnjah svojega zapletenega razvoja , od larve in od nimfe do odrasle živali .
 nimfa	nimfe	4	7	Na dnu rek in jezer živijo številne nimfe ter različni vodni insekti , ki postanejo aktivni , ko pade noč .
 nimfa	nimfe	4	3	Tudi larve in nimfe lahko zajedajo na večjih živalih , vendar se v glavnem oprimejo gostiteljev , ki se premikajo nižje v vegetaciji .
-nimfa	nimf	4	8	Osica parazitira vse stadije listnih uši , od	mladih nimf do odraslih in tudi krilatih osebkov .
+nimfa	nimf	4	9	Osica parazitira vse stadije listnih uši , od mladih nimf do odraslih in tudi krilatih osebkov .
 nimfa	nimfo	5	7	Lovili smo lahko s suho muho , nimfo ali potezanko .
 nimfa	nimfo	5	8	Ribiči imajo lahko navezano le eno muho , nimfo ali potezanko , vezano na trnek enojček .
 nimfa	nimfe	5	14	Pravo muharsko znanje se pokaže z uporabo drugih umetnih muh , kot so razne nimfe in potezanke , vendar je res , da ne zagotavljajo dobrega rezultata .
@@ -14337,8 +14337,8 @@ rtič	rtiču	1	14	[ELEXIS - WSD - SL] Zaradi tega sta danes obala in park na Deb
 rum	rumom	1	7	Rozine stresite v skledico , prelijte z rumom in pustite namakati približno 60 minut .
 rum	rum	1	3	Sadje namočimo v rum tako , da je pokrito , in osladimo s sladkorjem .
 rumena pritlikavka	rumena	1	7	[ELEXIS - WSD - SL] Srednje velika rumena pritlikavka , kot je Sonce , ostane v glavnem nizu okoli 10 milijard let .
-rumenjak	rumenjak	2	9	Veliko imamo na Slovenskem izrazov za zlatnik : zlatak ,	rumenjak , žoltak . . .
-rumenjak	rumenjake	2	13	Dobro poldrugo stoletje po smrti je pesnika doletela čast , da ga kujejo na	rumenjake za dva evra .
+rumenjak	rumenjak	2	10	Veliko imamo na Slovenskem izrazov za zlatnik : zlatak , rumenjak , žoltak . . .
+rumenjak	rumenjake	2	14	Dobro poldrugo stoletje po smrti je pesnika doletela čast , da ga kujejo na rumenjake za dva evra .
 rumenjak	rumenjake	2	6	Cel dan iz pravd koval bom rumenjake .
 ruska državljanska vojna	vojno	1	8	[ELEXIS - WSD - SL] Med rusko državljansko vojno je bil politični komisar .
 s srcem v hlačah	v	1	1	O prvem mraku se je skesan in s srcem v hlačah priplazil domov .
@@ -15013,10 +15013,10 @@ svila	vezenje	3	6	Gremo poiskati stojnico s svilo za vezenje .
 svila	Svila	3	0	Svila za vezenje vrste Marabou floss je svila iz dveh niti , ki ju lahko enostavno ločimo , obstojne barve .
 svila	svilo	3	11	Prve so si spodnjice ( dolge do kolen , prešite s svilo in čipko ter preklane v koraku ) z veseljem nadele kurtizane .
 svila	svilo	3	12	Tanka je sicer z budističnimi prizori poslikana oz . izvezena in s svilo obrobljena tkanina .
-svila	svili	4	10	Koruzna snet je vrsta glivice , ki raste na 	koruzni svili in storžu .
+svila	svili	4	10	Koruzna snet je vrsta glivice , ki raste na koruzni svili in storžu .
 svila	svile	4	1	Poškodbe svile in vrha storžev oziroma metlice povzročajo slabšo oprašenost in gluhost storžev .
 svila	svilo	4	15	Iz ličink se poleti razvijejo hrošči , ki se najraje prehranjujejo s cvetnim prahom in svilo koruze .
-svila	svilo	4	14	Odrasli hroščki se pojavijo julija , objedajo mlade liste , ob cvetenju koruze pa pojedo	svilo in cvetni prah .
+svila	svilo	4	15	Odrasli hroščki se pojavijo julija , objedajo mlade liste , ob cvetenju koruze pa pojedo svilo in cvetni prah .
 svila	svilo	4	12	Hrošče privlači tudi cvetni prah , zato se večkrat preselijo tudi na svilo in vrh storžev oziroma metlic .
 svila	svile	4	7	Fusarium graminearum okuži storž preko pestiča ( svile ) .
 svilen	svilne	1	6	Mesto je kmalu postalo zahodno središče svilne industrije , ki je Evropo zalagalo z dragocenim blagom .
@@ -15520,7 +15520,7 @@ vas	vas	1	8	[ELEXIS - WSD - SL] Zaradi tega zapusti vas .
 vas	Vas	1	5	[ELEXIS - WSD - SL] Vas se prvič omenja v 14 . stoletju .
 vas	vas	2	20	S ponosom in zanosom so ženske govorile o kilogramih poljščin in o sobotnih čistilnih akcijah , v katerih sodeluje vsa vas .
 vas	vas	2	11	Projekt je bil izjemno zahteven in pri pripravi je sodelovala cela vas .
-vas	vas	2	10	Bilo je zelo veselo , čestitati mi je prišla vsa 	vas .
+vas	vas	2	10	Bilo je zelo veselo , čestitati mi je prišla vsa vas .
 vas	vas	2	10	Na dvorišče so se zgrinjale trume sosedov , skoraj vsa vas je prišla pomagat .
 vas	vas	2	1	Vsa vas ji je govorila , da je ošabna .
 vas	vas	2	5	O njej govori že vsa vas .
@@ -15883,7 +15883,7 @@ votlina	votlinah	4	2	V temnih votlinah njegovega uma je začel rasti strah .
 votlina	votlini	4	5	Vsakdo se kdaj najde v votlini svojih strahov , ko se nenadoma ustavi na mestu in občuti , da mu v glavi doni : Kaj me čaka ?
 votlina	votlino	4	7	Ko se moški umakne v svojo ' votlino ' , to nikakor ne pomeni , da svoje izbranke ne ljubi .
 votlina	votlino	4	7	Moški se še vedno raje zatečejo v votlino in tako premislijo stvari ali pa gredo na nogometno tekmo .
-votlina	votlino	4	5	Moški se občasno zatečejo v svojo	votlino , ko po napornem dnevu potrebujejo mir in počitek .
+votlina	votlino	4	6	Moški se občasno zatečejo v svojo votlino , ko po napornem dnevu potrebujejo mir in počitek .
 votlina	votlin	4	14	Skozi glasbo išče nevidne poti do njihovih podzavestnih ( arhetipskih ) leg , čustvenih votlin in racionalno shranjenih spominov .
 votlina	votlin	4	7	Zamolklo rjovenje se dvigne iz najbolj črnih votlin moje duše in plane skozi moje zversko zobovje jaz , kentaver , ki ga je izbruhal Tartar in skoraj ni slišati leta salamandra , saj zadržim krik in se ti približam s strašnim nasmehom .
 votlina	votlinah	4	42	Delali so grozovit štramor : tulili so , rompali , kot volkovi zavijali , divjali sem in tja , vejali kot divji , strupeni siki , besneli iz sobe v sobo , vse po hodnikih in kotih , zakotjih … in po votlinah človeških duš in po prazninah človeških src .
@@ -16013,7 +16013,7 @@ vročina	Vročina	7	8	Njun poljub je postal še bolj strasten . Vročina med nji
 vročina	vročine	7	4	Njegovo znamenje žari od vročine in sle po prenovi , po očiščevanju . Tiger je simbol moči , vrednosti in skrajno neprizanesljivih pristopov .
 vročina	vročino	8	15	V Makedoniji se je začelo obdobje zborovanj , ki bodo zagotovo še bolj razvnela politično vročino .
 vročina	vročina	8	1	Politična vročina se je z odhodom politikov na počitnice sicer nekoliko umirila , a daje slutiti , da bo pač toliko bolj vroča politična jesen .
-vročina	vročina	8	1	Junija bo	vročina spet pritisnila na poslovnem področju .
+vročina	vročina	8	2	Junija bo vročina spet pritisnila na poslovnem področju .
 vročina	vročina	8	6	Srbijo to poletje kuha tudi gospodarska vročina .
 vrt	vrtovih	1	18	Večino zdravilnih rastlin lahko kupimo , zadnja leta pa vse več ljudi sadi zeliščne rastline tudi na domačih vrtovih .
 vrt	vrta	1	2	Vsaj del vrta je po navadi razdeljen v grede , med katerimi so potke .
