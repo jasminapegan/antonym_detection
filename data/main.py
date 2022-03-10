@@ -43,9 +43,7 @@ out_file = "sentences/sentences.txt"
 #file_helpers.sort_lines("testing/test_dataset_complete.txt", "testing/test_dataset_complete_sorted.txt")
 # moved complete files to folders
 
-words = []
-words_lemmatized = None
-words_count = None
+
 #gigafida.get_sentences_from_gigafida_multiprocess(gigafida_dir, "sources/slohun/test_data.txt", "sentences/test/sentences.txt", "sentences/test/info.txt", lemmatize=True, sample_size=1)
 
 
@@ -63,11 +61,20 @@ words_count = None
 #                            "dataset/test_words.txt", "dataset/info.txt", '|')
 
 # 3. pridobi sample dodatnih stavkov
-gigafida.get_sentences_multiprocess(gigafida_dir, "dataset/val.txt", "sample/samples_val.txt", "sample/info_val.txt", tmp_dir="tmp/GF")
+#gigafida.get_sentences_multiprocess(gigafida_dir, "dataset/val.txt", tmp_dir="tmp/GF", folders_range=list(range(80, 100)), sample_size=100, sep="\t")
 
-#gigafida.get_sentences_multiprocess(gigafida_dir, "dataset/test_words.txt", "sources/sample/samples_test.txt", "sources/sample/info_test.txt", tmp_dir="tmp/GF2)
+#gigafida.finalize_sentence_search("dataset/val.txt", "sample/val_sample.txt", "sample/val_info.txt", tmp_dir="tmp/GF", folders_range=list(range(100)))
+
+#gigafida.get_sentences_multiprocess(gigafida_dir, "dataset/test.txt", tmp_dir="tmp/GF", folders_range=list(range(0, 100)), sep="\t")
+#gigafida.finalize_sentence_search("dataset/test.txt","sample/test_sample.txt", "sample/test_info.txt", tmp_dir="tmp/GF", folders_range=list(range(100)))
 
 # 4. stavki --> embeddings
-# embeddings.get_words_embeddings_v2(["dodatni sampli, primeri iz datotek"], "out file")
-# file_helpers.filter_file_by_words("vlozitve", "val besede", "vlozitve val")
-# file_helpers.filter_file_by_words("vlozitve", "test besede", "vlozitve test")
+we = embeddings.WordEmbeddings()
+#we.data_file_to_embeddings(["sample/val_sample.txt"], "embeddings/val_embeddings.txt", batch_size=1)
+#we.data_file_to_embeddings(["sample/test_sample.txt"], "embeddings/test_embeddings.txt", batch_size=25)
+
+#we.data_file_to_embeddings(["dataset/val.txt"], "embeddings/val_embeddings_2.txt", batch_size=1)
+we.data_file_to_embeddings(["dataset/test.txt"], "embeddings/test_embeddings_2.txt", batch_size=1)
+
+
+

@@ -54,7 +54,6 @@ def get_word_lemmas_list(words_list: List[str], lemmatizer: classla.Pipeline=Non
 
     lemmatized = []
     for word in words_list:
-
         doc = lemmatizer(word)
         lemmas = []
 

@@ -3,6 +3,7 @@
 venv/
 **/tmp/
 
+data/embeddings
 data/sample
 data/sources/gigafida/
 data/sources/wordsense/
