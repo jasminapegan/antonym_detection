@@ -1,104 +1,9 @@
 import html
 import os
-from io import TextIOWrapper
 import xml.etree.ElementTree as ET
 import re
 from typing import Dict, Iterable, List
-
 import file_helpers
-
-"""
-def write_sense_examples(tree: ET.ElementTree, out_file: TextIOWrapper):
-    
-        Parse wordsense xml tree, read examples and write to 'out_file'.
-
-        :param tree: ETree representing wordsense xml file
-        :param out_file: examples output file
-        :return: None
-    
-    root = tree.getroot()
-
-    for entry in root:
-        head = entry.find('head')
-        headword = head.find('headword')
-        lemma = html.unescape(headword.find('lemma').text).strip()
-        sense_list = entry.find('body').find('senseList')
-
-        for i, sense in enumerate(sense_list):
-            examples = sense.find('exampleContainerList')
-
-            if examples:
-                for example in examples:
-
-                    corpusExample = example.find('corpusExample')
-                    if corpusExample:
-
-                        sentence = get_text_from_element(corpusExample)
-                        headword_occurences = corpusExample.findall("comp[@role='headword']")
-                        word_forms = sorted([x.text.strip() for x in headword_occurences])
-                        if len(word_forms) == 0:
-                            word_form = lemma
-                        else:
-                            word_form = word_forms[-1]
-                            sentence = prepare_tokens(sentence)
-                            word_form = prepare_tokens(word_form)
-
-                        try:
-                            idx_word = sentence.index(word_form) + 1
-                            idx = sentence[:idx_word].count(' ')
-                            out_file.write("\t".join([lemma, str(i), str(idx), sentence]) + "\n")
-                        except ValueError as e:
-                            print("Failed to write for: %s. Error: %s" % (word_form, e))
-
-def write_sense_data(tree: ET.ElementTree, out_file: TextIOWrapper, compound: bool=True):
-    
-    Get wordsense data and write it to 'out_file'.
-
-    :param data_file: wordsense xml file
-    :param out_file: out data file
-    :param compound: consider multiword phrases? (default True)
-    :return:
-    
-
-    root = tree.getroot()
-
-    for entry in root:
-        head = entry.find('head')
-        headword = head.find('headword')
-
-        if not compound and headword.find('lemma').attrib['type'] == 'compound':
-            continue
-
-        lemma = html.unescape(headword.find('lemma').text).strip()
-        category = "N/A"
-
-        grammar = head.find('grammar')
-        if grammar:
-            category = grammar.find('category').text
-
-        sense_list = entry.findall('./body/senseList')[0]
-        for i, sense in enumerate(sense_list):
-
-            labelList = sense.find("labelList")
-            definitionList = sense.find("definitionList")
-            definition = sense.find("definitionList/definition[@type='indicator']")
-
-            if definition and definition.text:
-                indicator = definition.text
-            elif definitionList:
-                indicator = get_text_from_element(definitionList, join_str="; ")
-            elif labelList:
-                indicator = get_text_from_element(labelList, join_str="; ")
-            elif len(sense_list) == 1:
-                indicator = lemma
-            else:
-                indicator = "None"
-                print("Lemma sense doesn't have definition: " + lemma + ", " + str(i))
-
-            try:
-                out_file.write("|".join([str(lemma), str(category), str(i+1), str(indicator)]) + "\n")
-            except ValueError as e:
-                print("Failed to write for: %s (%s). Error: %s" % (lemma, indicator, e))"""
 
 def count_senses(word_count: Dict[str, List[str]], keys: Iterable[str]):
     count = 0
@@ -320,7 +225,7 @@ class WordSenseData():
 
             sentence = get_text_from_element(corpusExample)
             headword_occurences = corpusExample.findall("comp[@role='headword']")
-            word_forms = sorted([x.text.strip() for x in headword_occurences])
+            word_forms = " ".join([x.text.strip() for x in headword_occurences])
 
             if len(word_forms) == 0:
                 word_form = lemma

@@ -7,7 +7,7 @@ from random import shuffle
 from typing import List, Dict
 
 
-def get_words_data_from_file(words_file: str, sep='|') -> List[Dict]:
+def get_words_data_from_file(words_file: str, sep='|', header=True) -> List[Dict]:
     """
     Parse data from 'words_file' into a list of dicts
 
@@ -22,7 +22,7 @@ def get_words_data_from_file(words_file: str, sep='|') -> List[Dict]:
         for i, line in enumerate(in_file):
 
             # skip header
-            if i != 0:
+            if not header or i != 0:
                 word, word_type, num_of_meaning, description = line.strip().split(sep)
                 words.append({"word": word,
                               "type": word_type,
@@ -30,7 +30,7 @@ def get_words_data_from_file(words_file: str, sep='|') -> List[Dict]:
                               "description": description})
     return words
 
-def words_data_to_dict(words_file: str, sep='|') -> Dict:
+def words_data_to_dict(words_file: str, sep='|', header=True) -> Dict:
     """
     Read word data from file and convert a list of dictionaries with sense data to a dictionary of words data
 
@@ -39,7 +39,7 @@ def words_data_to_dict(words_file: str, sep='|') -> Dict:
     :return: a dictionary with words as keys and values as list of {word, type, sense_id, description}
     """
 
-    words = get_words_data_from_file(words_file, sep=sep)
+    words = get_words_data_from_file(words_file, sep=sep, header=header)
     words_dict = {}
 
     for word_data in words:

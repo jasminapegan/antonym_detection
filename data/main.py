@@ -69,12 +69,9 @@ out_file = "sentences/sentences.txt"
 #gigafida.finalize_sentence_search("dataset/test.txt","sample/test_sample.txt", "sample/test_info.txt", tmp_dir="tmp/GF", folders_range=list(range(100)))
 
 # 4. stavki --> embeddings
-we = embeddings.WordEmbeddings()
-#we.data_file_to_embeddings(["sample/val_sample.txt"], "embeddings/val_embeddings.txt", batch_size=1)
-#we.data_file_to_embeddings(["sample/test_sample.txt"], "embeddings/test_embeddings.txt", batch_size=25)
+#we = embeddings.WordEmbeddings()
+#we.data_file_to_embeddings(["sample/val_sample.txt", "dataset/val.txt"], "embeddings/val_embeddings.txt", batch_size=1)
+#we.data_file_to_embeddings(["sample/test_sample.txt", "dataset/test.txt"], "embeddings/test_embeddings.txt", batch_size=1)
 
-#we.data_file_to_embeddings(["dataset/val.txt"], "embeddings/val_embeddings_2.txt", batch_size=1)
-we.data_file_to_embeddings(["dataset/test.txt"], "embeddings/test_embeddings_2.txt", batch_size=1)
-
-
-
+file_helpers.sort_lines("embeddings/test_embeddings.txt", "embeddings/test_embeddings_sorted.txt")
+file_helpers.sort_lines("embeddings/val_embeddings.txt", "embeddings/val_embeddings_sorted.txt")
