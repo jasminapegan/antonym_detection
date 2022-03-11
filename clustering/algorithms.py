@@ -1,3 +1,4 @@
+import os
 from itertools import product
 from typing import Dict, List
 
@@ -10,15 +11,30 @@ from clustering.scoring import score_clustering
 
 class ClusteringAlgorithm:
 
-    def __init__(self, name: str, parameters: Dict):
+    def __init__(self, name: str, parameters: Dict, out_dir: str='out'):
         self.name = name
         self.parameters = parameters
         self.clusterer = None
         self.n_clusters = -1
         self.score = {}
-        self.id = self.get_algorithm_id()
+        self.id = self.__get_algorithm_id__()
 
-    def get_algorithm_id(self):
+        if not os.path.exists(out_dir):
+            os.mkdir(out_dir)
+
+        # create algorithm specific directory
+        out_dir_algo = os.path.join(out_dir, name)
+        if not os.path.exists(out_dir_algo):
+            os.mkdir(out_dir_algo)
+
+        # assure that file will be empty
+        out_file = os.path.join(out_dir_algo, self.id)
+        if os.path.exists(out_file):
+            os.remove(out_file)
+
+        self.out_file = out_file
+
+    def __get_algorithm_id__(self):
         """ Get unique string representing algorithm with all the parameters. """
         params = self.parameters.copy()
         if 'n_clusters' in params.keys():
@@ -80,9 +96,12 @@ class ClusteringAlgorithm:
 class KMeansAlgorithm(ClusteringAlgorithm):
 
     def __init__(self, parameters: Dict):
-        self.name = 'kmeans'
-        self.parameters = parameters
+
+        #self.name = 'kmeans'
+        #self.parameters = parameters
         self.score = {}
+
+        ClusteringAlgorithm.__init__(self, 'kmeans', parameters)
 
         if 'random_state' not in parameters.keys():
             parameters['random_state'] = 42
@@ -92,6 +111,7 @@ class KMeansAlgorithm(ClusteringAlgorithm):
             parameters['algorithm'] = 'elkan'
 
         self.clusterer = KMeans(**self.parameters)
+
 
     @staticmethod
     def get_clusterer_list(algorithms: List[str]=['elkan'], n_inits: List[int]=[20]):

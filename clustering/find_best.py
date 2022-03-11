@@ -60,7 +60,7 @@ def find_best_params_main(data_file: str, words_json_file: str, validation_file:
 
             find_best_clustering(data_file, words_json_file, validation_file, "%s/dbscan.txt" % out_dir, dbscan)
 
-def find_best_kmeans(data_file: str, words_json_file: str, validation_file: str, out_dir: str):
+def find_best_kmeans(data_file: str, words_json_file: str, validation_file: str, out_dir: str='out'):
     """
     Execute search for best kmeans algorithm over predefined parameters. Score word embedding clusterings and write out
     scores for each algorithm.
@@ -83,7 +83,7 @@ def find_best_clustering(data_file: str,
                          out_dir: str,
                          algorithm_list: List[algorithms.ClusteringAlgorithm]) -> None:
 
-    print("*****\nSTARTING %s" % str([a.get_algorithm_id() for a in algorithm_list]))
+    print("*****\nSTARTING %s" % str([a.id for a in algorithm_list]))
 
     best_clustering = BestClustering(words_json_file, validation_file, data_file)
     best_clustering.find_best(algorithm_list, out_dir)
@@ -92,12 +92,13 @@ class BestClustering:
 
     Scores = Dict[str, Dict[str, float]]
 
-    def __init__(self, words_json_file: str, validation_file: str, data_file: str):
-        self.words_json = file_helpers.words_data_to_dict(words_json_file)  #file_helpers.load_json_word_data(words_json_file)
-        self.val_data = file_helpers.load_validation_file_grouped(validation_file, indices=True, sentence_idx=3)
+    def __init__(self, words_json_file: str, validation_file: str, data_file: str, out_dir: str='out'):
+        self.words_json = file_helpers.words_data_to_dict(words_json_file, header=False)  #file_helpers.load_json_word_data(words_json_file)
+        self.val_data = file_helpers.load_validation_file_grouped(validation_file, indices=True, sentence_idx=4)
         self.word_data_generator = word.word_data_gen(data_file)
         self.word_embeddings = WordEmbeddings()
         self.scores = {}
+        self.out_dir = out_dir
 
     @staticmethod
     def get_clusters_by_word(word_data: word.WordData, n_clusters: int, algorithm: algorithms.ClusteringAlgorithm,
@@ -119,7 +120,7 @@ class BestClustering:
         else:
             labels = algorithm.predict(word_data.embeddings, n_clusters)
 
-            with open(os.path.join(out_dir, algorithm.get_algorithm_id()), "a", encoding="utf8") as outf:
+            with open(os.path.join(out_dir, algorithm.id), "a", encoding="utf8") as outf:
                 # out_data = list(zip(labels, [word] * n_samples, sentences)) #, embeddings))
                 # file_helpers.write_grouped_data(outf, sorted(out_data, key=lambda x: x[0])) #, centroids=clusterer.cluster_centers_)
 
@@ -162,7 +163,7 @@ class BestClustering:
             for algorithm_data in algorithm_list:
                 self.execute_clustering(algorithm_data, word_data, out_dir, n)
 
-            algorithm_scores = {a.get_algorithm_id(): a.score for a in algorithm_list}
+            algorithm_scores = {a.id: a.score for a in algorithm_list}
             print(algorithm_scores)
 
         #self.write_results(os.path.join(out_dir, "results_all.txt"), algorithm_scores, algorithm_list)
@@ -215,7 +216,7 @@ class BestClustering:
         if missing_sentences:
             word_data.add_missing_sentences(missing_sentences, self.word_embeddings, word_val_data)
 
-        word_data.val_ids = [word_data.sentences.index(s) for s in word_val_data['sentences'] if s in word_data.sentences]
+        word_data.val_ids = [word_data.sentences.index(s) for s in word_val_data['sentences']]# if s in word_data.sentences]
         word_data.validation_labels = word_val_data['labels']
 
         return word_data
@@ -234,7 +235,7 @@ class BestClustering:
         with open(out_file, "a", encoding="utf8") as f:
             for algo in algorithm_params_list:
 
-                algo_id = algo.get_algorithm_id()
+                algo_id = algo.id
                 algo_score = algorithm_scores[algo_id]
 
                 f.write("Score for %s, %s\n" % (algo_id, str(algo)))
