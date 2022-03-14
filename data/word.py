@@ -63,7 +63,7 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
         for i, line in enumerate(f):
 
             if progress and i % progress == 0:
-                print("Word data progress: %d / %d" % (i, n_lines))
+                print("Word data progress: %d%% (%d / %d)" % ((100 * i) // n_lines, i, n_lines))
 
             data_line = line.strip().split('\t')
             data_word = data_line[0]

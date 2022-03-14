@@ -1,53 +1,46 @@
 CD-predvajalnik|samostalnik|naprava
-NATO|samostalnik|mednarodna organizacija; severnoatlantska obrambna organizacija
 RNA|samostalnik|organska spojina
 RNK|samostalnik|organska spojina
+ZDA|samostalnik|država
+abdomen|samostalnik|del telesa
+abdomen|samostalnik|pri žuželkah
 abdominalen|pridevnik|trebušen
-abiotski|pridevnik|o neživem delu narave
-ablativ|samostalnik|sklon
+abiturient|samostalnik|maturant nekdanji izraz za osebo ob zaključku srednje šole
 abnormalnost|samostalnik|nepravilnost
-abolicionist|samostalnik|borec proti sistemu ali praksi
-abolicionist|samostalnik|o odpravi suženjstva v ZDA
-aboridžin|samostalnik|avstralski staroselec
+abortirati|glagol|splaviti namerno ali nenamerno splaviti
+abortirati|glagol|ustaviti; prekiniti
 abortiv|samostalnik|sredstvo za prekinitev nosečnosti
-abraziv|samostalnik|brusivo
+abrakadabra|samostalnik|čarovnija
+abrakadabra|samostalnik|kot izrek
 abscisa|samostalnik|koordinata
 abstinentka|samostalnik|ženska, ki ne pije alkohola
-abstraktno|prislov|miselno; predstavno
-abstraktno|prislov|nejasno; nenazorno
-absurdnost|samostalnik|nesmiselnost
-absurdnost|samostalnik|smešnost
+abstrahirati|glagol|povzeti
+abstrahirati|glagol|izločiti
+abstrahirati|glagol|o abstraktnem prikazu prikazati bistvene lastnosti z odmikom od konkretnega
 acetilen|samostalnik|plin
 adekvatnost|samostalnik|ustreznost; primernost
-adenom|samostalnik|žlezna tvorba; benigna novotvorba žleznega tkiva; benigni tumor
-adiabaten|pridevnik|o termodinamičnih procesih
-adjektiv|samostalnik|besedna vrsta
-administracijski|pridevnik|o upravljanju in organizaciji
-administracijski|pridevnik|v računalništvu
-administratorka|samostalnik|uslužbenka v pisarni
-administratorka|samostalnik|skrbnica spletne strani
-adneks|samostalnik|telesni izrastek
+adenom|samostalnik|žlezna tvorba benigna novotvorba žleznega tkiva; benigni tumor
+admiral|samostalnik|vojaški čin
+admiral|samostalnik|metulj
 adoracija|samostalnik|čaščenje
-adrema|samostalnik|seznam naslovnikov z naslovi
-adular|samostalnik|rudnina
+adventist|samostalnik|pripadnik verske skupnosti
+adventiven|pridevnik|nadomesten
 adverb|samostalnik|besedna vrsta
-aeronavt|samostalnik|letalec
+aerodinamičen|pridevnik|učinkovit pri gibanju skozi zrak
 aerostat|samostalnik|balon
-afganistanski|pridevnik|o Afganistanu in Afganistancih
-aforističen|pridevnik|o aforizmu
+afazija|samostalnik|govorna motnja
+afektiranost|samostalnik|nenaravnost; izumetničenost
 afrikanščina|samostalnik|jezik
 aga|samostalnik|turški uradniški naziv
 agitatorstvo|samostalnik|novačenje koga za kaj
-aglomerat|samostalnik|kamnina
+agnostik|samostalnik|privrženec agnosticizma
 agonija|samostalnik|umiranje
 agonija|samostalnik|težavno obdobje
 agorafobija|samostalnik|strah pred odprtimi prostori
-agrum|samostalnik|sadež
-agrum|samostalnik|sadno drevo
-akcelerometer|samostalnik|merilna naprava
+agrikultura|samostalnik|dejavnost
 aklamacija|samostalnik|glasen pozdrav
 aklamacija|samostalnik|sprejetje; izvolitev
-akordeon|samostalnik|glasbilo
+akolit|samostalnik|mašni pomočnik
 akril|samostalnik|slikarska tehnika
 akril|samostalnik|material
 akril|samostalnik|barva
@@ -56,128 +49,113 @@ akrobat|samostalnik|o fizični spretnosti
 akrobat|samostalnik|o mentalni spretnosti
 akrobat|samostalnik|akrobatsko letalo
 akrobatka|samostalnik|izvajalka akrobacij
+akronim|samostalnik|kratica
 aksialen|pridevnik|o osi
-akulturacija|samostalnik|prilagoditev kulturnemu okolju
-akumulativen|pridevnik|o denarnih sredstvih; o zbiranju ali ustvarjanju denarnih sredstev
+akumulativen|pridevnik|o denarnih sredstvih o zbiranju ali ustvarjanju denarnih sredstev
 akumulativen|pridevnik|ki se zbira ali kopiči
-akupunkturist|samostalnik|zdravilec
-akustično|prislov|zvočno; slušno
-akustično|prislov|o igranju na akustični inštrument
 akut|samostalnik|naglasno znamenje
 akuten|pridevnik|o bolezni
 akuten|pridevnik|o problemu
 akutnost|samostalnik|o bolezni
 akutnost|samostalnik|resnost; težavnost
+akuzativ|samostalnik|sklon
+akvamarinski|pridevnik|zelenkasto moder
+akvarel|samostalnik|slika
+akvarel|samostalnik|slikarska tehnika
 akvarelist|samostalnik|umetnik
-akvedukt|samostalnik|objekt za pretok vode
-akviziter|samostalnik|prodajalec
-akviziterka|samostalnik|prodajalka
 akviziterstvo|samostalnik|prodaja po hišah
-albin|samostalnik|o pomanjkanju pigmenta
-alegorija|samostalnik|zgodba ali slika
-alegorija|samostalnik|prispodoba
 alegorika|samostalnik|o podobah v umetniškem delu
-alegoričnost|samostalnik|lastnost umetniškega dela
-alergijski|pridevnik|o alergiji
+alergičen|pridevnik|o človeku
+alergičen|pridevnik|o obolenju
+alergičen|pridevnik|o odporu do česa
 algebraičen|pridevnik|o algebri
-algebrajski|pridevnik|o algebri
-alimentacija|samostalnik|preživnina
+algebrski|pridevnik|o algebri
+aliteracija|samostalnik|pesniško sredstvo
 alkalija|samostalnik|kemijska spojina
 alkohol|samostalnik|alkoholna pijača
 alkohol|samostalnik|kemična spojina
-alkoholen|pridevnik|o pijači
-alkoholen|pridevnik|o kemični spojini
-alkoholičen|pridevnik|o alkoholikih
-alkova|samostalnik|vgradni del sobe; vdolbina v steni sobe
+alt|samostalnik|glas globok ženski pevski glas
+alt|samostalnik|kdor poje alt
+alternirati|glagol|izmenjavati; izmenjavati se
 altist|samostalnik|pevec
 altruističen|pridevnik|o etični drži
 altsaksofon|samostalnik|glasbilo
 aluvij|samostalnik|geološka doba
 aluvij|samostalnik|naplavina
-amaterizem|samostalnik|neprofesionalna dejavnost
-amaterizem|samostalnik|slabo opravljeno delo
+aluzija|samostalnik|namigovanje
+amandma|samostalnik|dopolnilo zakona
 amazonka|samostalnik|o mentalni ali fizični lastnosti
 amazonka|samostalnik|papiga
 amazonka|samostalnik|bojevnica
+ambiciozen|pridevnik|ki želi uspeti
+ambiciozen|pridevnik|velikopotezen
+ambicioznež|samostalnik|ambiciozen človek
 ambitus|samostalnik|obseg; razpon
 ambivalenten|pridevnik|razdvojen; nasprotujoč
-ameba|samostalnik|enoceličar
+ambrozija|samostalnik|rod cvetnic
+ambrozija|samostalnik|hrana bogov
 amfibol|samostalnik|rudnina
 amilaza|samostalnik|encim
 amnestirati|glagol|podeliti amnestijo
-anafora|samostalnik|besedna figura
+amok|samostalnik|blaznost; besnilo
+amputiranec|samostalnik|kdor izgubi ud
+anabaptist|samostalnik|prekrščevalec
 anagram|samostalnik|premetanka črk
-analgetik|samostalnik|zdravilo
-analitično|prislov|podrobno
-analognost|samostalnik|o podatkih
-analognost|samostalnik|podobnost
-anarhistka|samostalnik|privrženka anarhizma
-anatomija|samostalnik|znanstvena veda
-anatomija|samostalnik|zgradba telesa
-anekdota|samostalnik|duhovita zgodba
+anamneza|samostalnik|zdravstvena zgodovina
+anamneza|samostalnik|analiza pretekle dejavnosti
+anamneza|samostalnik|spominjanje
+anatom|samostalnik|strokovnjak
 anektirati|glagol|priključiti
-anemometer|samostalnik|merilni instrument; instrument za merjenje hitrosti in smeri vetra
-anemona|samostalnik|rastlina
-anesteziolog|samostalnik|zdravnik
+aneroid|samostalnik|merilni instrument instrument za merjenje zračnega pritiska
 anestezirati|glagol|dati anestezijo
 anestezirati|glagol|narediti neobčutljivo
-anestezist|samostalnik|zdravnik
 anestezistka|samostalnik|zdravnica
-angelika|samostalnik|rastlina
 anglicizem|samostalnik|o izrazu
-anglikanec|samostalnik|pripadnik anglikanske vere
 anglikanka|samostalnik|pripadnica anglikanske vere
 anglist|samostalnik|strokovnjak
 anglofil|samostalnik|navdušenec
-anglofonski|pridevnik|o nekdanjih britanskih kolonijah
-anketar|samostalnik|kdor anketira
-anonimen|pridevnik|o neimenovanem avtorju
-anonimen|pridevnik|še neuveljavljen
-anonimen|pridevnik|ki zagotavlja skrito identiteto
-anonimen|pridevnik|neopazen
-anotacija|samostalnik|zaznamek
-ansambel|samostalnik|skupina glasbenikov
-ansambel|samostalnik|skupina plesalcev ali igralcev
-antagonist|samostalnik|o liku
-antagonist|samostalnik|nasprotnik; nasprotujoč dejavnik
-antagonist|samostalnik|o snovi
-antagonist|samostalnik|o mišici
+anoreksija|samostalnik|motnja hranjenja
 anticiklon|samostalnik|območje visokega zračnega pritiska
-antiepileptik|samostalnik|zdravilo
 antifona|samostalnik|napev v bogoslužju
-antikorozijski|pridevnik|proti rji
+antifriz|samostalnik|sredstvo proti zmrzovanju sredstvo proti zmrzovanju hladilne tekočine
 antikvaren|pridevnik|o antikvariatu
 antikviteta|samostalnik|starinski predmet
-antipatija|samostalnik|odpor
-antipiretik|samostalnik|zdravilo; zdravilo za zniževanje telesne temperature
 antisemit|samostalnik|privrženec antisemitizma
-antiseptik|samostalnik|sredstvo za razkuževanje; sredstvo, ki se uporablja na koži in sluznici za razkuževanje
-antitetičen|pridevnik|nasprotujoč si; o antitezi
+antisemitizem|samostalnik|sovražen odnos do Judov
+antiseptik|samostalnik|sredstvo za razkuževanje sredstvo, ki se uporablja na koži in sluznici za razkuževanje
 antičen|pridevnik|o zgodovinskem obdobju
 antičen|pridevnik|zelo star; zastarel
+antologija|samostalnik|zbirka
 antonim|samostalnik|o pomenu besede
+antracit|samostalnik|premog
 antropomorfizem|samostalnik|počlovečevanje
-anulirati|glagol|razveljaviti; preklicati
-anulirati|glagol|izničiti
-aorta|samostalnik|žila
-aplavz|samostalnik|ploskanje
+anus|samostalnik|del telesa
+aplikacija|samostalnik|računalniški program
+aplikacija|samostalnik|uporaba v praksi
+aplikacija|samostalnik|vnos v telo
+aplikacija|samostalnik|izdelek iz blaga
 aplikativen|pridevnik|o uporabi v praksi
-aplikativen|pridevnik|o računalniku; o računalniških programih ali opremi
-apnica|samostalnik|raztopina; nasičena vodna raztopina gašenega apna
+aplikativen|pridevnik|o računalniku o računalniških programih ali opremi
+apnica|samostalnik|raztopina nasičena vodna raztopina gašenega apna
 apniti|glagol|o zemlji
-apostat|samostalnik|odpadnik
-apoteoza|samostalnik|poveličevanje
+apogej|samostalnik|položaj nebesnega telesa
+apotekar|samostalnik|lekarnar
+apreciacija|samostalnik|večanje vrednosti valute
 apropriacija|samostalnik|prilastitev
-apsida|samostalnik|polkrožni prostor; polkrožni prostor s kupolo
-arbiter|samostalnik|razsodnik
-arbiter|samostalnik|avtoriteta
-arboretum|samostalnik|ustanova za ogled rastlin
-aretacija|samostalnik|odvzem prostosti
+aranžma|samostalnik|turistična ponudba
+aranžma|samostalnik|ureditev cvetja
+aranžma|samostalnik|priredba
+aranžma|samostalnik|sporazum
+areometer|samostalnik|merilni instrument naprava za merjenje gostote kapljevin
+aretirati|glagol|odvzeti prostost
+aretirati|glagol|blokirati
 argument|samostalnik|utemeljen razlog
 argument|samostalnik|neodvisna spremenljivka
-arheolog|samostalnik|strokovnjak za arheologijo
-arheologija|samostalnik|znanstvena veda
+arhaičnost|samostalnik|starinskost
+arhaičnost|samostalnik|zastarelost
 arheološki|pridevnik|o arheologiji
+arhitekt|samostalnik|kdor načrtuje gradbene projekte
+arhitekt|samostalnik|snovalec; idejni vodja
 arhitektura|samostalnik|veda in dejavnost
 arhitektura|samostalnik|o gradnji stavb
 arhitektura|samostalnik|struktura; ureditev
@@ -186,13 +164,6 @@ arhiv|samostalnik|ustanova
 arhiv|samostalnik|zbirka
 arhiv|samostalnik|o hrambi datotek
 arhiv|samostalnik|prostor za hranjenje vin
-arhiviranje|samostalnik|shranjevanje
-arhiviranje|samostalnik|o podatkih
-arhiviranje|samostalnik|o vinu
-arhivski|pridevnik|o ustanovi
-arhivski|pridevnik|o zbirki
-arhivski|pridevnik|o podatkih
-arhivski|pridevnik|star
 arijanizem|samostalnik|krščanski nauk
 arijanstvo|samostalnik|krščanski nauk
 aristokrat|samostalnik|oseba visokega rodu
@@ -200,162 +171,177 @@ aristokrat|samostalnik|kultiviran človek
 aristokrat|samostalnik|izstopajoča oseba ali stvar
 aristokrat|samostalnik|kdor ima višji položaj znotraj skupine
 aristokratka|samostalnik|plemkinja
-aristotelovski|pridevnik|o Aristotelovi filozofiji
 aristotelski|pridevnik|o Aristotelovi filozofiji
-armada|samostalnik|vojska
-armada|samostalnik|velika skupina
-armafleks|samostalnik|ležalna podloga
+arogantnež|samostalnik|aroganten človek
 aromatizirati|glagol|dati aromo
-arzenov|pridevnik|o arzenu
-aseksualen|pridevnik|nespolen; ki ga spolnost ne zanima
+artilerist|samostalnik|topničar
 asepsa|samostalnik|kirurška tehnika
-asignant|samostalnik|nakazovalec; kdor nakaže izvajalcu dejanja
-asonanca|samostalnik|vrsta rime
-aspik|samostalnik|želatina
-aspirantka|samostalnik|kandidatka
-aspirantka|samostalnik|o državi
+asimetrično|prislov|nesomerno
+asistentski|pridevnik|o strokovnem pomočniku
 asteroid|samostalnik|majhen planet
-astronavt|samostalnik|kdor gre v vesolje
-astronavtika|samostalnik|veda
-astronomka|samostalnik|strokovnjakinja
+astronom|samostalnik|strokovnjak
+astronomski|pridevnik|o opazovanju zvezd
+astronomski|pridevnik|zelo visok
 atenski|pridevnik|o Atenah
-atest|samostalnik|potrdilo
-atest|samostalnik|preizkus ustreznosti
+atentat|samostalnik|napad
+atentat|samostalnik|kritiziranje
+atentator|samostalnik|napadalec
+atlas|samostalnik|knjiga zemljevidov
+atlas|samostalnik|zbirka iz neke stroke
+atlas|samostalnik|blago
+atlas|samostalnik|vretence
+atlas|samostalnik|avto
+atlas|samostalnik|o topološki ploskvi
+atlas|samostalnik|metulj
+atlas|samostalnik|v arhitekturi
+atletika|samostalnik|šport
 atletski|pridevnik|o atletiki
 atletski|pridevnik|športen
+atletsko|prislov|o atletiki
+atletsko|prislov|športno
 atonalnost|samostalnik|o tonskem načinu
 avdicija|samostalnik|nastop pred komisijo
-avdiokaseta|samostalnik|nosilec zvoka; vrsta medija, ki vsebuje glasbeni zapis
+avokado|samostalnik|sadež
+avokadovec|samostalnik|drevo
 avto|samostalnik|prevozno sredstvo
-avtobus|samostalnik|prevozno sredstvo
 avtokarta|samostalnik|zemljevid
 avtomatičen|pridevnik|o napravah
 avtomatičen|pridevnik|vnaprej določen
 avtomatičen|pridevnik|nezaveden; refleksen
-avtonomija|samostalnik|samouprava
-avtonomija|samostalnik|ozemlje s samoupravo
-avtonomija|samostalnik|neodvisnost pri odločanju
-avtonomija|samostalnik|o delovanju naprav
+avtomobil|samostalnik|prevozno sredstvo
+avtomobilski|pridevnik|o avtomobilih
+avtonomen|pridevnik|ki ima politično samoupravo
+avtonomen|pridevnik|samostojen; neodvisen
+avtonomen|pridevnik|o stroju ali napravi
+avtoritaren|pridevnik|diktatorski
+avtoritaren|pridevnik|ukazovalen
+avtoritativen|pridevnik|odločen; vpliven
+avtoritativen|pridevnik|zanesljiv; verodostojen
+avtoritativen|pridevnik|diktatorski
 avtoriteta|samostalnik|vpliv; moč
 avtoriteta|samostalnik|priznan strokovnjak
 avtoriteta|samostalnik|oblast; vodstvo
+avtostopar|samostalnik|o zastonj prevozu
+avtoštopar|samostalnik|o zastonj prevozu
 azimut|samostalnik|o kotu
-bajaničar|samostalnik|iskalec stvari; iskalec stvari, največkrat vode
-bajka|samostalnik|pripovedka
-bajka|samostalnik|izmišljotina
+babica|samostalnik|mati očeta ali matere
+babica|samostalnik|pomočnica pri porodu
+babica|samostalnik|starejša ženska
+babica|samostalnik|začetnica česa
+babica|samostalnik|riba
+babura|samostalnik|ženska
+babura|samostalnik|vrsta paprike
+bageta|samostalnik|kruh
+bakren|pridevnik|izdelan iz bakra
+bakren|pridevnik|o barvi
 bakteriolog|samostalnik|strokovnjak
+balinarka|samostalnik|ženska, ki balina
 balinček|samostalnik|športni rekvizit
-balonar|samostalnik|pilot balona
-balonar|samostalnik|plašč
 balonarka|samostalnik|pilotka balona
 banjo|samostalnik|brenkalo
-bankrot|samostalnik|finančno stanje
-bankrot|samostalnik|propad
-bantam|samostalnik|borilna veščina
-bantam|samostalnik|pasma kokoši
 baobab|samostalnik|drevo
+barbar|samostalnik|pripadnik neciviliziranega ljudstva
+barbar|samostalnik|o surovem obnašanju
 baretka|samostalnik|pokrivalo
 baribal|samostalnik|medved
-baseball|samostalnik|šport
-bazar|samostalnik|orientalska tržnica
-bazar|samostalnik|prireditev
+batik|samostalnik|tkanina
+batik|samostalnik|tehnika barvanja
 bazičen|pridevnik|o kemijski sestavi
 bazičen|pridevnik|o učinku živil na telo
 bazičen|pridevnik|osnoven; temeljni
 bazičen|pridevnik|o športni pripravljenosti
 beduin|samostalnik|arabski nomad
+belina|samostalnik|bela barva
+belina|samostalnik|kar je bele barve
+belina|samostalnik|o nastavitvah
 belorepec|samostalnik|ptica ujeda
 beluš|samostalnik|rastlina
+bencin|samostalnik|gorivo
 bendžo|samostalnik|brenkalo
 bevskanje|samostalnik|o oglašanju živali
 bevskanje|samostalnik|zadirčno govorjenje
+biatlonec|samostalnik|športnik
 biatlonka|samostalnik|športnica
-bibavica|samostalnik|plimovanje
 bibliobus|samostalnik|avtobus s knjižnico
+bibliografija|samostalnik|seznam del
+biceps|samostalnik|mišica
 biciklist|samostalnik|kolesar
-biciklistka|samostalnik|kolesarka
-bife|samostalnik|gostinski lokal
-bife|samostalnik|pripravljena hrana
-bife|samostalnik|omarica za pijačo
-bifokalen|pridevnik|dvožariščen
 bigamist|samostalnik|moški z dvema ženama
-bik|samostalnik|žival
-bik|samostalnik|astrološko znamenje
-bik|samostalnik|neumen človek
-bik|samostalnik|veliko zvišanje tečajev
-bikinke|samostalnik|kopalke
-bimetal|samostalnik|kovinski trak; spoj dveh kovin z različno razteznostjo
-biograf|samostalnik|avtor biografij
-biografinja|samostalnik|avtorica biografij
+bikarbonat|samostalnik|kemijska spojina
+bikini|samostalnik|kopalke
+bikini|samostalnik|del telesa
+bikoborec|samostalnik|kdor se bori z bikom
+bilka|samostalnik|rastlinsko steblo
+binkošti|samostalnik|krščanski praznik
 biokmetijstvo|samostalnik|način kmetovanja
 biosfera|samostalnik|območje življenja na Zemlji
 birmanec|samostalnik|kdor prejme birmo
-bičati|glagol|udarjati z bičem
-bičati|glagol|o naravnih pojavih
-bičati|glagol|ostro kritizirati
-bižuterija|samostalnik|cenen nakit
-bižuterija|samostalnik|trgovina
+birokrat|samostalnik|državni uradnik
+birokrat|samostalnik|o togem sledenju pravilom uradnik, ki togo sledi pravilom
+biseksualnost|samostalnik|spolna usmerjenost
+bitumen|samostalnik|vezivna snov
+bivalen|pridevnik|o pogojih za bivanje
+bivalen|pridevnik|namenjen bivanju
 blago|samostalnik|predmeti za prodajo
 blago|samostalnik|tkanina
-blagovoliti|glagol|odločiti se narediti
-blagovoliti|glagol|milostno privoliti
+blažen|pridevnik|srečen
+blažen|pridevnik|razglašen za zveličanega
+blažen|pridevnik|blagoslovljen
+blebetati|glagol|nesmiselno govoriti
+blejati|glagol|o oglašanju ovc
+blejati|glagol|oddati zvok podoben kot pri ovcah o zvoku, podobnem ovčjemu
+blejati|glagol|govoriti; izražati
 blokflavta|samostalnik|pihalo
 blokflavta|samostalnik|igranje blokflavte
-bobrovka|samostalnik|glodavec
-bodibilder|samostalnik|športnik; kdor načrtno krepi mišice
-bodika|samostalnik|drevo ali grm
-bodika|samostalnik|riba
-bodybuilder|samostalnik|športnik; kdor načrtno krepi mišice
-bodybuilderka|samostalnik|športnica; ženska, ki načrtno krepi mišice
-bodybuilding|samostalnik|šport
-bojazen|samostalnik|tesnoben občutek
-bojevnik|samostalnik|o boju ali spopadu
-bojevnik|samostalnik|borbena oseba
-bojevnik|samostalnik|vnet zagovornik
-bojevnik|samostalnik|član košarkarskega kluba
-bojevnik|samostalnik|vozilo
-bojkotirati|glagol|ne udeležiti se
-bojkotirati|glagol|ne kupovati
-bojkotirati|glagol|prekiniti sodelovanje
-boks|samostalnik|borilni šport
-boks|samostalnik|način borbe
-boks|samostalnik|na dirkah
-boks|samostalnik|ločen prostor
-boksarka|samostalnik|športnica
+blondinka|samostalnik|svetlolaska
+bobnati|glagol|igrati bobne
+bobnati|glagol|udarjati
+bobnati|glagol|veliko govoriti
+bodibilding|samostalnik|šport
+bodybuilderka|samostalnik|športnica ženska, ki načrtno krepi mišice
+boječnost|samostalnik|plašnost
+boksanje|samostalnik|borilni šport
+boksanje|samostalnik|udarjanje
+boksanje|samostalnik|prerekanje
+boksar|samostalnik|športnik
+boksar|samostalnik|orožje
 boleti|glagol|o telesni bolečini
 boleti|glagol|o duševni bolečini
 bolniški|pridevnik|o bolniku
 bolniški|pridevnik|o bolnišnici
-bonbon|samostalnik|sladkarija
-bordanje|samostalnik|deskanje na snegu
-borovina|samostalnik|les
-botanika|samostalnik|veda
-brat|samostalnik|sorodnik
-brat|samostalnik|pripadnik skupine
-brat|samostalnik|pripadnik verskega reda
-brat|samostalnik|sorodna stvar
-brazgotinjenje|samostalnik|o nastanku brazgotin
-brbončica|samostalnik|del telesa
-brbončica|samostalnik|o okusu
+bralec|samostalnik|kdor bere publikacijo
+bralec|samostalnik|kdor bere; kdor rad bere
+bralec|samostalnik|kdor bere drugim
+brazgotina|samostalnik|sled zaceljenega tkiva
+brazgotina|samostalnik|o duševnem stanju
+brazgotina|samostalnik|o posledicah aktivnosti
+brazgotina|samostalnik|del rastline
 breskov|pridevnik|v kulinariki
 breskov|pridevnik|o drevesu
 breskov|pridevnik|o plodu
 breskov|pridevnik|o barvi
 breskov|pridevnik|o snovi
+bresti|glagol|premikati se po razmočeni zemlji
+bresti|glagol|spuščati se v težave
 brevir|samostalnik|molitev
 brevir|samostalnik|molitvenik
 brevir|samostalnik|temeljna literatura
-breza|samostalnik|drevo
+brezbarven|pridevnik|ki nima barve
+brezbarven|pridevnik|bled
+brezbarven|pridevnik|neizrazit; enoličen
+brezbarven|pridevnik|politično neopredeljen
 brezciljnost|samostalnik|o neosredotočenosti
 brezglavo|prislov|nepremišljeno
 brezobziren|pridevnik|nesramen
 brezobziren|pridevnik|neusmiljen; krut
-brezovina|samostalnik|les
 brezplačen|pridevnik|ki je zastonj
-brezrokaven|pridevnik|ki nima rokavov
-brezrokavnik|samostalnik|oblačilo
+brezplačno|prislov|zastonj
 brezvetrje|samostalnik|odsotnost vetra
 brezvetrje|samostalnik|stanje neaktivnosti
+brezvoden|pridevnik|brez vode
+brezvoden|pridevnik|ki ne vsebuje vode
+bridko|prislov|žalostno; nesrečno
+bridko|prislov|močno; zelo
 brifing|samostalnik|sestanek
 briljanten|pridevnik|izjemen
 briljanten|pridevnik|iz briljantov
@@ -363,80 +349,72 @@ briljanten|pridevnik|bleščeč
 brizgalka|samostalnik|v zdravstvu
 brizgalka|samostalnik|naprava za brizganje vode
 brizgalka|samostalnik|slaščičarski pripomoček
-brodolom|samostalnik|potop ladje
-brodolom|samostalnik|o neuspešni aktivnosti
 brom|samostalnik|kemijski element
-bruceloza|samostalnik|bolezen; nalezljiva bolezen sesalcev
+bronhitis|samostalnik|bolezen
+broška|samostalnik|nakit
 brusilo|samostalnik|pripomoček za brušenje
-brusnica|samostalnik|plod
-brusnica|samostalnik|grm
-bucika|samostalnik|igla z glavico
 bukolika|samostalnik|pastirska poezija
 bukov|pridevnik|o drevesu ali delu drevesa
 bukov|pridevnik|izdelan iz bukovega lesa
 bukov|pridevnik|o barvi
 bukov|pridevnik|neumen; trapast
-burleska|samostalnik|komično delo
-burleska|samostalnik|absurdna situacija, farsa
-burleska|samostalnik|varietejska predstava, pogosto z vložki striptiza
-burleska|samostalnik|vrsta skladbe
-carstvo|samostalnik|dežela, v kateri vlada car
-carstvo|samostalnik|cesarstvo; imperij
-carstvo|samostalnik|območje prevlade
+bukovina|samostalnik|les
+bukovina|samostalnik|bukova drevesa
+burski|pridevnik|o Burih
+burski|pridevnik|o pasmi koz
+carina|samostalnik|dajatev
+carina|samostalnik|organizacija
+carina|samostalnik|zgradba; območje
 cedilo|samostalnik|kuhinjski pripomoček
-celesta|samostalnik|glasbilo
-celina|samostalnik|večja površina kopnega
-celina|samostalnik|o delu države
 celinski|pridevnik|o površju
 celinski|pridevnik|o delu države ali regije
 celinski|pridevnik|o geopolitičnem območju
 centil|samostalnik|statistična merska enota
 centrifugiranje|samostalnik|ločevalna tehnika
-cenzura|samostalnik|o spornih vsebinah
 cenzurirati|glagol|odstranjevati sporne vsebine
 cenzurirati|glagol|omejevati dejanja ali izjave
+cepljiv|pridevnik|o lastnosti elementa
+cepljiv|pridevnik|o lesu
 ceremoniar|samostalnik|vodja slavnosti ali obredov
-cerkev|samostalnik|verska zgradba
-cerkev|samostalnik|organizacija
-cerkven|pridevnik|o zgradbi
-cerkven|pridevnik|o instituciji
-cerkven|pridevnik|o obredih in praksah
-cerkven|pridevnik|o verovanju
-cerkven|pridevnik|neposveten
+cesar|samostalnik|vladar
+cesar|samostalnik|vodilna oseba
+cesarica|samostalnik|vladarka
+cesarica|samostalnik|vladarjeva žena
+cesarica|samostalnik|mojstrica; virtuozinja
+cibora|samostalnik|plod
+cibora|samostalnik|drevo
 cigan|samostalnik|Rom
 cigan|samostalnik|podlež; lopov
+cigareta|samostalnik|zvitek tobaka
 cikličen|pridevnik|ponavljajoč
 cikličen|pridevnik|vsebinsko povezan v celoto
 cikličen|pridevnik|o spojini
 cikličen|pridevnik|iz več povezanih stavkov
-ciklus|samostalnik|obdobje
-ciklus|samostalnik|o umetniških delih
 cikorija|samostalnik|rastlina
 cikorija|samostalnik|kavni nadomestek
-cirkus|samostalnik|o potujočih zabavljačih
-cirkus|samostalnik|o skupini ljudi
-cirkus|samostalnik|o burni aktivnosti
-cirkus|samostalnik|arena
+cilinder|samostalnik|del stroja
+cilinder|samostalnik|moško pokrivalo
+cilinder|samostalnik|del petrolejske svetilke
+cilinder|samostalnik|del ključavnice
+cincati|glagol|obotavljati se
+cincati|glagol|počasi se premikati
+cingljanje|samostalnik|zvonjenje
 cistercijan|samostalnik|menih
-cunami|samostalnik|popotresni val
-cunami|samostalnik|o negativnih dogodkih
+citrus|samostalnik|sadež
+citrus|samostalnik|drevo
 curling|samostalnik|športna igra
-cvet|samostalnik|del rastline
-cvet|samostalnik|cvetlica; roža
-cvet|samostalnik|najboljši del
-cveteti|glagol|pognati cvetove
-cveteti|glagol|o algah
-cveteti|glagol|prinašati dobiček
-cveteti|glagol|izgledati srečen
+curry|samostalnik|mešanica začimb
+curry|samostalnik|azijska jed
+cvetje|samostalnik|rože
+cvetje|samostalnik|množica cvetov
+cvetje|samostalnik|stanje cvetenja
 datljevec|samostalnik|drevo
 datum|samostalnik|podatek o dnevu ali dogodku
-davkarija|samostalnik|davčna služba
 davkoplačevalec|samostalnik|kdor plačuje davke
-debelina|samostalnik|lastnost predmeta
-debelost|samostalnik|prevelika telesna teža
-debelost|samostalnik|širina; debelina
+debater|samostalnik|človek, ki se ukvarja z debatiranjem o tekmovalni dejavnosti
+debater|samostalnik|razpravljavec
 debelušnost|samostalnik|telesna lastnost
-deber|samostalnik|soteska
+debet|samostalnik|dolg
 dedek|samostalnik|stari oče
 dedek|samostalnik|starec
 dedek|samostalnik|začetnik česa
@@ -444,129 +422,141 @@ dedek|samostalnik|moški z dolgim stažem
 definicija|samostalnik|razlaga; opredelitev
 definicija|samostalnik|določitev parametrov
 definicija|samostalnik|ločljivost
-deflator|samostalnik|merilo razmerja cen
 deformiran|pridevnik|nepravilno oblikovan; izmaličen
-deformiran|pridevnik|trajno spremenjen; trajno spremenjen zaradi določenega dejavnika
-degradirati|glagol|znižati veljavo
-degradirati|glagol|o položaju ali delovnem mestu
-degradirati|glagol|prizadejati škodo
-dehidracija|samostalnik|izguba vode v telesu
-dehidracija|samostalnik|postopek izsušitve
-delavstvo|samostalnik|delavci
-deložacija|samostalnik|prisilna izselitev
+deformiran|pridevnik|trajno spremenjen trajno spremenjen zaradi določenega dejavnika
+dekolte|samostalnik|del prsi
+dekolte|samostalnik|o obleki
 demograf|samostalnik|strokovnjak
+demoralizirati|glagol|odvzeti upanje
 denarnica|samostalnik|torbica za denar
 denarnica|samostalnik|količina denarja; premoženje
+departma|samostalnik|upravna enota
+departma|samostalnik|vladni oddelek
 depopulacija|samostalnik|upadanje prebivalstva
 depresija|samostalnik|mentalno stanje ali bolezen
 depresija|samostalnik|obdobje po gospodarski krizi
 depresija|samostalnik|del kopnega
 depresija|samostalnik|vremenski pojav
-deskar|samostalnik|po snegu
-deskar|samostalnik|po vodi
-deskar|samostalnik|kdor brska po spletu
-deskarka|samostalnik|pri zimskem športu; ženska, ki se vozi z desko po snegu
-deskarka|samostalnik|pri vodnem športu; ženska, ki se vozi z desko po vodi
+desetkrat|prislov|o desetih ponovitvah
+desetkrat|prislov|o razmerju
+desetkrat|prislov|veliko
+deskarka|samostalnik|pri zimskem športu ženska, ki se vozi z desko po snegu
+deskarka|samostalnik|pri vodnem športu ženska, ki se vozi z desko po vodi
 deskati|glagol|voziti se z desko po snegu
 deskati|glagol|voziti se z desko po vodi
 deskati|glagol|brskati po spletu
-destalinizacija|samostalnik|o opuščanju politike
-detel|samostalnik|ptica
-devetdesetletnik|samostalnik|devetdesetletni moški
-dezinflacija|samostalnik|ekonomski proces; načrtno zniževanje inflacije
+destilarna|samostalnik|tovarna
+dezinflacija|samostalnik|ekonomski proces načrtno zniževanje inflacije
 deček|samostalnik|otrok
-deček|samostalnik|mlad moški; mlad moški glede na neko pozitivno lastnost
-dežemer|samostalnik|merilni instrument
-dežnik|samostalnik|kot zaščita pred dežjem; pripomoček za zaščito pred dežjem
-dežnik|samostalnik|senčnik
-dežnik|samostalnik|obrambni sistem
-dežnik|samostalnik|okrilje
-dežnik|samostalnik|skupni pojem
-dežnik|samostalnik|goba
-diabetes|samostalnik|sladkorna bolezen
+deček|samostalnik|mlad moški mlad moški glede na neko pozitivno lastnost
+dež|samostalnik|padavine
+dež|samostalnik|velika količina
+deževati|glagol|o dežju
+deževati|glagol|o predmetih
+deževati|glagol|zgrinjati se
+deževje|samostalnik|o dežju
 diadem|samostalnik|naglavni obroč ali trak
 diafiza|samostalnik|del kosti
-dialog|samostalnik|med nasprotnima stranema; med dvema nasprotnima stranema
-dialog|samostalnik|pogovor med osebama
+dialektolog|samostalnik|strokovnjak
+diapozitiv|samostalnik|fotografija
+diapozitiv|samostalnik|stran predstavitve
+dietetik|samostalnik|strokovnjak
 dietileter|samostalnik|tekočina
-dihalka|samostalnik|športna oprema
-dilema|samostalnik|težka izbira; problem
-diplomant|samostalnik|kdor zaključi študij; kdor zaključi študij z diplomo
+diftong|samostalnik|glasovna enota
+digitalen|pridevnik|o načinu zapisa podatkov o načinu zapisa informacij z ničlami in enicami
+digitalen|pridevnik|ki ima zaslon s številkami
+dijak|samostalnik|srednješolec
+diktatorski|pridevnik|o načinu vladanja
+diktatorski|pridevnik|ukazovalen
+dimlje|samostalnik|del telesa
+dinamometer|samostalnik|merilna naprava
+diplomant|samostalnik|kdor zaključi študij kdor zaključi študij z diplomo
 diplomirati|glagol|zaključiti študij
 direktiva|samostalnik|uradno navodilo
 dirigent|samostalnik|umetniški vodja
 dirigent|samostalnik|vodja
 dirigentka|samostalnik|vodja orkestra
 dirigentka|samostalnik|vodja
+disertacija|samostalnik|znanstveno delo
+disertacija|samostalnik|daljše delo ali govor
 diskreditirati|glagol|zmanjšati ugled
-diskreditirati|glagol|vzeti veljavo; narediti neresnično ali nezanesljivo
+diskreditirati|glagol|vzeti veljavo narediti neresnično ali nezanesljivo
 diskretnost|samostalnik|ohranjanje zasebnosti
 diskretnost|samostalnik|nevpadljivost
-diskvalificirati|glagol|izločiti zaradi kršenja pravil
-diskvalificirati|glagol|vzeti veljavo
-dispergiran|pridevnik|o razpršenosti
-divjačina|samostalnik|meso
-divjačina|samostalnik|divje živali
-dlančnik|samostalnik|majhen osebni računalnik
-dobropis|samostalnik|o vračilu denarja
+dlakocepiti|glagol|po nepotrebnem komplicirati
+dneven|pridevnik|o obdobju o obdobju enega dne
+dneven|pridevnik|vsakodneven
+dneven|pridevnik|na dan o količini, ki nastane v enem dnevu
+dneven|pridevnik|o aktivnem delu dneva
+dneven|pridevnik|podnevi
+dneven|pridevnik|o živali
+dobesednost|samostalnik|o zvestobi izvirniku
+dobrodelnost|samostalnik|dobra dela
 docent|samostalnik|učiteljski naziv
+docentka|samostalnik|učiteljski naziv
 dodekaeder|samostalnik|geometrijsko telo
 doktor|samostalnik|znanstveni naziv
 doktor|samostalnik|zdravnik
-doktor|samostalnik|o obvladovanju področja ali spretnosti; oseba, ki ima veliko znanja ali spretnosti na nekem področju
+doktor|samostalnik|o obvladovanju področja ali spretnosti oseba, ki ima veliko znanja ali spretnosti na nekem področju
+doktorat|samostalnik|stopnja izobrazbe
+doktorat|samostalnik|podiplomski študij
+doktorat|samostalnik|raziskovalno delo
 dokumentalist|samostalnik|skrbnik za dokumentacijo
-dolgoprogašica|samostalnik|v teku
-dolgoprogašica|samostalnik|v drugih športih
 dolgorepka|samostalnik|ptica
+dolgočasnež|samostalnik|kdor je nezanimiv
 dovodnica|samostalnik|žila
-dovoljen|pridevnik|o dovoljenju
-dovoljen|pridevnik|o omejitvi
 dovoljenje|samostalnik|privolitev
 dovoljenje|samostalnik|dokument
 dramatik|samostalnik|pisec dramskih del
 dramski|pridevnik|o dramski umetnosti
-dražba|samostalnik|javna prodaja blaga
 dražbar|samostalnik|voditelj dražbe
 dražbar|samostalnik|podjetje, ki organizira dražbe
 dražilec|samostalnik|kdor sodeluje na dražbi
 dražilec|samostalnik|voditelj dražbe
 dražilec|samostalnik|snov
 dražilec|samostalnik|kar spodbudi reakcijo
-dražitelj|samostalnik|kdor sodeluje na dražbi
-dražitelj|samostalnik|voditelj dražbe
-dren|samostalnik|grm
-dren|samostalnik|gneča
-drevesničarstvo|samostalnik|gojenje dreves
-drsalka|samostalnik|športna obutev; športna obutev z rezilom
-drsalka|samostalnik|športnica
+dremanje|samostalnik|kratko spanje
+driska|samostalnik|o bolezni
+driska|samostalnik|tekoče blato
+driska|samostalnik|žaljivka
+driska|samostalnik|o situaciji ali dogajanju
+droga|samostalnik|mamilo
+droga|samostalnik|zdravilna snov
+drsalec|samostalnik|športnik
+drsalec|samostalnik|kdor drsa
 drsanje|samostalnik|športna aktivnost
-državljanstvo|samostalnik|pripadnost državi
-dumping|samostalnik|prodajanje pod ceno
+drža|samostalnik|o telesu
+drža|samostalnik|stališče
+drža|samostalnik|o predmetu
+dudar|samostalnik|glasbenik
+dukat|samostalnik|evropski kovanec
 dvanajsterec|samostalnik|geometrijsko telo
 dvanajsterec|samostalnik|verz
-dvoglasnik|samostalnik|glasovna enota
+dvanajstnik|samostalnik|organ
+dvodomen|pridevnik|o političnem telesu
+dvodomen|pridevnik|o rastlini
+dvoglasen|pridevnik|o petju
+dvoglasen|pridevnik|o dveh glasovih
 dvojemka|samostalnik|prijem
 dvojezičen|pridevnik|v dveh jezikih
 dvojezičen|pridevnik|ki zna dva jezika
 dvoličen|pridevnik|hinavski
 dvoriti|glagol|osvajati
 dvoriti|glagol|dobrikati se
-dvostišje|samostalnik|dvovrstična kitica
 dvoumno|prislov|nejasno
 dvoumno|prislov|z mešanimi občutki
-dvoumnost|samostalnik|nejasnost
-dvoumnost|samostalnik|dvoličnost
 džez|samostalnik|glasbena zvrst
-džezovski|pridevnik|o džez glasbi
-džoging|samostalnik|lahkoten tek
-džokej|samostalnik|jahač
-ekolog|samostalnik|strokovnjak; kdor se ukvarja z varstvom okolja
+džogerka|samostalnik|rekreativna tekačica
+egipčanski|pridevnik|o Starem Egiptu in Egipčanih
+egipčanski|pridevnik|o Egiptu in Egipčanih
+ekloga|samostalnik|vrsta pesmi
+ekolog|samostalnik|strokovnjak kdor se ukvarja z varstvom okolja
 ekonometrija|samostalnik|področje ekonomije
-eksosfera|samostalnik|zunanja plast atmosfere
+eksponat|samostalnik|razstavni predmet
 ekstremiteta|samostalnik|del telesa
-eland|samostalnik|kopenska žival
-embalaža|samostalnik|material za shranjevanje
-embalaža|samostalnik|zunanja podoba
+elektrarna|samostalnik|objekt za proizvodnjo elektrike
+elita|samostalnik|najvplivnejši posamezniki
+elita|samostalnik|najboljši športniki
 embaliranje|samostalnik|opremljanje z embalažo
 embriolog|samostalnik|strokovnjak
 emigracija|samostalnik|izseljevanje
@@ -574,250 +564,260 @@ emigracija|samostalnik|življenje v tujini
 emigracija|samostalnik|izseljenci
 emigrirati|glagol|izseliti se v tujino
 empatija|samostalnik|sočutje
-enakozvočnica|samostalnik|o zvoku besede
+empiričen|pridevnik|izkustven
 endoparazit|samostalnik|organizem
+enoboštvo|samostalnik|oblika verovanja vera v enega boga
+enokrilnik|samostalnik|vrsta letala letalo z enim parom kril
 enoročno|prislov|z eno roko
-entomolog|samostalnik|strokovnjak
-epicenter|samostalnik|o potresu; točka nad žariščem potresa
+epicenter|samostalnik|o potresu točka nad žariščem potresa
 epicenter|samostalnik|središče
-epidemija|samostalnik|hitro širjenje bolezni
-epidemija|samostalnik|hiter porast česa
-epifiza|samostalnik|žleza; majhna žleza z notranjim izločanjem
+epidermis|samostalnik|del kože
+epidermis|samostalnik|del rastline
+epifiza|samostalnik|žleza majhna žleza z notranjim izločanjem
 epifiza|samostalnik|del kosti
-epilepsija|samostalnik|bolezen
-epileptik|samostalnik|oseba z epilepsijo
-esejist|samostalnik|pisec
-estuarij|samostalnik|lijakast izliv reke
+epigrafika|samostalnik|veda
 eten|samostalnik|ogljikovodik
-eteričen|pridevnik|o rastlinskih izvlečkih
-eteričen|pridevnik|o duhovnem svetu
-eteričen|pridevnik|prefinjen
 etin|samostalnik|ogljikovodik
 etnocid|samostalnik|etnični genocid
+etnologija|samostalnik|veda
+etnomuzikolog|samostalnik|strokovnjak
+evakuirati|glagol|preseliti zaradi nevarnosti
+evakuirati|glagol|o prostoru izprazniti prostor zaradi nevarnosti
+evakuirati|glagol|o snovi
+evfemističen|pridevnik|olepševalen
+evharistija|samostalnik|zakrament
+evharistija|samostalnik|posvečena hostija
+evkalipt|samostalnik|drevo
+evkalipt|samostalnik|evkaliptusovo olje
 evolucija|samostalnik|biološki proces
 evolucija|samostalnik|postopen razvoj
 evro|samostalnik|valuta
 evro|samostalnik|območje evra
 evropski|pridevnik|o celini
 evropski|pridevnik|o Evropski uniji
-fag|samostalnik|vrsta virusa
+fagotist|samostalnik|glasbenik
+fagotistka|samostalnik|glasbenica
+faktorizirati|glagol|o postopku pretvorbe
+falos|samostalnik|moški spolni ud
 fantje|samostalnik|športna kategorija
 farmar|samostalnik|lastnik farme
-fascikel|samostalnik|mapa
 fejst|prislov|zelo
 fejst|prislov|dobro; privlačno
-fenol|samostalnik|snov
-fenol|samostalnik|spojina
+feminist|samostalnik|privrženec feminizma
+fermentacija|samostalnik|biokemijski proces
 figovec|samostalnik|drevo
-filatelija|samostalnik|zbiranje in proučevanje znamk
 filc|samostalnik|blago
-filigranski|pridevnik|o tehniki izdelovanja okraskov
-filigranski|pridevnik|zelo natančen in premišljen
-filmografija|samostalnik|seznam filmov; seznam filmov režiserja, igralca ali po določeni tematiki
-filmoteka|samostalnik|zbirka filmov
-filmoteka|samostalnik|izposojevalnica filmov
+filmografija|samostalnik|seznam filmov seznam filmov režiserja, igralca ali po določeni tematiki
 filmski|pridevnik|o filmu
 filmski|pridevnik|nerealen
 filmski|pridevnik|zelo lep
-filolog|samostalnik|strokovnjak
 filozof|samostalnik|strokovnjak
 filozof|samostalnik|o pronicljivem razmišljanju
 filozof|samostalnik|kdor veliko prazno govori
-filozofirati|glagol|razglabljati kot filozof
-filozofirati|glagol|dolgoveziti
-finansiranje|samostalnik|zagotavljanje denarnih sredstev
-flavta|samostalnik|pihalo
-flavta|samostalnik|igranje flavte
-flavta|samostalnik|glasbenik
-flavtistka|samostalnik|glasbenica
+filtrirati|glagol|prečistiti snov
+filtrirati|glagol|prestreči in izločiti
+filtrirati|glagol|z uporabo aplikacije
+filtrirati|glagol|izraziti skozi nek kanal
+firbčen|pridevnik|radoveden
 flora|samostalnik|rastlinstvo
 flora|samostalnik|skupek mikroorganizmov
 florentinec|samostalnik|zrezek
 florentinec|samostalnik|golob
 florentinec|samostalnik|piškot
+fonetika|samostalnik|veda
 fonologija|samostalnik|veda
+font|samostalnik|pisava
 formaldehid|samostalnik|plin
 formaldehid|samostalnik|raztopina
-forzicija|samostalnik|grm
-fotografija|samostalnik|fotografski posnetek
-fotografija|samostalnik|dejavnost
+forsirati|glagol|dajati prednost
+forsirati|glagol|siliti
+forsirati|glagol|pretiravati
+fotograf|samostalnik|kdor se ukvarja s fotografiranjem
 fotografirati|glagol|narediti posnetek
+fototeka|samostalnik|zbirka fotografij
 frak|samostalnik|oblačilo
 francoski|pridevnik|o Franciji in Francozih
-frigidnost|samostalnik|spolna motnja; spolna hladnost
+frigidnost|samostalnik|spolna motnja spolna hladnost
 frnikola|samostalnik|kroglica
-frufru|samostalnik|frizura
 funkcionar|samostalnik|uradnik
 galantnost|samostalnik|uglajenost
 galenit|samostalnik|rudnina
+gamaša|samostalnik|zaščita čez čevlje
+gamaša|samostalnik|oblačilo
 garje|samostalnik|nalezljiva kožna bolezen
+gasilec|samostalnik|kdor je usposobljen za gašenje
 generalbas|samostalnik|basovska melodija
-generalpodpolkovnik|samostalnik|čin
-geodezija|samostalnik|veda
-geometrično|prislov|o geometriji
-germanizacija|samostalnik|ponemčevanje
-germanski|pridevnik|o Germanih
-germanski|pridevnik|o območju
-germanski|pridevnik|o jezikovni skupini
-germanski|pridevnik|o lastnosti
-gimnastika|samostalnik|šport
-gimnastika|samostalnik|telovadba
+genitalije|samostalnik|spolovila
+gerundij|samostalnik|glagolska oblika
+gimnastičarka|samostalnik|športnica
 gimnastičen|pridevnik|o športu
 gimnastičen|pridevnik|gibalen; telesen
-gimnastično|prislov|o športu
-gimnastično|prislov|gibalno, telesno
 girokompas|samostalnik|merilna naprava
 glagolnik|samostalnik|glagolska oblika
-glasbilo|samostalnik|priprava za izvajanje glasbe
+glasbenica|samostalnik|ženska, ki se ukvarja z glasbo
+glasbenik|samostalnik|kdor se ukvarja z glasbo
 glasnik|samostalnik|glas
 glasoslovje|samostalnik|veda
 glavarina|samostalnik|plačilo na osebo
-glicerol|samostalnik|kemijska spojina
+glavniček|samostalnik|majhen glavnik
+glicerin|samostalnik|kemijska spojina
+glikogen|samostalnik|polisaharid
 gliva|samostalnik|organizem
 gliva|samostalnik|goba
 globinomer|samostalnik|merilna naprava
+glog|samostalnik|drevo ali grm
+glog|samostalnik|zdravilni pripravek
 glukoza|samostalnik|monosaharid
-gnezdilka|samostalnik|ptica
-gobavost|samostalnik|bolezen
-gokart|samostalnik|majhen dirkalni avto
-gokart|samostalnik|dirkanje z majhnimi avti
+gnom|samostalnik|mitološko bitje
+gojen|pridevnik|o rastlinah ali živalih
+gojen|pridevnik|o ravnanju
+gojzar|samostalnik|pohodni čevelj
 golfist|samostalnik|igralec golfa
-golfistka|samostalnik|igralka golfa
-golobnjak|samostalnik|prostor za golobe
-golobnjak|samostalnik|zelo majhen prostor
+gonada|samostalnik|spolna žleza
 gora|samostalnik|visoka vzpetina
 gora|samostalnik|velika količina
+gorat|pridevnik|z veliko gorami
 gornica|samostalnik|alpinistka
-gorništvo|samostalnik|športna aktivnost
+gornik|samostalnik|alpinist
 gospodinjstvo|samostalnik|dom; hišna opravila
 gospodinjstvo|samostalnik|učni predmet
 gospodinjstvo|samostalnik|stanovanjska enota
+gostiščnica|samostalnik|najpogostejša vrednost
 gotovina|samostalnik|fizični denar
 gotovina|samostalnik|elektronski denar
-govorec|samostalnik|kdor govori; kdor govori ali pripoveduje
-govorec|samostalnik|o jeziku; kdor govori določen jezik ali narečje
+govorec|samostalnik|kdor govori kdor govori ali pripoveduje
+govorec|samostalnik|o jeziku kdor govori določen jezik ali narečje
 govorec|samostalnik|o javnem nastopu
 govorec|samostalnik|predstavnik organizacije
 grad|samostalnik|utrdba
 grad|samostalnik|kar ima obliko gradu
 grad|samostalnik|veliko bivališče
 grafik|samostalnik|izdelovalec grafik
+grafikon|samostalnik|grafični prikaz
 gričevje|samostalnik|skupina gričev
-griža|samostalnik|črevesna bolezen
-griža|samostalnik|siten človek
+grobnica|samostalnik|o pokopavanju mrtvih
+grobnica|samostalnik|kraj smrti ali konca
+grosist|samostalnik|velik trgovec
 grozdje|samostalnik|sadje
 grozovitost|samostalnik|o strašljivosti
 gruzijski|pridevnik|o Gruziji in Gruzijcih
+gruzinski|pridevnik|o Gruziji in Gruzincih
+gruzinščina|samostalnik|gruzinski jezik
+grški|pridevnik|o Grčiji in Grkih
+grški|pridevnik|o Antični Grčiji in Grkih
+gugalnik|samostalnik|gugalni stol
+gumijevka|samostalnik|policijski pripomoček
 gurman|samostalnik|ljubitelj hrane in pijače
 gurman|samostalnik|poznavalec
+guru|samostalnik|duhovni vodja
+guru|samostalnik|poznavalec
+gvajava|samostalnik|sadež
+gvajava|samostalnik|drevo ali grm
+habit|samostalnik|oblačilo
 habitat|samostalnik|življenjski prostor
 habitat|samostalnik|okolje
+halja|samostalnik|oblačilo
+halucinacija|samostalnik|zaznavna motnja
+halucinacija|samostalnik|blodnja; izmišljotina
+harfistka|samostalnik|glasbenica
+harmonikar|samostalnik|glasbenik
 havanka|samostalnik|cigara
-havarija|samostalnik|poškodba ladje ali letala
-havarija|samostalnik|večja nezgoda
+hazarder|samostalnik|kdor rad stavi
+hazarder|samostalnik|kdor rad veliko tvega
+heksameter|samostalnik|vrsta verza
 helebarda|samostalnik|vrsta orožja
 helenski|pridevnik|o Helenih
+helikopter|samostalnik|letalsko prevozno sredstvo
 heraldika|samostalnik|veda o grbih
 herc|samostalnik|merska enota
 heroin|samostalnik|mamilo
-hertz|samostalnik|merska enota
 hijacinta|samostalnik|okrasna rastlina
-hilus|samostalnik|del organa
-hipermarket|samostalnik|večja trgovina
-hipernim|samostalnik|o pomenu besede
 hiperpovezava|samostalnik|povezava do spletne strani
+hipodrom|samostalnik|konjsko dirkališče
 histeričen|pridevnik|o čustvenem odzivu
 histeričen|pridevnik|o bolezni
 histeričen|pridevnik|o intenzivnem dogajanju
-histerično|prislov|o čustvenem odzivu
-histerično|prislov|o intenzivnosti ali pretiranosti
 hišnik|samostalnik|vzdrževalec objekta
 hlapen|pridevnik|ki prehaja v plinsko stanje
-hlače|samostalnik|oblačilo
 hlačke|samostalnik|žensko spodnje perilo
 hlačke|samostalnik|kratke hlače
 hlačke|samostalnik|otroško spodnje perilo
 hliniti|glagol|pretvarjati se
-hokejistka|samostalnik|športnica
+hlod|samostalnik|o drevesu odžagano drevesno deblo
+hlod|samostalnik|o človeku neroden ali neumen človek
 holding|samostalnik|vrsta podjetja
 homofonija|samostalnik|večglasje
 homoseksualec|samostalnik|kdor je istospolno usmerjen
+hornist|samostalnik|glasbenik
+hornistka|samostalnik|glasbenica
 hospitalizacija|samostalnik|zdravljenje v bolnišnici
-hotel|samostalnik|turistični objekt
-hruška|samostalnik|sadno drevo
-hruška|samostalnik|sadež
-hruška|samostalnik|vrsta kamiona
-hruška|samostalnik|del vozila
-hruška|samostalnik|pri boksu
-humanitaren|pridevnik|človekoljuben
-humanitaren|pridevnik|o stiski ljudi
-hurikan|samostalnik|tropski vihar
+hugenot|samostalnik|francoski protestant
+husit|samostalnik|pripadnik husitstva
+identificirati|glagol|enačiti; istovetiti
+identificirati|glagol|določiti identiteto
+identificirati|glagol|odkriti
+identificirati|glagol|evidentirati
 iglast|pridevnik|o iglavcih
 iglast|pridevnik|koničast
-iglavec|samostalnik|drevo
-iglica|samostalnik|riba
-iglu|samostalnik|prebivališče iz snega
 ikozaeder|samostalnik|geometrijski lik
-ilustrator|samostalnik|umetnik
+ilustrirati|glagol|izdelati risbo
+ilustrirati|glagol|ponazoriti
+imeniten|pridevnik|izvrsten
+imeniten|pridevnik|ugleden
 imenovalnik|samostalnik|sklon
 imenovalnik|samostalnik|deljena lastnost
+impliciten|pridevnik|posredno izražen
+impresionist|samostalnik|predstavnik impresionizma
 impresionistka|samostalnik|predstavnica impresionizma
-informiranje|samostalnik|obveščanje
-inicialka|samostalnik|začetna črka
-inkunabula|samostalnik|knjiga; knjiga, tiskana pred koncem leta 1500
+inkunabula|samostalnik|knjiga knjiga, tiskana pred koncem leta 1500
+insignija|samostalnik|simbolni predmet
+insignija|samostalnik|prepoznavna lastnost
+insignija|samostalnik|model avtomobila
 institucija|samostalnik|ustanova
 institucija|samostalnik|družbeno razmerje
-institucija|samostalnik|o namestitvi; bivanje v zgradbi ustanove z osebjem, ki nadzoruje, zdravi ali neguje
+institucija|samostalnik|o namestitvi bivanje v zgradbi ustanove z osebjem, ki nadzoruje, zdravi ali neguje
 intertekstualnost|samostalnik|lastnost besedila
-invalidnost|samostalnik|zdravstveno stanje
-invalidnost|samostalnik|o nesposobnosti; nesposobnost na določenem področju
 inštalater|samostalnik|monter
-istočasno|prislov|hkrati; sočasno
-istočasno|prislov|uvaja dodatno dejstvo ali nasprotje
-izjecljati|glagol|jecljaje povedati
-izobčiti|glagol|izločiti
-izobčiti|glagol|izključiti iz cerkve
-izrecno|prislov|jasno
-izrecno|prislov|izključno
-izvedenec|samostalnik|strokovnjak
-izvedenec|samostalnik|dober poznavalec
+ironično|prislov|s posmehom
+izkoreniniti|glagol|o slabi stvari
+izkoreniniti|glagol|o rastlini
+izmenoma|prislov|izmenično
+izrazoslovje|samostalnik|strokovni izrazi
+izrazoslovje|samostalnik|veda
+izrazoslovje|samostalnik|o izražanju
+iztegovalka|samostalnik|mišica
+izumrtje|samostalnik|o živih bitjih
+izumrtje|samostalnik|o dejavnosti ali predmetu
+izumrtje|samostalnik|o kraju
+jablana|samostalnik|drevo
 jabolčnik|samostalnik|pijača
 jadikovanje|samostalnik|tarnanje
-jadikovati|glagol|tarnati
-jagoda|samostalnik|rastlina
-jagoda|samostalnik|plod
-jagoda|samostalnik|okrogel plod
-jagoda|samostalnik|droben predmet
+jadikovec|samostalnik|drevo
 jagodičnica|samostalnik|grm
 jahalec|samostalnik|športnik
 jahalen|pridevnik|o jahanju
-jahač|samostalnik|športnik
-jahač|samostalnik|otroški avtomobilski sedež
+jahalka|samostalnik|športnica
 jajčast|pridevnik|o obliki
-jajčnik|samostalnik|spolni organ
-jajčnik|samostalnik|jed
 jalov|pridevnik|ki ne prinese uspeha
 jalov|pridevnik|neuresničen
 jalov|pridevnik|neosnovan
 jalov|pridevnik|nesmiseln; brez vrednosti
 jalov|pridevnik|neploden
 jalov|pridevnik|nerodoviten
-jalovo|prislov|brez pozitivnega rezultata
-jamarka|samostalnik|raziskovalka jam
-jamranje|samostalnik|tarnanje
-jantaren|pridevnik|o snovi
-jantaren|pridevnik|o barvi
+jamajški|pridevnik|o Jamajki in Jamajčanih
+jamarski|pridevnik|o jamarstvu
+jamarstvo|samostalnik|raziskovanje jam
+jamb|samostalnik|stopica
 jasnina|samostalnik|o nebu ali ozračju
 jasnina|samostalnik|jasna izoblikovanost
-jazbina|samostalnik|jazbečje bivališče
-jazbina|samostalnik|zatočišče; zbirališče
-jazz|samostalnik|glasbena zvrst
-jecljanje|samostalnik|govorna napaka
-jecljanje|samostalnik|nejasno izražanje
-jedek|pridevnik|ki razjeda
-jedek|pridevnik|intenziven; oster
-jedek|pridevnik|zajedljiv; piker
+jasnovidnost|samostalnik|sposobnost napovedovanja prihodnosti
+jastog|samostalnik|rak
+jastog|samostalnik|jed
+javor|samostalnik|drevo
+javor|samostalnik|les
+javorovina|samostalnik|les
 jedilo|samostalnik|jed
+jeklarstvo|samostalnik|gospodarska panoga
 jelenji|pridevnik|o živali
 jelenji|pridevnik|v kulinariki
 jelenji|pridevnik|o izdelkih
@@ -825,68 +825,78 @@ jelka|samostalnik|drevo
 jelka|samostalnik|novoletna jelka
 jerebika|samostalnik|drevo
 jerebika|samostalnik|plod
-jesen|samostalnik|drevo
-jezikoslovec|samostalnik|strokovnjak
+jestvina|samostalnik|prehrambeni izdelek
+jezikoslovje|samostalnik|veda
+jezikoven|pridevnik|o načinu izražanja
+jezuit|samostalnik|član krščanskega reda
 ječar|samostalnik|paznik v zaporu
 jockey|samostalnik|jahač
-jogi|samostalnik|vzmetnica
-jogi|samostalnik|mojster joge
+jogger|samostalnik|rekreativni tekač
+jogging|samostalnik|lahkoten tek
 jopica|samostalnik|oblačilo
+jopič|samostalnik|oblačilo
+judaizem|samostalnik|religija
 judoist|samostalnik|športnik
-jugovzhod|samostalnik|smer
-jugovzhod|samostalnik|območje
 jugovzhodno|prislov|o smeri
-juta|samostalnik|material
+juha|samostalnik|jed
+južno|prislov|o smeri neba
+južno|prislov|manj
+kadaver|samostalnik|truplo
+kadrovnik|samostalnik|v podjetju ali športnem klubu
+kahlica|samostalnik|otroško stranišče
 kajakaš|samostalnik|športnik
-kakec|samostalnik|iztrebek
+kajakašica|samostalnik|športnica
 kalašnikovka|samostalnik|avtomatska puška
-kaligraf|samostalnik|lepopisec
-kalina|samostalnik|grm
+kalitev|samostalnik|pri rastlinah
+kalitev|samostalnik|o prekršku
 kalvinist|samostalnik|pripadnik kalvinizma
 kamboški|pridevnik|o Kambodži in Kambodžanih
+kamenjati|glagol|obmetavati s kamni
 kamnosek|samostalnik|obdelovalec kamna
-kancler|samostalnik|predsednik vlade
-kanonik|samostalnik|škofov svetovalec; krščanski duhovnik, ki ga škof imenuje za svojega svetovalca
-kantor|samostalnik|vodilni pevec pri bogoslužju
-kanuist|samostalnik|športnik
+kanibalizem|samostalnik|pri človeku
+kanibalizem|samostalnik|pri živalih
+kanibalizem|samostalnik|o uničevanju
+kanonik|samostalnik|škofov svetovalec krščanski duhovnik, ki ga škof imenuje za svojega svetovalca
 kapalka|samostalnik|cevka za odmerjanje
-kapilarnost|samostalnik|fizikalni pojav
-karavela|samostalnik|vrsta jadrnice
+karbon|samostalnik|trdna snov
+karbon|samostalnik|geološka doba
+kari|samostalnik|mešanica začimb
+kari|samostalnik|azijska jed
 karibu|samostalnik|jelen
+karies|samostalnik|zobna gniloba
 karikatura|samostalnik|komična risba
 karikatura|samostalnik|dejavnost
 karikatura|samostalnik|popačena različica
-karirast|pridevnik|o vzorcu iz kar
-karizma|samostalnik|značajska lastnost
-karizma|samostalnik|nadnaravna sposobnost
 karoserija|samostalnik|ohišje avtomobila
 kartuzijan|samostalnik|menih
+katakombe|samostalnik|podzemno pokopališče
 katarakt|samostalnik|brzica
 katedrala|samostalnik|cerkvena stavba
 katedrala|samostalnik|o izstopajoči zgradbi
-kavarna|samostalnik|gostinski lokal
-kavč|samostalnik|kos pohištva
-kavč|samostalnik|pri psihiatru
+kava|samostalnik|pijača
+kava|samostalnik|dogodek
+kava|samostalnik|zrna kavovca
+kava|samostalnik|rastlina
+kava|samostalnik|kavni nadomestek
+kaviar|samostalnik|jed
 kašelj|samostalnik|krčevito izdihavanje zraka
 kašljati|glagol|o človeku
 kašljati|glagol|o vozilih in motorjih
-kašmir|samostalnik|tkanina
-kegljač|samostalnik|športnik
+kegljanje|samostalnik|športna igra
 kegljačica|samostalnik|športnica
-kenozoik|samostalnik|geološka doba
-kickboksarka|samostalnik|športnica
-kikboks|samostalnik|borilni šport
+kenguru|samostalnik|vrečar
+kenguru|samostalnik|za dojenčka
+kenguru|samostalnik|Avstralec
+kerling|samostalnik|športna igra
+kickboxing|samostalnik|borilni šport
 kikboksar|samostalnik|športnik
-kikboksarka|samostalnik|športnica
 kininovec|samostalnik|drevo
+kipar|samostalnik|umetnik
 kiparka|samostalnik|umetnica
 kita|samostalnik|o laseh
 kita|samostalnik|pri mišicah
 kita|samostalnik|o izdelkih
-kitajska|samostalnik|restavracija
-kitajska|samostalnik|hrana
 kitajski|pridevnik|o Kitajski in Kitajcih
-kitaristka|samostalnik|glasbenica
 klarinetistka|samostalnik|glasbenica
 klavzula|samostalnik|določba v pogodbi
 klečanje|samostalnik|dotikanje tal s koleni
@@ -894,75 +904,66 @@ klečanje|samostalnik|o ponižnosti
 klient|samostalnik|stranka
 klient|samostalnik|v sodnih postopkih
 klient|samostalnik|program
-kljukast|pridevnik|ukrivljen
-kmetija|samostalnik|o posestvu; zemlja in poslopja za pridelavo hrane in vzrejo živali
-kmetijski|pridevnik|o kmetijstvu
+klif|samostalnik|pečina
 kmetijstvo|samostalnik|gospodarska dejavnost
-književnik|samostalnik|pisatelj
-kognicija|samostalnik|spoznavanje; dojemanje
+knjigarna|samostalnik|prodajalna knjig
 kohorta|samostalnik|starorimska vojaška enota
+kokain|samostalnik|mamilo
 kokos|samostalnik|plod
 kokos|samostalnik|drevo
-kolaboracija|samostalnik|sodelovanje s sovražnikom
-kolaboracija|samostalnik|sodelovanje
 koledar|samostalnik|o merjenju časa
 koledar|samostalnik|publikacija
 koledar|samostalnik|računalniška aplikacija
 koledar|samostalnik|razpored dejavnosti
 kolesariti|glagol|voziti se s kolesom
-kolesarka|samostalnik|športnica
 kolesarstvo|samostalnik|vožnja s kolesom
 kolos|samostalnik|velikanski objekt ali predmet
 kolos|samostalnik|ogromna organizacija
 kolos|samostalnik|velik kip
 kolos|samostalnik|velikan; orjak
 kolos|samostalnik|pomembna oseba
-kolumna|samostalnik|članek
-komponistka|samostalnik|umetnica
 kompromis|samostalnik|dogovor
 kompromis|samostalnik|srednja pot; rešitev
 kompromis|samostalnik|o nižanju standardov
-komutativnost|samostalnik|o matematični operaciji
-koncern|samostalnik|združba podjetij
-kongres|samostalnik|srečanje
-kongres|samostalnik|zakonodajno telo
-kongres|samostalnik|o organizaciji; ponavadi del imena organizacije
-konkavno|prislov|vbočeno
-kontinent|samostalnik|površina kopnega
-kontinentalen|pridevnik|o površju
-kontinentalen|pridevnik|o delu države ali regije
-kontinentalen|pridevnik|o geopolitičnem območju
-kontinentalen|pridevnik|o celinskem delu Evrope
-kontracepcija|samostalnik|preprečevanje zanositve
-kontracepcija|samostalnik|sredstvo
+komunikologija|samostalnik|veda o komunikacijskih sredstvih
+konosament|samostalnik|listina listina za prevoz blaga
+konservatorij|samostalnik|umetniška ustanova
+konvencionalnost|samostalnik|običajnost
+konvertibilnost|samostalnik|zamenljivost
 konzervatorij|samostalnik|umetniška ustanova
 konzulat|samostalnik|predstavništvo tuje države
-kornet|samostalnik|posodica za hrano; posodica iz testa za sladoled ali drugo živilo
-kornet|samostalnik|vrsta sladoleda
-kornet|samostalnik|o obliki
-kornet|samostalnik|trobilo
-kornet|samostalnik|glasbenik
-kornet|samostalnik|vojaški čin
-kos|samostalnik|ptica
-kostanjev|pridevnik|o drevesu ali delu drevesa
-kostanjev|pridevnik|v kulinariki
-kostanjev|pridevnik|o barvi
-kostanjev|pridevnik|o snovi
+korajža|samostalnik|pogum
+korenito|prislov|temeljito; radikalno
+koreograf|samostalnik|poklic načrtovalec plesnih gibov
+koreografinja|samostalnik|poklic načrtovalka plesnih gibov
+korespondenca|samostalnik|pisna sporočila
+korespondenca|samostalnik|povezava
+korzet|samostalnik|oblačilo
+kostanjevina|samostalnik|les
 kostumograf|samostalnik|strokovnjak za oblačila
-kostumografinja|samostalnik|strokovnjakinja za oblačila
-kotalkati|glagol|voziti se s kotalkami
-kozliček|samostalnik|kozji mladič
-kozmetika|samostalnik|izdelki
-kozmetika|samostalnik|dejavnost
+kotalkanje|samostalnik|športna aktivnost
+kotalkar|samostalnik|kdor se kotalka
+kovati|glagol|načrtovati
+kovati|glagol|ustvarjati
+kovati|glagol|pisati; oblikovati
+kovati|glagol|izdelovati iz kovine
+kozmetičen|pridevnik|o negi telesa o dejavnosti in izdelkih za nego telesa
+kozmetičen|pridevnik|malenkosten; nebistven
+kozmonavt|samostalnik|astronavt
 kočija|samostalnik|prevozno sredstvo
 kočija|samostalnik|veliko vozilo
-kočnik|samostalnik|zob
-kočura|samostalnik|hiša; preprosta hiša, navadno v slabem stanju
 košarka|samostalnik|šport
 košarka|samostalnik|način igranja
+košat|pridevnik|o laseh in dlakah
+košat|pridevnik|o rastlinah
+košat|pridevnik|o oblačilih
 koščen|pridevnik|iz kosti
 koščen|pridevnik|zelo suh
 kragulj|samostalnik|ptica ujeda
+kralj|samostalnik|vladar
+kralj|samostalnik|najpomembnejši predstavnik
+kralj|samostalnik|šahovska figura
+kralj|samostalnik|igralna karta
 kraljica|samostalnik|vladarka
 kraljica|samostalnik|kraljeva žena
 kraljica|samostalnik|najpomembnejša predstavnica
@@ -976,314 +977,334 @@ kraton|samostalnik|del celinske plošče
 kravl|samostalnik|pri plavanju
 kreativen|pridevnik|ustvarjalen; inovativen
 kreativen|pridevnik|ki razvija nove ideje ali izdelke
-kreda|samostalnik|sredstvo za risanje
-kreda|samostalnik|geološka doba
-kreda|samostalnik|kamnina
-kreking|samostalnik|kemijski postopek
-krepostnež|samostalnik|kreposten človek
+kriminal|samostalnik|kazniva dejavnost
+kriminal|samostalnik|nesprejemljivo početje
 kriminalec|samostalnik|zločinec; lopov
-krinolina|samostalnik|oblačilo
-krinolina|samostalnik|ogrodje pod krilom
 kripta|samostalnik|grobnica
-kriptonim|samostalnik|skrivno ime
 kromanjonec|samostalnik|človek iz poznega paleolitika
-kromiranje|samostalnik|kemijski postopek; končna obdelava jekla
-kronist|samostalnik|pisec kronik
-kronometer|samostalnik|dirka na čas
-kronometer|samostalnik|o uri
-krosist|samostalnik|športnik
-kršiti|glagol|o neupoštevanju pravil; ravnati v nasprotju s pravili
-kukavica|samostalnik|ptica
-kukavica|samostalnik|rastlina
-kukavica|samostalnik|o uri
+kromiranje|samostalnik|kemijski postopek končna obdelava jekla
+krt|samostalnik|žival
+krt|samostalnik|vohun
+krtača|samostalnik|pripomoček za čiščenje
+krtača|samostalnik|pripomoček za nego telesa
+krčnica|samostalnik|grm
+krčnica|samostalnik|obolenje ven
+kršiti|glagol|o neupoštevanju pravil ravnati v nasprotju s pravili
 kurator|samostalnik|skrbnik umetniških del
 kurator|samostalnik|pravni zastopnik
+kurikulum|samostalnik|učni načrt
 kurzor|samostalnik|kazalec na zaslonu
-kvintdecima|samostalnik|o razdalji med tonoma
-ladinka|samostalnik|školjka
-lakota|samostalnik|potreba po hrani
-lakota|samostalnik|pomanjkanje hrane
-lakota|samostalnik|močna želja
-lakota|samostalnik|rastlina
-lasulja|samostalnik|umetni lasje
+lajnar|samostalnik|glasbenik
+larinks|samostalnik|grlo
 latinoameriški|pridevnik|o Latinski Ameriki in Latinoameričanih
 latinskoameriški|pridevnik|o Latinski Ameriki in Latinskoameričanih
 latrina|samostalnik|stranišče
+legendaren|pridevnik|znamenit; slaven
+legendaren|pridevnik|o legendi
 leksikologija|samostalnik|veda
+lesorez|samostalnik|grafična tehnika
+lesorez|samostalnik|slika
 letališče|samostalnik|o letalih
-lezija|samostalnik|rana
-lešnikov|pridevnik|v kulinariki
-lešnikov|pridevnik|o plodu
-lešnikov|pridevnik|o barvi
-libretist|samostalnik|pisec libreta
 libretistka|samostalnik|piska libreta
-lignit|samostalnik|premog
-limetin|pridevnik|v kulinariki
+libreto|samostalnik|dramsko besedilo
 limonada|samostalnik|pijača
 limonada|samostalnik|televizijska nadaljevanka
 limonada|samostalnik|kar je vsebinsko prazno
+litovski|pridevnik|o Litvi in Litovcih
+litvanski|pridevnik|o Litvi in Litvancih
 livreja|samostalnik|uniforma
 livreja|samostalnik|o dizajnu in barvah
-ljubezenski|pridevnik|o ljubezni
-ljubezenski|pridevnik|o spolnem odnosu
-lojnica|samostalnik|žleza
-lokostrelec|samostalnik|kdor strelja z lokom; kdor strelja z lokom v tarčo
+lizingodajalec|samostalnik|kdor daje lizing
+lizingojemalec|samostalnik|kdor dobi lizing
+ličinka|samostalnik|razvojna stopnja živali
+ličinka|samostalnik|vaba na trnku
+logopedija|samostalnik|veda
+lokostrelec|samostalnik|kdor strelja z lokom kdor strelja z lokom v tarčo
 lokostrelec|samostalnik|vojak
-lokostrelka|samostalnik|ženska, ki strelja z lokom
-lokovanje|samostalnik|pri godalih; uporabljanje loka pri godalih
+lokovanje|samostalnik|pri godalih uporabljanje loka pri godalih
 lončarstvo|samostalnik|dejavnost
 losjon|samostalnik|kozmetično sredstvo
+loto|samostalnik|igra na srečo
 lovor|samostalnik|drevo ali grm
 lovor|samostalnik|začimba
 lovor|samostalnik|priznanje; naslov
-lutnjarka|samostalnik|glasbenica
+lutnjar|samostalnik|glasbenik
 macesnovina|samostalnik|les
 macola|samostalnik|težko kladivo
 macola|samostalnik|silovit ali neusmiljen način
-mahagonijev|pridevnik|izdelan iz mahagonijevega lesa
-mahagonijev|pridevnik|o drevesu ali delu drevesa
-mahagonijev|pridevnik|o barvi
 mahnjen|pridevnik|o močni ljubezni, naklonjenosti
 mahnjen|pridevnik|nor, čudaški
+majorka|samostalnik|vojaški čin častniški čin ali nosilka tega čina
+majčken|pridevnik|zelo majhen
+malikovanje|samostalnik|čaščenje čaščenje osebe, predmeta ali pojma kot boga
+malikovanje|samostalnik|pretirano občudovanje pretirano občudovanje; idealiziranje
 malinjak|samostalnik|grm
 malinjak|samostalnik|nasad malin
-malodušnež|samostalnik|malodušen človek
-maltoza|samostalnik|sladni sladkor
+malopriden|pridevnik|ničvreden, pokvarjen
+malopriden|pridevnik|nezakonit
+maltežan|samostalnik|pes
 maltretiranje|samostalnik|grdo ravnanje
-mango|samostalnik|drevo
-mango|samostalnik|plod
-manikura|samostalnik|kozmetična nega rok
-maniok|samostalnik|rastlina
+maltretirati|glagol|grdo ravnati z; trpinčiti
+manioka|samostalnik|rastlina
+marakas|samostalnik|tolkalo
 maratonec|samostalnik|tekač
 maratonec|samostalnik|o drugih športih
 maratonec|samostalnik|kdor dolgo dela ali vztraja
 maratonka|samostalnik|tekačica
-maslenica|samostalnik|rastlina
-mačica|samostalnik|rastlina; spomladi cvetoča rastlina s sivkastimi dlakavimi socvetji
-mačica|samostalnik|socvetje; podolgovato dlakavo socvetje
-mačica|samostalnik|mačka
-mačica|samostalnik|mikavna ženska
+martini|samostalnik|alkoholna pijača
+maskara|samostalnik|ličilo
+matematik|samostalnik|strokovnjak
+matematik|samostalnik|kdor dobro računa
+matematičarka|samostalnik|strokovnjakinja
+matematičarka|samostalnik|ženska, ki dobro računa
+matineja|samostalnik|zgodnja predstava
+mecen|samostalnik|finančni podpornik
 medbesedilnost|samostalnik|lastnost besedila
+mediana|samostalnik|srednja vrednost
 medicina|samostalnik|veda
 medicina|samostalnik|izobraževalni program
 medicina|samostalnik|medicinska fakulteta
-medicinski|pridevnik|o zdravljenju
-medicinski|pridevnik|o vedi
-mehiški|pridevnik|o Mehiki in Mehičanih
-meka|samostalnik|središče dogajanja
-memoriranje|samostalnik|učenje; učenje na pamet, pomnjenje
+medpona|samostalnik|del besede
+melišče|samostalnik|grušč
+melona|samostalnik|plod
+melona|samostalnik|rastlina
+melona|samostalnik|ženske prsi
+menjševik|samostalnik|pripadnik menjševizma
 menstruacija|samostalnik|mesečna krvavitev
-metanol|samostalnik|alkohol
+metropola|samostalnik|glavno mesto glavno mesto države ali pokrajine
+metropola|samostalnik|središče dejavnosti
 mezolitik|samostalnik|obdobje prazgodovine
-mezozoik|samostalnik|geološka doba
-mečnica|samostalnik|kost
 mežnar|samostalnik|oskrbnik cerkve
-mikroskopski|pridevnik|o mikroskopu
-mikroskopski|pridevnik|ki se ga vidi le z mikroskopom
-mikroskopski|pridevnik|zelo majhen
-mikroskopski|pridevnik|zelo podroben
+mikrovalovka|samostalnik|naprava za pripravo hrane
 milenij|samostalnik|časovno obdobje
 milenij|samostalnik|prelom tisočletja
 milenij|samostalnik|obdobje vladanja Kristusa
 mimezis|samostalnik|o posnemanju stvarnosti
-mizar|samostalnik|izdelovalec pohištva; izdelovalec lesenih elementov
-miš|samostalnik|žival
-miš|samostalnik|del računalniške opreme
+mitnica|samostalnik|za plačilo mitnine nekdaj objekt za plačilo mitnine
+mitnica|samostalnik|za plačilo cestnine cestninska postaja za plačilo cestnine
+mitnica|samostalnik|NEUVRŠČENO
+mizar|samostalnik|izdelovalec pohištva izdelovalec lesenih elementov
+mladoletnik|samostalnik|kdor je mladoleten
 množenec|samostalnik|število, ki se množi
-mobitel|samostalnik|naprava; mobilni telefon
+mobitel|samostalnik|naprava mobilni telefon
 modnik|samostalnik|del telesa
 modo|samostalnik|spolna žleza
-modrček|samostalnik|žensko spodnje perilo
 mokovec|samostalnik|drevo
-monom|samostalnik|enočlenik
-monoteističen|pridevnik|o veri
 monotipija|samostalnik|grafična tehnika
 monotipija|samostalnik|izdelek
+morena|samostalnik|ledeniški nanos
+morena|samostalnik|morska riba
 morilec|samostalnik|storilec umora
 morilec|samostalnik|vzrok smrti
-močvara|samostalnik|močviren svet
-močvara|samostalnik|razmočeno območje
-močvara|samostalnik|o stanju; nepregledno ali brezizhodno stanje
+motokrosist|samostalnik|športnik
 močvirnat|pridevnik|močviren
 mrtvorojenec|samostalnik|mrtev otrok
 mrtvorojenec|samostalnik|o neučinkoviti ideji
-multikulturnost|samostalnik|o več kulturah
 musliman|samostalnik|pripadnik muslimanske vere
-muzikal|samostalnik|glasbena predstava
-muzikalnost|samostalnik|glasbenost
-nadangel|samostalnik|angel
-nadglavišče|samostalnik|o točki na nebu
-nadjaz|samostalnik|o ponotranjenih normah
-nadležno|prislov|moteče; zoprno
+muzikologinja|samostalnik|strokovnjakinja
+nabojnik|samostalnik|del orožja
 nadomestljiv|pridevnik|pogrešljiv; zamenljiv
 nadomestljiv|pridevnik|popravljiv; odpravljiv
 nadpomenka|samostalnik|o pomenu besede
-nadpovezava|samostalnik|povezava do spletne strani
 nadrealist|samostalnik|pripadnik nadrealizma
-nadrobiti|glagol|zdrobiti
-nadrobiti|glagol|povedati
 nadstrankarski|pridevnik|nevtralen
-naften|pridevnik|o naravnem viru
-naften|pridevnik|o vrsti goriva
-naglušen|pridevnik|ki ima okvaro sluha
+naftar|samostalnik|o podjetju ali lastniku
 nagrajenka|samostalnik|prejemnica nagrade
+nahruliti|glagol|nadreti; ostro ošteti
+najemnica|samostalnik|ženska, ki kaj najame
+najemnica|samostalnik|organizacija
 najemnik|samostalnik|oseba, ki kaj najame
 najemnik|samostalnik|vojak
 najemnina|samostalnik|denar za najem
+nakup|samostalnik|dejanje
+nakup|samostalnik|kupljeno blago
+nakupovalec|samostalnik|kdor nakupuje
+nalivnik|samostalnik|pisalo
 namaz|samostalnik|jed
-napoleondor|samostalnik|francoski zlatnik
+naprednost|samostalnik|razvitost
+naprednost|samostalnik|napredna miselnost
 narator|samostalnik|pripovedovalec; bralec spremnega teksta
-narečjeslovje|samostalnik|veda
-narodopisje|samostalnik|veda o značilnostih ljudstev
-nebotičnik|samostalnik|stavba
-nedoločnik|samostalnik|glagolska oblika
-negliže|samostalnik|žensko oblačilo
+načitanost|samostalnik|razgledanost
+nedvomno|prislov|gotovo
+nedvomno|prislov|brez dvoma; neizpodbitno
 nekrolog|samostalnik|članek o umrli osebi
-nenaglašen|pridevnik|izgovorjen brez naglasa
-nenaglašen|pridevnik|neizrazit
+nekropola|samostalnik|grobišče
+neoklasicist|samostalnik|predstavnik neoklasicizma
 neolitik|samostalnik|obdobje prazgodovine
-nepokornost|samostalnik|neubogljivost; neposlušnost
+neposredno|prislov|brez posrednika ali vmesnega člena done without any other people, actions, processes etc coming between
+neposredno|prislov|časovno blizu
+neposredno|prislov|prostorsko zraven
+neposredno|prislov|o volilnem sistemu
+neposredno|prislov|brez dodatnih nastopov
+neposredno|prislov|o pristni in jasni komunikciji brez ovinkarjenja
+neposredno|prislov|o eksplicitni omembi ali navedbi
+neposredno|prislov|o predvajanju oddaje ali prireditve
+neposredno|prislov|o skupnem trgu ali področju
+neposredno|prislov|v sodni praksi
 neprisiljenost|samostalnik|sproščenost
-nečitljiv|pridevnik|neberljiv; nerazločen
-nikalnica|samostalnik|pri zanikanju
-nizozemski|pridevnik|o Nizozemski in Nizozemcih
-nogometašica|samostalnik|športnica
-nominativ|samostalnik|sklon
-nosnica|samostalnik|nosna kost
-noviciat|samostalnik|redovniško pripravništvo
+nogomet|samostalnik|šport
+nogomet|samostalnik|način igranja
+nogometašinja|samostalnik|športnica
+nosečnost|samostalnik|telesno stanje stanje ženske, ki pričakuje otroka
 novinar|samostalnik|pisec člankov v medijih
-novinarstvo|samostalnik|dejavnost
-novorojenček|samostalnik|novorojeni otrok
-novorojenček|samostalnik|o novi stvari
+novinarka|samostalnik|avtorica člankov v medijih
+novinarski|pridevnik|o novinarjih
 nožnica|samostalnik|ženski spolni organ
 nožnica|samostalnik|pripomoček za rezilo
 nožnica|samostalnik|del lista
-obljubiti|glagol|zagotoviti
+nuklearka|samostalnik|vrsta elektroenergetskega objekta
+nutrija|samostalnik|glodavec
+obala|samostalnik|pas zemlje ob vodi
+oblačilo|samostalnik|izdelek iz blaga
+oblačilo|samostalnik|zunanja podoba
+obločnica|samostalnik|svetilka
 obrtnik|samostalnik|kdor vodi obrt
-obsečnica|samostalnik|žleza
-občutno|prislov|precej; znatno
 obščitnica|samostalnik|žleza
+ocean|samostalnik|morje
+ocean|samostalnik|velika količina
 odmikalka|samostalnik|mišica
 odčitek|samostalnik|odčitana vrednost
-ognojek|samostalnik|gnojna rana
-okoljevarstvo|samostalnik|skrb za okolje
-oksidant|samostalnik|snov
+oksimoron|samostalnik|o nesmiselnem izrazu
+oksimoron|samostalnik|o nelogični izjavi
+oktaeder|samostalnik|geometrijsko telo
+okupirati|glagol|zavzeti z vojaško silo
+okupirati|glagol|množično zasesti
+okupirati|glagol|zahtevati veliko pozornosti
+olesenel|pridevnik|spremenjen v les
+olesenel|pridevnik|negiben, tog
+olesenel|pridevnik|zastal, otrpel
+olesenel|pridevnik|zaostal v razvoju ali okorel
 olimpiada|samostalnik|olimpijske igre
 olimpiada|samostalnik|tekmovanje v stari Grčiji
 olimpiada|samostalnik|večje tekmovanje
+oliva|samostalnik|plod
+oliva|samostalnik|drevo
+oliven|pridevnik|o barvi
+oliven|pridevnik|v kulinariki
+oliven|pridevnik|v kozmetiki
+oliven|pridevnik|o drevesu
+opart|samostalnik|umetnostna smer
+opekarna|samostalnik|tovarna
 opera|samostalnik|umetniško delo
 opera|samostalnik|zgradba
 opera|samostalnik|glasbeni žanr
-oplesk|samostalnik|o barvnem nanosu; tanka prevleka, ki nastane pri pleskanju
-opreznost|samostalnik|previdnost
+oplesk|samostalnik|o barvnem nanosu tanka prevleka, ki nastane pri pleskanju
 optativ|samostalnik|glagolski naklon
+orehov|pridevnik|v kulinariki
+orehov|pridevnik|o drevesu ali delu drevesa
+orehov|pridevnik|izdelan iz lesa oreha
+orehov|pridevnik|o plodu
 orehovina|samostalnik|les
+orgle|samostalnik|glasbilo
+orgle|samostalnik|igranje orgel
 ornitolog|samostalnik|poznavalec ptic
-osa|samostalnik|žuželka
-osa|samostalnik|član športnega kluba; član Rokometnega kluba Gorenje Velenje
-osa|samostalnik|orožje
-oscilograf|samostalnik|merilna naprava
-oslez|samostalnik|rastlina
 osončje|samostalnik|planetarni sistem
-pacifist|samostalnik|zagovornik miru
 pacifističen|pridevnik|o nasprotovanju vojni
-paglavec|samostalnik|žival
-paglavec|samostalnik|nagajiv otrok
+padalec|samostalnik|o padalstvu
+padalec|samostalnik|vojak
+padalec|samostalnik|kdor se pojavi nepričakovano
 pajkice|samostalnik|oblačilo
-palmovec|samostalnik|drevo
-palmovec|samostalnik|ptica
+paleolitik|samostalnik|obdobje prazgodovine
 panešplja|samostalnik|grm
+panker|samostalnik|glasbenik
+panker|samostalnik|ljubitelj punk glasbe
+pankovski|pridevnik|o glasbi
+pankovski|pridevnik|o stilu
 pankreas|samostalnik|žleza
-parlamentarizem|samostalnik|oblika politične ureditve
-pastila|samostalnik|zdravilo; tableta okrogle, ploščate oblike
-pastorka|samostalnik|hči partnerja; hči moža ali žene iz prejšnjega zakona
-pastorka|samostalnik|kar je zapostavljeno
-pastorka|samostalnik|duhovnica
+paracetamol|samostalnik|protibolečinsko zdravilo
+paralelno|prislov|hkrati; sočasno
+paralelno|prislov|vzporedno; drug ob drugem
+paranormalen|pridevnik|nadnaraven
+parfum|samostalnik|kozmetično sredstvo
+pastila|samostalnik|zdravilo tableta okrogle, ploščate oblike
+pastinak|samostalnik|zelenjava
 patriarhat|samostalnik|družbeni sistem
 patriarhat|samostalnik|o ozemlju
-pavka|samostalnik|glasbilo
-pašček|samostalnik|pripomoček za pritrjevanje
-pašček|samostalnik|za okoli pasu
 pedikura|samostalnik|kozmetična nega nog
 pelerina|samostalnik|dežno oblačilo
 pelerina|samostalnik|vrhnje oblačilo
 percentil|samostalnik|statistična merska enota
+pergola|samostalnik|zunanja konstrukcija ogrodje, navadno obraslo z zelenjem, namenjeno zaščiti pred soncem
 peritonej|samostalnik|trebušna mrena
+perutninarstvo|samostalnik|dejavnost
+pesimistično|prislov|negativno
 pesticid|samostalnik|kemično sredstvo
-petdesetletnik|samostalnik|kdor je star 50
-petdesetletnik|samostalnik|kdor je star med 50 in 59 let
+petdesetkrat|prislov|s petdesetimi ponovitvami
+petelinček|samostalnik|manjši petelin
+petelinček|samostalnik|predmet predmet v obliki majhnega petelina
+petelinček|samostalnik|napihnjen človek domišljav človek, ki se dokazuje, navadno otrok
+petelinček|samostalnik|metulj
+petelinček|samostalnik|cvetlica
+petelinček|samostalnik|športna igra
+petelinček|samostalnik|o zavezovanju peče
+petelinček|samostalnik|frizura
 peteroboj|samostalnik|tekmovanje v petih panogah
 peča|samostalnik|tradicionalno žensko pokrivalo
 peča|samostalnik|del trebušne mrene
-pianino|samostalnik|glasbilo; manjši klavir z vertikalno obrnjenimi strunami
-piarovka|samostalnik|strokovnjakinja za odnose z javnostmi
-piflar|samostalnik|marljiv šolar
-piflar|samostalnik|kdor se rad uči in raziskuje
-piflar|samostalnik|kdor se uči na pamet; kdor se uči na pamet, brez razumevanja
+peščenjak|samostalnik|kamnina
+pihalo|samostalnik|glasbilo
+pihalo|samostalnik|glasbenik
 pijanček|samostalnik|kdor rad popiva
-pikolo|samostalnik|pihalo
 pilotiranje|samostalnik|upravljanje zračnih vozil in vesoljskih ladij
 pilotiranje|samostalnik|daljinsko upravljanje naprav, navadno modelov
 pilotiranje|samostalnik|upravljanje ladij s sidrišča v pristanišče in obratno
 pilotiranje|samostalnik|nameščanje pilotov
-pilotka|samostalnik|ženska, ki je usposobljena za upravljanje zračnega plovila
+piranha|samostalnik|riba
 pirh|samostalnik|velikonočno jajce
 pisalo|samostalnik|pripomoček za pisanje
 pisateljica|samostalnik|ženska, ki piše leposlovje
 pisniti|glagol|izdati informacijo
 pisniti|glagol|izpustiti zvok
-pižama|samostalnik|oblačilo
 pižmovka|samostalnik|glodavec
-planota|samostalnik|ravnina v hribovju
-plastenjak|samostalnik|rastlinjak; s plastično folijo pokrit prostor za gojenje rastlin
+plamenišče|samostalnik|o temperaturi
+plastenjak|samostalnik|rastlinjak s plastično folijo pokrit prostor za gojenje rastlin
+plastnica|samostalnik|črta na zemljevidu
 plavalec|samostalnik|kdor plava
 plavalec|samostalnik|žival, ki plava
 plavalen|pridevnik|o plavanju
-plavalka|samostalnik|športnica
-plavž|samostalnik|talilna peč
-plenilski|pridevnik|o živalih
-plenilski|pridevnik|o roparjih ali ropanju
-plenilski|pridevnik|izkoriščevalski
+plašč|samostalnik|oblačilo
+plašč|samostalnik|prekrivna plast
+plašč|samostalnik|pri kolesu
+plašč|samostalnik|ploskev
+plašč|samostalnik|o krinki
+plašč|samostalnik|o zavetju
+plašč|samostalnik|plast v notranjosti planeta
+plašč|samostalnik|pri mehkužcih
+plesalec|samostalnik|kdor pleše
+plesalka|samostalnik|ženska, ki pleše
 plesen|pridevnik|o plesu
 plesišče|samostalnik|plesni prostor
-pleskati|glagol|o stavbah in delih stavb
+plet|samostalnik|ogrinjalo ogrinjalo, navadno pleteno
 plezalen|pridevnik|o plezanju
 plešast|pridevnik|brez las
 plešast|pridevnik|o površini
-plešec|samostalnik|moški brez las
-plešec|samostalnik|rastlina
-plešec|samostalnik|vrsta jastreba
 plinar|samostalnik|igralec Geoplina Slovana
-plinar|samostalnik|podjetje; podjetje za trgovino oziroma oskrbo z zemeljskim plinom
+plinar|samostalnik|podjetje podjetje za trgovino oziroma oskrbo z zemeljskim plinom
 plinar|samostalnik|delavec v plinarni
 pljučen|pridevnik|o organu
 pljučen|pridevnik|o jedi
 pljučen|pridevnik|za zdravje pljuč
-plutovina|samostalnik|skorja hrasta plutovca
-plutovina|samostalnik|kot surovina ali izdelek
 pobahati se|glagol|pohvaliti se, važiti se
 podbradek|samostalnik|odebeljena koža pod brado
 podbradek|samostalnik|del glave
-podbradek|samostalnik|pri živalih; mesnati del vratu pri živalih
+podbradek|samostalnik|pri živalih mesnati del vratu pri živalih
 podbradek|samostalnik|sestavni del godal
-podhujka|samostalnik|ptica
-podpisnik|samostalnik|kdor kaj podpiše
+podizvajalec|samostalnik|o vrsti poslovnega sodelovanja
+podlaket|samostalnik|del roke
+podnapis|samostalnik|pri filmu
+podnapis|samostalnik|komentar; naslov
 podpomenka|samostalnik|o pomenu besede
 podprsnica|samostalnik|jermen
-pogačica|samostalnik|kost
-pogačica|samostalnik|jed
-pogačica|samostalnik|rastlina
+podržavljenje|samostalnik|državni prevzem zasebne lastnine
 pogozdovanje|samostalnik|sajenje dreves
 pohodnica|samostalnik|ženska, ki hodi za rekreacijo
-pokopališče|samostalnik|prostor za pokop
-pokopališče|samostalnik|odlagališče vozil
-pokopališče|samostalnik|o odvečnosti ali zastarelosti
+pohodnik|samostalnik|kdor hodi za rekreacijo
 pokostnica|samostalnik|vezno tkivo na kosti
 poliglot|samostalnik|kdor zna več jezikov
+politeizem|samostalnik|verovanje v več bogov
+politologija|samostalnik|veda
 polkovina|samostalnik|vrsta kemijskega elementa
-polnoletnost|samostalnik|o osebi
-polnoletnost|samostalnik|o letih obstoja
-polst|samostalnik|blago
+polkovnik|samostalnik|vojaški čin
 pomarančast|pridevnik|o koži
 pomarančast|pridevnik|o barvi
 pomarančen|pridevnik|o drevesu ali delu drevesa
@@ -1291,522 +1312,509 @@ pomarančen|pridevnik|v kulinariki
 pomarančen|pridevnik|o plodu
 pomarančen|pridevnik|o pojavu na koži
 pomarančen|pridevnik|o snovi
+pomarančevec|samostalnik|drevo
 pomembno|prislov|znatno
 pomembno|prislov|vzvišeno
-pomišljaj|samostalnik|ločilo
-porečje|samostalnik|rečni sistem
+ponoči|prislov|čez noč
+poprsnica|samostalnik|prsna mrena
 porod|samostalnik|proces rojevanja
 porod|samostalnik|nastanek
 poroka|samostalnik|o zakonski zvezi
 poroka|samostalnik|združitev
-poster|samostalnik|plakat
-posvojenka|samostalnik|posvojena hči
-potapljanje|samostalnik|šport
-potapljanje|samostalnik|spuščanje pod gladino
-potapljač|samostalnik|kdor se potaplja
 potapljačica|samostalnik|ženska, ki se potaplja
-potencialen|pridevnik|mogoč
-poveriti|glagol|dodeliti nalogo
-pozavna|samostalnik|trobilo
-pozavna|samostalnik|igranje pozavne
-pozavna|samostalnik|glasbenik
+potapljaški|pridevnik|o športni aktivnosti
+potopis|samostalnik|opis potovanja
+potrebušnica|samostalnik|trebušna mrena
+pozavnistka|samostalnik|glasbenica
 počitnikar|samostalnik|dopustnik
 počitnikar|samostalnik|kdor ima šolske počitnice
 pošiljatelj|samostalnik|kdor pošilja
+pošteno|prislov|v veliki meri; precej
+pošteno|prislov|moralno ustrezno
 prajezik|samostalnik|prvotni jezik
 praktikant|samostalnik|pripravnik
-praktikantka|samostalnik|pripravnica
-pravnik|samostalnik|strokovnjak
+pravnomočnost|samostalnik|pravna veljavnost
 preddelavka|samostalnik|delovodja
-premiera|samostalnik|prva predstava umetniškega dela; o umetniškem delu
-premiera|samostalnik|o nastopu
-premiera|samostalnik|o izdelku
+predgovor|samostalnik|uvodni sestavek
+predkambrij|samostalnik|geološka doba
+predpogoj|samostalnik|temeljni pogoj
+prehlad|samostalnik|bolezen
+prehlad|samostalnik|pri rastlinah
+premier|samostalnik|predsednik vlade
 premogovnik|samostalnik|rudnik premoga
-prenatrpanost|samostalnik|o prekomerni količini
-prepirljivost|samostalnik|osebnostna lastnost
-prepirček|samostalnik|manj resen konflikt
 preprodajalec|samostalnik|kdor preprodaja
-presadek|samostalnik|pri presaditvi
-prestolnica|samostalnik|glavno mesto
-prestolnica|samostalnik|središče dejavnosti
-prestolonaslednik|samostalnik|vladarjev naslednik
-prevrtač|samostalnik|golob
+preračunljivec|samostalnik|preračunljiv človek
 prezbiterij|samostalnik|del cerkve
-primernik|samostalnik|oblika pridevnika
 primikalka|samostalnik|mišica
-prior|samostalnik|predstojnik samostana
-priročnik|samostalnik|publikacija
 priseljenec|samostalnik|kdor pride živet kam
 pristanišče|samostalnik|ob vodni površini
 pristanišče|samostalnik|letališče
-prognoza|samostalnik|napoved
-prognoza|samostalnik|o poteku bolezni
 programer|samostalnik|v računalništvu
 programer|samostalnik|organizator
 prokurist|samostalnik|pooblaščenec
-propen|samostalnik|ogljikovodik
-prostozidar|samostalnik|član gibanja
+prostata|samostalnik|žleza
 protestant|samostalnik|pripadnik protestantizma
 protipomenka|samostalnik|o pomenu besede
-protirevolucija|samostalnik|nasprotovanje revoluciji
-prozoren|pridevnik|o predmetih in snoveh
-prozoren|pridevnik|o dejanjih
-psalmodija|samostalnik|petje psalmov
-psevdonim|samostalnik|izmišljeno ime
-psevdonim|samostalnik|tipičen primer, sinonim
-publicistka|samostalnik|ženska, ki piše članke
+psihoterapija|samostalnik|oblika zdravljenja
 puli|samostalnik|oblačilo
 puli|samostalnik|pes
-pulover|samostalnik|oblačilo
 puma|samostalnik|velika mačka
-pšenica|samostalnik|žito
-pšenica|samostalnik|zrnje
-radij|samostalnik|kemijski element
-radij|samostalnik|polmer
-radij|samostalnik|območje
-radij|samostalnik|o delovanju naprav
-radij|samostalnik|o navideznem loku vožnje
+punker|samostalnik|glasbenik
+punker|samostalnik|ljubitelj punk glasbe
+racionirati|glagol|deliti v omejenih količinah
+racman|samostalnik|račji samec
+radoživost|samostalnik|razigranost; živahnost
 ragbi|samostalnik|šport
+ragu|samostalnik|jed
 rahločuten|pridevnik|nežen; občutljiv
 rahločuten|pridevnik|razumevajoč
 rahločuten|pridevnik|o zgodbi
 rahločuten|pridevnik|o zvoku ali podobi
+rajni|samostalnik|umrla oseba
+rajnki|pridevnik|umrli
+rajnki|pridevnik|nekdanji
 raketomet|samostalnik|orožje
 rakun|samostalnik|žival
-ranica|samostalnik|majhna rana
+randi|samostalnik|zmenek
+randi|samostalnik|srečanje
+ravnik|samostalnik|ravno površje
+ravnik|samostalnik|ekvator
 razbijač|samostalnik|kdor razbija ali uničuje; nasilnež
 razbijač|samostalnik|kdor slovi po moči
 razbijač|samostalnik|betonska pregrada
 razbojniški|pridevnik|o razbojnikih
-razbolel|pridevnik|o fizični bolečini
-razbolel|pridevnik|o duševni bolečini
-razcapanec|samostalnik|razcapan človek
+razburljivo|prislov|na vznemirljiv način
 razjarjenost|samostalnik|čustveno stanje
-razkužilo|samostalnik|dezinfekcijsko sredstvo
-razvezaj|samostalnik|glasbeni znak
 razvodje|samostalnik|ozemlje med porečji
-računalništvo|samostalnik|veda; veda o delovanju računalnikov in o njihovi uporabi
+računalništvo|samostalnik|veda veda o delovanju računalnikov in o njihovi uporabi
 računalništvo|samostalnik|izobraževalni program
 računalništvo|samostalnik|uporaba računalnika
 računovodja|samostalnik|kdor vodi račune
-rdečkar|samostalnik|komunist
-redkvica|samostalnik|rastlina
-reeksport|samostalnik|ponovni izvoz
-replika|samostalnik|odziv
-replika|samostalnik|kopija predmeta
-replika|samostalnik|del dialoga
-replika|samostalnik|odgovor
-replika|samostalnik|posnemanje aktivnosti
-reprezentanca|samostalnik|državna ekipa
-reprezentanca|samostalnik|pogostitev v poslovne namene
-reprivatizacija|samostalnik|ponovna privatizacija
-resa|samostalnik|grm
-resa|samostalnik|okrasni trakec
-resa|samostalnik|pri žitu in travah
-resa|samostalnik|lasje ali dlake
-resolucija|samostalnik|uradni dokument ali sklep
-resolucija|samostalnik|ločljivost
-restavrator|samostalnik|obnavljavec
+recept|samostalnik|za izdajo zdravila
+recept|samostalnik|pri kuhanju
+recept|samostalnik|navodilo za pripravo
+recept|samostalnik|navodilo; pravilo
 rešilec|samostalnik|vozilo
 ribariti|glagol|loviti ribe
 ribariti|glagol|iskati, brskati
-ribič|samostalnik|kdor lovi ribe
+ribička|samostalnik|ženska, ki lovi ribe
 ribištvo|samostalnik|športna in gospodarska dejavnost
-ribogojnica|samostalnik|prostor za gojenje rib
 ribolov|samostalnik|lovljenje rib
+ricinus|samostalnik|olje
+ricinus|samostalnik|grm
 rimljanski|pridevnik|o Antičnem Rimu in Rimljanih
-ringlo|samostalnik|plod
-ringlo|samostalnik|drevo
-rock'n'roll|samostalnik|vrsta glasbe
-rock'n'roll|samostalnik|ples
 rodilnik|samostalnik|sklon
-rogist|samostalnik|glasbenik
-rokoborec|samostalnik|športnik
+rogistka|samostalnik|glasbenica
+rokav|samostalnik|del oblačila
+rokav|samostalnik|stranska struga
 rokodelec|samostalnik|obrtnik
 rokodelec|samostalnik|o naravi dela
-rolar|samostalnik|kdor se vozi z rolerji
-rolar|samostalnik|športna obutev; športna obutev s koleščki
 rolkanje|samostalnik|športna aktivnost
-rolkar|samostalnik|kdor se vozi z rolko
 rolkarka|samostalnik|ženska, ki se vozi z rolko
-rumen|pridevnik|o barvi
-rumen|pridevnik|o tisku
-rumen|pridevnik|kot opozorilo
-rumen|pridevnik|posušen ali star
+rolkati|glagol|voziti se z rolko
+rugby|samostalnik|šport
+rumena|samostalnik|v prometu
+rumena|samostalnik|barva
+rumena|samostalnik|o tisku
 sabljač|samostalnik|kdor sablja
 sabljačica|samostalnik|ženska, ki sablja
 sadjarstvo|samostalnik|dejavnost
-saguaro|samostalnik|drevo
-sajast|pridevnik|ki vsebuje saje
-sajast|pridevnik|umazan zaradi saj
-sajast|pridevnik|o barvi
-saje|samostalnik|produkt zgorevanja; črn prah, produkt nepopolnega zgorevanja
-saksofonistka|samostalnik|glasbenica
-samohranilec|samostalnik|edini otrokov skrbnik
+saharin|samostalnik|umetno sladilo
 samojed|samostalnik|pes
-samojski|pridevnik|o Samoi in Samojcih
-samorog|samostalnik|bajeslovna žival
-samorog|samostalnik|kit
+samostalnik|samostalnik|besedna vrsta
+samozavest|samostalnik|prepričanost vase
 sandalovina|samostalnik|les
 sandalovina|samostalnik|esenca
-sankanje|samostalnik|športna aktivnost
 sapnica|samostalnik|cevka do pljuč
-sapnik|samostalnik|del telesa
 sarkazem|samostalnik|raba zbadljivih pripomb
-scenograf|samostalnik|oblikovalec scene
+satenast|pridevnik|iz satena
+satenast|pridevnik|gladek in sijoč
+saudski|pridevnik|o Savdski Arabiji in Saudijcih
+savana|samostalnik|tropska pokrajina
+savdski|pridevnik|o Savdski Arabiji in Savdijcih
 scenografinja|samostalnik|oblikovalka scene
+scenografka|samostalnik|oblikovalka scene
 seciranje|samostalnik|o truplu
 seciranje|samostalnik|podrobna analiza
 sedanjik|samostalnik|glagolski čas
 sedanjik|samostalnik|sedanjost
-sence|samostalnik|del glave
+seksapil|samostalnik|spolna privlačnost
 senilen|pridevnik|o starostnih spremembah
 septima|samostalnik|o razdalji med tonoma
-sestankovati|glagol|imeti sestanek
-sestra|samostalnik|sorodnica
-sestra|samostalnik|poklic
-sestra|samostalnik|redovnica
-sestra|samostalnik|sorodna stvar
-sestra|samostalnik|o povezanosti ali skupni izkušnji
+servilnost|samostalnik|pretirana uslužnost
+sečevod|samostalnik|cev do mehurja
+sečnica|samostalnik|del sečil
+sečnica|samostalnik|premica
 sfinga|samostalnik|kip
 sfinga|samostalnik|egipčansko bajeslovno bitje
 sfinga|samostalnik|grško bajeslovno bitje
 sfinga|samostalnik|vrsta mačke
+shizofrenija|samostalnik|duševna motnja
+shizofrenija|samostalnik|razdvojenost
+shizofrenik|samostalnik|duševni bolnik
+shizofrenik|samostalnik|kdor ravna razdvojeno
 sifilis|samostalnik|bolezen
-silomer|samostalnik|merilna naprava
-simetrala|samostalnik|premica
+sikh|samostalnik|pripadnik sikhovske religije
+simpatičnost|samostalnik|prijetnost; prikupnost
+sin|samostalnik|sorodnik
+sin|samostalnik|o Jezusu
+sin|samostalnik|o geopolitični pripadnosti predstavnik prostorske, državne ipd. entitete
+sin|samostalnik|ki prevzame lastnost
+sin|samostalnik|dobrohoten, rahlo pokroviteljski nagovor starejše osebe do mlajše kot nagovor
+sirar|samostalnik|izdelovalec sira
 sirijski|pridevnik|o Siriji in Sirijcih
 sirski|pridevnik|o Siriji in Sircih
-sitotisk|samostalnik|grafična tehnika; grafična tehnika odtiskovanja
+sitotisk|samostalnik|grafična tehnika grafična tehnika odtiskovanja
 sitotisk|samostalnik|odtis
 skepticizem|samostalnik|dvom
 skepticizem|samostalnik|skepsa
+skesanost|samostalnik|čustveno stanje
 skladiščnik|samostalnik|skladiščni delavec
 skladnja|samostalnik|o organizaciji besed v stavke
 sklanjati|glagol|o glavi
 sklanjati|glagol|o rastlini
 sklanjati|glagol|spreminjati končnice besede
-sklicatelj|samostalnik|pobudnik; organizator
 skopuh|samostalnik|o pretirani varčnosti
 skopuški|pridevnik|pretirano varčen
+skrčka|samostalnik|telovadna prvina
 slabič|samostalnik|psihično šibka oseba
 slabič|samostalnik|o fizični zmogljivosti
-slačifant|samostalnik|poklicni plesalec; plesalec, ki izvede plesno točko postopnega slačenja
+sladkosned|pridevnik|kdor ima rad sladko
+slačifant|samostalnik|poklicni plesalec plesalec, ki izvede plesno točko postopnega slačenja
+slemenitev|samostalnik|usmerjenost gorskih grebenov
 sleng|samostalnik|neformalna govorica
+slina|samostalnik|telesna tekočina
+sliva|samostalnik|plod
+sliva|samostalnik|drevo
+sliva|samostalnik|o barvi
+slovaropisec|samostalnik|poklic
 slovaropisje|samostalnik|znanstvena dejavnost
+slovnično|prislov|glede na slovnico
 slum|samostalnik|revna mestna četrt
-smokva|samostalnik|plod
-smokva|samostalnik|drevo ali grm
-smuk|samostalnik|smučarska disciplina; alpska smučarska disciplina
+smrekovina|samostalnik|les
 smukač|samostalnik|športnik
+smukačica|samostalnik|športnica
 smučarka|samostalnik|ženska, ki smuča
 soboljevka|samostalnik|riba
+sociolingvistika|samostalnik|veja jezikoslovja
 sodar|samostalnik|izdelovalec sodov
+sokot|samostalnik|vrsta kota
 somernica|samostalnik|premica
-sonaravnost|samostalnik|trajnostni razvoj
-sopomenka|samostalnik|o pomenu besede
 speleologija|samostalnik|veda
-splavar|samostalnik|v nekdanji transportni dejavnosti
-splavar|samostalnik|kdor vozi splav
+spinet|samostalnik|glasbilo
 spleten|pridevnik|o pletenih oblačilih
 spleten|pridevnik|kot kita
 spleten|pridevnik|kot mreža
 spleten|pridevnik|o prepletu različnih elementov
+spletka|samostalnik|o neodkritem delovanju
+spletka|samostalnik|spletna stran
 spojek|samostalnik|oplojeno jajčece
-sponzorirati|glagol|finančno podpirati
-središčnica|samostalnik|vrednost
-središčnica|samostalnik|črta
-središčnica|samostalnik|faza igre
-središčnica|samostalnik|temeljni del
-srnjaček|samostalnik|srnji mladič
-starodobnik|samostalnik|vozilo
-stegnenica|samostalnik|kost
-steklopihalec|samostalnik|izdelovalec steklenih izdelkov
-stevardesa|samostalnik|uslužbenka na letalu
-stopalo|samostalnik|del noge
-stopalo|samostalnik|del nogavice
-stopalo|samostalnik|pedal
-stranka|samostalnik|politična organizacija
-stranka|samostalnik|uporabnik storitev
-stranka|samostalnik|stran v upravno-pravnih postopkih
-strigoš|samostalnik|hrošč
-striptizer|samostalnik|performer; plesalec, ki izvede plesno točko postopnega slačenja
-studiozen|pridevnik|zelo natančen in strokoven
+spužva|samostalnik|morski organizem
+spužva|samostalnik|pripomoček za umivanje
+spužva|samostalnik|o človeku
+sramnica|samostalnik|kost
+sramnica|samostalnik|spolovilo
+stereotip|samostalnik|o vnaprejšnji sodbi
+stereotip|samostalnik|o posplošeni podobi
+stereotip|samostalnik|tiskovna forma
+stotica|samostalnik|število sto
+stotica|samostalnik|desetiška enota
 sufražetka|samostalnik|borka za ženske pravice
-sukulenta|samostalnik|rastlina
 sumo|samostalnik|rokoborba
 supermarket|samostalnik|večja trgovina
-surfanje|samostalnik|vodni šport
-surfanje|samostalnik|brskanje po spletu
-surfar|samostalnik|športnik; kdor deska na vodi
-surfar|samostalnik|kdor brska po spletu
-surferka|samostalnik|športnica; ženska, ki deska na vodi
-surferka|samostalnik|ženska, ki brska po spletu
-svetovalec|samostalnik|strokovnjak
-svetovalec|samostalnik|kdor daje nasvete
+surfer|samostalnik|športnik kdor deska na vodi
+surfer|samostalnik|kdor brska po spletu
+svinčnica|samostalnik|merilni pripomoček
 taekwondo|samostalnik|borilna veščina
 taksa|samostalnik|denarni prispevek
 talamus|samostalnik|del možganov
-tanljiv|pridevnik|o tanjšanju; ki se ga lahko razvalja v zelo tanke folije
-tantal|samostalnik|kemijski element
-tekačica|samostalnik|športnica
 tekstualnost|samostalnik|lastnost besedila
-telegraf|samostalnik|naprava; naprava za prenos sporočil preko električnih impulzov
-telegraf|samostalnik|urad; urad za prejemanje in pošiljanje telegramov
 telegram|samostalnik|sporočilo
+telovnik|samostalnik|oblačilo
 temenica|samostalnik|kost
 temenice|samostalnik|kožno vnetje
-terminologija|samostalnik|strokovni izrazi
-terminologija|samostalnik|veda
+terenec|samostalnik|avto
+terenec|samostalnik|med NOB
+terenec|samostalnik|kdor dela na terenu
+termofor|samostalnik|grelni pripomoček
 terorist|samostalnik|politični skrajnež
 terorist|samostalnik|ustrahovalec
 teta|samostalnik|sorodnica
 teta|samostalnik|ženska; gospa
+tetanus|samostalnik|bolezen
 tikovina|samostalnik|les
 tilnik|samostalnik|del vratu
 timijan|samostalnik|začimbna rastlina
-timpan|samostalnik|glasbilo
 tipično|prislov|na značilen način
 tipično|prislov|običajno
-tiptop|pridevnik|brez napake
+tisočica|samostalnik|število tisoč
+tisočica|samostalnik|desetiška enota
 titan|samostalnik|kemijski element
 titan|samostalnik|o velikosti in moči
 titan|samostalnik|bajeslovno bitje
+titula|samostalnik|naziv
 toast|samostalnik|vrsta kruha
 toga|samostalnik|uradno oblačilo
 toga|samostalnik|antično oblačilo
-tonika|samostalnik|stopnja v lestvici
+tokata|samostalnik|vrsta glasbenega dela
 topolovina|samostalnik|les
-trajekt|samostalnik|plovilo; plovilo za prevoz vozil in ljudi
+tovarnar|samostalnik|lastnik tovarne
+traheitis|samostalnik|bolezen
 traper|samostalnik|lovec, ki lovi s pastmi
+trasat|samostalnik|izdajatelj menice
 trening|samostalnik|o športu
 trening|samostalnik|o spretnosti ali veščini
-trepljaj|samostalnik|o človeškem dotiku
 triatlonec|samostalnik|športnik
-triatlonka|samostalnik|športnica
-tribus|samostalnik|upravna enota v starem Rimu
 tristoletnica|samostalnik|tristoletna obletnica
 tritonus|samostalnik|o razdalji med tonoma
+trobenta|samostalnik|glasbilo
+trobenta|samostalnik|glasbenik
+trobenta|samostalnik|igranje trobente
+trobenta|samostalnik|goba
+trobenta|samostalnik|izpušni sistem
+trobenta|samostalnik|o zvoku ali obliki trobente
+trobenta|samostalnik|o propagandi
+trobentar|samostalnik|glasbenik
 trobentica|samostalnik|rastlina
-trobilka|samostalnik|mišica
-trobilka|samostalnik|glasbenica
-trohej|samostalnik|vrsta ritma
-trombonist|samostalnik|glasbenik
-trombonistka|samostalnik|glasbenica
-trpnik|samostalnik|glagolski način
 trske|samostalnik|družina morskih rib
-tulipanovec|samostalnik|drevo
-tunika|samostalnik|oblačilo
-tunika|samostalnik|antično oblačilo
-tunika|samostalnik|liturgično oblačilo
-tunika|samostalnik|membrana
-turški|pridevnik|o Turčiji in Turkih
-turški|pridevnik|o Osmanskem cesarstvu
-tvid|samostalnik|tkanina
-tvornik|samostalnik|glagolski način
+trtica|samostalnik|kost
+tsunami|samostalnik|popotresni val
+tsunami|samostalnik|o negativnih dogodkih
+tuhtati|glagol|premišljevati
+turban|samostalnik|tradicionalno moško pokrivalo
+turban|samostalnik|žensko pokrivalo
+turban|samostalnik|o obliki
+tvist|samostalnik|ples
+tvist|samostalnik|vrsta glasbe
+tvist|samostalnik|preobrat
+tvist|samostalnik|razpršeni zgledi - možni pomeni
 uganka|samostalnik|miselna igra
 uganka|samostalnik|neznana stvar ali problem
+uglaševalec|samostalnik|poklic
 uglaševalka|samostalnik|poklic
-uhan|samostalnik|nakit
-ultramaratonec|samostalnik|tekač
-ultramaratonka|samostalnik|tekačica
+ugor|samostalnik|morska riba
 uniforma|samostalnik|uradno oblačilo
 uniforma|samostalnik|oseba v uniformi
-upogibalka|samostalnik|mišica
-urednik|samostalnik|urejevalec besedil; urejevalec besedil za objavo
-urok|samostalnik|v magiji
-urok|samostalnik|o neuspehu
-uročiti|glagol|začarati z magijo
-uročiti|glagol|očarati; prevzeti
-uročiti|glagol|prinesti nesrečo
-uspavalo|samostalnik|uspavalno sredstvo
-vadi|samostalnik|suha struga
+učenjak|samostalnik|učen človek; strokovnjak
+vahnja|samostalnik|morska riba
 valobran|samostalnik|nasip proti valovom
-vandalski|pridevnik|o namernem uničevanju
-vandalski|pridevnik|o Vandalih
-varianca|samostalnik|mera statistične razpršenosti
-varčevalec|samostalnik|oseba, ki varčuje
-varčevanje|samostalnik|shranjevanje denarja
-varčevanje|samostalnik|omejitev porabe, ekonomično ravnanje
 vcepiti|glagol|vsaditi v zavest; privzgojiti
 vcepiti|glagol|vnesti v organizem
-vcepiti|glagol|narediti, da ima kaj določeno lastnost; vtisniti
+vcepiti|glagol|narediti, da ima kaj določeno lastnost vtisniti
 vcepiti|glagol|vstaviti cepič v rastlino
 veletrgovec|samostalnik|vrsta trgovskega podjetja
-veslati|glagol|premikati plovilo z vesli
-veslati|glagol|plavati; o živalih
-veslati|glagol|leteti; o živalih
-veslač|samostalnik|kdor vesla
+veseloigra|samostalnik|gledališka igra
+veslanje|samostalnik|športna aktivnost
 vestno|prislov|pridno; dosledno
-veterinar|samostalnik|zdravnik za živali
 veterinarski|pridevnik|o veterini kot vedi in dejavnosti
-vetrovnica|samostalnik|pri kompasu
-viadukt|samostalnik|most
+večer|samostalnik|del dneva
+večer|samostalnik|družaben dogodek
+večerja|samostalnik|obrok hrane
+večerja|samostalnik|dogodek
+večerjati|glagol|jesti večerjo
 vikinški|pridevnik|o Vikingih
 vikinški|pridevnik|o lastnosti ali obnašanju
-violinist|samostalnik|glasbenik
-violinistka|samostalnik|glasbenica
-violist|samostalnik|glasbenik
-violončelistka|samostalnik|glasbenica
-vizum|samostalnik|dokument
+vilorog|samostalnik|žival
+violončelist|samostalnik|glasbenik
+virus|samostalnik|povzročitelj bolezni
+virus|samostalnik|v računalništvu
+virus|samostalnik|hitro rastoč trend
+vitica|samostalnik|del rastline
+vitica|samostalnik|o vzorcu
+viza|samostalnik|dokument
 višnja|samostalnik|drevo
 višnja|samostalnik|plod
+vlomiti|glagol|na silo vstopiti
 vnuk|samostalnik|potomec
-vodik|samostalnik|kemijski element
 voltmeter|samostalnik|merilna naprava
 votlak|samostalnik|vrsta opeke
-vpisnina|samostalnik|plačilo za vpis
-vrbovina|samostalnik|les
-vrtalnik|samostalnik|orodje
-vstopnina|samostalnik|plačilo za vstop
+vrelišče|samostalnik|temperatura
+vrelišče|samostalnik|vrhunec zaostritve
+vrelišče|samostalnik|žarišče
+vsakodneven|pridevnik|ki se dogaja vsak dan
+vsakodneven|pridevnik|običajen
 vulkan|samostalnik|gora, iz katere prodira lava
 vulkan|samostalnik|nekaj silovitega
+vulkanski|pridevnik|o ognjeniški gori
+vulkanski|pridevnik|ki je rezultat delovanja ognjeniške gore o geološkem izvoru
+vulkanski|pridevnik|silovit
+vzorčast|pridevnik|z vzorcem
+zaarati|glagol|plačati predujem
+zabušavanje|samostalnik|izmikanje delu, lenarjenje
 zabušavati|glagol|izogibati se delu, lenariti
-zadirčnost|samostalnik|o načinu izražanja
-zadrga|samostalnik|del oblačila
+zadnjik|samostalnik|del telesa
+zahvala|samostalnik|izraz hvaležnosti
+zahvala|samostalnik|listina
+zajedalec|samostalnik|rastlinski ali živalski organizem
+zajedalec|samostalnik|izkoriščevalska oseba
 zaklepišče|samostalnik|del strelnega orožja
-zakonolom|samostalnik|izvenzakonsko razmerje, prešuštvo
-zakonolomec|samostalnik|prešuštnik
+zakonodajalka|samostalnik|organizacija
+zakonodajalka|samostalnik|ženska
+zakonolomstvo|samostalnik|izvenzakonsko razmerje, prešuštvo
+zakupodajalec|samostalnik|o zakupnem razmerju
+zalezovalka|samostalnik|o ženski ženska, ki koga zasleduje in nadleguje s pretirano pozornostjo
 zalistje|samostalnik|del rastline
+zaljubljenka|samostalnik|zaljubljena ženska
+zaljubljenka|samostalnik|navdušenka
 zalust|samostalnik|zobec na orodju
-zamočiti|glagol|narediti napako
-zamočiti|glagol|prepojiti z vodo
+zaman|prislov|brez uspeha
+zaman|prislov|brez razloga
+zamorka|samostalnik|ženska črne rase
+zamorka|samostalnik|o zmerjavki
 zanohtnica|samostalnik|gnojno vnetje
 zapestje|samostalnik|del roke
-zapisovalka|samostalnik|ženska, ki kaj zapisuje
-zarja|samostalnik|svetlobni pojav
-zarja|samostalnik|o začetku nečesa
+zaporničar|samostalnik|upravljavec zapornice
 zaskočka|samostalnik|tehnični element
-zaspati|glagol|preiti v stanje počitka
-zaspati|glagol|ne zbuditi se dovolj zgodaj
-zaspati|glagol|umreti
-zaspati|glagol|popustiti v prizadevanjih
-zaspati|glagol|o delu telesa
 zatrjevati|glagol|trditi; vztrajati
 zavarovalnina|samostalnik|plačilo
-zavarovatelj|samostalnik|zavarovalnica; zavarovalnica kot stranka zavarovalne pogodbe
-zavestno|prislov|namerno
-zavestno|prislov|z zavedanjem; po lastni volji
-začarati|glagol|o nadnaravni moči
-začarati|glagol|očarati; prevzeti
-začarati|glagol|o domišljijskem svetu
-začarati|glagol|o veliki spremembi; z vplivom, delovanjem povzročiti zelo veliko spremembo
-začarati|glagol|o čarobni lepoti
-začarati|glagol|izvajati trike
-začarati|glagol|onemogočiti zadetek
-zašpecati|glagol|zatožiti; izdati
+začaran|pridevnik|pod vplivom čarobnega uroka
+začaran|pridevnik|očaran; prevzet
+začaran|pridevnik|čarobno lep
+začaran|pridevnik|neugoden
+začaran|pridevnik|o brezizhodnosti
+zbiratelj|samostalnik|kdor kaj zbira
 zborovodkinja|samostalnik|vodja pevskega zbora
-zelenjavar|samostalnik|pridelovalec zelenjave
-zelenjavar|samostalnik|prodajalec zelenjave
-zelenjavar|samostalnik|kdor ima rad zelenjavo
+zdravilo|samostalnik|snov ali farmacevtski izdelek
+zdravilo|samostalnik|kar izboljša stanje
+zdravnik|samostalnik|poklic
+zebra|samostalnik|žival
+zebra|samostalnik|prehod za pešce
+zelena|samostalnik|vrsta zelenjave
+zelenjava|samostalnik|o rastlinah
 zemljanka|samostalnik|ženska
 zemljanka|samostalnik|hiša
+zemljemerec|samostalnik|strokovnjak
 zemljemerski|pridevnik|o zemljemerstvu
+zemljepisec|samostalnik|strokovnjak
+zenit|samostalnik|o točki na nebu
+zenit|samostalnik|vrhunec; višek
+zgagar|samostalnik|kdor povzroča neprijetnosti
 zgodovinar|samostalnik|strokovnjak
-zgodovinopisec|samostalnik|strokovnjak
-zib|samostalnik|premik sem in tja
-zigota|samostalnik|oplojeno jajčece
+zjutraj|prislov|o delu dneva
 zlatnik|samostalnik|kovanec
 zlato|samostalnik|kemijski element
 zlato|samostalnik|prvo mesto
 zlato|samostalnik|dragocenost
 zlobnica|samostalnik|zlobna ženska
 zlobnica|samostalnik|o vlogi
-zlovoljnost|samostalnik|slaba volja
+zlohotnost|samostalnik|zlonamernost; zloba
+zloščiti|glagol|dati lesk
+zloščiti|glagol|izboljšati
 zmajar|samostalnik|športnik
 zmnožiti|glagol|pri računanju
-zmrzel|pridevnik|zmrznjen
+znatno|prislov|precej
 znojenje|samostalnik|telesni proces
+znosen|pridevnik|še sprejemljiv
 zobotehnica|samostalnik|poklic
-zobovina|samostalnik|osrednje zobno tkivo
-zrelost|samostalnik|o stopnji razvoja ali dokončni razvitosti; gre za fizični razvoj, nanaša se na stopnjo razvoja ali stanje zaključenega razvoja
-zrelost|samostalnik|o čustvih ali delovanju; gre za mentalni vidik razvoja - primernost čustvovanja, obnašanja, delovanja
+zrelost|samostalnik|o stopnji razvoja ali dokončni razvitosti gre za fizični razvoj, nanaša se na stopnjo razvoja ali stanje zaključenega razvoja
+zrelost|samostalnik|o čustvih ali delovanju gre za mentalni vidik razvoja - primernost čustvovanja, obnašanja, delovanja
 zrelost|samostalnik|o naravnih plodovih
-zrelost|samostalnik|o okusu in aromi; gre za razvoj okusa, arome, npr. pri siru, vinu
+zrelost|samostalnik|o okusu in aromi gre za razvoj okusa, arome, npr. pri siru, vinu
 zunajsezonski|pridevnik|ki ni v času sezone
 zvalnik|samostalnik|sklon
-zverinstvo|samostalnik|okrutno dejanje
-zvezdnat|pridevnik|poln zvezd
-zvezdnat|pridevnik|v obliki zvezde
-zvezdnat|pridevnik|čaroben; nepozaben
-zvezdoslovec|samostalnik|strokovnjak
-zvijačnež|samostalnik|o prelisičenju
-zvodnica|samostalnik|vodja prostitutk
 zvonkost|samostalnik|lepa zvenečnost
-čaj|samostalnik|pijača; posušena zelišča
-čaj|samostalnik|rastlina
-čaj|samostalnik|dogodek
-čarter|samostalnik|najet letalski ali ladijski prevoz
+čarati|glagol|o nadnaravni moči
+čarati|glagol|znajti se z nezadostnimi sredstvi
+čarati|glagol|odlično obvladati
+čarati|glagol|priklicati vzdušje ali odziv
+čarati|glagol|izvajati trike
+čarati|glagol|prosto ustvarjati
+čarati|glagol|neučinkovito delati
+čaroben|pridevnik|ki ima nadnaravno moč
+čaroben|pridevnik|ki ima velik učinek
+čaroben|pridevnik|zelo lep
 časnikarski|pridevnik|o časnikarstvu ali časnikarjih
-čebelarstvo|samostalnik|dejavnost; dejavnost, ki se ukvarja z gojenjem čebel
+čebelarstvo|samostalnik|dejavnost dejavnost, ki se ukvarja z gojenjem čebel
+čebelnjak|samostalnik|prostor za čebele
+čebelnjak|samostalnik|živahno dogajanje
+čebelnjak|samostalnik|zgoščena skupina bivališč
+čeber|samostalnik|velika posoda
+čebula|samostalnik|rastlina
 čeden|pridevnik|privlačen
 čeden|pridevnik|o veliki količini
 čednost|samostalnik|karakterna lastnost
 čednost|samostalnik|lepota
-čembalist|samostalnik|glasbenik
-čembalistka|samostalnik|glasbenica
+čekan|samostalnik|zob pri živalih
+čekan|samostalnik|podaljšani podočniki pri živalih
+čekiranje|samostalnik|registracija potnikov
+čekiranje|samostalnik|preverjanje
+čekiranje|samostalnik|pri pokru
+čelada|samostalnik|zaščitno pokrivalo
+čelist|samostalnik|glasbenik
+čelo|samostalnik|del obraza
+čelo|samostalnik|o vodstvu organizacije
+čelo|samostalnik|začetni položaj
+čelo|samostalnik|prednji del česa
+čelo|samostalnik|spodnji del
+čelo|samostalnik|del stene
+čelo|samostalnik|o kopanju rude
+česati|glagol|urejati lase ali dlako
+česati|glagol|o vlaknih
+česati|glagol|temeljito preiskovati
 čestitati|glagol|izraziti lepe želje
-češarika|samostalnik|žleza; majhna žleza z notranjim izločanjem
-čik|samostalnik|cigareta; ogorek
-čilski|pridevnik|o Čilu in Čilencih
-čipkarstvo|samostalnik|dejavnost; dejavnost, ki se ukvarja z izdelovanjem čipk
+četrtletnik|samostalnik|publikacija
+četverka|samostalnik|skupina štirih
+čevljarstvo|samostalnik|dejavnost
+čevljarstvo|samostalnik|trgovina ali podjetje
+čezatlantski|pridevnik|o sodelovanju z Ameriko
+čezatlantski|pridevnik|o prečkanju Atlantika
 čistilka|samostalnik|poklic
 čistilka|samostalnik|rastlina
 čital|samostalnik|jelen
-čičimak|samostalnik|drevo ali grm
-čičimak|samostalnik|plod
+članarina|samostalnik|denarni prispevek člana
+članek|samostalnik|krajše besedilo
 črevesje|samostalnik|organ
 črevesje|samostalnik|notranjost
 črnoborzijanec|samostalnik|kdor nezakonito trguje s čim
 črtast|pridevnik|ki ima vzorec v obliki črt
+črtica|samostalnik|majhna črta
+črtica|samostalnik|kratko literarno delo
 čudnost|samostalnik|nenavadnost
-čudodelnik|samostalnik|o nadnaravni sposobnosti
-čudodelnik|samostalnik|o veliki spretnosti; kdor je izredno dober v neki dejavnosti
-šahist|samostalnik|igralec šaha
+šah|samostalnik|namizna igra
+šah|samostalnik|šahovska garnitura
+šah|samostalnik|položaj v igri
+šah|samostalnik|vladarski naslov vladarski naslov v Perziji
 šahistka|samostalnik|igralka šaha
-šepetalka|samostalnik|funkcija v gledališču
-šipek|samostalnik|grm
-šipek|samostalnik|plod
-šivilja|samostalnik|ženska, ki šiva oblačila
+škarpina|samostalnik|morska riba
 škof|samostalnik|cerkveni dostojanstvenik
+škotščina|samostalnik|jezik
+škripčevje|samostalnik|sistem škripcev
 škrobnat|pridevnik|ki vsebuje škrob
-šminka|samostalnik|rdečilo za ustnice
-šminka|samostalnik|maska, ličila na obrazu
-šminka|samostalnik|olepšavanje ali prikrivanje česa
 špecerist|samostalnik|trgovec
-špinet|samostalnik|glasbilo
-šport|samostalnik|telesna dejavnost
-šport|samostalnik|o razvedrilni dejavnosti
-športen|pridevnik|o telesni aktivnosti
-športen|pridevnik|o obliki vozila ali njegovih delov
-športen|pridevnik|o materialu in kroju
-športen|pridevnik|o telesnem videzu
-športen|pridevnik|o obnašanju
 športnica|samostalnik|ženska, ki se ukvarja s športom
+športno|prislov|o telesni aktivnosti
+športno|prislov|o obliki vozila ali njegovih delov
+športno|prislov|o stilu oblačenja
+športno|prislov|o telesnem videzu
+športno|prislov|o obnašanju
+šrilanški|pridevnik|o Šrilanki in Šrilančanih
+štoparica|samostalnik|vrsta ure ura za merjenje časovnih intervalov
 študija|samostalnik|preučevanje
 študija|samostalnik|publikacija
 študija|samostalnik|raziskovalno področje
 študija|samostalnik|risba
 študija|samostalnik|umetniški prikaz
 žalivec|samostalnik|kdor žali
-žalovalka|samostalnik|ženska, ki žaluje
-žalovalka|samostalnik|riba
-želodec|samostalnik|organ
-želodec|samostalnik|jed
-želodec|samostalnik|o ljudeh
-želodčen|pridevnik|o organu
+želelnik|samostalnik|glagolski naklon
+železobeton|samostalnik|gradbeni material
 žena|samostalnik|soproga
 žena|samostalnik|ženska
 ženskost|samostalnik|lastnosti žensk
 ženskost|samostalnik|žensko spolovilo
+ženšče|samostalnik|ženska
 žeparjenje|samostalnik|kraje iz žepov
-žepnina|samostalnik|o otrocih
-žepnina|samostalnik|o zaslužku
+žeparka|samostalnik|tatica
+žerka|samostalnik|ličinka
+žiletka|samostalnik|britvica
 živalstvo|samostalnik|živali
 živilo|samostalnik|prehrambeni izdelek
 živina|samostalnik|govedo
 živina|samostalnik|pomemben človek
+živinoreja|samostalnik|dejavnost
 življenjepisec|samostalnik|avtor življenjepisov
+življenjepisen|pridevnik|o življenjepisu
+živobarvnost|samostalnik|o barvah
+živobarvnost|samostalnik|o pestrosti
 živčnež|samostalnik|živčen človek
 živčnež|samostalnik|nepotrpežljiv človek
 žlebak|samostalnik|žlebasta strešna opeka
@@ -1816,17 +1824,10 @@ zvonkost|samostalnik|lepa zvenečnost
 žlica|samostalnik|del stroja
 žoga|samostalnik|športni rekvizit
 žoga|samostalnik|podaja; udarec
-žolčnik|samostalnik|organ
-žonglerka|samostalnik|umetnica metanja predmetov
-žonglerka|samostalnik|o spretnem ravnanju; ženska, ki spretno ravna s čim
-žongliranje|samostalnik|o metanju predmetov
-žongliranje|samostalnik|sočasno obvladovanje več zadev; usklajevanje ali sočasno obvladovanje več zadev
-žongliranje|samostalnik|spretna uporaba ali izbira; spretna uporaba, izraba ali izbira za želeni vtis ali namen
-žuborenje|samostalnik|o vodi
-žuborenje|samostalnik|o neizrazitih glasovih
-župan|samostalnik|vodja mestne uprave
-župnija|samostalnik|cerkvenopravna enota
+žongler|samostalnik|umetnik metanja predmetov
+žongler|samostalnik|o spretnem ravnanju
 župnik|samostalnik|predstojnik cerkvene skupnosti
 žurirati|glagol|zabavati se
-žvečilec|samostalnik|oseba, ki žveči
-žvečilec|samostalnik|žvečilni gumi
+žurnalistka|samostalnik|novinarka
+žuželka|samostalnik|žival
+žužkoslovec|samostalnik|strokovnjak
