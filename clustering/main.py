@@ -1,8 +1,8 @@
 from clustering import find_best
 
-validation_embeddings = "data/embeddings.txt"
-validation_data = "data/labeled.txt"
-word_data = "data/words.txt"
+validation_embeddings = "data/embeddings.txt" #"../data/embeddings/val_embeddings_sorted.txt"
+validation_data = "data/labeled.txt" #"../data/dataset/val.txt" #
+word_data = "data/words.txt" #"../data/dataset/all_words.txt" #
 
 # KMeans - params: n_clusters, n_init
 # Spectral - params: n_clusters, separate: distance metric

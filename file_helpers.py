@@ -7,7 +7,7 @@ from random import shuffle
 from typing import List, Dict
 
 
-def get_words_data_from_file(words_file: str, sep='|', header=True) -> List[Dict]:
+def get_words_data_from_file(words_file: str, sep='|', header=True, skip_num=False) -> List[Dict]:
     """
     Parse data from 'words_file' into a list of dicts
 
@@ -23,14 +23,18 @@ def get_words_data_from_file(words_file: str, sep='|', header=True) -> List[Dict
 
             # skip header
             if not header or i != 0:
-                word, word_type, num_of_meaning, description = line.strip().split(sep)
+                if skip_num:
+                    num_of_meaning = None
+                    word, word_type, description = line.strip().split(sep)
+                else:
+                    word, word_type, num_of_meaning, description = line.strip().split(sep)
                 words.append({"word": word,
                               "type": word_type,
                               "num": num_of_meaning,
                               "description": description})
     return words
 
-def words_data_to_dict(words_file: str, sep='|', header=True) -> Dict:
+def words_data_to_dict(words_file: str, sep='|', header=True, skip_num=True) -> Dict:
     """
     Read word data from file and convert a list of dictionaries with sense data to a dictionary of words data
 
@@ -39,7 +43,7 @@ def words_data_to_dict(words_file: str, sep='|', header=True) -> Dict:
     :return: a dictionary with words as keys and values as list of {word, type, sense_id, description}
     """
 
-    words = get_words_data_from_file(words_file, sep=sep, header=header)
+    words = get_words_data_from_file(words_file, sep=sep, header=header, skip_num=skip_num)
     words_dict = {}
 
     for word_data in words:
@@ -127,15 +131,13 @@ def file_len(filename: str):
             pass
     return i + 1
 
-def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bool=False,
-                                 sentence_idx: int=2) -> Dict[str, Dict]:
+def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bool=False) -> Dict[str, Dict]:
     """
     Parses data in 'file' and returns a dictionary of parsed data per word.
 
     :param file: input tsv data file
     :param all_strings: output split data with no conversion? (default False)
     :param indices: does 'file' contain index of the word in sentence data? (default True)
-    :param sentence_idx: index of sentence (default 2)
     :return: dictionary of data per word (dict: indices, embeddings, sentences, labels
     """
 
@@ -144,7 +146,7 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
 
     for line in data:
 
-        word, label, sentence = line[0], line[1], line[sentence_idx]
+        word, word_form, label, index, sentence = line
         index = None
 
         if indices:
@@ -241,53 +243,6 @@ def filter_file_by_words(file: str, words_file: str, out_file: str, word_idx: in
                     else:
                         outf.write(line)
 
-def get_random_part(in_file: str, out_file1: str, out_file2: str, out_file_words: str, ratio: int=0.5):
-    """
-    Get words in contexts and divide words according to ratio.
-
-    :param in_file: words in context tsv file: word, index,
-    :param out_file1:
-    :param out_file2:
-    :param out_file_words:
-    :param ratio: ratio of
-    :return: None
-    """
-
-    n = file_len(in_file)
-    n_part = n * ratio
-
-    words_data = load_validation_file_grouped(in_file, all_strings=True)
-    words_count = [(key, len(words_data[key]['sentences'])) for key in words_data.keys()]
-    shuffle(words_count)
-
-    sum = 0
-    idx = 0
-    words_part = []
-
-    while sum < n_part:
-        word, count = words_count[idx]
-        words_part.append(word)
-        sum += count
-        idx += 1
-
-    words_part.sort()
-    with open(out_file_words, "w", encoding="utf8") as out_words:
-        out_words.writelines(["\n".join(words_part)])
-
-    print("File1: %d, File2: %d, total: %d" % (sum, n-sum, n))
-
-    with open(out_file1, "w", encoding="utf8") as out1:
-        with open(out_file2, "w", encoding="utf8") as out2:
-            with open(in_file, "r", encoding="utf8") as f:
-
-                for line in f:
-                    word = line.split("\t")[0]
-
-                    if word in words_part:
-                        out1.write(line)
-                    else:
-                        out2.write(line)
-
 def concatenate_files(file_list: List[str], out_file: str):
     # write content of files in 'file_list' to 'out_file'
     with open(out_file, "w", encoding="utf8") as out:
@@ -327,3 +282,21 @@ def convert_to_np_array(string_list: List[str]):
 
 def count_lines(folder: str):
     return sum([file_len(folder + "/" + file) for file in os.listdir(folder)])
+
+def get_all_words(words_file_list, words_file_source, out_file, tmp_dir='tmp'):
+    tmp_all = os.path.join(tmp_dir, "all_words")
+    with open(tmp_all, "w", encoding="utf8") as outf:
+
+        for words_file in words_file_list:
+            with open(words_file, "r", encoding="utf8") as f:
+                for line in f:
+                    outf.write(line)
+
+        with open(words_file_source, "r", encoding="utf8") as f:
+            for line in f:
+                word, pos, label, description = line.split("|")
+                outf.write("|".join([word, pos, description]))
+
+    tmp_sorted = os.path.join(tmp_dir, "all_sorted_words.txt")
+    sort_lines(tmp_all, tmp_sorted, sep='|')
+    remove_duplicate_lines(tmp_sorted, out_file, range=1)
