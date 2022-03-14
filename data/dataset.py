@@ -41,6 +41,7 @@ def create_val_test_set(in_data: str, in_examples: str, given_data: str, val_fil
     file_helpers.filter_file_by_words("sources/sense_examples.txt", "tmp/intersection.txt", intersection_examples)
     n_examples = file_helpers.file_len(intersection_examples)
     print(n_examples / 2, 0.001 * n_examples)
+
     i = n_examples
     while abs(i - n_examples/2) > 0.001 * n_examples:
         info_data = divide_word_senses(intersection, pt1, test_file, sep, ratio=ratio)

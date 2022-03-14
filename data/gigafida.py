@@ -360,7 +360,7 @@ def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out
                 w, _, _ = line.split("\t")
 
                 if w not in words_dict.keys():
-                    print("Not in keys: %s" % w)
+                    continue # print("Not in keys: %s" % w)
 
                 if words_dict[w] < sample_size:
                     outf.write(line)

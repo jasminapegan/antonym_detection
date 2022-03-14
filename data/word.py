@@ -28,10 +28,9 @@ class WordData:
 
 
     def add_missing_sentences(self, missing_sentences: List[str], word_embeddings, word_val_data: Dict):
-        print(missing_sentences)
         words = len(missing_sentences) * [self.word]
         indices = [i for i, s in zip(word_val_data['indices'], word_val_data['sentences']) if s in missing_sentences]
-        results = word_embeddings.get_words_embeddings_2(words, indices, missing_sentences)
+        results = word_embeddings.get_words_embeddings_2(words, indices, missing_sentences[:])
         missing_embeddings = [r[-1] for r in results]
 
         self.sentences += missing_sentences
@@ -73,7 +72,6 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
             if data_word != word and word != None and len(data) > 0:
 
                 if len(data) > 0:
-                    print(data)
                     yield WordData(data)
                     word = data_word
                     data = []

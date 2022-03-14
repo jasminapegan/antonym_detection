@@ -62,19 +62,11 @@ class ClusteringAlgorithm:
         val_labels = word_data.validation_labels
         pred_labels = word_data.predicted_labels
 
-        rand_score, adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = \
+        adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = \
             score_clustering(pred_labels, val_labels)
-
-        #print("f1 score: %f" % f1_score)
-        #print(confusion_matrix)
-
-        algo_id = self.id
-        if algo_id not in self.score.keys():
-            self.score[algo_id] = {}
 
         score_data = {
                 'silhouette': silhouette,
-                'rand': rand_score,
                 'adjusted_rand': adj_rand_score,
                 'completeness': completeness_score,
                 'f1_score': f1_score,
@@ -82,13 +74,15 @@ class ClusteringAlgorithm:
                 'n_non_null': len(pred_labels)
             }
 
-        if word_data.word not in self.score[algo_id].keys():
-            self.score[algo_id][word_data.word] = {n_clusters: score_data}
+        self.score[word_data.word] = score_data
+
+        """if word_data.word not in self.score.keys():
+            self.score[word_data.word] = {n_clusters: score_data}
         else:
-            self.score[algo_id][word_data.word][n_clusters] = score_data
+            self.score[word_data.word][n_clusters] = score_data"""
 
     def get_best_n_clusters(self, word_data):
-        scores = self.score[self.id][word_data.word].items()
+        scores = self.score[word_data.word].items()
         sorted_scores = list(scores).sort(key=lambda x: x[1])
         print(sorted_scores)
         print("Best n clusters: %d clusters %f silhouette score" *sorted_scores[-1])
@@ -99,7 +93,7 @@ class KMeansAlgorithm(ClusteringAlgorithm):
 
         #self.name = 'kmeans'
         #self.parameters = parameters
-        self.score = {}
+        #self.score = {}
 
         ClusteringAlgorithm.__init__(self, 'kmeans', parameters)
 
@@ -133,9 +127,10 @@ class SpectralAlgorithm(ClusteringAlgorithm):
         affinity = parameters['affinity']
         assert affinity in ['cosine', 'nearest_neighbors', 'precomputed', 'rbf']
 
-        self.name = 'spectral'
-        self.parameters = parameters
-        self.score = {}
+        #self.name = 'spectral'
+        #self.parameters = parameters
+        #self.score = {}
+        ClusteringAlgorithm.__init__(self, 'spectral', parameters)
 
         if 'random_state' not in parameters.keys():
             parameters['random_state'] = 42
@@ -218,9 +213,10 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
         affinity = parameters['affinity']
         assert affinity in ['cosine', 'euclidean', 'nearest_neighbors']
 
-        self.name = 'agglomerative'
-        self.parameters = parameters
-        self.score = {}
+        #self.name = 'agglomerative'
+        #self.parameters = parameters
+        #self.score = {}
+        ClusteringAlgorithm.__init__(self, 'agglomerative', parameters)
 
         if 'random_state' not in parameters.keys():
             parameters['random_state'] = 42
@@ -291,9 +287,10 @@ class DbscanAlgorithm(ClusteringAlgorithm):
 
     def __init__(self, parameters: Dict):
 
-        self.name = 'agglomerative'
-        self.parameters = parameters
-        self.score = {}
+        #self.name = 'dbscan'
+        #self.parameters = parameters
+        #self.score = {}
+        ClusteringAlgorithm.__init__(self, 'dbscan', parameters)
 
         if 'random_state' not in parameters.keys():
             parameters['random_state'] = 42

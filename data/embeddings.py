@@ -214,7 +214,7 @@ class WordEmbeddings:
             idx = word_indices[i]
 
             sentence[idx: idx + len(
-                word_split)] = word_split  # some data has incorrect indexing: sentence[idx - len(word): idx] = word
+                word_split)] = word_split
 
             sentences[i] = " ".join(sentence)
             word_tokens.append(self.tokenizer.tokenize(words[i]))

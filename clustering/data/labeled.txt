@@ -1,9 +1,18 @@
-Adamov kostim	kostimu	1	7	V gorskem jezercu so zaplavali v Adamovem kostimu , ko jih je presenetila skupina žensk , ki so se sprehajale ob jezeru .
-Adamov kostum	kostumu	1	9	Zdaj pa so se tri njegove fotografije v Adamovem kostumu pojavile na internetu .
-Adamov kostum	kostumu	1	9	Odvrgla sva brisači ter se v Evinem in Adamovem kostumu prižela eden k drugemu .
-Adenski zaliv	zaliva	1	21	[ELEXIS - WSD - SL] Povezava z oceanom je na jugu preko ožine Bab - el - Mandeb in Adenskega zaliva .
-Ahilova peta	peto	1	7	In v nekem trenutku našel njegovo ahilovo peto , ki je dotlej ni zaznal noben njegov nasprotnik .
-Ahilova peta	peto	1	7	Vsak ima svojo šibko točko ali ahilovo peto .
+Adamov kostim	Adamovem kostimu	1	6	V gorskem jezercu so zaplavali v Adamovem kostimu , ko jih je presenetila skupina žensk , ki so se sprehajale ob jezeru .
+Adamov kostum	Adamovem kostumu	1	8	Zdaj pa so se tri njegove fotografije v Adamovem kostumu pojavile na internetu .
+Adamov kostum	Adamovem kostumu	1	8	Odvrgla sva brisači ter se v Evinem in Adamovem kostumu prižela eden k drugemu .
+Adenski zaliv	Adenskega zaliva	1	19	[ELEXIS - WSD - SL] Povezava z oceanom je na jugu preko ožine Bab - el - Mandeb in Adenskega zaliva .
+Ahilova peta	ahilovo peto	1	6	In v nekem trenutku našel njegovo ahilovo peto , ki je dotlej ni zaznal noben njegov nasprotnik .
+Ahilova peta	ahilovo peto	1	6	Vsak ima svojo šibko točko ali ahilovo peto .
 zahod	zahodu	1	8	[ELEXIS - WSD - SL] Fobos vzhaja na zahodu , zahaja na vzhodu in ponovno vzide že čez 11 ur .
+Amazonka	Amazonke	1	4	Močna erozija bregov pritoka Amazonke v perujskem deževnem gozdu nazorno prikazuje razdiralno moč tekoče vode .
+Amazonka	Amazonke .	1	24	Poleg urbaniziranih območij in nekaj gorskih predelov pretežni del teh površin predstavlja največji deževni tropski gozd na svetu , ki se nahaja v porečju Amazonke .
+Amazonka	Amazonk	2	6	Nato si je skozi celo vojsko Amazonk utrl pot do svoje ladje , skočil na krov in takoj odplul .
+Amazonka	Amazonka	2	1	Bojevita Amazonka je izhajala iz grške mitologije .
+Amazonka	Amazonk	2	9	Boginja Hera se je bila preoblekla v eno izmed Amazonk , da bi lahko oprezala za Heraklejem .
+Amazonka	Amazonke	3	9	Ženske so rade lepe , v nasprotnem primeru so Amazonke , možače , ki želijo biti podobne moškim .
+Amazonka	Amazonke	3	3	Danes označujemo za Amazonke ženske , ki so se enostransko poistovetile z arhetipom bojevnice .
+Amazonka	Amazonk	3	15	Vrnimo se h genetsko pogojeni prerokbi o propadu moškega spola , v bodoči svet novih Amazonk .
+Amazonka	Amazonka	3	14	Dokler ni v bondiadi Dr . No iz leta 1962 iz morja prilezla sodobna Amazonka Ursula Andress v belih bikinkah , z nožem , zataknjenim za pas .
 zahod	zahoda	1	14	[ELEXIS - WSD - SL] Križarji so se odločili , da napadejo Damask z zahoda , kjer bi jim številni sadovnjaki zagotovili stalno zalogo hrane .
 zahod	Zahodu	3	22	[ELEXIS - WSD - SL] To je mogoče delno pojasniti z dejstvom , da skrb za otroke zmanjšuje telesno aktivnost staršev na Zahodu .

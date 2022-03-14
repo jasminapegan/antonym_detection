@@ -113,8 +113,6 @@ class WordSense:
 
         with open(self.examples_file, "r", encoding="utf8") as f:
             for line in f.readlines():
-                if line.count("\t") != 4:
-                    continue
                 word, word_form, sense_id, idx, sentence = line.split("\t")
                 examples_data += [(word, int(sense_id))]
 
@@ -149,8 +147,8 @@ def write_data_to_check(word_data: Dict[str, List[Dict]], out_file: str):
 def get_text_from_element(element: ET.Element, join_str="") -> str:
     #Returns all the text inside element.
     text = "".join(list(element.itertext())).strip()
-    text.replace("\t", " ")
-    text.replace("  ", " ")
+    re_whitespace = re.compile(r"\s+")
+    text = re_whitespace.sub(" ", text)
     return text.replace("\n", join_str)
 
 def word_list_to_dict(list: List):
@@ -225,22 +223,35 @@ class WordSenseData():
 
             sentence = get_text_from_element(corpusExample)
             headword_occurences = corpusExample.findall("comp[@role='headword']")
-            word_forms = " ".join([x.text.strip() for x in headword_occurences])
+            word_forms = [x.text.strip() for x in headword_occurences]
 
             if len(word_forms) == 0:
                 word_form = lemma
             else:
-                word_form = word_forms[-1]
+                word_form = " ".join(word_forms)
                 sentence = prepare_tokens(sentence)
                 word_form = prepare_tokens(word_form)
 
             try:
+                if word_form not in sentence:
+                    nonimportant = ["se", "me", "te", "ga", "jo", "smo", "ste", "so",
+                                    "bom", "boš", "bova", "bomo", "bosta", "boste", "bo", "bodo",
+                                    "mi", "mu", "ji", "vas", "nas", "jih"]
+                    word_forms = [word_form.replace(x + " ", "") for x in nonimportant] +\
+                                 [word_form.replace(" " + x, "") for x in nonimportant]
+                    i=0
+                    while word_form not in sentence:
+                        word_form = word_forms[i]
+                        i += 1
+
                 idx_word = sentence.index(word_form) + 1
                 idx = sentence[:idx_word].count(' ')
 
                 self.examples.append(Example(word_form, idx, sentence))
+            except IndexError:
+                print("Error: word form '%s' not found in sentence '%s'." % (word_form, sentence))
             except Exception as e:
-                print(e)
+                print("Error: %s. Word: '%s' / sentence: '%s'" % (e, word_form, sentence))
 
     def write_to_file(self, outf):
         if self.lemma is None or self.pos_tag is None or self.sense_id is None or self.description is None:
@@ -261,7 +272,9 @@ class WordSenseDataList(object):
 
     def parse_head(self, head):
         headword = head.find('headword')
-        self.lemma = html.unescape(headword.find('lemma').text).strip()
+        unescaped = html.unescape(headword.find('lemma').text)
+        re_whitespace = re.compile(r"\s+")
+        self.lemma = re_whitespace.sub(" ", unescaped).strip()
 
         grammar = head.find('grammar')
         if grammar:
