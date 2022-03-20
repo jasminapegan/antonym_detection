@@ -65,16 +65,20 @@ class ClusteringAlgorithm:
         adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = \
             score_clustering(pred_labels, val_labels)
 
-        score_data = {
+        score_data = [silhouette, adj_rand_score, completeness_score, f1_score, n_samples, len(pred_labels)]
+        """{
                 'silhouette': silhouette,
                 'adjusted_rand': adj_rand_score,
                 'completeness': completeness_score,
                 'f1_score': f1_score,
                 'n_samples': n_samples,
                 'n_non_null': len(pred_labels)
-            }
+            }"""
 
-        self.score[word_data.word] = score_data
+
+        with open(self.out_file, "a", encoding="utf8") as f:
+            f.write("\t".join([str(x) for x in score_data]))
+        #self.score[word_data.word] = score_data
 
         """if word_data.word not in self.score.keys():
             self.score[word_data.word] = {n_clusters: score_data}

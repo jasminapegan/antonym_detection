@@ -1,4 +1,6 @@
 """ Works only with files sorted by words. """
+from datetime import datetime
+
 from file_helpers import convert_to_np_array, file_len
 from typing import List, Dict, Iterator
 import numpy as np
@@ -63,7 +65,7 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
         for i, line in enumerate(f):
 
             if progress and i % progress == 0:
-                print("Word data progress: %d%% (%d / %d)" % ((100 * i) // n_lines, i, n_lines))
+                print("[%s] Word data progress: %d%% (%d / %d)" % (get_now_string(), (100 * i) // n_lines, i, n_lines))
 
             data_line = line.strip().split('\t')
             data_word = data_line[0]
@@ -81,3 +83,6 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
                 word = data_word
 
     yield WordData(data + [data_line])
+
+def get_now_string():
+    return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
