@@ -17,4 +17,7 @@ word_data = "../data/dataset/all_words.txt" #"data/words.txt" #
 #find_best.find_best_kmeans(validation_embeddings_sample, word_json_file, validation_data, "clusters/kmeans/")
 
 
-find_best.find_best_kmeans(validation_embeddings, word_data, validation_data)
+#find_best.find_best_kmeans(validation_embeddings, word_data, validation_data)
+#find_best.find_best_spectral(validation_embeddings, word_data, validation_data)
+find_best.find_best_agglomerative(validation_embeddings, word_data, validation_data)
+#find_best.find_best_dbscan(validation_embeddings, word_data, validation_data)

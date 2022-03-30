@@ -1,0 +1,31 @@
+Score for spectral-affinity=rbf,gamma=1e-05,n_neighbors=3
+Avg score: {'adjusted_rand': (0.37837909358795896, 0.42567985546714054, 996), 'completeness': (0.57525087257124, 0.3121896623655772, 1058), 'f1_score': (None, None, 0), 'silhouette': (0.23175760855541575, 0.1057519362521851, 1122)}
+
+Score for spectral-affinity=rbf,gamma=0.0001,n_neighbors=3
+Avg score: {'adjusted_rand': (0.3801388840049574, 0.4267670751003767, 999), 'completeness': (0.575916062532742, 0.31276608914562926, 1060), 'f1_score': (None, None, 0), 'silhouette': (0.2319572819540586, 0.10573698109156963, 1122)}
+
+Score for spectral-affinity=rbf,gamma=0.001,n_neighbors=3
+Avg score: {'adjusted_rand': (0.37551872545690895, 0.42940183593477854, 1000), 'completeness': (0.5751266044951555, 0.31292893267302807, 1059), 'f1_score': (None, None, 0), 'silhouette': (0.2327742150291815, 0.10518441150079683, 1122)}
+
+Score for spectral-affinity=rbf,gamma=0.01,n_neighbors=3
+Avg score: {'adjusted_rand': (0.350143879286504, 0.4287339961085378, 1001), 'completeness': (0.5686929951542136, 0.30814992595202956, 1073), 'f1_score': (None, None, 0), 'silhouette': (0.21654113157714017, 0.11803135288585681, 1122)}
+
+Score for spectral-affinity=rbf,gamma=0.1,n_neighbors=3
+Avg score: {'adjusted_rand': (0.2846746675421546, 0.4321660989809514, 989), 'completeness': (0.5353418247451057, 0.3136560069322107, 1079), 'f1_score': (None, None, 0), 'silhouette': (0.1945763332868465, 0.14703272312878535, 1122)}
+
+Score for spectral-affinity=rbf,gamma=1,n_neighbors=3
+Avg score: {'adjusted_rand': (0.15502786447447128, 0.41384021381881453, 874), 'completeness': (0.5156818668300083, 0.33985837386657414, 1085), 'f1_score': (None, None, 0), 'silhouette': (0.09796360743850133, 0.1567678455617633, 1019)}
+
+Score for spectral-affinity=rbf,gamma=10,n_neighbors=3
+Avg score: {'adjusted_rand': (0.08660796204308953, 0.38581849889588016, 972), 'completeness': (0.3626075703282371, 0.31928948633041454, 1037), 'f1_score': (None, None, 0), 'silhouette': (-0.053158768022709205, 0.11421071010927307, 1112)}
+
+Score for spectral-affinity=rbf,gamma=100,n_neighbors=3
+Avg score: {'adjusted_rand': (0.07765933640614639, 0.3780253071844665, 978), 'completeness': (0.34976323671219567, 0.3079558543223954, 1045), 'f1_score': (None, None, 0), 'silhouette': (-0.05399272403429973, 0.1106746915848249, 1121)}
+
+Score for spectral-affinity=rbf,gamma=1000,n_neighbors=3
+Avg score: {'adjusted_rand': (0.08003673945869032, 0.3833094653995753, 976), 'completeness': (0.3537177503326604, 0.30851954542481597, 1016), 'f1_score': (None, None, 0), 'silhouette': (-0.053494575841442515, 0.11465020999969018, 1122)}
+
+Score for spectral-affinity=cosine,n_neighbors=3
+Avg score: {'adjusted_rand': (0.3830844088493807, 0.42832573284198683, 991), 'completeness': (0.5789501247812151, 0.3142785057812982, 1061), 'f1_score': (None, None, 0), 'silhouette': (0.2370208074161279, 0.1067938702699446, 1122)}
+
+Best algorithm: spectral-affinity=cosine,n_neighbors=3 score: 0.3830844088493807

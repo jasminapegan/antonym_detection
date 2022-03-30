@@ -11,8 +11,8 @@ out_file = "sentences/sentences.txt"
 # KO DOBIM NOVE PODATKE
 # 1. pridobi grupirane stavke
 #ws = wordsense.WordSense("sources/wordsense", "tmp")
-#ws.get_wordsense_examples("sources/sense_data.txt", "sources/sense_examples.txt")
-#ws.compare_words_data(source_file, "sources/info_words.txt")
+#ws.get_wordsense_examples("sources/sense_data.txt", "sources/sense_examples2.txt")
+#ws.compare_words_data(source_file, "sources/info_words2.txt")
 
 # 2. razdeli besede na val in test set
 #dataset.create_val_test_set("sources/sense_data.txt","sources/sense_examples.txt", source_file, "dataset/val_words_2.txt",
@@ -44,3 +44,4 @@ out_file = "sentences/sentences.txt"
 
 
 #file_helpers.filter_file_by_words("embeddings/val_embeddings_sorted.txt", "amazonka.txt", "embeddings/amazonka.txt")
+

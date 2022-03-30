@@ -1,0 +1,121 @@
+Score for kmeans-algorithm=full,n_init=10
+Avg score: {'adjusted_rand': (0.37715893252515503, 0.43092557865223935, 996), 'completeness': (0.575701391626533, 0.31118073764841303, 1068), 'f1_score': (None, None, 0), 'silhouette': (0.2417029168074062, 0.10652667770260611, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=10
+Avg score: {'adjusted_rand': (0.37715893252515503, 0.43092557865223935, 996), 'completeness': (0.575701391626533, 0.31118073764841303, 1068), 'f1_score': (None, None, 0), 'silhouette': (0.2417029168074062, 0.10652667770260611, 1122)}
+
+Score for kmeans-algorithm=full,n_init=20
+Avg score: {'adjusted_rand': (0.3721540446683344, 0.4308636417369933, 993), 'completeness': (0.5736452259730432, 0.31235814971396214, 1068), 'f1_score': (None, None, 0), 'silhouette': (0.24377759019572595, 0.10624044811741429, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=20
+Avg score: {'adjusted_rand': (0.3721540446683344, 0.4308636417369933, 993), 'completeness': (0.5736452259730432, 0.31235814971396214, 1068), 'f1_score': (None, None, 0), 'silhouette': (0.24377759019572595, 0.10624044811741429, 1122)}
+
+Score for kmeans-algorithm=full,n_init=30
+Avg score: {'adjusted_rand': (0.37316373204824704, 0.4298350626376121, 989), 'completeness': (0.5745941240603212, 0.3127027709470645, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24421840297330663, 0.1059430114681518, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=30
+Avg score: {'adjusted_rand': (0.37316373204824704, 0.4298350626376121, 989), 'completeness': (0.5745941240603212, 0.3127027709470645, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24421840297330663, 0.1059430114681518, 1122)}
+
+Score for kmeans-algorithm=full,n_init=40
+Avg score: {'adjusted_rand': (0.3740872610959926, 0.4295994900388411, 990), 'completeness': (0.5748043477519683, 0.31256051243216926, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24525926019270533, 0.10590817177669788, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=40
+Avg score: {'adjusted_rand': (0.3740872610959926, 0.4295994900388411, 990), 'completeness': (0.5748043477519683, 0.31256051243216926, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24525926019270533, 0.10590817177669788, 1122)}
+
+Score for kmeans-algorithm=full,n_init=50
+Avg score: {'adjusted_rand': (0.37318977568311457, 0.43038394128832125, 990), 'completeness': (0.5747825504118389, 0.3126053858111815, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.2455218939027333, 0.10572978039642492, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=50
+Avg score: {'adjusted_rand': (0.37318977568311457, 0.43038394128832125, 990), 'completeness': (0.5747825504118389, 0.3126053858111815, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.2455218939027333, 0.10572978039642492, 1122)}
+
+Score for kmeans-algorithm=full,n_init=60
+Avg score: {'adjusted_rand': (0.3751258726448849, 0.4302191381085703, 991), 'completeness': (0.5753545932765123, 0.31247046741190326, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24545155370456717, 0.10573014885668286, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=60
+Avg score: {'adjusted_rand': (0.3751258726448849, 0.4302191381085703, 991), 'completeness': (0.5753545932765123, 0.31247046741190326, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24545155370456717, 0.10573014885668286, 1122)}
+
+Score for kmeans-algorithm=full,n_init=70
+Avg score: {'adjusted_rand': (0.37621743567908816, 0.43066234719620183, 992), 'completeness': (0.5758041289361215, 0.3124372722342813, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.2455608091978001, 0.10566813521735766, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=70
+Avg score: {'adjusted_rand': (0.37621743567908816, 0.43066234719620183, 992), 'completeness': (0.5758041289361215, 0.3124372722342813, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.2455608091978001, 0.10566813521735766, 1122)}
+
+Score for kmeans-algorithm=full,n_init=80
+Avg score: {'adjusted_rand': (0.3769516646765987, 0.4311056978723913, 992), 'completeness': (0.5758251323895871, 0.31309598951103307, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24580221564353488, 0.1055185860916412, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=80
+Avg score: {'adjusted_rand': (0.3769516646765987, 0.4311056978723913, 992), 'completeness': (0.5758251323895871, 0.31309598951103307, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24580221564353488, 0.1055185860916412, 1122)}
+
+Score for kmeans-algorithm=full,n_init=90
+Avg score: {'adjusted_rand': (0.37746259254546655, 0.4314209473137204, 992), 'completeness': (0.5760206054764642, 0.31336511273248324, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24582692965939393, 0.10549520608156758, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=90
+Avg score: {'adjusted_rand': (0.37746259254546655, 0.4314209473137204, 992), 'completeness': (0.5760206054764642, 0.31336511273248324, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24582692965939393, 0.10549520608156758, 1122)}
+
+Score for kmeans-algorithm=full,n_init=100
+Avg score: {'adjusted_rand': (0.3773428465614516, 0.43155251396124367, 992), 'completeness': (0.5759592896746787, 0.31337943714478067, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24592944961198343, 0.10549926507947723, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=100
+Avg score: {'adjusted_rand': (0.3773428465614516, 0.43155251396124367, 992), 'completeness': (0.5759592896746787, 0.31337943714478067, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24592944961198343, 0.10549926507947723, 1122)}
+
+Score for kmeans-algorithm=full,n_init=110
+Avg score: {'adjusted_rand': (0.37780289877418205, 0.4313204301794464, 992), 'completeness': (0.5761747056953309, 0.3133018024140325, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.2460799936723654, 0.1054263206659107, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=110
+Avg score: {'adjusted_rand': (0.37780289877418205, 0.4313204301794464, 992), 'completeness': (0.5761747056953309, 0.3133018024140325, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.2460799936723654, 0.1054263206659107, 1122)}
+
+Score for kmeans-algorithm=full,n_init=120
+Avg score: {'adjusted_rand': (0.3777597106535591, 0.4313544487147622, 992), 'completeness': (0.5761304917135883, 0.313390069273992, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24610599684196172, 0.10543039689423057, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=120
+Avg score: {'adjusted_rand': (0.3777597106535591, 0.4313544487147622, 992), 'completeness': (0.5761304917135883, 0.313390069273992, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.24610599684196172, 0.10543039689423057, 1122)}
+
+Score for kmeans-algorithm=full,n_init=130
+Avg score: {'adjusted_rand': (0.37818238705980106, 0.43163849075524613, 993), 'completeness': (0.5759496971211542, 0.3134828691462033, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.2461283406348854, 0.10539501975640425, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=130
+Avg score: {'adjusted_rand': (0.37818238705980106, 0.43163849075524613, 993), 'completeness': (0.5759496971211542, 0.3134828691462033, 1067), 'f1_score': (None, None, 0), 'silhouette': (0.2461283406348854, 0.10539501975640425, 1122)}
+
+Score for kmeans-algorithm=full,n_init=140
+Avg score: {'adjusted_rand': (0.3768888552280038, 0.4314225565771595, 991), 'completeness': (0.575490589721253, 0.31343053026254847, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24620887781103787, 0.10535043259557161, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=140
+Avg score: {'adjusted_rand': (0.3768888552280038, 0.4314225565771595, 991), 'completeness': (0.575490589721253, 0.31343053026254847, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24620887781103787, 0.10535043259557161, 1122)}
+
+Score for kmeans-algorithm=full,n_init=150
+Avg score: {'adjusted_rand': (0.37675275195476293, 0.43124759108142674, 991), 'completeness': (0.5753629837774424, 0.3133894811663908, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24625409204117907, 0.10533693245067202, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=150
+Avg score: {'adjusted_rand': (0.37675275195476293, 0.43124759108142674, 991), 'completeness': (0.5753629837774424, 0.3133894811663908, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24625409204117907, 0.10533693245067202, 1122)}
+
+Score for kmeans-algorithm=full,n_init=160
+Avg score: {'adjusted_rand': (0.37630083405631215, 0.4311906873681333, 990), 'completeness': (0.575428995154273, 0.3133632554539043, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24632634968266068, 0.10529505163367002, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=160
+Avg score: {'adjusted_rand': (0.37630083405631215, 0.4311906873681333, 990), 'completeness': (0.575428995154273, 0.3133632554539043, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24632634968266068, 0.10529505163367002, 1122)}
+
+Score for kmeans-algorithm=full,n_init=170
+Avg score: {'adjusted_rand': (0.37628186042841505, 0.4312028541771207, 990), 'completeness': (0.5754448543196491, 0.31330449444019015, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24635883147902463, 0.10526934815993973, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=170
+Avg score: {'adjusted_rand': (0.37628186042841505, 0.4312028541771207, 990), 'completeness': (0.5754448543196491, 0.31330449444019015, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24635883147902463, 0.10526934815993973, 1122)}
+
+Score for kmeans-algorithm=full,n_init=180
+Avg score: {'adjusted_rand': (0.3764949899188372, 0.4312330718162569, 990), 'completeness': (0.5757080671906764, 0.3131941705756841, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.246371089581669, 0.10517412959069325, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=180
+Avg score: {'adjusted_rand': (0.3764949899188372, 0.4312330718162569, 990), 'completeness': (0.5757080671906764, 0.3131941705756841, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.246371089581669, 0.10517412959069325, 1122)}
+
+Score for kmeans-algorithm=full,n_init=190
+Avg score: {'adjusted_rand': (0.37691183869813555, 0.4311434189674533, 990), 'completeness': (0.5759179098350841, 0.31324463013156695, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24629327511055585, 0.10517665176007644, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=190
+Avg score: {'adjusted_rand': (0.37691183869813555, 0.4311434189674533, 990), 'completeness': (0.5759179098350841, 0.31324463013156695, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24629327511055585, 0.10517665176007644, 1122)}
+
+Score for kmeans-algorithm=full,n_init=200
+Avg score: {'adjusted_rand': (0.377141786710289, 0.4309612146719066, 990), 'completeness': (0.5760970496320046, 0.31310599285096147, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24638122726243222, 0.10512830067196406, 1122)}
+
+Score for kmeans-algorithm=elkan,n_init=200
+Avg score: {'adjusted_rand': (0.377141786710289, 0.4309612146719066, 990), 'completeness': (0.5760970496320046, 0.31310599285096147, 1066), 'f1_score': (None, None, 0), 'silhouette': (0.24638122726243222, 0.10512830067196406, 1122)}
+
+Best algorithm: kmeans-algorithm=full,n_init=130 score: 0.37818238705980106
