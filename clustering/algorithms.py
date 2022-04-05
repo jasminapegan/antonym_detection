@@ -28,11 +28,13 @@ class ClusteringAlgorithm:
             os.mkdir(out_dir_algo)
 
         # assure that file will be empty
-        out_file = os.path.join(out_dir_algo, self.id + ".csv")
-        if os.path.exists(out_file):
-            os.remove(out_file)
+        out_file = os.path.join(out_dir_algo, self.id + ".tsv")
+        data_file = os.path.join(out_dir_algo, self.id + "_data.tsv")
+        with open(out_file, "w", encoding="utf8") as f:
+            f.write("word\tsilhouette\tadj_rand_score\tcompleteness_score\tf1_score\tlabels\tconfusion_matrix\tn_samples\tlen(pred_labels)\n")
 
         self.out_file = out_file
+        self.data_file = data_file
 
     def __get_algorithm_id__(self):
         """ Get unique string representing algorithm with all the parameters. """
@@ -62,20 +64,22 @@ class ClusteringAlgorithm:
         val_labels = word_data.validation_labels
         pred_labels = word_data.predicted_labels
 
-        #adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = \
-        adj_rand_score, completeness_score = score_clustering(pred_labels, val_labels)
+        adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = score_clustering(pred_labels, val_labels)
+        #adj_rand_score, completeness_score = score_clustering(pred_labels, val_labels)
 
         #score_data = [silhouette, adj_rand_score, completeness_score, f1_score, n_samples, len(pred_labels)]
-        score_data = [word_data.word, silhouette, adj_rand_score, completeness_score, n_samples, len(pred_labels)]
+        score_data = [word_data.word, silhouette, adj_rand_score, completeness_score, f1_score, labels,
+                      str(confusion_matrix).replace("\n", ","), n_samples, len(pred_labels)]
 
         score_dict = {
             'silhouette': silhouette,
             'adjusted_rand': adj_rand_score,
-            'completeness': completeness_score
+            'completeness': completeness_score,
+            'f1_score': f1_score
         }
 
         with open(self.out_file, "a", encoding="utf8") as f:
-            f.write(", ".join([str(x) for x in score_data]) + "\n")
+            f.write("\t".join([str(x) for x in score_data]) + "\n")
         self.score[word_data.word] = score_dict
         """
         if word_data.word not in self.score.keys():

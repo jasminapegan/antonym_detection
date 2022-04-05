@@ -1,6 +1,8 @@
 """ Version 2 treats number of clusters as an unknown parameter. """
 import os
 
+import numpy as np
+
 import file_helpers
 from data import word
 from clustering import algorithms
@@ -8,9 +10,10 @@ from clustering.scoring import get_avg_scores
 from data.embeddings import WordEmbeddings
 from typing import List, Dict
 from sklearn import metrics
+import xlsxwriter
 
 
-def find_best_kmeans(data_file: str, words_file: str, validation_file: str, out_dir: str='out'):
+def find_best_kmeans(data_file: str, words_file: str, validation_file: str, out_dir: str='out', output_vectors=False):
     """
     Execute search for best kmeans algorithm over predefined parameters. Score word embedding clusterings and write out
     scores for each algorithm.
@@ -19,15 +22,17 @@ def find_best_kmeans(data_file: str, words_file: str, validation_file: str, out_
     :param words_file: words data (used to determine number of senses)
     :param validation_file: labeled sentences data
     :param out_dir: output directory for separate algorithm score files
+    :param output_vectors: if set to True, save results data
     :return: None
     """
 
     algo = ['full', 'elkan']
     n_init = [20 * i for i in range(1, 5)]
     kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=algo, n_inits=n_init)
-    find_best_clustering(data_file, words_file, validation_file, out_dir, kmeans, res_file="kmeans_all.txt")
+    find_best_clustering(data_file, words_file, validation_file, out_dir, kmeans, res_file="kmeans_all.txt",
+                         output_vectors=output_vectors)
 
-def find_best_spectral(data_file: str, words_file: str, validation_file: str, out_dir: str='out'):
+def find_best_spectral(data_file: str, words_file: str, validation_file: str, out_dir: str='out', output_vectors=False):
     """
     Execute search for best spectral algorithm over predefined parameters. Score word embedding clusterings and write
     scores for each algorithm.
@@ -36,21 +41,24 @@ def find_best_spectral(data_file: str, words_file: str, validation_file: str, ou
     :param words_file: words data (used to determine number of senses)
     :param validation_file: labeled sentences data
     :param out_dir: output directory for separate algorithm score files
+    :param output_vectors: if set to True, save results data
     :return: None
     """
 
     affinity = ['cosine', 'rbf', 'precomputed']
     distance = ['cosine', 'relative_cosine']
     gamma = [0.001, 0.01, 0.1, 1, 10, 100]
-    ks = [1, 3, 5, 10]
+    ks = [5*i for i in range(1, 21)]
     min_samples = [3]
 
     spectral = algorithms.SpectralAlgorithm.get_clusterer_list(
         affinity=affinity, n_neighbors=min_samples, distance=distance, ks=ks, gamma=gamma)
 
-    find_best_clustering(data_file, words_file, validation_file, out_dir, spectral, res_file="spectral_all.txt")
+    find_best_clustering(data_file, words_file, validation_file, out_dir, spectral, res_file="spectral_all.txt",
+                         output_vectors=output_vectors)
 
-def find_best_agglomerative(data_file: str, words_file: str, validation_file: str, out_dir: str='out'):
+def find_best_agglomerative(data_file: str, words_file: str, validation_file: str, out_dir: str='out',
+                            output_vectors=False):
     """
     Execute search for best agglomerative algorithm over predefined parameters. Score word embedding clusterings and
     write scores for each algorithm.
@@ -59,21 +67,22 @@ def find_best_agglomerative(data_file: str, words_file: str, validation_file: st
     :param words_file: words data (used to determine number of senses)
     :param validation_file: labeled sentences data
     :param out_dir: output directory for separate algorithm score files
+    :param output_vectors: if set to True, save results data
     :return: None
     """
 
     affinity = ['cosine', 'euclidean', 'l1', 'precomputed']
     linkage = ['complete', 'average', 'ward']
     distance = ['relative_cosine']
-    ks = [1, 2, 5, 10]
+    ks = [5*i for i in range(1, 21)]
 
     agglomerative = algorithms.AgglomerativeAlgorithm.get_clusterer_list(affinity=affinity, linkage=linkage, ks=ks,
                                                                          distance=distance)
 
     find_best_clustering(data_file, words_file, validation_file, out_dir, agglomerative,
-                         res_file="agglomerative_all.txt")
+                         res_file="agglomerative_all.txt", output_vectors=output_vectors)
 
-def find_best_dbscan(data_file: str, words_file: str, validation_file: str, out_dir: str = 'out'):
+def find_best_dbscan(data_file: str, words_file: str, validation_file: str, out_dir: str = 'out', output_vectors=False):
     """
     Execute search for best dbscan algorithm over predefined parameters. Score word embedding clusterings and
     write scores for each algorithm.
@@ -82,23 +91,39 @@ def find_best_dbscan(data_file: str, words_file: str, validation_file: str, out_
     :param words_file: words data (used to determine number of senses)
     :param validation_file: labeled sentences data
     :param out_dir: output directory for separate algorithm score files
+    :param output_vectors: if set to True, save results data
     :return: None
     """
-    eps = [0.1, 0.3, 0.5, 0.7, 0.9]
-    leaf_size = [1, 3, 5]
-    min_samples = [3]
+    eps = [0.1]# * i for i in range(5, 10)]
+    leaf_size = [1]#i for i in range(1, 10)]
+    min_samples = [1]#, 2, 3]
 
     dbscan = algorithms.DbscanAlgorithm.get_clusterer_list(eps=eps, min_samples=min_samples, leaf_size=leaf_size)
 
     find_best_clustering(data_file, words_file, validation_file, out_dir, dbscan,
-                         res_file="dbscan_all.txt")
+                         res_file="dbscan_all.txt", output_vectors=output_vectors)
+
+
+def find_best_all(data_file: str, words_file: str, validation_file: str, out_dir: str = 'best', output_vectors=True):
+
+    kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=['full'], n_inits=[130])
+
+    spectral = algorithms.SpectralAlgorithm.get_clusterer_list(affinity=['cosine'], n_neighbors=[3],
+                                                               distance=[], ks=[], gamma=[])
+
+    agglomerative = algorithms.AgglomerativeAlgorithm.get_clusterer_list(affinity=['precomputed'], linkage=[], ks=[20],
+                                                                         distance=['relative_cosine'])
+
+    find_best_clustering(data_file, words_file, validation_file, out_dir, kmeans + spectral + agglomerative,
+                         res_file="best_results.txt", output_vectors=output_vectors)
 
 def find_best_clustering(data_file: str,
                          words_file: str,
                          validation_file: str,
                          out_dir: str,
                          algorithm_list: List[algorithms.ClusteringAlgorithm],
-                         res_file: str) -> None:
+                         res_file: str,
+                         output_vectors: bool=False) -> None:
 
     print("*****\nSTARTING %s" % str([a.id for a in algorithm_list]))
 
@@ -106,16 +131,72 @@ def find_best_clustering(data_file: str,
     #best_clustering.process_single_clusters(out_dir)
 
     best_clustering = BestClustering(words_file, validation_file, data_file)
-    best_clustering.find_best(algorithm_list, out_dir, output_vectors=False, res_file=res_file)
+    best_clustering.find_best(algorithm_list, out_dir, output_vectors=output_vectors, res_file=res_file)
+
+def get_results(data_dirs: str, res_dir: str):
+    with open(os.path.join(res_dir, "data.tsv"), "w", encoding="utf8") as outf:
+        results = []
+
+        for data_dir in data_dirs:
+            for file in os.listdir(data_dir):
+                with open(os.path.join(data_dir, file), "r", encoding="utf8") as f:
+                    word, confusion_matrix = None, []
+
+                    for i, line in enumerate(f):
+                        if i == 0:
+                            continue
+
+                        data = line.strip().split("\t")
+
+                        if len(data) > 6:
+                            if word and confusion_matrix:
+                                #print(confusion_matrix)
+                                matrix = []
+                                for x in confusion_matrix:
+                                    new_row = []
+                                    row = x.strip("[] ")
+                                    for y in row.split(" "):
+                                        if y:
+                                            new_row.append(int(y))
+                                    matrix.append(new_row)
+                                matrix = np.asmatrix(np.array(matrix))
+                                correct = np.trace(matrix)
+                                false = np.sum(matrix) - correct
+                                results.append([word, correct, false])
+                                word, confusion_matrix = None, []
+
+                            word = data[0]
+                            matrix_row = data[6]
+
+                            if matrix_row != "None":
+                                confusion_matrix.append(matrix_row)
+                        else:
+                            confusion_matrix.append(data[0])
+
+            correct = [x for x in results if x[2] == 0]
+            false = [x for x in results if x[2] > 0]
+            outf.write("Correctly grouped: %d - %s\n" % (len(correct), ",".join([x[0] for x in correct])))
+            outf.write("Incorrectly grouped: %d - %s\n" % (len(false), ",".join([x[0] for x in false])))
+
+            close = [x for x in results if x[2] == 0 or x[2] / (x[1]+x[2]) < 0.1]
+            outf.write("Close to correct: %d - %s\n" % (len(close), ",".join([x[0] for x in close])))
+
+            loss = results
+            loss.sort(key=lambda x: x[2])
+            outf.writelines(["\t".join([str(y) for y in x]) + "\n" for x in loss])
+
 
 class BestClustering:
 
     Scores = Dict[str, Dict[str, float]]
 
     def __init__(self, words_file: str, validation_file: str, data_file: str, out_dir: str='out'):
-        self.words_json = file_helpers.words_data_to_dict(words_file, header=False, skip_num=True)
-        self.val_data = file_helpers.load_validation_file_grouped(validation_file, indices=True)
-        self.word_data_generator = word.word_data_gen(data_file, progress=100)
+        if words_file:
+            self.words_json = file_helpers.words_data_to_dict(words_file, header=False, skip_num=True)
+        if validation_file:
+            self.val_data = file_helpers.load_validation_file_grouped(validation_file, indices=True)
+        if data_file:
+            self.word_data_generator = word.word_data_gen(data_file, progress=5000)
         self.word_embeddings = WordEmbeddings()
         self.scores = {}
         self.out_dir = out_dir
@@ -141,10 +222,7 @@ class BestClustering:
             labels = algorithm.predict(word_data.embeddings, n_clusters)
 
             if output_vectors:
-                with open(algorithm.out_file, "a", encoding="utf8") as outf:
-                    # out_data = list(zip(labels, [word] * n_samples, sentences)) #, embeddings))
-                    # file_helpers.write_grouped_data(outf, sorted(out_data, key=lambda x: x[0])) #, centroids=clusterer.cluster_centers_)
-
+                with open(algorithm.data_file, "a", encoding="utf8") as outf:
                     str_embeddings = [" ".join([str(x) for x in e]) for e in word_data.embeddings]
                     out_data = list(zip([str(x) for x in labels],
                                         [word_data.word] * word_data.n_sentences,
@@ -152,12 +230,10 @@ class BestClustering:
                                         str_embeddings))
                     outf.writelines(["\t".join(line) + "\n" for line in out_data])
 
-            silhouette = None
-
             try:
                 silhouette = metrics.silhouette_score(word_data.embeddings, labels, metric='cosine')
             except Exception:
-                pass
+                silhouette = None
 
             return labels, silhouette
 
@@ -172,7 +248,6 @@ class BestClustering:
         :param res_file: where to save score data
         :return: None
         """
-        algorithm_scores = []
 
         for word_data in self.word_data_generator:
 
@@ -180,17 +255,17 @@ class BestClustering:
             n = len(self.words_json[word])
 
             if n < 2:
-                #print("skipping word")
+                #print("skipping word", word)
                 continue
 
             if word not in self.val_data.keys():
+                #print(word)
                 continue
 
             word_data = self.prepare_word_data(word, word_data)
 
             for algorithm_data in algorithm_list:
                 self.execute_clustering(algorithm_data, word_data, n=n, output_vectors=output_vectors)
-                algorithm_scores.append(algorithm_data.score)
 
         self.write_results(os.path.join(out_dir, res_file), algorithm_list)
         print("\n*****FINISHED*****")
@@ -249,6 +324,8 @@ class BestClustering:
 
             if (len(word_data.validation_labels) > 1):
                 algorithm_data.score_method(word_data, silhouette_score, n)
+            #else:
+            #    print("Too little validation labels to score word %s" % word_data.word)
 
 
         #if not n:
@@ -307,3 +384,45 @@ class BestClustering:
                     best_algo['algo'] = algo.id
 
             f.write("Best algorithm: %s score: %s" % (best_algo['algo'], best_algo['score']))
+
+def process_results(out_file, res_dir="out"):
+    """
+    Reads result files and summarizes into 'out_file'.
+
+    :param out_file: where to write final results
+    :param res_dir: results directory
+    :return: None
+    """
+    data = {}
+
+    for file in os.listdir(res_dir):
+        with open(os.path.join(res_dir, file), "r", encoding="utf8") as f:
+            new_data = f.readlines()
+            data[file] = [line.strip().split(", ") for line in new_data]
+
+    words = list(set([d[0] for fdata in data.values() for d in fdata]))
+    word_data = {w: {} for w in words}
+
+    for file in data.keys():
+        for line in data[file]:
+            word = line[0]
+            word_data[word][file] = line[1:]
+
+    workbook = xlsxwriter.Workbook(out_file)
+    worksheet = workbook.add_worksheet()
+    worksheet.write(0, 0, "word/file")
+
+    files = list(data.keys())
+    n = len(data[file]) - 1
+    for i in range(len(files)):
+        worksheet.merge_range(0, n*i+1, 0, n*(i+1)+1, files[i])
+
+    for j, word in enumerate(word_data.keys()):
+        worksheet.write(j+1, 0, word)
+        wdata = word_data[word]
+
+        for k, f in enumerate(files):
+            for l, w in enumerate(wdata[f]):
+                worksheet.write(j+1, k*len(w)+l+1, w)
+
+    workbook.close()

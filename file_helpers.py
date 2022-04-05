@@ -4,7 +4,7 @@ from io import TextIOWrapper
 
 import numpy as np
 from random import shuffle
-from typing import List, Dict
+from typing import List, Dict, Union
 
 
 def get_words_data_from_file(words_file: str, sep='|', header=True, skip_num=False) -> List[Dict]:
@@ -138,7 +138,7 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
     :param file: input tsv data file
     :param all_strings: output split data with no conversion? (default False)
     :param indices: does 'file' contain index of the word in sentence data? (default True)
-    :return: dictionary of data per word (dict: indices, embeddings, sentences, labels
+    :return: dictionary of data per word (dict: indices, embeddings, sentences, labels)
     """
 
     data = load_file(file, sep='\t')
@@ -174,7 +174,7 @@ def write_word_data(out_file: str, word_data: Dict[str, List[Dict]], sep='|'):
                f.write(sep.join([word, data['type'], data['num'], data['description']]))
 
 def write_grouped_data(outf: TextIOWrapper, data: List, centroid: List=None):
-    for label, word, sentence in data: #, embedding
+    for label, word, sentence, embedding in data: #
 
         if centroid is not None:
             centroid_string = " ".join([str(x) for x in centroid])
@@ -212,8 +212,8 @@ def count_words(in_file: str, sep='\t') -> Dict[str, int]:
 
     return words
 
-def filter_file_by_words(file: str, words_file: str, out_file: str, word_idx: int=0, split_by: str='\t',
-                         complement: bool=False, skip_idx: int=None):
+def filter_file_by_words(file: str, words_file_or_list: Union[str, List[str]], out_file: str, word_idx: int=0,
+                         split_by: str='\t', complement: bool=False, skip_idx: int=None):
     """
     Filter 'file' by words in 'word_file'. Output lines starting with words in 'word_file' to 'out_file'.
 
@@ -227,7 +227,10 @@ def filter_file_by_words(file: str, words_file: str, out_file: str, word_idx: in
     :return: None
     """
 
-    words = get_unique_words(words_file)
+    if isinstance(words_file_or_list, str):
+        words = get_unique_words(words_file_or_list)
+    else:
+        words = words_file_or_list
 
     with open(file, "r", encoding="utf8") as f:
         with open(out_file, "w", encoding="utf8") as outf:
@@ -239,6 +242,10 @@ def filter_file_by_words(file: str, words_file: str, out_file: str, word_idx: in
                     if skip_idx:
                         split_line = line.split(split_by)
                         out_line = split_by.join([x for i, x in enumerate(split_line) if i != skip_idx])
+
+                        if out_line[-1] != "\n":
+                            out_line += "\n"
+
                         outf.write(out_line)
                     else:
                         outf.write(line)
