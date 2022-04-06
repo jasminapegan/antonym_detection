@@ -4,6 +4,7 @@ from statistics import stdev, mean
 from sklearn import metrics
 
 import file_helpers
+from clustering import find_best
 
 
 def get_avg_scores(score_per_word, score_names):

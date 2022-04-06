@@ -133,59 +133,6 @@ def find_best_clustering(data_file: str,
     best_clustering = BestClustering(words_file, validation_file, data_file)
     best_clustering.find_best(algorithm_list, out_dir, output_vectors=output_vectors, res_file=res_file)
 
-def get_results(data_dirs: str, res_dir: str):
-    with open(os.path.join(res_dir, "data.tsv"), "w", encoding="utf8") as outf:
-        results = []
-
-        for data_dir in data_dirs:
-            for file in os.listdir(data_dir):
-                with open(os.path.join(data_dir, file), "r", encoding="utf8") as f:
-                    word, confusion_matrix = None, []
-
-                    for i, line in enumerate(f):
-                        if i == 0:
-                            continue
-
-                        data = line.strip().split("\t")
-
-                        if len(data) > 6:
-                            if word and confusion_matrix:
-                                #print(confusion_matrix)
-                                matrix = []
-                                for x in confusion_matrix:
-                                    new_row = []
-                                    row = x.strip("[] ")
-                                    for y in row.split(" "):
-                                        if y:
-                                            new_row.append(int(y))
-                                    matrix.append(new_row)
-                                matrix = np.asmatrix(np.array(matrix))
-                                correct = np.trace(matrix)
-                                false = np.sum(matrix) - correct
-                                results.append([word, correct, false])
-                                word, confusion_matrix = None, []
-
-                            word = data[0]
-                            matrix_row = data[6]
-
-                            if matrix_row != "None":
-                                confusion_matrix.append(matrix_row)
-                        else:
-                            confusion_matrix.append(data[0])
-
-            correct = [x for x in results if x[2] == 0]
-            false = [x for x in results if x[2] > 0]
-            outf.write("Correctly grouped: %d - %s\n" % (len(correct), ",".join([x[0] for x in correct])))
-            outf.write("Incorrectly grouped: %d - %s\n" % (len(false), ",".join([x[0] for x in false])))
-
-            close = [x for x in results if x[2] == 0 or x[2] / (x[1]+x[2]) < 0.1]
-            outf.write("Close to correct: %d - %s\n" % (len(close), ",".join([x[0] for x in close])))
-
-            loss = results
-            loss.sort(key=lambda x: x[2])
-            outf.writelines(["\t".join([str(y) for y in x]) + "\n" for x in loss])
-
-
 class BestClustering:
 
     Scores = Dict[str, Dict[str, float]]
