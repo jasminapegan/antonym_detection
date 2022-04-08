@@ -36,6 +36,8 @@ class WordData:
         missing_embeddings = [r[-1] for r in results]
 
         self.sentences += missing_sentences
+        self.n_sentences = len(self.sentences)
+
         missing_embeddings = np.array([np.array(x, dtype=float) for x in missing_embeddings])
         self.embeddings = np.append(self.embeddings, missing_embeddings, axis=0)
 

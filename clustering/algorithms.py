@@ -1,7 +1,7 @@
 import os
+import numpy as np
 from itertools import product
 from typing import Dict, List
-
 from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering, SpectralClustering
 from scipy import spatial
 
@@ -28,11 +28,14 @@ class ClusteringAlgorithm:
             os.mkdir(out_dir_algo)
 
         # assure that file will be empty
-        out_file = os.path.join(out_dir_algo, self.id)
-        if os.path.exists(out_file):
-            os.remove(out_file)
+        out_file = os.path.join(out_dir_algo, self.id + ".tsv")
+        data_file = os.path.join(out_dir_algo, self.id + "_data.tsv")
+        with open(out_file, "w", encoding="utf8") as f:
+            #f.write("word\tsilhouette\tadj_rand_score\tcompleteness_score\tf1_score\tlabels\tconfusion_matrix\tn_samples\tlen(pred_labels)\n")
+            f.write("word\tsilhouette\tadj_rand_score\tcompleteness_score\tn_samples\tlen(pred_labels)\n")
 
         self.out_file = out_file
+        self.data_file = data_file
 
     def __get_algorithm_id__(self):
         """ Get unique string representing algorithm with all the parameters. """
@@ -62,28 +65,28 @@ class ClusteringAlgorithm:
         val_labels = word_data.validation_labels
         pred_labels = word_data.predicted_labels
 
-        adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = \
-            score_clustering(pred_labels, val_labels)
+        #adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = score_clustering(pred_labels, val_labels)
+        adj_rand_score, completeness_score = score_clustering(pred_labels, val_labels)
 
-        score_data = [silhouette, adj_rand_score, completeness_score, f1_score, n_samples, len(pred_labels)]
-        """{
-                'silhouette': silhouette,
-                'adjusted_rand': adj_rand_score,
-                'completeness': completeness_score,
-                'f1_score': f1_score,
-                'n_samples': n_samples,
-                'n_non_null': len(pred_labels)
-            }"""
+        score_data = [word_data.word, silhouette, adj_rand_score, completeness_score, n_samples, len(pred_labels)]
+        #score_data = [word_data.word, silhouette, adj_rand_score, completeness_score, f1_score, labels,
+        #              str(confusion_matrix).replace("\n", ","), n_samples, len(pred_labels)]
 
+        score_dict = {
+            'silhouette': silhouette,
+            'adjusted_rand': adj_rand_score,
+            'completeness': completeness_score
+            #'f1_score': f1_score
+        }
 
         with open(self.out_file, "a", encoding="utf8") as f:
-            f.write("\t".join([str(x) for x in score_data]))
-        #self.score[word_data.word] = score_data
-
-        """if word_data.word not in self.score.keys():
-            self.score[word_data.word] = {n_clusters: score_data}
+            f.write("\t".join([str(x) for x in score_data]) + "\n")
+        self.score[word_data.word] = score_dict
+        """
+        if word_data.word not in self.score.keys():
+            self.score[word_data.word] = {n_clusters: score_dict}
         else:
-            self.score[word_data.word][n_clusters] = score_data"""
+            self.score[word_data.word][n_clusters] = score_dict"""
 
     def get_best_n_clusters(self, word_data):
         scores = self.score[word_data.word].items()
@@ -94,10 +97,6 @@ class ClusteringAlgorithm:
 class KMeansAlgorithm(ClusteringAlgorithm):
 
     def __init__(self, parameters: Dict):
-
-        #self.name = 'kmeans'
-        #self.parameters = parameters
-        #self.score = {}
 
         ClusteringAlgorithm.__init__(self, 'kmeans', parameters)
 
@@ -131,9 +130,6 @@ class SpectralAlgorithm(ClusteringAlgorithm):
         affinity = parameters['affinity']
         assert affinity in ['cosine', 'nearest_neighbors', 'precomputed', 'rbf']
 
-        #self.name = 'spectral'
-        #self.parameters = parameters
-        #self.score = {}
         ClusteringAlgorithm.__init__(self, 'spectral', parameters)
 
         if 'random_state' not in parameters.keys():
@@ -150,7 +146,8 @@ class SpectralAlgorithm(ClusteringAlgorithm):
             if 'gamma' not in parameters.keys():
                 parameters['gamma'] = 1.0
 
-        self.clusterer = SpectralClustering(**self.parameters)
+        clustering_params = {k: v for k, v in parameters.items() if k not in ['distance', 'k']}
+        self.clusterer = SpectralClustering(**clustering_params)
 
 
     @staticmethod
@@ -160,7 +157,7 @@ class SpectralAlgorithm(ClusteringAlgorithm):
 
         algorithms = []
 
-        if 'precomputed' in affinity and 'relative_cosine' in distance:
+        if 'precomputed' in affinity: # and 'relative_cosine' in distance:
             algorithms += [
                 SpectralAlgorithm({
                     'affinity': 'precomputed',
@@ -168,18 +165,21 @@ class SpectralAlgorithm(ClusteringAlgorithm):
                     'k': k,
                     'n_neighbors': n
                 }) for k, n in product(ks, n_neighbors)]
+            affinity.remove('precomputed')
 
         if 'rbf' in affinity:
             algorithms += [
                 SpectralAlgorithm({
+                    'affinity': 'rbf',
                     'gamma': g,
                     'n_neighbors': n
                 }) for g, n in product(gamma, n_neighbors)
             ]
+            affinity.remove('rbf')
 
         algorithms += [
             SpectralAlgorithm({
-                'affinity': affinity,
+                'affinity': a,
                 'n_neighbors': n
             }) for a, n in product(affinity, n_neighbors)
         ]
@@ -192,9 +192,9 @@ class SpectralAlgorithm(ClusteringAlgorithm):
         else:
             distance = None
 
-        params = self.parameters
-        params['n_clusters'] = n_clusters
-        self.clusterer.set_params(**params)
+        clustering_params = {k: v for k, v in self.parameters.items() if k not in ['distance', 'k']}
+        clustering_params['n_clusters'] = n_clusters
+        self.clusterer.set_params(**clustering_params)
 
         if distance:
 
@@ -206,24 +206,22 @@ class SpectralAlgorithm(ClusteringAlgorithm):
             else:
                 raise Exception("Unknown distance: %s" % distance)
 
-            return self.clusterer.fit_predict(adj_matrix, n_clusters=n_clusters)
+            return self.clusterer.fit_predict(adj_matrix)
 
-        return self.clusterer.fit_predict(embeddings, n_clusters=n_clusters)
+
+        return self.clusterer.fit_predict(embeddings)
 
 
 class AgglomerativeAlgorithm(ClusteringAlgorithm):
 
     def __init__(self, parameters: Dict):
         affinity = parameters['affinity']
-        assert affinity in ['cosine', 'euclidean', 'nearest_neighbors']
+        assert affinity in ['cosine', 'euclidean', 'l1', 'precomputed']
 
-        #self.name = 'agglomerative'
-        #self.parameters = parameters
-        #self.score = {}
         ClusteringAlgorithm.__init__(self, 'agglomerative', parameters)
 
-        if 'random_state' not in parameters.keys():
-            parameters['random_state'] = 42
+        #if 'random_state' not in parameters.keys():
+        #    parameters['random_state'] = 42
 
         if affinity == 'precomputed':
             if 'k' not in parameters.keys():
@@ -236,7 +234,8 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
             if linkage == 'ward':
                 assert affinity == 'euclidean'
 
-        self.clusterer = AgglomerativeClustering(**self.parameters)
+        clusterer_params = {k: v for k, v in self.parameters.items() if k not in ['k', 'distance']}
+        self.clusterer = AgglomerativeClustering(**clusterer_params)
 
     def set_n_clusters(self, n: int):
         self.clusterer.n_clusters = n
@@ -251,7 +250,7 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
             algorithms += [
                 AgglomerativeAlgorithm({
                     'affinity': 'precomputed',
-                    'linkage': 'relative_cosine',
+                    'distance': 'relative_cosine',
                     'k': k,
                 }) for k in ks]
 
@@ -267,7 +266,7 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
             AgglomerativeAlgorithm({
                 'affinity': a,
                 'linkage': l
-            }) for a, l in product(affinity, [l for l in linkage if l != 'ward'])
+            }) for a, l in product([a for a in affinity if a != 'precomputed'], [l for l in linkage if l != 'ward'])
         ]
 
         return algorithms
@@ -275,14 +274,19 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
     def predict(self, embeddings: List[List[int]], n_clusters: int):
         affinity = self.parameters['affinity']
 
-        params = self.parameters
-        params['n_clusters'] = n_clusters
-        self.clusterer.set_params(**params)
+        clusterer_params = {k: v for k, v in self.parameters.items() if k not in ['k', 'distance']}
+        clusterer_params['n_clusters'] = n_clusters
+        if self.parameters['affinity'] == 'precomputed':
+            clusterer_params['linkage'] = 'average'
+        self.clusterer.set_params(**clusterer_params)
 
         if affinity == 'precomputed':
-            k = self.parameters['k']
-            adj_matrix = relative_cosine_similarity(embeddings, k)
-            return self.clusterer.fit_predict(adj_matrix)
+            if self.parameters['distance'] == 'relative_cosine':
+                k = self.parameters['k']
+                adj_matrix = relative_cosine_similarity(embeddings, k)
+                return self.clusterer.fit_predict(adj_matrix)
+            else:
+                raise Exception("Unknown precomputed distance %s" % self.parameters['distance'])
         else:
             return self.clusterer.fit_predict(embeddings)
 
@@ -291,13 +295,8 @@ class DbscanAlgorithm(ClusteringAlgorithm):
 
     def __init__(self, parameters: Dict):
 
-        #self.name = 'dbscan'
-        #self.parameters = parameters
-        #self.score = {}
         ClusteringAlgorithm.__init__(self, 'dbscan', parameters)
 
-        if 'random_state' not in parameters.keys():
-            parameters['random_state'] = 42
         if 'eps' not in parameters.keys():
             parameters['eps'] = 0.5
         if 'metric' not in parameters:
@@ -326,10 +325,11 @@ class DbscanAlgorithm(ClusteringAlgorithm):
 
 def relative_cosine_similarity(data, k=1):
     n = len(data)
+    k = min(k, n)
     cos_sim = [[spatial.distance.cosine(data[i], data[j]) for i in range(n)] for j in range(n)]
     cos_sim_sorted = [sorted(line) for line in cos_sim]
     max_k_sum = [sum(line[-k:]) for line in cos_sim_sorted]
-    relative_cos_sim = [d / s for d, s in zip(cos_sim, max_k_sum)]
+    relative_cos_sim = [np.array(d) / s for d, s in zip(cos_sim, max_k_sum)]
     for i in range(n):
         relative_cos_sim[i][i] = 1
     return relative_cos_sim

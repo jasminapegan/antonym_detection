@@ -90,10 +90,11 @@ class WordSense:
                 for word in sorted(list(self.data_dict.keys())):
                     for sense_data in self.data_dict[word].word_sense_list:
 
-                        sense_data.write_to_file(f)
+                        if sense_data.examples:
+                            sense_data.write_to_file(f)
 
-                        for example in sense_data.examples:
-                            example.write_to_file(g, word, sense_data.sense_id)
+                            for example in sense_data.examples:
+                                example.write_to_file(g, word, sense_data.sense_id)
 
     def get_word_data(self, tree: ET.ElementTree):
         root = tree.getroot()
@@ -116,20 +117,20 @@ class WordSense:
                 word, word_form, sense_id, idx, sentence = line.split("\t")
                 examples_data += [(word, int(sense_id))]
 
-        examples_data = set(examples_data)
-        examples_count = word_list_to_dict(list(examples_data))
+        examples_data = list(set(examples_data))
+        examples_count = word_list_to_dict(examples_data)
 
         with open(info_file, "w", encoding='utf8') as info:
             words_not_in_examples = [key for key in words_count.keys() if key not in examples_count.keys()]
             examples_not_in_words = [key for key in examples_count.keys() if key not in words_count.keys()]
             intersection = [key for key in examples_count.keys() if key in words_count.keys()]
+
             info.write("Given words not in examples: %d %d\n" % (len(words_not_in_examples), count_senses(words_count, words_not_in_examples)))
             info.write("Examples not in given words: %d %d\n" % (len(examples_not_in_words), count_senses(examples_count, examples_not_in_words)))
             info.write("Intersection: %d %d\n" % (len(intersection), count_senses(examples_count, intersection)))
 
-            all_count = {**words_count, **examples_count}
-            info.write("# given words: %d %d\n" % (len(words_count), count_senses(all_count, words_count.keys())))
-            info.write("# example words: %d %d\n" % (len(examples_count), count_senses(all_count, examples_count.keys())))
+            info.write("# given words: %d %d\n" % (len(words_count), count_senses(words_count, words_count.keys())))
+            info.write("# example words: %d %d\n" % (len(examples_count), count_senses(examples_count, examples_count.keys())))
 
 def prepare_tokens(string: str) -> str:
     string = html.unescape(string)
