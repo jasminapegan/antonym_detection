@@ -3,7 +3,6 @@ import pickle
 from io import TextIOWrapper
 
 import numpy as np
-from random import shuffle
 from typing import List, Dict, Union
 
 
@@ -94,7 +93,7 @@ def load_json_word_data(json_file: str):
 def get_unique_words(word_file: str, sep: str='|'):
     return list(set([line[0] for line in load_file(word_file, sep=sep)]))
 
-def load_file(file: str, limit: int=None, sep: str='\t'):
+def load_file(file: str, limit: int=None, sep: str='\t', skip_header: bool=False):
     """
     Read data from 'file', return a list of lines (string lists).
 
@@ -108,6 +107,9 @@ def load_file(file: str, limit: int=None, sep: str='\t'):
     with open(file, "r", encoding="utf8") as f:
 
         for i, line in enumerate(f):
+            if i == 0 and skip_header:
+                continue
+
             data.append(line.strip().split(sep))
 
             if i == limit:
@@ -167,6 +169,41 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
 
     return words_data
 
+def load_result_file_grouped(file: str, embeddings: bool=False, skip_header: bool=False) -> Dict[str, Dict]:
+    """
+    Parses data in 'file' and returns a dictionary of parsed data per word.
+
+    :param file: input tsv data file
+    :param embeddings: does 'file' contain embeddings? (default False)
+    :return: dictionary of data per word (dict: cluster labels, sentences, embeddings)
+    """
+
+    data = load_file(file, sep='\t')
+    words_data = {}
+
+    for i, line in enumerate(data):
+        if skip_header and i == 0:
+            continue
+
+        if embeddings:
+            label, word, sentence, embedding = line
+        else:
+            label, word, sentence = line
+
+        if word in words_data.keys():
+            words_data[word]['labels'].append(label)
+            words_data[word]['sentences'].append(sentence)
+
+            if embeddings:
+                words_data[word]['embeddings'].append(embedding)
+
+        else:
+            words_data[word] = {'labels': [label],
+                                'sentences': [sentence],
+                                'embeddings': [embedding]}
+
+    return words_data
+
 def write_word_data(out_file: str, word_data: Dict[str, List[Dict]], sep='|'):
     with open(out_file, "w", encoding="utf8") as f:
         for word, data_list in sorted(list(word_data.items())):
@@ -196,7 +233,6 @@ def count_words(in_file: str, sep='\t') -> Dict[str, int]:
     :param sep: separator of 'in_file' (default '\t')
     :return: dictionary of word counts
     """
-
     words = {}
 
     with open(in_file, 'r', encoding="utf8") as input:

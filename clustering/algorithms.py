@@ -1,7 +1,7 @@
 import os
+import numpy as np
 from itertools import product
 from typing import Dict, List
-
 from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering, SpectralClustering
 from scipy import spatial
 
@@ -31,7 +31,8 @@ class ClusteringAlgorithm:
         out_file = os.path.join(out_dir_algo, self.id + ".tsv")
         data_file = os.path.join(out_dir_algo, self.id + "_data.tsv")
         with open(out_file, "w", encoding="utf8") as f:
-            f.write("word\tsilhouette\tadj_rand_score\tcompleteness_score\tf1_score\tlabels\tconfusion_matrix\tn_samples\tlen(pred_labels)\n")
+            #f.write("word\tsilhouette\tadj_rand_score\tcompleteness_score\tf1_score\tlabels\tconfusion_matrix\tn_samples\tlen(pred_labels)\n")
+            f.write("word\tsilhouette\tadj_rand_score\tcompleteness_score\tn_samples\tlen(pred_labels)\n")
 
         self.out_file = out_file
         self.data_file = data_file
@@ -64,18 +65,18 @@ class ClusteringAlgorithm:
         val_labels = word_data.validation_labels
         pred_labels = word_data.predicted_labels
 
-        adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = score_clustering(pred_labels, val_labels)
-        #adj_rand_score, completeness_score = score_clustering(pred_labels, val_labels)
+        #adj_rand_score, completeness_score, f1_score, labels, confusion_matrix = score_clustering(pred_labels, val_labels)
+        adj_rand_score, completeness_score = score_clustering(pred_labels, val_labels)
 
-        #score_data = [silhouette, adj_rand_score, completeness_score, f1_score, n_samples, len(pred_labels)]
-        score_data = [word_data.word, silhouette, adj_rand_score, completeness_score, f1_score, labels,
-                      str(confusion_matrix).replace("\n", ","), n_samples, len(pred_labels)]
+        score_data = [word_data.word, silhouette, adj_rand_score, completeness_score, n_samples, len(pred_labels)]
+        #score_data = [word_data.word, silhouette, adj_rand_score, completeness_score, f1_score, labels,
+        #              str(confusion_matrix).replace("\n", ","), n_samples, len(pred_labels)]
 
         score_dict = {
             'silhouette': silhouette,
             'adjusted_rand': adj_rand_score,
-            'completeness': completeness_score,
-            'f1_score': f1_score
+            'completeness': completeness_score
+            #'f1_score': f1_score
         }
 
         with open(self.out_file, "a", encoding="utf8") as f:
@@ -328,7 +329,7 @@ def relative_cosine_similarity(data, k=1):
     cos_sim = [[spatial.distance.cosine(data[i], data[j]) for i in range(n)] for j in range(n)]
     cos_sim_sorted = [sorted(line) for line in cos_sim]
     max_k_sum = [sum(line[-k:]) for line in cos_sim_sorted]
-    relative_cos_sim = [d / s for d, s in zip(cos_sim, max_k_sum)]
+    relative_cos_sim = [np.array(d) / s for d, s in zip(cos_sim, max_k_sum)]
     for i in range(n):
         relative_cos_sim[i][i] = 1
     return relative_cos_sim
