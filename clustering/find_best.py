@@ -1,4 +1,3 @@
-""" Version 2 treats number of clusters as an unknown parameter. """
 import os
 
 import file_helpers

@@ -1,10 +1,10 @@
 import file_helpers
 from clustering import find_best, plotting, scoring, processing
 
-validation_embeddings = "../data/embeddings/val_embeddings_sorted.txt" #"data/embeddings.txt" #
-validation_data = "../data/dataset/val.txt" #"data/labeled.txt" #
-validation_words = "../data/dataset/val_words.txt" #"data/labeled.txt" #
-word_data = "../data/dataset/all_words.txt" #"data/words.txt" #
+validation_embeddings = "../data/embeddings/val_embeddings_sorted.txt" # "../../embeddings/val_embeddings_sorted.txt"
+validation_data = "../data/dataset/val.txt" # "../../data/val.txt"
+validation_words = "../data/dataset/val_words.txt" # "../../data/val_words.txt"
+word_data = "../data/dataset/all_words.txt" #"../../data/all_words.txt" #
 
 # KMeans - params: n_clusters, n_init
 # Spectral - params: n_clusters, separate: distance metric
