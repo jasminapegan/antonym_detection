@@ -8,7 +8,7 @@ from scipy import spatial
 from sklearn.preprocessing import StandardScaler
 
 from clustering.processing import get_centroid
-from file_helpers import convert_to_np_array, load_file
+from file_helpers import convert_to_np_array
 
 
 def plot_sentence_neighborhood(data_files, word, sentence, filename, n=None, cutoff_sentence=50, figsize=(10, 10)):
@@ -112,27 +112,52 @@ def read_word_data(data_file, word):
 
     return data
 
-def prepare_data(in_files, out_file, labels_file, words=None):
-    # prepare data for online visualization
-    for in_file in in_files:
-        directory = os.path.dirname(in_file)
+def plot_data(data_file):
+    with open(data_file, "r", encoding="utf8") as f:
+        data = f.readlines()
 
-        with open(in_file, "r", encoding="utf8") as f:
-            out_file_path = os.path.join(directory, out_file)
+    for line in data:
+        if "Algorithm:" in line:
+            algo = line.split(":")[1].strip()
 
-            with open(out_file_path, "w", encoding="utf8") as out_f:
-                labels_file_path = os.path.join(directory, labels_file)
 
-                with open(labels_file_path, "w", encoding="utf8") as labels_f:
-                    labels_f.write("label\tword\tsentence\n")
+        elif "Score names:" in line:
+            score_names = line.split(":")[1].strip().split(" ")
+            n = len(score_names)
+            cmap = plt.cm.get_cmap('hsv', n + 1)
 
-                    for line in f:
-                        label, word, sentence, embedding = line.strip().split("\t")
+        elif "Score:" in line:
+            score_name = line.split(":")[1].strip()
 
-                        if not words or word in words:
-                            out_f.write(embedding.replace(" ", "\t") + "\n")
-                            labels_f.write("\t".join([label, word, sentence]) + "\n")
+            if score_name not in score_names:
+                score_names.append(score_name)
 
+            # begin new plot
+            plt.title = score_name
+            plt.figure(figsize=(20, 10))
+            plt.subplot(121)
+            plt.xticks([0.1 * i for i in range(10)])
+            i = score_names.index(score_name)
+            c = cmap(i)
+
+        else:
+            stats_data, score_data = line.strip().split("\t")
+
+            stats_data_split = stats_data.split(" ")
+            score_data_split = score_data.split(" ")
+
+            for x, y in zip(stats_data_split, score_data_split):
+                if x == 'None' or y == 'None':
+                    stats_data_split.remove(x)
+                    score_data_split.remove(y)
+
+            X = [float(x) for x in stats_data_split]
+            Y = [float(x) for x in score_data_split]
+
+            plt.scatter(X, Y, c=[c for _ in X], s=20)
+            plt.title = algo
+            plt.legend(bbox_to_anchor=(0, 0), loc='center right',
+                       handles=[mpatch.Patch(color=cmap(i), label=score_names[i]) for i in range(len(score_names))])
 
 result_files =  ["out_latest/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20_data.tsv",
                  "out_latest/kmeans/kmeans-algorithm=full,n_init=130_data.tsv",

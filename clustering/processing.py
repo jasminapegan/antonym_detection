@@ -1,4 +1,5 @@
 import os
+from statistics import mean
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatch
@@ -112,7 +113,7 @@ def compare_clusters(words, cluster_files, clustering_names, validation_data, va
                 predicted = [x[word][sentence] if sentence in x[word] else "None" for x in cluster_data]
                 f.write("\t".join(predicted + [val_data[word]['labels'][i], sentence]) + "\n")
 
-def write_stats(score_files, data_files, out_file_stats, skip_header=True):
+def write_stats(score_files, data_files, out_file_stats, plot_data_file, skip_header=True):
     all_scores = {}
     for data_file in data_files:
         print("reading file: %s" % data_file)
@@ -146,11 +147,10 @@ def write_stats(score_files, data_files, out_file_stats, skip_header=True):
         f.write("algorithm\tsilhouette\tdb_score\tch_score\tdata_moments\tavg_moments\n")
 
         for word, value in all_processed.items():
-            f.write("*** %s ***" % word)
-            f.writelines("\n".join(["\t".join(line) for line in value]))
+            f.write("*** %s ***\n" % word)
+            f.writelines("\n".join(["\t".join([alg] + [str(x) for x in line]) for alg, line in value.items()]))
 
-    print("plotting correlations")
-    plot_correlation(score_files, all_processed)
+    save_correlation_data(score_files, all_processed, plot_data_file)
 
 def process_scores(scores_by_algo):
     algos = list(scores_by_algo.keys())
@@ -158,57 +158,85 @@ def process_scores(scores_by_algo):
     processed = {}
 
     for word in words:
-        processed[word] = []
+        processed[word] = {}
 
         for algo in algos:
-            algo_name = algo.split("-")[0]
+            algo_name = algo.split('/')[1].split("-")[0]
             algo_score = scores_by_algo[algo][word]
-            processed[word].append([algo_name, *algo_score])
+            processed[word][algo_name] = algo_score
 
     return processed
 
-
-def plot_correlation(score_files, stats):
+def save_correlation_data(score_files, stats, out_file):
     scores_dict = {}
     for score_file in score_files:
-        algo = score_file.split('-')[0]
+        algo = score_file.split('/')[1].split('-')[0]
         scores_dict[algo] = {}
 
         scores = file_helpers.load_file(score_file, skip_header=True)
         for line in scores:
             scores_dict[algo][line[0]] = line[2]
 
-    correlation = {}
-    words = list(stats.keys())
+    words = [w for w in stats.keys() if w in scores_dict[algo].keys()]
+    print([w for w in stats.keys() if w not in scores_dict[algo].keys()])
     moment_names = ["mean", "variance", "stddev", "skewness", "kurtosis", "6th", "7th", "8th"]
 
-    for algo in scores_dict.keys():
-        correlation[algo] = {}
-        algo_stats = stats[algo]
-        algo_scores = scores_dict[algo]
+    with open(out_file, "w", encoding="utf8") as f:
+        for algo in scores_dict.keys():
+            f.write("Algorithm: " + algo + "\n")
 
-        score_data = [algo_scores[w] for w in words]
-        score_names = list(algo_stats[words[0]].keys())[:-2] +\
-                      ["data_moments=" + m for m in moment_names] + ["avg_moments=" + m for m in moment_names]
+            algo_stats = [stats[w][algo] for w in words]
+            algo_scores = scores_dict[algo]
 
-        cmap = plt.cm.get_cmap('hsv', len(score_names)+1)
+            score_data = [float(algo_scores[w]) for w in words]
+            score_moment_names = ["silhouette", "db_score", "ch_score"] +\
+                          ["data_moments-" + m for m in moment_names] + ["avg_moments-" + m for m in moment_names]
+            score_names = ["silhouette", "db_score", "ch_score", "data_moments", "avg_moments"]
+
+            f.write("Score names: " + " ".join(score_moment_names) + "\n")
+
+            for i, score_name in enumerate(score_names):
+
+                if "moments" in score_name:
+                    moment_stats = [algo_stats[w][i] for w in range(len(words))]
+                    for moment in moment_names:
+                        f.write("Score: " + score_name + "-" + moment + "\n")
+                        stats_data = [moment_stats[w][moment] for w in range(len(words))]
+                        write_stats_score_data(f, stats_data, score_data)
+                else:
+                    f.write("Score: " + score_name + "\n")
+                    stats_data = [algo_stats[w][i] for w in range(len(words))]
+                    write_stats_score_data(f, stats_data, score_data)
+
+        f.write("Algorithm: all\n")
+        algos = list(scores_dict.keys())
+        algo_stats = [mean([stats[w][algo][i] for algo in algos]) for w in words]
+        algo_scores = [mean([scores_dict[algo][w] for algo in algos]) for w in words]
+
+        score_data = [float(algo_scores[w]) for w in words]
+        score_moment_names = ["silhouette", "db_score", "ch_score"] + \
+                             ["data_moments-" + m for m in moment_names] + ["avg_moments-" + m for m in moment_names]
+        score_names = ["silhouette", "db_score", "ch_score", "data_moments", "avg_moments"]
+
+        f.write("Score names: " + " ".join(score_moment_names) + "\n")
 
         for i, score_name in enumerate(score_names):
 
-            if '=' in score_name:
-                score_name_2 = score_name.split("=")[0]
+            if "moments" in score_name:
+                moment_stats = [algo_stats[w][i] for w in range(len(words))]
                 for moment in moment_names:
-                    stats_data = [algo_stats[w][score_name_2][moment] for w in words]
-                    plt.scatter(stats_data, score_data, c=cmap(i))
+                    f.write("Score: " + score_name + "-" + moment + "\n")
+                    stats_data = [moment_stats[w][moment] for w in range(len(words))]
+                    write_stats_score_data(f, stats_data, score_data)
             else:
-                stats_data = [algo_stats[w][score_name] for w in words]
-                plt.scatter(stats_data, score_data, c=cmap(i))
+                f.write("Score: " + score_name + "\n")
+                stats_data = [algo_stats[w][i] for w in range(len(words))]
+                write_stats_score_data(f, stats_data, score_data)
 
-            #correlation[algo][score_name] =
 
-        plt.title(algo)
-        plt.legend(handles=[mpatch.Patch(color=cmap(i), label=score_names[i]) for i in range(len(score_names))])
-        plt.show()
+def write_stats_score_data(f, stats, scores):
+    f.write(" ".join([str(x) for x in stats]) + "\t" + " ".join([str(x) for x in scores]) + "\n")
+
 
 def write_centroids(data_files, out_file):
     for data_file in data_files:
@@ -242,12 +270,35 @@ def get_centroid(arr):
     return [sum(m) / len(m) for m in zip(*arr)]
 
 
-result_files =  ["out_latest/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20_data.tsv"]#,
-                 #"out_latest/kmeans/kmeans-algorithm=full,n_init=130_data.tsv",
-                 #"out_latest/spectral/spectral-affinity=cosine,n_neighbors=3_data.tsv"]
 
-score_files =  ["out_latest/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20.tsv"]#,
-                 #"out_latest/kmeans/kmeans-algorithm=full,n_init=130.tsv",
-                 #"out_latest/spectral/spectral-affinity=cosine,n_neighbors=3.tsv"]
+def prepare_data(in_files, out_file, labels_file, words=None):
+    # prepare data for online visualization
+    for in_file in in_files:
+        directory = os.path.dirname(in_file)
 
-write_stats(score_files, result_files, "stats.tsv")
+        with open(in_file, "r", encoding="utf8") as f:
+            out_file_path = os.path.join(directory, out_file)
+
+            with open(out_file_path, "w", encoding="utf8") as out_f:
+                labels_file_path = os.path.join(directory, labels_file)
+
+                with open(labels_file_path, "w", encoding="utf8") as labels_f:
+                    labels_f.write("label\tword\tsentence\n")
+
+                    for line in f:
+                        label, word, sentence, embedding = line.strip().split("\t")
+
+                        if not words or word in words:
+                            out_f.write(embedding.replace(" ", "\t") + "\n")
+                            labels_f.write("\t".join([label, word, sentence]) + "\n")
+
+
+result_files =  ["out_latest/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20_data.tsv",
+                 "out_latest/kmeans/kmeans-algorithm=full,n_init=130_data.tsv",
+                 "out_latest/spectral/spectral-affinity=cosine,n_neighbors=3_data.tsv"]
+
+score_files =  ["out_latest/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20.tsv",
+                "out_latest/kmeans/kmeans-algorithm=full,n_init=130.tsv",
+                "out_latest/spectral/spectral-affinity=cosine,n_neighbors=3.tsv"]
+
+#write_stats(score_files, result_files, "stats.tsv", "plot_data.txt")

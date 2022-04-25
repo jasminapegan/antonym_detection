@@ -66,9 +66,22 @@ def all_mappings(list1, list2):
         #return mappings
 
 def unsupervised_cluster_score(embeddings, labels):
-    silhouette = metrics.silhouette_score(embeddings, labels, metric='cosine')
-    db_score = metrics.davies_bouldin_score(embeddings, labels)
-    ch_score = metrics.calinski_harabasz_score(embeddings, labels)
+    silhouette = 'nan'
+    db_score = 'nan'
+    ch_score = 'nan'
+
+    try:
+        silhouette = metrics.silhouette_score(embeddings, labels, metric='cosine')
+    except Exception as e:
+        print(e)
+    try:
+        db_score = metrics.davies_bouldin_score(embeddings, labels)
+    except Exception as e:
+        print(e)
+    try:
+        ch_score = metrics.calinski_harabasz_score(embeddings, labels)
+    except Exception as e:
+        print(e)
 
     data_moments = get_moments(embeddings)
 

@@ -1,3 +1,4 @@
+import hashlib
 import os
 import pickle
 from io import TextIOWrapper
@@ -249,7 +250,7 @@ def count_words(in_file: str, sep='\t') -> Dict[str, int]:
     return words
 
 def filter_file_by_words(file: str, words_file_or_list: Union[str, List[str]], out_file: str, word_idx: int=0,
-                         split_by: str='\t', complement: bool=False, skip_idx: int=None):
+                         split_by: str='\t', split_by_2:str="\t", complement: bool=False, skip_idx: int=None):
     """
     Filter 'file' by words in 'word_file'. Output lines starting with words in 'word_file' to 'out_file'.
 
@@ -264,7 +265,7 @@ def filter_file_by_words(file: str, words_file_or_list: Union[str, List[str]], o
     """
 
     if isinstance(words_file_or_list, str):
-        words = get_unique_words(words_file_or_list)
+        words = get_unique_words(words_file_or_list, sep=split_by_2)
     else:
         words = words_file_or_list
 
@@ -293,20 +294,19 @@ def concatenate_files(file_list: List[str], out_file: str):
             with open(f, "r", encoding="utf8") as in_file:
                 out.writelines(in_file.readlines())
 
-def remove_duplicate_lines(in_file: str, out_file: str, range: int=None):
-    # copy 'in_file' to 'out_file' skipping lines that repeat in last 'range' lines
-    visited_lines = []
+def remove_duplicate_lines(in_file: str, out_file: str):
+    visited_hashes = []
 
     with open(in_file, 'r', encoding="utf8") as input:
         with open(out_file, 'wt', encoding="utf8") as output:
 
             for line in input.readlines():
-                if line not in visited_lines:
+                line_hash = hashlib.md5(line.strip().encode("utf8")).hexdigest()
+
+                if line_hash not in visited_hashes:
 
                     output.write(line)
-                    visited_lines.append(line)
-                    if range:
-                        visited_lines = visited_lines[-range:]
+                    visited_hashes.append(line_hash)
 
 def sort_lines(in_file: str, out_file: str, sep='\t'):
     # sort lines by element at 0
@@ -342,4 +342,4 @@ def get_all_words(words_file_list, words_file_source, out_file, tmp_dir='tmp'):
 
     tmp_sorted = os.path.join(tmp_dir, "all_sorted_words.txt")
     sort_lines(tmp_all, tmp_sorted, sep='|')
-    remove_duplicate_lines(tmp_sorted, out_file, range=1)
+    remove_duplicate_lines(tmp_sorted, out_file)
