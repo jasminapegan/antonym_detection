@@ -268,7 +268,7 @@ def parse_paragraph(paragraph: ET.Element, re_whitespace: Pattern) -> (List[str]
     lemma_sentences = []
 
     for s in paragraph:
-        sentence = ""
+        """sentence = ""
         lemmas = ""
 
         for w in s:
@@ -286,13 +286,39 @@ def parse_paragraph(paragraph: ET.Element, re_whitespace: Pattern) -> (List[str]
                 lemmas += " " + w.text + " "
 
         sentence = re_whitespace.sub(" ", sentence.strip())
-        lemmas = re_whitespace.sub(" ", lemmas.strip())
+        lemmas = re_whitespace.sub(" ", lemmas.strip())"""
+
+        sentence, lemmas = parse_sentence(s, re_whitespace)
 
         if len(sentence) > 0:
             sentences.append(sentence)
             lemma_sentences.append(lemmas)
 
     return sentences, lemma_sentences
+
+def parse_sentence(s: ET.Element, re_whitespace: Pattern):
+    sentence = ""
+    lemmas = ""
+
+    for w in s:
+
+        if w.tag[-1] == 'w':
+            sentence += w.text
+            lemmas += w.attrib["lemma"]
+
+        elif w.tag[-1] == 'S':
+            sentence += " "
+            lemmas += " "
+
+        elif w.tag[-1] == 'c':
+            sentence += " " + w.text + " "
+            lemmas += " " + w.text + " "
+
+        sentence = re_whitespace.sub(" ", sentence.strip())
+        lemmas = re_whitespace.sub(" ", lemmas.strip())
+
+    return sentence, lemmas
+
 
 def missing_words(words_file: str, data_file: str, sep: str="|") -> List[str]:
     """
@@ -334,7 +360,7 @@ def gather_sentence_data(files: Iterable[str], tmp_dir: str="tmp"):
 
     file_helpers.concatenate_files(list(files), all_sentences)
     file_helpers.sort_lines(all_sentences, all_sorted)
-    file_helpers.remove_duplicate_lines(all_sorted, all_deduplicated, range=1)
+    file_helpers.remove_duplicate_lines(all_sorted, all_deduplicated)
 
     return all_deduplicated
 
@@ -375,3 +401,17 @@ def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out
 
 def get_now_string():
     return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
+def get_sentence_by_id(file, sentence_id):
+    re_whitespace = re.compile(r"\s+")
+
+    tree = ET.parse(file)
+    root = tree.getroot()
+
+    for s in root.findall(".//{http://www.tei-c.org/ns/1.0}s"):
+
+        if '{http://www.w3.org/XML/1998/namespace}id' in s.attrib:
+            if s.attrib['{http://www.w3.org/XML/1998/namespace}id'] == sentence_id:
+                sentence, lemmas = parse_sentence(s, re_whitespace)
+                return sentence, lemmas
+

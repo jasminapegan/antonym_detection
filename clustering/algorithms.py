@@ -1,4 +1,5 @@
 import os
+import Cluster_Ensembles as CE
 import numpy as np
 from itertools import product
 from typing import Dict, List
@@ -96,9 +97,9 @@ class ClusteringAlgorithm:
 
 class KMeansAlgorithm(ClusteringAlgorithm):
 
-    def __init__(self, parameters: Dict):
+    def __init__(self, parameters: Dict, out_dir: str):
 
-        ClusteringAlgorithm.__init__(self, 'kmeans', parameters)
+        ClusteringAlgorithm.__init__(self, 'kmeans', parameters, out_dir=out_dir)
 
         if 'random_state' not in parameters.keys():
             parameters['random_state'] = 42
@@ -111,10 +112,10 @@ class KMeansAlgorithm(ClusteringAlgorithm):
 
 
     @staticmethod
-    def get_clusterer_list(algorithms: List[str]=['elkan'], n_inits: List[int]=[20]):
+    def get_clusterer_list(out_dir: str, algorithms: List[str]=['elkan'], n_inits: List[int]=[20]):
         """ Get a list of clusterers with all possible combinations of given argument ranges. """
         return [
-            KMeansAlgorithm({'n_init': n, 'algorithm': a}) for n, a in product(n_inits, algorithms)
+            KMeansAlgorithm({'n_init': n, 'algorithm': a}, out_dir=out_dir) for n, a in product(n_inits, algorithms)
         ]
 
     def predict(self, embeddings: List[List[float]], n_clusters: int):
@@ -126,11 +127,11 @@ class KMeansAlgorithm(ClusteringAlgorithm):
 
 class SpectralAlgorithm(ClusteringAlgorithm):
 
-    def __init__(self, parameters: Dict):
+    def __init__(self, parameters: Dict, out_dir: str):
         affinity = parameters['affinity']
         assert affinity in ['cosine', 'nearest_neighbors', 'precomputed', 'rbf']
 
-        ClusteringAlgorithm.__init__(self, 'spectral', parameters)
+        ClusteringAlgorithm.__init__(self, 'spectral', parameters, out_dir=out_dir)
 
         if 'random_state' not in parameters.keys():
             parameters['random_state'] = 42
@@ -151,7 +152,7 @@ class SpectralAlgorithm(ClusteringAlgorithm):
 
 
     @staticmethod
-    def get_clusterer_list(affinity: List[str]=['cosine'], n_neighbors: List[int]=[5], distance: List[str]=['cosine'],
+    def get_clusterer_list(out_dir:str, affinity: List[str]=['cosine'], n_neighbors: List[int]=[5], distance: List[str]=['cosine'],
                            ks: List[int]=[3], gamma: List[float]=[1.0]):
         """ Get a list of clusterers with all possible combinations of given argument ranges. """
 
@@ -164,7 +165,7 @@ class SpectralAlgorithm(ClusteringAlgorithm):
                     'distance': 'relative_cosine',
                     'k': k,
                     'n_neighbors': n
-                }) for k, n in product(ks, n_neighbors)]
+                }, out_dir=out_dir) for k, n in product(ks, n_neighbors)]
             affinity.remove('precomputed')
 
         if 'rbf' in affinity:
@@ -173,7 +174,7 @@ class SpectralAlgorithm(ClusteringAlgorithm):
                     'affinity': 'rbf',
                     'gamma': g,
                     'n_neighbors': n
-                }) for g, n in product(gamma, n_neighbors)
+                }, out_dir=out_dir) for g, n in product(gamma, n_neighbors)
             ]
             affinity.remove('rbf')
 
@@ -181,7 +182,7 @@ class SpectralAlgorithm(ClusteringAlgorithm):
             SpectralAlgorithm({
                 'affinity': a,
                 'n_neighbors': n
-            }) for a, n in product(affinity, n_neighbors)
+            }, out_dir=out_dir) for a, n in product(affinity, n_neighbors)
         ]
 
         return algorithms
@@ -214,11 +215,11 @@ class SpectralAlgorithm(ClusteringAlgorithm):
 
 class AgglomerativeAlgorithm(ClusteringAlgorithm):
 
-    def __init__(self, parameters: Dict):
+    def __init__(self, parameters: Dict, out_dir: str):
         affinity = parameters['affinity']
         assert affinity in ['cosine', 'euclidean', 'l1', 'precomputed']
 
-        ClusteringAlgorithm.__init__(self, 'agglomerative', parameters)
+        ClusteringAlgorithm.__init__(self, 'agglomerative', parameters, out_dir=out_dir)
 
         #if 'random_state' not in parameters.keys():
         #    parameters['random_state'] = 42
@@ -241,7 +242,8 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
         self.clusterer.n_clusters = n
 
     @staticmethod
-    def get_clusterer_list(affinity: List[str]=['cosine'], linkage: List[str]=['complete'], distance: List[str]=[], ks: List[int]=[3]):
+    def get_clusterer_list(out_dir: str, affinity: List[str]=['cosine'], linkage: List[str]=['complete'],
+                           distance: List[str]=[], ks: List[int]=[3]):
         """ Get a list of clusterers with all possible combinations of given argument ranges. """
 
         algorithms = []
@@ -252,21 +254,21 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
                     'affinity': 'precomputed',
                     'distance': 'relative_cosine',
                     'k': k,
-                }) for k in ks]
+                }, out_dir=out_dir) for k in ks]
 
         if 'ward' in linkage and 'euclidean' in affinity:
             algorithms += [
                 AgglomerativeAlgorithm({
                     'affinity': 'euclidean',
                     'linkage': 'ward'
-                })
+                }, out_dir=out_dir)
             ]
 
         algorithms += [
             AgglomerativeAlgorithm({
                 'affinity': a,
                 'linkage': l
-            }) for a, l in product([a for a in affinity if a != 'precomputed'], [l for l in linkage if l != 'ward'])
+            }, out_dir=out_dir) for a, l in product([a for a in affinity if a != 'precomputed'], [l for l in linkage if l != 'ward'])
         ]
 
         return algorithms
@@ -293,9 +295,9 @@ class AgglomerativeAlgorithm(ClusteringAlgorithm):
 
 class DbscanAlgorithm(ClusteringAlgorithm):
 
-    def __init__(self, parameters: Dict):
+    def __init__(self, parameters: Dict, out_dir: str):
 
-        ClusteringAlgorithm.__init__(self, 'dbscan', parameters)
+        ClusteringAlgorithm.__init__(self, 'dbscan', parameters, out_dir=out_dir)
 
         if 'eps' not in parameters.keys():
             parameters['eps'] = 0.5
@@ -309,18 +311,48 @@ class DbscanAlgorithm(ClusteringAlgorithm):
         self.clusterer = DBSCAN(**self.parameters)
 
     @staticmethod
-    def get_clusterer_list(eps: List[float]=[0.5], min_samples: List[int]=[5], leaf_size:List[int]=[3]):
+    def get_clusterer_list(out_dir: str, eps: List[float]=[0.5], min_samples: List[int]=[5], leaf_size:List[int]=[3]):
         """ Get a list of clusterers with all possible combinations of given argument ranges. """
 
         return [DbscanAlgorithm({
             'eps': e,
             'min_samples': s,
             'leaf_size': l
-        }) for e, s, l in product(eps, min_samples, leaf_size)]
+        }, out_dir=out_dir) for e, s, l in product(eps, min_samples, leaf_size)]
 
     def predict(self, embeddings: List[List[int]], n_clusters: int):
         self.clusterer.set_params(**self.parameters)
         return self.clusterer.fit_predict(embeddings)
+
+class EnsembleClustering(ClusteringAlgorithm):
+
+    def __init__(self, out_dir: str):
+        ClusteringAlgorithm.__init__(self, 'ensemble', parameters={}, out_dir=out_dir)
+
+    def set_clusterer_list(self, clusterers):
+        self.clusterers = clusterers
+
+    def get_algorithm_results(self, algorithm_results):
+        self.algo_data = []
+        for r in algorithm_results:
+            self.load_algo_data(r)
+
+    def load_algo_data(self, filename):
+        with open(filename, "r", encoding="utf8") as f:
+            data = {}
+            for line in f:
+                label, word, sentence, _ = line.split("\t")
+
+                if word in data.keys():
+                    data[word][sentence] = label
+                else:
+                    data[word] = {sentence: label}
+
+        self.algo_data.append(data)
+
+    def predict(self, embeddings: List[List[int]], n_clusters: int):
+        results = [c.predict(embeddings, n_clusters) for c in self.clusterers]
+        return CE.cluster_ensembles(np.array(results))
 
 
 def relative_cosine_similarity(data, k=1):

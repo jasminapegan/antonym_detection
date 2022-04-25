@@ -18,20 +18,22 @@ word_data = "../data/dataset/all_words.txt" #"../../data/all_words.txt" #
 #find_best.find_best_spectral(validation_embeddings, word_data, validation_data)
 #find_best.find_best_agglomerative(validation_embeddings, word_data, validation_data)
 #find_best.find_best_dbscan(validation_embeddings, word_data, validation_data, output_vectors=True)
-find_best.find_best_all(validation_embeddings, word_data, validation_data, output_vectors=True)
+#find_best.find_best_all(validation_embeddings, word_data, validation_data, output_vectors=True)
+
+find_best.ensemble_clustering(validation_embeddings, word_data, validation_data, output_vectors=True, out_dir='best')
 
 result_files =  ["out/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20_data.tsv",
                  "out/kmeans/kmeans-algorithm=full,n_init=130_data.tsv",
                  "out/spectral/spectral-affinity=cosine,n_neighbors=3_data.tsv"]
 
 score_files =  ["out/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20.tsv",
-                 "out/kmeans/kmeans-algorithm=full,n_init=130.tsv",
-                 "out/spectral/spectral-affinity=cosine,n_neighbors=3.tsv"]
+                "out/kmeans/kmeans-algorithm=full,n_init=130.tsv",
+                "out/spectral/spectral-affinity=cosine,n_neighbors=3.tsv"]
 
-processing.find_best_clusters(score_files)
+#processing.find_best_clusters(score_files)
 
-plotting.plot_sentence_neighborhood(result_files, "mehkužec", None, "mehkuzec.png")
-plotting.plot_sentence_neighborhood(result_files, "orbita", None, "orbita.png")
+#plotting.plot_sentence_neighborhood(result_files, "mehkužec", None, "mehkuzec.png")
+#plotting.plot_sentence_neighborhood(result_files, "orbita", None, "orbita.png")
 
 #plotting.prepare_data(result_files, "mehkužec_data.tsv", "mehkužec_labels.tsv", words=["mehkužec"])
 #plotting.prepare_data(result_files, "orbita_data.tsv", "orbita_labels.tsv", words=["orbita"])
@@ -49,4 +51,5 @@ plotting.plot_sentence_neighborhood(result_files, "orbita", None, "orbita.png")
 #evaluation.compare_clusters(random_words, result_files, ["agglomerative", "kmeans", "spectral"],
 #                            validation_data, validation_words, "out/compare_random_clusters.tsv", "random_clusters.tsv")
 
-processing.write_stats(score_files, "scores.tsv")
+#processing.write_stats(score_files, result_files, "stats.tsv", "scores_plot_data_2.tsv")
+#plotting.plot_data("scores_plot_data_2.tsv")

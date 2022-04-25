@@ -24,7 +24,7 @@ def find_best_kmeans(data_file: str, words_file: str, validation_file: str, out_
 
     algo = ['full', 'elkan']
     n_init = [20]# * i for i in range(1, 5)]
-    kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=algo, n_inits=n_init)
+    kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=algo, n_inits=n_init, out_dir=out_dir)
     find_best_clustering(data_file, words_file, validation_file, out_dir, kmeans, res_file="kmeans_all.txt",
                          output_vectors=output_vectors)
 
@@ -48,7 +48,7 @@ def find_best_spectral(data_file: str, words_file: str, validation_file: str, ou
     min_samples = [3]
 
     spectral = algorithms.SpectralAlgorithm.get_clusterer_list(
-        affinity=affinity, n_neighbors=min_samples, distance=distance, ks=ks, gamma=gamma)
+        affinity=affinity, n_neighbors=min_samples, distance=distance, ks=ks, gamma=gamma, out_dir=out_dir)
 
     find_best_clustering(data_file, words_file, validation_file, out_dir, spectral, res_file="spectral_all.txt",
                          output_vectors=output_vectors)
@@ -73,7 +73,7 @@ def find_best_agglomerative(data_file: str, words_file: str, validation_file: st
     ks = [5*i for i in range(1, 21)]
 
     agglomerative = algorithms.AgglomerativeAlgorithm.get_clusterer_list(affinity=affinity, linkage=linkage, ks=ks,
-                                                                         distance=distance)
+                                                                         distance=distance, out_dir=out_dir)
 
     find_best_clustering(data_file, words_file, validation_file, out_dir, agglomerative,
                          res_file="agglomerative_all.txt", output_vectors=output_vectors)
@@ -94,23 +94,43 @@ def find_best_dbscan(data_file: str, words_file: str, validation_file: str, out_
     leaf_size = [i for i in range(1, 10)]
     min_samples = [1, 2, 3]
 
-    dbscan = algorithms.DbscanAlgorithm.get_clusterer_list(eps=eps, min_samples=min_samples, leaf_size=leaf_size)
+    dbscan = algorithms.DbscanAlgorithm.get_clusterer_list(eps=eps, min_samples=min_samples,
+                                                           leaf_size=leaf_size, out_dir=out_dir)
 
     find_best_clustering(data_file, words_file, validation_file, out_dir, dbscan,
                          res_file="dbscan_all.txt", output_vectors=output_vectors)
 
-
 def find_best_all(data_file: str, words_file: str, validation_file: str, out_dir: str = 'best', output_vectors=True):
 
-    kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=['full'], n_inits=[130])
+    kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=['full'], n_inits=[130], out_dir=out_dir)
 
     spectral = algorithms.SpectralAlgorithm.get_clusterer_list(affinity=['cosine'], n_neighbors=[3],
-                                                               distance=[], ks=[], gamma=[])
+                                                               distance=[], ks=[], gamma=[], out_dir=out_dir)
 
     agglomerative = algorithms.AgglomerativeAlgorithm.get_clusterer_list(affinity=['precomputed'], linkage=[], ks=[20],
-                                                                         distance=['relative_cosine'])
+                                                                         distance=['relative_cosine'], out_dir=out_dir)
 
     find_best_clustering(data_file, words_file, validation_file, out_dir, kmeans + spectral + agglomerative,
+                         res_file="best_results.txt", output_vectors=output_vectors)
+
+def ensemble_clustering(data_file: str, words_file: str, validation_file: str, out_dir: str = 'best', output_vectors=True):
+
+    #kmeans = "out/kmeans/kmeans-algorithm=full,n_init=130_data.tsv"
+    #spectral = "out/spectral/spectral-affinity=cosine,n_neighbors=3_data.tsv"
+    #agglomerative = "out/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20_data.tsv"
+
+    kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=['full'], n_inits=[130], out_dir=out_dir)
+
+    spectral = algorithms.SpectralAlgorithm.get_clusterer_list(affinity=['cosine'], n_neighbors=[3],
+                                                               distance=[], ks=[], gamma=[], out_dir=out_dir)
+
+    agglomerative = algorithms.AgglomerativeAlgorithm.get_clusterer_list(affinity=['precomputed'], linkage=[], ks=[20],
+                                                                         distance=['relative_cosine'], out_dir=out_dir)
+    #ensemble = algorithms.EnsembleClustering.get_algorithm_results([kmeans, spectral, agglomerative])
+    ensemble = algorithms.EnsembleClustering(out_dir=out_dir)
+    ensemble.set_clusterer_list(kmeans + spectral + agglomerative)
+
+    find_best_clustering(data_file, words_file, validation_file, out_dir, [ensemble],
                          res_file="best_results.txt", output_vectors=output_vectors)
 
 def find_best_clustering(data_file: str,

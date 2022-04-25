@@ -1,0 +1,5 @@
+Words	File1: 1203, File2: 1203, total: 2406
+Senses	File1: 1833, File2: 1833, total: 3666
+
+Validation file - words: 11693 senses: 14312 examples: 18044
+Test file - words: 1203 senses: 1833 examples: 5243
