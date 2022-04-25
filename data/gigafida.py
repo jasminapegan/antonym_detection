@@ -408,7 +408,7 @@ def get_sentence_by_id(file, sentence_id):
     tree = ET.parse(file)
     root = tree.getroot()
 
-    for s in root.findall(".//{http://www.tei-c.org/ns/1.0}s"):
+    for s in root.find(".//{http://www.tei-c.org/ns/1.0}s[@{http://www.w3.org/XML/1998/namespace}id=%s]" % sentence_id):
 
         if '{http://www.w3.org/XML/1998/namespace}id' in s.attrib:
             if s.attrib['{http://www.w3.org/XML/1998/namespace}id'] == sentence_id:
