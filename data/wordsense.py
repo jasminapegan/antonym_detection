@@ -128,7 +128,9 @@ class WordSense:
 
     def get_word_data(self, tree: ET.ElementTree, lemma_multiword=False):
         root = tree.getroot()
-        for entry in root:
+        for i, entry in enumerate(root):
+            if i == 190:
+                print("processing entry %d" % i)
 
             sense = WordSenseDataList(entry, lemma_multiword=lemma_multiword)
             word = sense.lemma
@@ -299,8 +301,6 @@ class WordSenseData():
             collocation = get_text_from_element(multiword_example)
 
             if 'structureName' not in multiword_example.attrib:
-                print(collocation)
-                print(multiword_example.attrib['type'])
                 return
 
             structure_name = multiword_example.attrib['structureName'].strip()
@@ -310,9 +310,6 @@ class WordSenseData():
                                                 structure_name, "\t", "structure_ID", return_first=True)
             else:
                 structure_id = multiword_example.attrib['structure_id'].strip()
-
-            if structure_id != "12":
-                return
 
             collocations_file = os.path.join(collocations_dir, "output.%s" % structure_id)
             sentence_mapper_file = os.path.join(sentence_mapper_dir, "%s_mapper.txt" % structure_id)
@@ -324,13 +321,11 @@ class WordSenseData():
                 collocation_id = find_in_csv_file(collocations_file, ['Joint_representative_form_fixed'],
                                                   collocation, ",", 'Colocation_ID', return_first=True)
 
-            sentence_ids = find_in_csv_file(sentence_mapper_file, ['Collocation_id'],
-                                            collocation_id, "\t", 'Sentence_id')
+            sentence_ids = find_mapper(sentence_mapper_file, collocation_id)
 
-            if len(sentence_ids) > 10:
-                print(sentence_ids)
+            if len(sentence_ids) > 15:
                 shuffle(sentence_ids)
-                sentence_ids = sentence_ids[:10]
+                sentence_ids = sentence_ids[:15]
 
             for sentence_id in sentence_ids:
                 sentence, lemmas = find_in_gigafida(gigafida_dir, sentence_id)
@@ -341,15 +336,8 @@ class WordSenseData():
 
                 self.examples.append(Example(word_form, idx, sentence))
 
-def find_in_csv(csv_dir, cols, value, sep, return_col, return_first=False):
-    data = []
-
-    for file in os.listdir(csv_dir):
-        data += find_in_csv_file(os.path.join(csv_dir, file), cols, value, sep, return_col, return_first=return_first)
-
-    return data
-
 def find_in_csv_file(csv_file, cols, value, sep, return_col, return_first=False):
+    print(1)
     data = []
     with open(csv_file, encoding="utf8") as f:
 
@@ -365,7 +353,30 @@ def find_in_csv_file(csv_file, cols, value, sep, return_col, return_first=False)
 
                 data.append(line[return_col])
 
+    print(2)
     return data
+
+def find_mapper(mapper_file, collocation_id):
+    print(0)
+    data = []
+    found = False
+
+    with open(mapper_file, encoding="utf8") as f:
+
+        for line in f:
+            cid, sentence_id = line.split("\t")
+
+            if cid == collocation_id:
+                data.append(sentence_id.strip())
+                found = True
+
+            elif found:
+                return data
+
+    print(00)
+    return data
+
+
 
 def find_in_gigafida(gigafida_dir, sentence_id):
     folder = "GF%s" % sentence_id[2:4]
