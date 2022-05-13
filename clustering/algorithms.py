@@ -1,5 +1,5 @@
 import os
-import Cluster_Ensembles as CE
+#import Cluster_Ensembles as CE
 import numpy as np
 from itertools import product
 from typing import Dict, List
@@ -324,6 +324,7 @@ class DbscanAlgorithm(ClusteringAlgorithm):
         self.clusterer.set_params(**self.parameters)
         return self.clusterer.fit_predict(embeddings)
 
+"""
 class EnsembleClustering(ClusteringAlgorithm):
 
     def __init__(self, out_dir: str):
@@ -352,7 +353,7 @@ class EnsembleClustering(ClusteringAlgorithm):
 
     def predict(self, embeddings: List[List[int]], n_clusters: int):
         results = [c.predict(embeddings, n_clusters) for c in self.clusterers]
-        return CE.cluster_ensembles(np.array(results))
+        return CE.cluster_ensembles(np.array(results))"""
 
 
 def relative_cosine_similarity(data, k=1):

@@ -104,7 +104,7 @@ class WordEmbeddings:
         :param pseudoword: use pseudoword embeddings? (default False)
         :return: None
         """
-        words, labels, word_indices, sentences = self.parse_data(data_batch, labeled)
+        words, labels, word_indices, sentences = self.parse_data(data_batch, labeled, label_idx=2)
         sentences, dataset, indices = self.prepare_data(words, word_indices, sentences)
 
         if not sentences:
@@ -117,7 +117,11 @@ class WordEmbeddings:
             raise NotImplementedError("Pseudoword embeddings not implemented")
             # result = get_psewdoword_embedding_from_results(outputs, word, sentences, indices)
         else:
-            result = self.get_embeddings_from_results(outputs, words, sentences, indices)
+            if labeled:
+                result = self.get_embeddings_from_results(outputs, words, sentences, indices, labels=labels)
+            else:
+                result = self.get_embeddings_from_results(outputs, words, sentences, indices)
+
 
         if result:
             self.write_results_to_file(result, outf)
@@ -136,7 +140,8 @@ class WordEmbeddings:
             return self.get_embeddings_from_results(outputs, words, sentences, indices)
 
     @staticmethod
-    def get_embeddings_from_results(outputs, words: List[str], sentences: List[str], indices: List[Indices]) -> List:
+    def get_embeddings_from_results(outputs, words: List[str], sentences: List[str], indices: List[Indices],
+                                    labels=[]) -> List:
         """
         Manipulates results from model to get word embeddings. The embeddings are calculated as mean of concatenated
         last 4 layers representing word tokens.
@@ -170,7 +175,10 @@ class WordEmbeddings:
 
             cat_vec = torch.cat((lay4, lay3, lay2, lay1), dim=0)
 
-            result.append([words[i], sentences[i], cat_vec])
+            if labels:
+                result.append([words[i], labels[i], sentences[i], cat_vec])
+            else:
+                result.append([words[i], sentences[i], cat_vec])
 
         return result
 
@@ -241,61 +249,6 @@ class WordEmbeddings:
 
         return sentences, dataset, indices
 
-    def prepare_data_old(self, words: List[str], word_indices: List[int], sentences: List[str]) \
-            -> (List[str], BatchEncoding, List[Indices]):
-        """
-        Accepts data on usages of a word in sentences and returns sentences where word is switched to its base form,
-        a dataset of tokens representing sentences and indices in the sentence between which the word usage is located.
-
-        :param words: list of words senses of which we are observing
-        :param word_indices: index of the first word token in corresponding sentence
-        :param sentences: sentences where the observed word is used
-        :return: tuple (sentences, dataset, indices)
-        """
-
-        original_sentences = sentences[:]
-        word_tokens = []
-        n = len(word_indices)
-
-        for i in range(n):
-            sentence = sentences[i].split(' ')
-            word_split = words[i].split(' ')
-            n_words = len(sentence)
-            idx = word_indices[i]
-
-
-            sentence[idx: idx + len(word_split)] = word_split  # some data has incorrect indexing: sentence[idx - len(word): idx] = word
-
-            sentences[i] = " ".join(sentence)
-            word_tokens.append(self.tokenizer.tokenize(words[i]))
-
-            if n_words > 100:
-                j = sentence.index(word_split[0])
-                sentences[i] = ' '.join(sentence[max(0, j - 50): min(n_words, j + 50)])
-
-        dataset = self.tokenizer(sentences, padding='longest', return_tensors="pt", is_split_into_words=False)
-        indices = [self.get_token_range(word_tokens[k], dataset.tokens(k)) for k in range(n)]
-        sentences = original_sentences
-
-        missing_indices = [i for i in range(n) if indices[i] == (-1, -1)]
-        if missing_indices:
-            print("Missing indices: ", missing_indices)
-
-            for idx in missing_indices:
-                try:
-                    del sentences[idx]
-                    del dataset['encodings'][idx]
-                    del indices[idx]
-                except Exception as e:
-                    print("idx:", idx, "exception:", e)
-
-        #assert len(missing_indices) == 0, "Missing indices: " + ",".join(missing_indices)
-
-        for k in range(n - len(missing_indices)):
-            dataset['input_ids'][k] = self.trim_index(indices[k][1], dataset['input_ids'][k])
-
-        return sentences, dataset, indices
-
     @staticmethod
     def trim_index(idx_to: int, tokens: List, limit: int=512) -> List:
         """
@@ -338,7 +291,7 @@ class WordEmbeddings:
         return -1, -1
 
     @staticmethod
-    def parse_data(data: List[List], labeled: bool=False) -> (List[str], List, List[int], List[str]):
+    def parse_data(data: List[List], labeled: bool=False, label_idx: int=1) -> (List[str], List, List[int], List[str]):
         """
         Parses word data list and gets its columns: word, labels, indices and sentences.
 
@@ -353,7 +306,7 @@ class WordEmbeddings:
         labels = []
 
         if labeled:
-            labels = [int(d[1]) for d in data]
+            labels = [d[label_idx] for d in data]
 
         return words, labels, word_indices, sentences
 

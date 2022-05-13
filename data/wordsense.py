@@ -6,7 +6,7 @@ import re
 from random import shuffle
 from typing import Dict, Iterable, List
 import file_helpers
-from data.gigafida import get_sentence_by_id
+from data.gigafida import get_sentence_by_id, get_now_string
 
 
 def count_senses(word_count: Dict[str, List[str]], keys: Iterable[str]):
@@ -17,16 +17,24 @@ def count_senses(word_count: Dict[str, List[str]], keys: Iterable[str]):
 
 class WordSense:
 
-    def __init__(self, data_dirs, tmp_dir):
+    def __init__(self, data_dirs, tmp_dir, collocations_dir=None, clean_data=False):
         self.data_dir = data_dirs
         self.tmp_dir = tmp_dir
         self.clean_dir = os.path.join(self.tmp_dir, "clean")
         self.data_dict = {}
 
+        self.collocations_dir = collocations_dir
+        self.collocations_dir_clean = os.path.join(self.tmp_dir, "collocations")
+
         if not os.path.exists(self.clean_dir):
             os.mkdir(self.clean_dir)
 
-        self.cleanup_files()
+        if not os.path.exists(self.collocations_dir_clean):
+            os.mkdir(self.collocations_dir_clean)
+
+        if clean_data:
+            self.cleanup_files()
+            print("Cleanup done!")
 
     def cleanup_files(self):
         """
@@ -37,8 +45,9 @@ class WordSense:
         :return: None
         """
 
-        for d in self.data_dir:
+        """for d in self.data_dir:
             for file in os.listdir(d):
+                print("Cleaning file %s..." % file)
 
                 tree = ET.parse(os.path.join(d, file))
                 self.cleanup_tree(tree)
@@ -46,6 +55,41 @@ class WordSense:
                 filename = os.path.basename(file)
                 dirname = os.path.basename(d)
                 tree.write(os.path.join(self.clean_dir, "%s_%s" % (dirname, filename)))
+        """
+
+        cols_collocations = ['C1_Lemma', 'C2_Lemma', 'C3_Lemma', 'Joint_representative_form_fixed', 'Colocation_ID']
+        tmp_clean_dir = os.path.join(self.tmp_dir, "clean_unsorted")
+
+        if not os.path.exists(tmp_clean_dir):
+            os.mkdir(tmp_clean_dir)
+
+        """for file in os.listdir(self.collocations_dir):
+
+            print("Cleaning file %s..." % file)
+
+            outf = os.path.join(tmp_clean_dir, file)
+            filepath = os.path.join(self.collocations_dir, file)
+            self.cleanup_csv(filepath, outf, cols_collocations, delimiter=",")"""
+
+        for file in os.listdir(tmp_clean_dir):
+            filepath = os.path.join(tmp_clean_dir, file)
+            #outf = os.path.join(self.collocations_dir_clean, file)
+            #file_helpers.write_sorted(filepath, outf, 3)
+            file_helpers.file_to_folders(filepath, self.collocations_dir_clean)
+
+    @staticmethod
+    def cleanup_csv(in_csv, out_csv, cols, delimiter=","):
+        with open(in_csv, "r", encoding="utf8") as f:
+            with open(out_csv, "w", encoding="utf8") as o:
+
+                reader = csv.DictReader(f, delimiter=delimiter)
+                next(reader)  # skip header
+
+                o.write(",".join(cols) + "\n")
+
+                for i, line in enumerate(reader):
+                    new_line = delimiter.join([line[x] for x in cols]) + "\n"
+                    o.write(new_line)
 
     @staticmethod
     def cleanup_tree(tree: ET.ElementTree):
@@ -100,8 +144,10 @@ class WordSense:
         tmp_examples_file = os.path.join(self.tmp_dir, "tmp_examples.txt")
         tmp_data_file = os.path.join(self.tmp_dir, "tmp_data.txt")
 
-        for file in os.listdir(self.clean_dir):
-            print(file)
+        files = os.listdir(self.clean_dir)
+
+        for i, file in enumerate(files):
+            print("[%s] %.2f%%: %s" % (get_now_string(), (100*i)/len(files), file))
 
             lemma_collocations = file in ["WSD-baza-21-04-2022_2,3-pomensko-členjeno.xml",
                                           "WSD-baza-21-04-2022_2,4-pregledani-pomeni.xml",
@@ -110,6 +156,8 @@ class WordSense:
             with open(os.path.join(self.clean_dir, file), "r", encoding="utf8") as f:
                 tree = ET.parse(f)
                 self.get_word_data(tree, lemma_multiword=lemma_collocations)
+
+        print("Finished reading wordsense files")
 
         with open(tmp_data_file, "w", encoding="utf8") as f:
             with open(tmp_examples_file, "w", encoding="utf8") as g:
@@ -129,8 +177,7 @@ class WordSense:
     def get_word_data(self, tree: ET.ElementTree, lemma_multiword=False):
         root = tree.getroot()
         for i, entry in enumerate(root):
-            if i == 190:
-                print("processing entry %d" % i)
+            #print("[%s] get_word_data: %d/%d" % (get_now_string(), i, len(root)))
 
             sense = WordSenseDataList(entry, lemma_multiword=lemma_multiword)
             word = sense.lemma
@@ -140,31 +187,31 @@ class WordSense:
             else:
                 self.data_dict[word].merge_duplicate_data(sense)
 
-    def compare_words_data(self, file_words: str, info_file: str):
-        words_data = [[line[0], line[2]] for line in file_helpers.load_file(file_words, sep='|')]
-        words_count = word_list_to_dict(words_data)
+def compare_words_data(file_words: str, info_file: str, examples_file: str):
+    words_data = [[line[0], line[2]] for line in file_helpers.load_file(file_words, sep='|')]
+    words_count = word_list_to_dict(words_data)
 
-        examples_data = []
+    examples_data = []
 
-        with open(self.examples_file, "r", encoding="utf8") as f:
-            for line in f.readlines():
-                word, word_form, sense_id, idx, sentence = line.split("\t")
-                examples_data += [(word, int(sense_id))]
+    with open(examples_file, "r", encoding="utf8") as f:
+        for line in f.readlines():
+            word, word_form, sense_id, idx, sentence = line.split("\t")
+            examples_data += [(word, int(sense_id))]
 
-        examples_data = list(set(examples_data))
-        examples_count = word_list_to_dict(examples_data)
+    examples_data = list(set(examples_data))
+    examples_count = word_list_to_dict(examples_data)
 
-        with open(info_file, "w", encoding='utf8') as info:
-            words_not_in_examples = [key for key in words_count.keys() if key not in examples_count.keys()]
-            examples_not_in_words = [key for key in examples_count.keys() if key not in words_count.keys()]
-            intersection = [key for key in examples_count.keys() if key in words_count.keys()]
+    with open(info_file, "w", encoding='utf8') as info:
+        words_not_in_examples = [key for key in words_count.keys() if key not in examples_count.keys()]
+        examples_not_in_words = [key for key in examples_count.keys() if key not in words_count.keys()]
+        intersection = [key for key in examples_count.keys() if key in words_count.keys()]
 
-            info.write("Given words not in examples: %d %d\n" % (len(words_not_in_examples), count_senses(words_count, words_not_in_examples)))
-            info.write("Examples not in given words: %d %d\n" % (len(examples_not_in_words), count_senses(examples_count, examples_not_in_words)))
-            info.write("Intersection: %d %d\n" % (len(intersection), count_senses(examples_count, intersection)))
+        info.write("Given words not in examples: %d %d\n" % (len(words_not_in_examples), count_senses(words_count, words_not_in_examples)))
+        info.write("Examples not in given words: %d %d\n" % (len(examples_not_in_words), count_senses(examples_count, examples_not_in_words)))
+        info.write("Intersection: %d %d\n" % (len(intersection), count_senses(examples_count, intersection)))
 
-            info.write("# given words: %d %d\n" % (len(words_count), count_senses(words_count, words_count.keys())))
-            info.write("# example words: %d %d\n" % (len(examples_count), count_senses(examples_count, examples_count.keys())))
+        info.write("# given words: %d %d\n" % (len(words_count), count_senses(words_count, words_count.keys())))
+        info.write("# example words: %d %d\n" % (len(examples_count), count_senses(examples_count, examples_count.keys())))
 
 def prepare_tokens(string: str) -> str:
     string = html.unescape(string)
@@ -248,9 +295,11 @@ class WordSenseData():
             print("Lemma sense doesn't have definition: " + lemma)
 
     def get_examples(self, examples, lemma, lemma_multiword=False):
-        for example in examples:
+        for i, example in enumerate(examples):
+            #print("[%s] Example %d/%d" % (get_now_string(), i, len(examples)))
+
             if example:
-                self.get_example(example, lemma)
+                #self.get_example(example, lemma)
                 self.get_examples_from_gigafida(example, lemma, lemma_multiword=lemma_multiword)
 
     def get_example(self, example, lemma):
@@ -285,15 +334,17 @@ class WordSenseData():
 
                 self.examples.append(Example(word_form, idx, sentence))
             except IndexError:
-                print("Error: word form '%s' not found in sentence '%s'." % (word_form, sentence))
+                pass
+                #print("Error: word form '%s' not found in sentence '%s'." % (word_form, sentence))
             except Exception as e:
-                print("Error: %s. Word: '%s' / sentence: '%s'" % (e, word_form, sentence))
+                pass
+                #print("Error: %s. Word: '%s' / sentence: '%s'" % (e, word_form, sentence))
 
     def get_examples_from_gigafida(self, example, lemma,
                                    gigafida_dir="sources/gigafida",
                                    structures_mapper="sources/strukture.txt",
-                                   collocations_dir="sources/collocations",
-                                   sentence_mapper_dir="sources/sentence_mapper",
+                                   collocations_dir="tmp/all/collocations",
+                                   sentence_mapper_dir="sources/gf2-collocations/gf2-collocation-sentence-mapper",
                                    lemma_multiword=False):
         multiword_example = example.find('multiwordExample')
         if multiword_example:
@@ -307,57 +358,134 @@ class WordSenseData():
 
             if 'structure_id' not in multiword_example.attrib:
                 structure_id = find_in_csv_file(structures_mapper, ["structure_name"],
-                                                structure_name, "\t", "structure_ID", return_first=True)
+                                                structure_name, "\t", "structure_ID")
             else:
                 structure_id = multiword_example.attrib['structure_id'].strip()
 
-            collocations_file = os.path.join(collocations_dir, "output.%s" % structure_id)
+            if not structure_id:
+                return
+
+            collocations_file = os.path.join(collocations_dir, "%s" % structure_id, lemma[0])
+
+            if not os.path.exists(collocations_file):
+                return
+
             sentence_mapper_file = os.path.join(sentence_mapper_dir, "%s_mapper.txt" % structure_id)
 
-            if lemma_multiword:
-                collocation_id = find_in_csv_file(collocations_file, ['C1_Lemma', 'C2_Lemma', 'C3_Lemma'],
-                                                  collocation, ",", 'Colocation_ID', return_first=True)
-            else:
-                collocation_id = find_in_csv_file(collocations_file, ['Joint_representative_form_fixed'],
-                                                  collocation, ",", 'Colocation_ID', return_first=True)
+            #if lemma_multiword:
+
+            collocation_parts = collocation.split(" ")
+            collocation_parts += (3 - len(collocation_parts)) * [""]
+            collocation_id = find_in_csv_file_collocations(collocations_file, [0, 1, 2], #['C1_Lemma', 'C2_Lemma', 'C3_Lemma'],
+                                              collocation_parts, ",", 4)
+            #else:
+            if collocation_id is None:
+                collocation_id = find_in_csv_file_collocations(collocations_file, ['Joint_representative_form_fixed'],
+                                                       [3], ",", 4) #'Colocation_ID')
+
+
+            if not collocation_id:
+                return
 
             sentence_ids = find_mapper(sentence_mapper_file, collocation_id)
 
-            if len(sentence_ids) > 15:
+            if len(sentence_ids) > 10:
                 shuffle(sentence_ids)
-                sentence_ids = sentence_ids[:15]
+                sentence_ids = sentence_ids[:10]
 
-            for sentence_id in sentence_ids:
-                sentence, lemmas = find_in_gigafida(gigafida_dir, sentence_id)
+            for i, sentence_id in enumerate(sentence_ids):
+                res = find_in_gigafida(gigafida_dir, sentence_id)
+
+                if not res:
+                    continue
+
+                sentence, lemmas = res
 
                 idx_word = lemmas.index(lemma) + 1
                 idx = sentence[:idx_word].count(' ')
-                word_form = sentence.split(" ")[idx: idx + lemma.count(" ")]
+                word_form = " ".join(sentence.split(" ")[idx: idx + lemma.count(" ") + 1])
+                print(sentence)
 
                 self.examples.append(Example(word_form, idx, sentence))
 
-def find_in_csv_file(csv_file, cols, value, sep, return_col, return_first=False):
-    print(1)
-    data = []
+    def write_to_file(self, outf):
+        if self.lemma is None or self.pos_tag is None or self.sense_id is None or self.description is None:
+            print(self)
+
+        data = [self.lemma, self.pos_tag, self.sense_id, self.description]
+        outf.write("|".join([str(x) for x in data]) + "\n")
+
+        return data
+
+    def save_example(self, word_form, sentence):
+        try:
+            if word_form not in sentence:
+                nonimportant = ["se", "me", "te", "ga", "jo", "smo", "ste", "so",
+                                "bom", "boš", "bova", "bomo", "bosta", "boste", "bo", "bodo",
+                                "mi", "mu", "ji", "vas", "nas", "jih"]
+                word_forms = [word_form.replace(x + " ", "") for x in nonimportant] + \
+                             [word_form.replace(" " + x, "") for x in nonimportant]
+                i = 0
+                while word_form not in sentence:
+                    word_form = word_forms[i]
+                    i += 1
+
+            idx_word = sentence.index(word_form) + 1
+            idx = sentence[:idx_word].count(' ')
+
+            self.examples.append(Example(word_form, idx, sentence))
+        except IndexError:
+            pass
+            # print("Error: word form '%s' not found in sentence '%s'." % (word_form, sentence))
+        except Exception as e:
+            pass
+            # print("Error: %s. Word: '%s' / sentence: '%s'" % (e, word_form, sentence))
+
+def find_in_csv_file(csv_file, cols, value, sep, return_col):
     with open(csv_file, encoding="utf8") as f:
 
         reader = csv.DictReader(f, delimiter=sep)
         next(reader) # skip header
 
-        for line in reader:
+        for i, line in enumerate(reader):
             col_data = [line[col] for col in cols]
 
-            if value == " ".join(col_data).strip():
-                if return_first:
-                    return line[return_col]
+            if col_data == value:
+                return line[return_col]
+    return None
 
-                data.append(line[return_col])
+def find_in_csv_file_collocations(csv_file, cols, value, sep, return_col):
+    with open(csv_file, encoding="utf8") as f:
 
-    print(2)
-    return data
+        for i, line in enumerate(f):
+            if i == 0:  # skip header
+                continue
+
+            line_data = line.strip().split(sep)
+            if len(line_data) < 5:
+                continue
+
+            col_data = [c for i, c in enumerate(line_data) if i in cols]
+
+            if col_data == value:
+                return line_data[return_col]
+
+    return None
+
+def csv_binary_search(reader, a, b, col, value):
+    i = (a + b) // 2
+    col_data = reader[i][col]
+
+    if value == col_data:
+        return reader[i]
+
+    elif value < col_data:
+        return csv_binary_search(reader, a, i, col, value)
+
+    else:
+        return csv_binary_search(reader, i, b, col, value)
 
 def find_mapper(mapper_file, collocation_id):
-    print(0)
     data = []
     found = False
 
@@ -373,25 +501,13 @@ def find_mapper(mapper_file, collocation_id):
             elif found:
                 return data
 
-    print(00)
     return data
-
-
 
 def find_in_gigafida(gigafida_dir, sentence_id):
     folder = "GF%s" % sentence_id[2:4]
     file = "GF%s-dedup.xml" % sentence_id.split('.')[0][2:]
     file_path = os.path.join(gigafida_dir, folder, file)
     return get_sentence_by_id(file_path, sentence_id)
-
-def write_to_file(self, outf):
-    if self.lemma is None or self.pos_tag is None or self.sense_id is None or self.description is None:
-        print(self)
-
-    data = [self.lemma, self.pos_tag, self.sense_id, self.description]
-    outf.write("|".join([str(x) for x in data]) + "\n")
-
-    return data
 
 class WordSenseDataList(object):
     # word sense data list including lemma and sense list
@@ -418,6 +534,7 @@ class WordSenseDataList(object):
 
     def find_senses(self, sense_list, lemma_multiword=False):
         for i, sense in enumerate(sense_list):
+            #print("[%s] %s - find_senses: %d/%d" % (get_now_string(), self.lemma, i, len(sense_list)))
             sense_data = WordSenseData(sense, i, len(sense_list), self.lemma, self.category,
                                        lemma_multiword=lemma_multiword)
             self.word_sense_list.append(sense_data)

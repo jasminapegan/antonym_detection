@@ -134,7 +134,8 @@ def file_len(filename: str):
             pass
     return i + 1
 
-def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bool=False) -> Dict[str, Dict]:
+def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bool=False, embeddings: bool=False,
+                                 sep='\t') -> Dict[str, Dict]:
     """
     Parses data in 'file' and returns a dictionary of parsed data per word.
 
@@ -144,12 +145,15 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
     :return: dictionary of data per word (dict: indices, embeddings, sentences, labels)
     """
 
-    data = load_file(file, sep='\t')
+    data = load_file(file, sep=sep)
     words_data = {}
 
     for line in data:
 
-        word, word_form, label, index, sentence = line
+        if embeddings:
+            word, label, sentence, embedding = line
+        else:
+            word, word_form, label, index, sentence = line
         index = None
 
         if indices:
@@ -160,6 +164,8 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
         if word in words_data.keys():
             if indices:
                 words_data[word]['indices'].append(index)
+            if embeddings:
+                words_data[word]['embeddings'].append(embedding)
             words_data[word]['labels'].append(label)
             words_data[word]['sentences'].append(sentence)
 
@@ -167,6 +173,8 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
             words_data[word] = {'labels': [label], 'sentences': [sentence]}
             if indices:
                 words_data[word]['indices'] = [index]
+            if embeddings:
+                words_data[word]['embeddings'] = [embedding]
 
     return words_data
 
@@ -291,8 +299,10 @@ def concatenate_files(file_list: List[str], out_file: str):
     # write content of files in 'file_list' to 'out_file'
     with open(out_file, "w", encoding="utf8") as out:
         for f in file_list:
+            print(f)
             with open(f, "r", encoding="utf8") as in_file:
-                out.writelines(in_file.readlines())
+                for line in in_file:
+                    out.write(line)
 
 def remove_duplicate_lines(in_file: str, out_file: str):
     visited_hashes = []
@@ -343,3 +353,67 @@ def get_all_words(words_file_list, words_file_source, out_file, tmp_dir='tmp'):
     tmp_sorted = os.path.join(tmp_dir, "all_sorted_words.txt")
     sort_lines(tmp_all, tmp_sorted, sep='|')
     remove_duplicate_lines(tmp_sorted, out_file)
+
+def build_index(filename, sort_col):
+    index = []
+    f = open(filename, encoding="utf8")
+    while True:
+        offset = f.tell()
+        line = f.readline()
+        if not line:
+            break
+        length = len(line)
+        col = line.split(',')[sort_col].strip()
+        index.append((col, offset, length))
+    f.close()
+    index.sort()
+    return index
+
+def write_sorted(filename, out_file, col_sort):
+    index = build_index(filename, col_sort)
+    with open(filename, encoding="utf8") as f:
+        with open(out_file, "w", encoding="utf8") as g:
+
+            print("Sorting file %s ..." % filename)
+
+            for col, offset, length in index:
+                f.seek(offset)
+                g.write(f.read(length))
+
+def file_to_folders(filename, out_dir):
+    dir_name = os.path.join(out_dir, filename.split(".")[1])
+    os.mkdir(dir_name)
+
+    header = ""
+    letter = ''
+    g = None
+
+    with open(filename, "r", encoding="utf8") as f:
+        for i, line in enumerate(f):
+            if i == 0:
+                header = line
+            if line[0] == letter:
+                g.write(line)
+            else:
+                letter = line[0]
+
+                if g:
+                    g.close()
+
+                new_file = os.path.join(dir_name, letter)
+
+                if os.path.exists(new_file):
+                    g = open(os.path.join(dir_name, letter), "a", encoding="utf8")
+                    g.write(line)
+                else:
+                    g = open(os.path.join(dir_name, letter), "w", encoding="utf8")
+                    g.write(header)
+                    g.write(line)
+
+    if g:
+        g.close()
+
+def get_multisense_words(in_file, out_file, sep='|'):
+    wc = count_words(in_file, sep=sep)
+    multisense_words = [w for w, c in wc.items() if c > 1]
+    filter_file_by_words(in_file, multisense_words, out_file, split_by=sep, split_by_2=sep)

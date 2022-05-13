@@ -2,7 +2,7 @@ import json
 import os
 import re
 from datetime import datetime
-from io import TextIOWrapper
+from io import TextIOWrapper, StringIO
 from lxml import etree as ET
 from multiprocessing.pool import ThreadPool as Pool
 from typing import Pattern, List, Iterable
@@ -268,26 +268,6 @@ def parse_paragraph(paragraph: ET.Element, re_whitespace: Pattern) -> (List[str]
     lemma_sentences = []
 
     for s in paragraph:
-        """sentence = ""
-        lemmas = ""
-
-        for w in s:
-
-            if w.tag[-1] == 'w':
-                sentence += w.text
-                lemmas += w.attrib["lemma"]
-
-            elif w.tag[-1] == 'S':
-                sentence += " "
-                lemmas += " "
-
-            elif w.tag[-1] == 'c':
-                sentence += " " + w.text + " "
-                lemmas += " " + w.text + " "
-
-        sentence = re_whitespace.sub(" ", sentence.strip())
-        lemmas = re_whitespace.sub(" ", lemmas.strip())"""
-
         sentence, lemmas = parse_sentence(s, re_whitespace)
 
         if len(sentence) > 0:
@@ -314,8 +294,8 @@ def parse_sentence(s: ET.Element, re_whitespace: Pattern):
             sentence += " " + w.text + " "
             lemmas += " " + w.text + " "
 
-        sentence = re_whitespace.sub(" ", sentence.strip())
-        lemmas = re_whitespace.sub(" ", lemmas.strip())
+    sentence = re_whitespace.sub(" ", sentence.strip())
+    lemmas = re_whitespace.sub(" ", lemmas.strip())
 
     return sentence, lemmas
 
@@ -404,14 +384,27 @@ def get_now_string():
 
 def get_sentence_by_id(file, sentence_id):
     re_whitespace = re.compile(r"\s+")
+    regex = re.compile(r'<s xml:id="%s">[.\s]' % sentence_id)
+    regex_end = re.compile(r'</s>')
+    tree_data = ""
+    found = False
 
-    tree = ET.parse(file)
-    root = tree.getroot()
+    with open(file, "r", encoding="utf8") as f:
+        for line in f:
 
-    for s in root.find(".//{http://www.tei-c.org/ns/1.0}s[@{http://www.w3.org/XML/1998/namespace}id=%s]" % sentence_id):
+            if found:
+                tree_data += line
 
-        if '{http://www.w3.org/XML/1998/namespace}id' in s.attrib:
-            if s.attrib['{http://www.w3.org/XML/1998/namespace}id'] == sentence_id:
-                sentence, lemmas = parse_sentence(s, re_whitespace)
-                return sentence, lemmas
+                if regex_end.match(line):
+                    tree = ET.ElementTree(ET.fromstring(tree_data))
+                    sentence, lemmas = parse_sentence(tree.getroot(), re_whitespace)
+                    return sentence, lemmas
+
+            elif regex.match(line):
+                tree_data += line
+                found = True
+
+    tree = ET.ElementTree(ET.fromstring(tree_data))
+    sentence, lemmas = parse_sentence(tree.getroot(), re_whitespace)
+    return sentence, lemmas
 
