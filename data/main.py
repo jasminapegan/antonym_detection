@@ -22,16 +22,16 @@ out_file = "sentences/sentences.txt"
 
 #ws = wordsense.WordSense(["sources/wordsense", "sources/wordsense2"], "tmp/all",
 #                         collocations_dir="sources/gf2-collocations/gf2-collocations-extended", clean_data=False)
-#ws.get_wordsense_examples("sources/sense_data_new.txt", "sources/sense_examples_new.txt")
-#wordsense.compare_words_data(source_file, "sources/info_words_new.txt", ws.examples_file)
+#ws.get_wordsense_examples("sources/sense_data_new_2.txt", "sources/sense_examples_new_2.txt")
+#wordsense.compare_words_data(source_file, "sources/sense/info_words_new_2.txt", "sources/sense/sense_examples_new_2.txt")
 
 # get only multisense words
-#file_helpers.get_multisense_words(source_file, "sources/besede_vecpomenske.txt")
-#file_helpers.get_multisense_words("sources/sense_data_new.txt", "sources/sense_data_new_multisense.txt")
-#file_helpers.filter_file_by_words("sources/sense_examples_new.txt", "sources/sense_data_new_multisense.txt",
-#                                  "sources/sense_examples_new_multisense.txt", split_by_2='|')
-#wordsense.compare_words_data("sources/besede_vecpomenske.txt", "sources/info_words_new_multisense.txt",
-#                             "sources/sense_examples_new_multisense.txt")
+#file_helpers.get_multisense_words(source_file, "sources/sense/besede_vecpomenske_2.txt")
+#file_helpers.get_multisense_words("sources/sense/sense_data_new_2.txt", "sources/sense/sense_data_new_multisense_2.txt")
+#file_helpers.filter_file_by_words("sources/sense/sense_examples_new_2.txt", "sources/sense/sense_data_new_multisense_2.txt",
+#                                  "sources/sense/sense_examples_new_multisense_2.txt", split_by_2='|')
+#wordsense.compare_words_data("sources/sense/besede_vecpomenske_2.txt", "sources/sense/info_words_new_multisense_2.txt",
+#                             "sources/sense/sense_examples_new_multisense_2.txt")
 
 
 # 2. razdeli besede na val in test set
@@ -51,6 +51,10 @@ out_file = "sentences/sentences.txt"
 
 #gigafida.get_sentences_multiprocess(gigafida_dir, "dataset/test.txt", tmp_dir="tmp/GF", folders_range=list(range(0, 100)), sep="\t")
 #gigafida.finalize_sentence_search("dataset/test.txt","sample/test_sample.txt", "sample/test_info.txt", tmp_dir="tmp/GF", folders_range=list(range(100)))
+
+gigafida.get_sentences_multiprocess(gigafida_dir, "sample/gf_testing.txt", tmp_dir="tmp/GF", folders_range=list(range(1)), sep="|")
+gigafida.finalize_sentence_search("sample/gf_testing.txt","sample/testing_sample.txt", "sample/testing_info.txt",
+                                  tmp_dir="tmp/GF", folders_range=list(range(1)), sep="|")
 
 #file_helpers.concatenate_files(["sample/gigafida_all.txt", "sample/bkp/gigafida_all.txt"], "sample/gigafida_tmp.txt")
 #file_helpers.sort_lines("sample/gigafida_tmp.txt", "sample/gigafida_all_new.txt")
@@ -78,16 +82,10 @@ out_file = "sentences/sentences.txt"
 
 
 
-#file_helpers.filter_file_by_words("embeddings/val_embeddings_sorted.txt", "amazonka.txt", "embeddings/amazonka.txt")
-
 #we = embeddings.WordEmbeddings()
-#we.data_file_to_embeddings(["sources/sense_examples_new_multisense.txt"], "embeddings/labeled_embeddings.txt", labeled=True, batch_size=1)
+#we.data_file_to_embeddings(["sources/sense/sense_examples_new_multisense_2.txt"], "embeddings/labeled_embeddings.txt",
+#                           labeled=True, batch_size=1)
 
-import pandas as pd
-test = pd.read_csv("tmp/sense_examples.txt", sep="\t", error_bad_lines=False)
-print(test['word'][13113])
-print(test['word_form'][13113])
-print(test['sense_id'][13113])
-print(test['word_index'][13113])
-print(test['sentence'][13113])
+#dataset.create_syn_ant_dataset("sources/syn_ant/synonyms_cjvt.tsv", "sources/syn_ant/antonyms_sokol.tsv", "sources/syn_ant/syn_ant_dataset.tsv")
+
 

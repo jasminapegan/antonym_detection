@@ -1,0 +1,5 @@
+Given words not in examples: 950 1012
+Examples not in given words: 4102 8462
+Intersection: 1502 2607
+# given words: 2452 3774
+# example words: 5604 11069

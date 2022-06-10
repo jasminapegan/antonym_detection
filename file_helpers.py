@@ -94,6 +94,19 @@ def load_json_word_data(json_file: str):
 def get_unique_words(word_file: str, sep: str='|'):
     return list(set([line[0] for line in load_file(word_file, sep=sep)]))
 
+def get_unique_words_pos(word_file: str, sep: str='|'):
+    words = {}
+    for line in load_file(word_file, sep=sep):
+
+        word, pos = line[:2]
+
+        if word not in words:
+            words[word] = [pos]
+        elif pos not in words[word]:
+            words[word].append(pos)
+
+    return words
+
 def load_file(file: str, limit: int=None, sep: str='\t', skip_header: bool=False):
     """
     Read data from 'file', return a list of lines (string lists).
@@ -151,9 +164,9 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
     for line in data:
 
         if embeddings:
-            word, label, sentence, embedding = line
+            word, pos, label, sentence, embedding = line
         else:
-            word, word_form, label, index, sentence = line
+            word, pos, word_form, label, index, sentence = line
         index = None
 
         if indices:
@@ -162,19 +175,29 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
                 index = int(line[-2])
 
         if word in words_data.keys():
-            if indices:
-                words_data[word]['indices'].append(index)
-            if embeddings:
-                words_data[word]['embeddings'].append(embedding)
-            words_data[word]['labels'].append(label)
-            words_data[word]['sentences'].append(sentence)
+            if pos in words_data[word].keys():
+
+                if indices:
+                    words_data[word][pos]['indices'].append(index)
+                if embeddings:
+                    words_data[word][pos]['embeddings'].append(embedding)
+
+                words_data[word][pos]['labels'].append(label)
+                words_data[word][pos]['sentences'].append(sentence)
+
+            else:
+                words_data[word][pos] = {'labels': [label], 'sentences': [sentence]}
+                if indices:
+                    words_data[word][pos]['indices'] = [index]
+                if embeddings:
+                    words_data[word][pos]['embeddings'] = [embedding]
 
         else:
-            words_data[word] = {'labels': [label], 'sentences': [sentence]}
+            words_data[word] = {pos: {'labels': [label], 'sentences': [sentence]}}
             if indices:
-                words_data[word]['indices'] = [index]
+                words_data[word][pos]['indices'] = [index]
             if embeddings:
-                words_data[word]['embeddings'] = [embedding]
+                words_data[word][pos]['embeddings'] = [embedding]
 
     return words_data
 
@@ -318,14 +341,14 @@ def remove_duplicate_lines(in_file: str, out_file: str):
                     output.write(line)
                     visited_hashes.append(line_hash)
 
-def sort_lines(in_file: str, out_file: str, sep='\t'):
-    # sort lines by element at 0
+def sort_lines(in_file: str, out_file: str, sep: str='\t', n: int=1):
+    # sort lines by first n elements
 
     with open(in_file, 'r', encoding="utf8") as input:
         with open(out_file, 'wt', encoding="utf8") as output:
 
             lines = input.readlines()
-            lines.sort(key=lambda x: x.split(sep)[0])
+            lines.sort(key=lambda x: sep.join(x.split(sep)[:n]))
 
             for line in lines:
                 output.write(line)

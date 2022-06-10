@@ -1,4 +1,3 @@
-from scipy.stats import mode, entropy
 from scipy.spatial.distance import cosine
 from io import TextIOWrapper
 from math import floor
@@ -9,61 +8,110 @@ import file_helpers
 class SenseClusters():
 
     def __init__(self, syn_ant_file: str,  cluster_file: str, sense_file: str,  out_file: str, out_sentences: str=None,
-                 k: int=1, algo: str='avg_dist', clean_data: bool=True, ratio=0.05, weights='distance'):
+                 k: int=1, algo: str='avg_dist', clean_data: bool=True, ratio: float=0.05, weights='distance'):
+        print(f"Reading data ...")
+
         self.cluster_data = file_helpers.load_validation_file_grouped(cluster_file, embeddings=True)
         self.sense_data = file_helpers.words_data_to_dict(sense_file, header=False, skip_num=False)
         self.classifier = KNeighborsClassifier(n_neighbors=k, metric='cosine', weights=weights)
-        self.n = file_helpers.file_len(syn_ant_file)
 
-        assert algo in ['avg_dist', 'weighed_entropy']
-        self.algo = algo
+        self.set_algorithm(algo)
 
         if out_sentences:
             self.out_sentences = open(out_sentences, "w", encoding="utf8")
         else:
             self.out_sentences = None
 
-        with open(out_file, "w", encoding='utf8') as outf:
-            with open(syn_ant_file, "r", encoding='utf8') as f:
-                for i, line in enumerate(f):
+        with open(syn_ant_file, "r", encoding='utf8') as f:
+            self.lines = f.readlines()
 
-                    if i % 2000 == 0:
-                        print(i, "/", self.n)
-
-                    w1, w2, label = line.split("\t")
-                    label = int(label)
-
-                    if label != 0 and label != 1:
-                        continue
-
-                    if w1 not in self.cluster_data.keys() or w2 not in self.cluster_data.keys():
-                        continue
-
-                    self.word_data1 = self.cluster_data[w1]
-                    self.word_data2 = self.cluster_data[w2]
-
-                    if clean_data:
-                        self.word_data1 = remove_outliers(self.word_data1, ratio=ratio)
-                        self.word_data2 = remove_outliers(self.word_data2, ratio=ratio)
-
-                    self.sense_data1 = self.sense_data[w1]
-                    self.sense_data2 = self.sense_data[w2]
-
-                    n1, n2 = len(set(self.word_data1['labels'])), len(set(self.word_data2['labels']))
-                    if n1 == len(self.sense_data1) and n2 == len(self.sense_data2):
-                        ant_syn = "antonym" if label == 0 else "synonym"
-                        out_line = f"Data for {ant_syn} pair '{w1}' - '{w2}'\n"
-
-                        if self.out_sentences:
-                            self.out_sentences.write(out_line)
-
-                        outf.write(out_line)
-                        self.find_senses(w1, w2, outf, algo)
+        self.execute_algorithm(out_file, algo=algo, clean_data=clean_data, ratio=ratio)
 
         if self.out_sentences:
             self.out_sentences.close()
 
-    def find_senses(self, w1: str, w2: str, outf: TextIOWrapper, algo: str):
+    def set_algorithm(self, algo):
+        assert algo in ['avg_dist', 'min_dist', 'avg_min_dist', 'min_avg_dist', 'max_dist', 'max_avg_dist', 'avg_max_dist']
+        self.algo = algo
+
+    def execute_algorithm(self, out_file: str, algo: str='avg_dist', clean_data: bool=False, ratio: float=0.05):
+        print(f"Initiating algorithm {algo} ...")
+
+        self.set_algorithm(algo)
+        self.ratio = ratio
+
+        with open(out_file, "w", encoding='utf8') as outf:
+            for i, line in enumerate(self.lines):
+
+                if i % 1000 == 0:
+                    print(i)
+
+                self.w1, self.w2, label = line.split("\t")
+
+                if self.w1 == self.w2:
+                    continue
+
+                self.label = int(label)
+
+                if self.label != 0 and self.label != 1:
+                    continue
+
+                if self.w1 not in self.cluster_data.keys() or self.w2 not in self.cluster_data.keys():
+                    continue
+
+                pos_tags1 = self.cluster_data[self.w1].keys()
+                pos_tags2 = self.cluster_data[self.w2].keys()
+
+                for pos in set(pos_tags1).intersection(pos_tags2):
+                    self.pos = pos
+                    self.find_clusters_for_pair(clean_data, outf)
+
+    def find_clusters_for_pair(self, clean_data, outf):
+        self.word_data1, self.word_data2 = self.cluster_data[self.w1][self.pos], self.cluster_data[self.w2][self.pos]
+        word_data_labels_1 = sorted(list(set([int(x) for x in self.word_data1['labels']])))
+        word_data_labels_2 = sorted(list(set([int(x) for x in self.word_data2['labels']])))
+
+        # check there is no weird gap between sense labels
+        print(word_data_labels_1)
+        print(word_data_labels_2)
+        if word_data_labels_1 != list(range(len(word_data_labels_1))) \
+                or word_data_labels_2 != list(range(len(word_data_labels_2))):
+            return
+
+        if clean_data:
+            self.word_data1 = remove_outliers(self.word_data1, ratio=self.ratio)
+            self.word_data2 = remove_outliers(self.word_data2, ratio=self.ratio)
+
+        self.sense_data1, self.sense_data2 = self.sense_data[self.w1], self.sense_data[self.w2]
+        sense_data_labels_1 = sorted(list(set([int(x['num']) for x in self.sense_data1])))
+        sense_data_labels_2 = sorted(list(set([int(x['num']) for x in self.sense_data2])))
+
+        # n1, n2 = len(set(self.word_data1['labels'])), len(set(self.word_data2['labels']))
+
+        # every sense needs atleast one example
+        print(sense_data_labels_1)
+        print(sense_data_labels_2)
+        if word_data_labels_1 != sense_data_labels_1 or word_data_labels_2 != sense_data_labels_2:  # n1 != len(self.sense_data1) or n2 != len(self.sense_data2):
+            print(self.word_data1.values())
+            return
+
+        ant_syn = "antonym" if self.label == 0 else "synonym"
+
+        if self.out_sentences:
+            self.out_sentences.write(f"Data for {ant_syn} pair {self.w1} - {self.w2}\n")
+
+        out_lines = [f"Data for {ant_syn} pair {self.w1} - {self.w2}\n"]
+        out_lines += [f"Sense data for {self.w1}\nSense\tdescription\n"]
+        out_lines += [f"\t{s['num']}\t{s['description']}\n" for s in self.sense_data1]
+        out_lines += [f"Sense data for {self.w2}:\nSense\t description\n"]
+        out_lines += [f"\t{s['num']}\t{s['description']}\n" for s in self.sense_data2]
+
+        outf.writelines(out_lines)
+
+        self.fit_predict(outf)
+        self.find_senses(outf)
+
+    def fit_predict(self, outf: TextIOWrapper):
         self.X1 = file_helpers.convert_to_np_array(self.word_data1['embeddings'])
         self.X1 = fix_array_shape(self.X1)
         self.y1 = np.array([int(x) for x in self.word_data1['labels']])
@@ -79,12 +127,7 @@ class SenseClusters():
             outf.write("Error: %s\n" % e)
             return
 
-        if algo == 'weighed_entropy':
-            self.get_sense_by_entropy(outf)
-        elif algo == 'avg_dist':
-            self.get_sense_by_avg_dist(w1, w2, outf)
-
-    def get_sense_by_avg_dist(self, w1: str, w2: str, outf):
+    def find_senses(self, outf: TextIOWrapper):
         sentences1 = get_sentences_by_label(self.word_data1)
         sentences2 = get_sentences_by_label(self.word_data2)
 
@@ -94,80 +137,67 @@ class SenseClusters():
         X1_by_label = get_elements_by_label_dict(self.X1, self.word_data1['labels'])
         X2_by_label = get_elements_by_label_dict(self.X2, self.word_data2['labels'])
 
-        avg_dists = calculate_avg_distance(labels1, labels2, X1_by_label, X2_by_label)
-        """
-        for sense_id1 in labels1:
-            avg_dist_row = {label:  for label in labels2}
+        if self.algo == 'avg_dist':
+            dists = calculate_avg_distance(labels1, labels2, X1_by_label, X2_by_label)
+        elif self.algo == 'min_dist':
+            dists = calculate_min_distance(labels1, labels2, X1_by_label, X2_by_label)
+        elif self.algo == 'avg_min_dist':
+            dists = calculate_avg_min_distance(labels1, labels2, X1_by_label, X2_by_label)
+        elif self.algo == 'min_avg_dist':
+            dists = calculate_min_avg_distance(labels1, labels2, X1_by_label, X2_by_label)
+        elif self.algo == 'max_dist':
+            dists = calculate_max_distance(labels1, labels2, X1_by_label, X2_by_label)
+        elif self.algo == 'max_avg_dist':
+            dists = calculate_max_avg_distance(labels1, labels2, X1_by_label, X2_by_label)
+        elif self.algo == 'avg_max_dist':
+            dists = calculate_avg_max_distance(labels1, labels2, X1_by_label, X2_by_label)
 
-            for sense_id2 in labels2:
+        self.write_output(labels1, labels2, sentences1, sentences2, dists, outf)
 
-                avg_dist_row[sense_id2] = np.mean([
-                    np.mean([cosine(x1, x2) for x2 in X2_by_label[sense_id2]
-                             ]) for x1 in X1_by_label[sense_id1]])
-
-            avg_dists[sense_id1] = avg_dist_row"""
-
-        best_scores = {x: [] for x in labels2}
-
-        for label1 in labels1:
-            sorted_dist_list = sorted(list(avg_dists[label1].items()), key=lambda x: x[1])
-            label2 = sorted_dist_list[0][0]
-            score = avg_dists[label1][label2]
-
-            d1 = get_description(self.sense_data1, label1)
-            d2 = get_description(self.sense_data2, label2)
-            best_scores[label2].append((score, d1, d2, label1))
-
-        min_dist, min_label1, min_label2 = 10 ** 10, None, None
-        for label2 in labels2:
-            if best_scores[label2]:
-                score, d1, d2, label1 = sorted(best_scores[label2], key=lambda x: x[0])[0]
-
-                if score < min_dist:
-                    min_dist, min_label1, min_label2 = score, label1, label2
-
-                outf.write(f"Score: {score}\n\tDescriptions: {d1} | {d2}\n")
-                outf.write(f"\tExample: {sentences1[label1][0]} | {sentences2[label2][0]}\n")
-
-                if self.out_sentences:
-                    self.write_sentences(w1, w2, sentences1[label1], sentences2[label2])
-
-        d1 = get_description(self.sense_data1, min_label1)
-        d2 = get_description(self.sense_data2, min_label2)
-        outf.write(f"Min score: {min_dist}\n\tDescriptions: {d1} | {d2}\n")
-
-        if min_label1 != None and min_label2 != None:
-            outf.write(f"\tExample: {sentences1[min_label1][0]} | {sentences2[min_label2][0]}\n\n")
-
-    def write_sentences(self, w1, w2, s1, s2):
-        self.out_sentences.write(f"{w1}\n")
+    def write_sentences(self, s1, s2):
+        self.out_sentences.write(f"{self.w1}\n")
         for s in s1:
             self.out_sentences.write(f"\t{s}\n")
-        self.out_sentences.write(f"{w2}\n")
+        self.out_sentences.write(f"{self.w2}\n")
         for s in s2:
             self.out_sentences.write(f"\t{s}\n")
         self.out_sentences.write("\n")
 
-    def get_sense_by_entropy(self, outf):
-        sentences1 = get_sentences_by_label(self.word_data1)
-        sentences2 = get_sentences_by_label(self.word_data2)
+    def write_output(self, labels1, labels2, sentences1, sentences2, dists, outf):
+        best_scores = {x: [] for x in labels2}
 
-        min_e, label1, label2 = 10**10, None, None
+        for label1 in labels1:
 
-        for sense_id in set(self.word_data2['labels']):
-            y = get_elements_by_label(self.y2, self.word_data2['labels'], sense_id)
+            sorted_dist_list = sorted(list(dists[label1].items()), key=lambda x: x[1])
+            label2 = sorted_dist_list[0][0]
+            score = dists[label1][label2]
 
-            if len(y) > 0:
-                mode_idx = str(mode(y)[0][0])
+            d1 = get_description(self.sense_data1, label1)
+            d2 = get_description(self.sense_data2, label2)
+            s1 = get_elements_by_label(self.word_data1, labels1, label1)
+            s2 = get_elements_by_label(self.word_data1, labels2, label2)
+            best_scores[label2].append((score, d1, d2, s1, s2, label1))
 
-                e = (1 + entropy(y)) / np.log(len(y))
-                if e < min_e:
-                    min_e, label1, label2 = e, mode_idx, sense_id
+        min_dist, min_label1, min_label2, min_s1, min_s2 = 10 ** 10, None, None, None, None
+        for label2 in labels2:
+            if best_scores[label2]:
+                score, d1, d2, s1, s2, label1 = sorted(best_scores[label2], key=lambda x: x[0])[0]
 
-        outf.write(f"Min entropy: {min_e} | {get_description(self.sense_data1, label1)} | {get_description(self.sense_data2, label2)}\n")
-        if label1 != None and label2 != None:
-            outf.write(f"Example: {sentences1[label1][0]} | {sentences2[label2][0]}\n\n")
+                if score < min_dist:
+                    min_dist, min_label1, min_label2, min_s1, min_s2 = score, label1, label2, s1, s2
 
+                #outf.write(f"Score: {score}\n")
+                #outf.write(f"\tExample: {sentences1[label1][0]} | {sentences2[label2][0]}\n")
+
+                if self.out_sentences:
+                    self.write_sentences(sentences1[label1], sentences2[label2])
+
+        outf.write(f"Predicted sense pair: {self.w1}({min_label1}) and {self.w2}({min_label2}) " +
+                   f"with distance score: {min_dist}\n")
+
+        if min_label1 != None and min_label2 != None:
+            outf.write(f"{self.w1}({min_label1}): {sentences1[min_label1][0]}\n")
+            outf.write(f"{self.w2}({min_label2}): {sentences2[min_label2][0]}\n\n")
 
 def get_sentences_by_label(word_data):
     sentences = {i: [] for i in set(word_data['labels'])}
@@ -221,12 +251,11 @@ def remove_outliers_from_one_sense(data, ratio):
     while i < limit and np.all(outlier < lower) or np.all(outlier > upper):
         X = sorted(data, key=lambda x: data_mean - x[0])
         outlier = X[-1][0]
+        i += 1
 
         data_mean, data_std = np.mean(X), np.std(X)
         cut_off = data_std * 3
         lower, upper = data_mean - cut_off, data_mean + cut_off
-
-        i += 1
 
     return data
 
@@ -262,6 +291,33 @@ def calculate_avg_min_distance(labels1, labels2, X1_by_label, X2_by_label):
                 {label2:
                      np.mean([
                          np.min([cosine(x1, x2) for x2 in X2_by_label[label2]])
+                         for x1 in X1_by_label[label1]])
+                 for label2 in labels2}
+            for label1 in labels1}
+
+def calculate_max_distance(labels1, labels2, X1_by_label, X2_by_label):
+    return {label1:
+                {label2:
+                     np.max([
+                         np.max([cosine(x1, x2) for x2 in X2_by_label[label2]])
+                         for x1 in X1_by_label[label1]])
+                 for label2 in labels2}
+            for label1 in labels1}
+
+def calculate_max_avg_distance(labels1, labels2, X1_by_label, X2_by_label):
+    return {label1:
+                {label2:
+                     np.max([
+                         np.mean([cosine(x1, x2) for x2 in X2_by_label[label2]])
+                         for x1 in X1_by_label[label1]])
+                 for label2 in labels2}
+            for label1 in labels1}
+
+def calculate_avg_max_distance(labels1, labels2, X1_by_label, X2_by_label):
+    return {label1:
+                {label2:
+                     np.mean([
+                         np.max([cosine(x1, x2) for x2 in X2_by_label[label2]])
                          for x1 in X1_by_label[label1]])
                  for label2 in labels2}
             for label1 in labels1}

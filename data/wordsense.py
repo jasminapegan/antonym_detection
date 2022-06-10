@@ -26,6 +26,9 @@ class WordSense:
         self.collocations_dir = collocations_dir
         self.collocations_dir_clean = os.path.join(self.tmp_dir, "collocations")
 
+        if not os.path.exists(self.tmp_dir):
+            os.mkdir(self.tmp_dir)
+
         if not os.path.exists(self.clean_dir):
             os.mkdir(self.clean_dir)
 
@@ -45,7 +48,7 @@ class WordSense:
         :return: None
         """
 
-        """for d in self.data_dir:
+        for d in self.data_dir:
             for file in os.listdir(d):
                 print("Cleaning file %s..." % file)
 
@@ -55,27 +58,26 @@ class WordSense:
                 filename = os.path.basename(file)
                 dirname = os.path.basename(d)
                 tree.write(os.path.join(self.clean_dir, "%s_%s" % (dirname, filename)))
-        """
 
-        cols_collocations = ['C1_Lemma', 'C2_Lemma', 'C3_Lemma', 'Joint_representative_form_fixed', 'Colocation_ID']
+        """cols_collocations = ['C1_Lemma', 'C2_Lemma', 'C3_Lemma', 'Joint_representative_form_fixed', 'Colocation_ID']
         tmp_clean_dir = os.path.join(self.tmp_dir, "clean_unsorted")
 
         if not os.path.exists(tmp_clean_dir):
             os.mkdir(tmp_clean_dir)
 
-        """for file in os.listdir(self.collocations_dir):
+        for file in os.listdir(self.collocations_dir):
 
             print("Cleaning file %s..." % file)
 
             outf = os.path.join(tmp_clean_dir, file)
             filepath = os.path.join(self.collocations_dir, file)
-            self.cleanup_csv(filepath, outf, cols_collocations, delimiter=",")"""
+            self.cleanup_csv(filepath, outf, cols_collocations, delimiter=",")
 
         for file in os.listdir(tmp_clean_dir):
             filepath = os.path.join(tmp_clean_dir, file)
-            #outf = os.path.join(self.collocations_dir_clean, file)
-            #file_helpers.write_sorted(filepath, outf, 3)
-            file_helpers.file_to_folders(filepath, self.collocations_dir_clean)
+            outf = os.path.join(self.collocations_dir_clean, file)
+            file_helpers.write_sorted(filepath, outf, 3)
+            file_helpers.file_to_folders(filepath, self.collocations_dir_clean)"""
 
     @staticmethod
     def cleanup_csv(in_csv, out_csv, cols, delimiter=","):
@@ -168,7 +170,8 @@ class WordSense:
                             sense_data.write_to_file(f)
 
                             for example in sense_data.examples:
-                                example.write_to_file(g, word, sense_data.sense_id)
+                                if example:
+                                    example.write_to_file(g, sense_data.pos_tag, word, sense_data.sense_id)
 
         file_helpers.remove_duplicate_lines(tmp_data_file, data_out_file)
         file_helpers.remove_duplicate_lines(tmp_examples_file, examples_out_file)
@@ -177,15 +180,18 @@ class WordSense:
     def get_word_data(self, tree: ET.ElementTree, lemma_multiword=False):
         root = tree.getroot()
         for i, entry in enumerate(root):
-            #print("[%s] get_word_data: %d/%d" % (get_now_string(), i, len(root)))
+            if i % 10 == 0:
+                print("[%s] get_word_data: %d/%d" % (get_now_string(), i, len(root)))
+            try:
+                sense = WordSenseDataList(entry, lemma_multiword=lemma_multiword)
+                word = sense.lemma
 
-            sense = WordSenseDataList(entry, lemma_multiword=lemma_multiword)
-            word = sense.lemma
-
-            if word not in self.data_dict.keys():
-                self.data_dict[word] = sense
-            else:
-                self.data_dict[word].merge_duplicate_data(sense)
+                if word not in self.data_dict.keys():
+                    self.data_dict[word] = sense
+                else:
+                    self.data_dict[word].merge_duplicate_data(sense)
+            except Exception as e:
+                print(f"[{get_now_string()}] Exception: {e}")
 
 def compare_words_data(file_words: str, info_file: str, examples_file: str):
     words_data = [[line[0], line[2]] for line in file_helpers.load_file(file_words, sep='|')]
@@ -195,8 +201,8 @@ def compare_words_data(file_words: str, info_file: str, examples_file: str):
 
     with open(examples_file, "r", encoding="utf8") as f:
         for line in f.readlines():
-            word, word_form, sense_id, idx, sentence = line.split("\t")
-            examples_data += [(word, int(sense_id))]
+            word, pos_tag, word_form, sense_id, idx, sentence = line.split("\t")
+            examples_data += [(word, pos_tag, int(sense_id))]
 
     examples_data = list(set(examples_data))
     examples_count = word_list_to_dict(examples_data)
@@ -256,8 +262,8 @@ class Example():
         self.token_idx = idx
         self.sentence = sentence
 
-    def write_to_file(self, outf, lemma, sense_id):
-        data = [lemma, self.word_form, sense_id, self.token_idx, self.sentence]
+    def write_to_file(self, outf, pos_tag, lemma, sense_id):
+        data = [lemma, pos_tag, self.word_form, sense_id, self.token_idx, self.sentence]
         outf.write("\t".join([str(x) for x in data]) + "\n")
         return data
 
@@ -272,10 +278,15 @@ class WordSenseData():
         self.examples = []
 
         self.get_description(sense, n, lemma)
+        if not self.description:
+            return
 
         examples = sense.find('exampleContainerList')
         if examples:
             self.get_examples(examples, lemma, lemma_multiword=lemma_multiword)
+
+    def __repr__(self):
+        return f"<lemma: {self.lemma}, pos_tag: {self.pos_tag}, sense_id: {self.sense_id}, description: {self.description}>"
 
     def get_description(self, sense, n, lemma):
         labelList = sense.find("labelList")
@@ -283,8 +294,9 @@ class WordSenseData():
         definition = sense.find("definitionList/definition[@type='indicator']")
 
         if definition and definition.text:
-            self.description = definition.text
-        elif definitionList:
+            if definition.text in ["POMEŠANO", "WSD", "SZ", "FE"]:
+                return
+        if definitionList:
             self.description = get_text_from_element(definitionList, join_str="; ")
         elif labelList:
             self.description = get_text_from_element(labelList, join_str="; ")
@@ -299,7 +311,7 @@ class WordSenseData():
             #print("[%s] Example %d/%d" % (get_now_string(), i, len(examples)))
 
             if example:
-                #self.get_example(example, lemma)
+                self.get_example(example, lemma)
                 self.get_examples_from_gigafida(example, lemma, lemma_multiword=lemma_multiword)
 
     def get_example(self, example, lemma):
@@ -346,6 +358,7 @@ class WordSenseData():
                                    collocations_dir="tmp/all/collocations",
                                    sentence_mapper_dir="sources/gf2-collocations/gf2-collocation-sentence-mapper",
                                    lemma_multiword=False):
+
         multiword_example = example.find('multiwordExample')
         if multiword_example:
 
@@ -373,7 +386,6 @@ class WordSenseData():
             sentence_mapper_file = os.path.join(sentence_mapper_dir, "%s_mapper.txt" % structure_id)
 
             #if lemma_multiword:
-
             collocation_parts = collocation.split(" ")
             collocation_parts += (3 - len(collocation_parts)) * [""]
             collocation_id = find_in_csv_file_collocations(collocations_file, [0, 1, 2], #['C1_Lemma', 'C2_Lemma', 'C3_Lemma'],
@@ -382,7 +394,6 @@ class WordSenseData():
             if collocation_id is None:
                 collocation_id = find_in_csv_file_collocations(collocations_file, ['Joint_representative_form_fixed'],
                                                        [3], ",", 4) #'Colocation_ID')
-
 
             if not collocation_id:
                 return
@@ -401,10 +412,14 @@ class WordSenseData():
 
                 sentence, lemmas = res
 
-                idx_word = lemmas.index(lemma) + 1
+                try:
+                    idx_word = lemmas.index(lemma) + 1
+                except Exception as e:
+                    print(e)
+                    continue
+
                 idx = sentence[:idx_word].count(' ')
                 word_form = " ".join(sentence.split(" ")[idx: idx + lemma.count(" ") + 1])
-                print(sentence)
 
                 self.examples.append(Example(word_form, idx, sentence))
 
@@ -520,6 +535,10 @@ class WordSenseDataList(object):
         self.parse_head(entry.find('head'))
         self.find_senses(entry.find('.//senseList'), lemma_multiword=lemma_multiword)
 
+    def __repr__(self):
+        senses = ", ".join([str(x) for x in self.word_sense_list])
+        return f"[{senses}]"
+
     def parse_head(self, head):
         headword = head.find('headword')
         unescaped = html.unescape(headword.find('lemma').text)
@@ -534,29 +553,32 @@ class WordSenseDataList(object):
 
     def find_senses(self, sense_list, lemma_multiword=False):
         for i, sense in enumerate(sense_list):
-            #print("[%s] %s - find_senses: %d/%d" % (get_now_string(), self.lemma, i, len(sense_list)))
+            if i % 10 == 0:
+                print("[%s] %s - find_senses: %d/%d" % (get_now_string(), self.lemma, i, len(sense_list)))
             sense_data = WordSenseData(sense, i, len(sense_list), self.lemma, self.category,
                                        lemma_multiword=lemma_multiword)
-            self.word_sense_list.append(sense_data)
+            if sense_data:
+                self.word_sense_list.append(sense_data)
 
     def merge_duplicate_data(self, sense_list2):
-        i = 1 #max([x.sense_id for x in self.word_sense_list]) + 1
         new_word_data = []
+        i = max([x.sense_id for x in self.word_sense_list]) + 1
 
-        for j, d1 in enumerate(self.word_sense_list):
-
+        for d2 in sense_list2.word_sense_list:
             all_diff = True
 
-            for d2 in sense_list2.word_sense_list:
+            for j, d1 in enumerate(self.word_sense_list):
+
                 if d2.pos_tag == d1.pos_tag and d1.description == d2.description:
-                    all_diff = False
 
                     for example in d2.examples:
                         self.word_sense_list[j].examples.append(example)
 
+                    all_diff = False
+
             if all_diff:
-                d1.sense_id = i
-                new_word_data.append(d1)
+                d2.sense_id = i
+                new_word_data.append(d2)
                 i += 1
 
         self.word_sense_list += new_word_data

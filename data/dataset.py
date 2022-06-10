@@ -124,3 +124,17 @@ def divide_word_senses(in_file: str, out_file1: str, out_file2: str, sep: str, r
     info += "Senses\tFile1: %d, File2: %d, total: %d\n" % (sum_senses, n-sum_senses, n)
 
     return info
+
+def create_syn_ant_dataset(synonym_file, antonym_file, out_file):
+    with open(out_file, "w", encoding="utf8") as outf:
+        with open(antonym_file, "r", encoding="utf8") as f:
+            for line in f:
+                data = line.split("\t")
+                w1, w2, score = data[1], data[2], data[9]
+                if score.count("d") > 3:
+                    outf.write(f"{w1}\t{w2}\t0\n")
+        with open(synonym_file, "r", encoding="utf8") as f:
+            for line in f:
+                w1, w2 = line.strip().split(" ")
+                outf.write(f"{w1}\t{w2}\t1\n")
+

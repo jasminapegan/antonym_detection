@@ -55,10 +55,11 @@ score_files =  ["out/agglomerative/agglomerative-affinity=precomputed,distance=r
 #processing.write_stats(score_files, result_files, "stats.tsv", "scores_plot_data_2.tsv")
 #plotting.plot_data("scores_plot_data_2.tsv")
 
-syn_ant_dataset = "../data/sources/syn_ant_clean.tsv"
+syn_ant_dataset = "../data/sources/syn_ant/syn_ant_clean.tsv"
 labeled_embeddings = "../data/embeddings/labeled_embeddings.txt"
-sense_data = "../data/sources/sense_data_new.txt"
+sense_data = "../data/sources/sense/sense_data_new_2.txt"
 f = "ant_syn_senses/"
+f2 = "ant_syn_senses/no_outliers/"
 
 #SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f + "ent_no_outl.txt", algo='weighed_entropy', clean_data=True)
 #SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f + "ent_with_outl.txt", algo='weighed_entropy', clean_data=False)
@@ -67,4 +68,8 @@ f = "ant_syn_senses/"
 #    SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}avg_d_no_outl_ratio={ratio}.txt", algo='avg_dist', clean_data=True, ratio=ratio)
 
 #SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}avg_d_with_outl_uniform.txt", algo='avg_dist', weights='uniform')
-SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}avg_d_with_outl.txt", algo='avg_dist', out_sentences=f"{f}avg_d_with_outl_sentences.txt")
+
+sc = SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}min_avg_dist.txt", algo='min_avg_dist')
+sc.execute_algorithm(f"{f}min_dist.txt", algo='min_dist')
+sc.execute_algorithm(f"{f}avg_min_dist.txt", algo='avg_min_dist')
+sc.execute_algorithm(f"{f}min_avg_dist.txt", algo='min_avg_dist')

@@ -104,7 +104,7 @@ class WordEmbeddings:
         :param pseudoword: use pseudoword embeddings? (default False)
         :return: None
         """
-        words, labels, word_indices, sentences = self.parse_data(data_batch, labeled, label_idx=2)
+        words, pos_tags, labels, word_indices, sentences = self.parse_data(data_batch, labeled, label_idx=3)
         sentences, dataset, indices = self.prepare_data(words, word_indices, sentences)
 
         if not sentences:
@@ -118,9 +118,9 @@ class WordEmbeddings:
             # result = get_psewdoword_embedding_from_results(outputs, word, sentences, indices)
         else:
             if labeled:
-                result = self.get_embeddings_from_results(outputs, words, sentences, indices, labels=labels)
+                result = self.get_embeddings_from_results(outputs, words, pos_tags, sentences, indices, labels=labels)
             else:
-                result = self.get_embeddings_from_results(outputs, words, sentences, indices)
+                result = self.get_embeddings_from_results(outputs, words, pos_tags, sentences, indices)
 
 
         if result:
@@ -140,8 +140,8 @@ class WordEmbeddings:
             return self.get_embeddings_from_results(outputs, words, sentences, indices)
 
     @staticmethod
-    def get_embeddings_from_results(outputs, words: List[str], sentences: List[str], indices: List[Indices],
-                                    labels=[]) -> List:
+    def get_embeddings_from_results(outputs, words: List[str], pos_tags: List[str], sentences: List[str],
+                                    indices: List[Indices], labels=[]) -> List:
         """
         Manipulates results from model to get word embeddings. The embeddings are calculated as mean of concatenated
         last 4 layers representing word tokens.
@@ -176,9 +176,9 @@ class WordEmbeddings:
             cat_vec = torch.cat((lay4, lay3, lay2, lay1), dim=0)
 
             if labels:
-                result.append([words[i], labels[i], sentences[i], cat_vec])
+                result.append([words[i], pos_tags[i], labels[i], sentences[i], cat_vec])
             else:
-                result.append([words[i], sentences[i], cat_vec])
+                result.append([words[i], pos_tags[i], sentences[i], cat_vec])
 
         return result
 
@@ -301,6 +301,7 @@ class WordEmbeddings:
         """
 
         words = [d[0] for d in data]
+        pos_tags = [d[1] for d in data]
         word_indices = [int(d[-2]) for d in data]
         sentences = [d[-1] for d in data]
         labels = []
@@ -308,7 +309,7 @@ class WordEmbeddings:
         if labeled:
             labels = [d[label_idx] for d in data]
 
-        return words, labels, word_indices, sentences
+        return words, pos_tags, labels, word_indices, sentences
 
     @staticmethod
     def batch(iterable: List, n: int=1):
