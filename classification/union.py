@@ -1,7 +1,7 @@
 class DisjunctUnion:
-    def __init__(self, nodes):
-        self.array = [n for n in range(nodes)]
-        self.weight = [n for n in range(nodes)]
+    def __init__(self, n_nodes):
+        self.array = [n for n in range(n_nodes)]
+        self.weight = [n for n in range(n_nodes)]
 
     def root(self, parent):
         while parent != self.array[parent]:

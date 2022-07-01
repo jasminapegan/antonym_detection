@@ -22,8 +22,8 @@ out_file = "sentences/sentences.txt"
 
 #ws = wordsense.WordSense(["sources/wordsense", "sources/wordsense2"], "tmp/all",
 #                         collocations_dir="sources/gf2-collocations/gf2-collocations-extended", clean_data=False)
-#ws.get_wordsense_examples("sources/sense_data_new_2.txt", "sources/sense_examples_new_2.txt")
-#wordsense.compare_words_data(source_file, "sources/sense/info_words_new_2.txt", "sources/sense/sense_examples_new_2.txt")
+#ws.get_wordsense_examples("sources/sense_data_new_test.txt", "sources/sense_examples_new_test.txt")
+#wordsense.compare_words_data(source_file, "sources/sense/info_words_new_test.txt", "sources/sense/sense_examples_new_test.txt")
 
 # get only multisense words
 #file_helpers.get_multisense_words(source_file, "sources/sense/besede_vecpomenske_2.txt")
@@ -33,11 +33,23 @@ out_file = "sentences/sentences.txt"
 #wordsense.compare_words_data("sources/sense/besede_vecpomenske_2.txt", "sources/sense/info_words_new_multisense_2.txt",
 #                             "sources/sense/sense_examples_new_multisense_2.txt")
 
+#file_helpers.get_multisense_words(source_file, "sources/sense/multisense/words.txt")
+#file_helpers.get_multisense_words("sources/sense/sense_data.txt", "sources/sense/multisense/sense_data.txt")
+#file_helpers.filter_file_by_words("sources/sense/sense_examples_fixed.txt", "sources/sense/multisense/sense_data.txt",
+#                                  "sources/sense/multisense/sense_examples.txt", split_by_2='|')
+#wordsense.compare_words_data(source_file, "sources/sense/multisense/info_words.txt",
+#                             "sources/sense/multisense/sense_examples.txt")
+
 
 # 2. razdeli besede na val in test set
 #dataset.create_val_test_set("sources/sense_data_new_multisense.txt","sources/sense_examples_new_multisense.txt",
 #                            "sources/besede_vecpomenske.txt", "dataset/val_words_new.txt", "dataset/test_words_new.txt",
 #                            "dataset/info_new.txt", '|')
+
+#dataset.create_val_test_set("sources/sense/multisense/sense_data.txt","sources/sense/multisense/sense_examples.txt",
+#                            "sources/sense/multisense/words.txt", "dataset/val_words.txt",
+#                            "dataset/test_words.txt",
+#                            "dataset/info.txt", '|')
 
 # 3. pridobi sample dodatnih stavkov
 #missing_sentences
@@ -52,9 +64,9 @@ out_file = "sentences/sentences.txt"
 #gigafida.get_sentences_multiprocess(gigafida_dir, "dataset/test.txt", tmp_dir="tmp/GF", folders_range=list(range(0, 100)), sep="\t")
 #gigafida.finalize_sentence_search("dataset/test.txt","sample/test_sample.txt", "sample/test_info.txt", tmp_dir="tmp/GF", folders_range=list(range(100)))
 
-gigafida.get_sentences_multiprocess(gigafida_dir, "sample/gf_testing.txt", tmp_dir="tmp/GF", folders_range=list(range(1)), sep="|")
-gigafida.finalize_sentence_search("sample/gf_testing.txt","sample/testing_sample.txt", "sample/testing_info.txt",
-                                  tmp_dir="tmp/GF", folders_range=list(range(1)), sep="|")
+#gigafida.get_sentences_multiprocess(gigafida_dir, "sample/gf_testing.txt", tmp_dir="tmp/GF", folders_range=list(range(1)), sep="|")
+#gigafida.finalize_sentence_search("sample/gf_testing.txt","sample/testing_sample.txt", "sample/testing_info.txt",
+#                                  tmp_dir="tmp/GF", folders_range=list(range(1)), sep="|")
 
 #file_helpers.concatenate_files(["sample/gigafida_all.txt", "sample/bkp/gigafida_all.txt"], "sample/gigafida_tmp.txt")
 #file_helpers.sort_lines("sample/gigafida_tmp.txt", "sample/gigafida_all_new.txt")
@@ -80,12 +92,19 @@ gigafida.finalize_sentence_search("sample/gf_testing.txt","sample/testing_sample
 
 #file_helpers.get_all_words(["dataset/val_words.txt", "dataset/test_words.txt"], "sources/besede_s_pomeni_sorted.txt", "dataset/all_words.txt")
 
-
-
-#we = embeddings.WordEmbeddings()
-#we.data_file_to_embeddings(["sources/sense/sense_examples_new_multisense_2.txt"], "embeddings/labeled_embeddings.txt",
-#                           labeled=True, batch_size=1)
+we = embeddings.WordEmbeddings()
+we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/labeled_embeddings.txt",
+                           labeled=True, batch_size=1, lemmatized=False)
+we.data_file_to_embeddings(["sample/sample_diff.txt"], "embeddings/unlabeled_embeddings.txt",
+                           labeled=True, batch_size=1, lemmatized=False)
+we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/labeled_embeddings_lemmatized.txt",
+                           labeled=True, batch_size=1, lemmatized=True)
+we.data_file_to_embeddings(["sample/sample_diff.txt"], "embeddings/unlabeled_embeddings_lemmatized.txt",
+                           labeled=True, batch_size=1, lemmatized=True)
 
 #dataset.create_syn_ant_dataset("sources/syn_ant/synonyms_cjvt.tsv", "sources/syn_ant/antonyms_sokol.tsv", "sources/syn_ant/syn_ant_dataset.tsv")
+#dataset.create_syn_ant_dataset("sources/syn_ant/synonyms_cjvt.tsv", "sources/syn_ant/antonyms_sokol.tsv", "sources/syn_ant/syn_ant_dataset_2.tsv", d=2)
 
+#file_helpers.fix_indices("sources/sense/archive/sense_examples_new_multisense.txt", "sources/sense/archive/sense_examples_new_multisense_fixed.txt", batch_size=10000)
+#print(file_helpers.file_len("sources/sense/archive/sense_examples_new_multisense.txt"))
 

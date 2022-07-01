@@ -6,7 +6,7 @@ import re
 from random import shuffle
 from typing import Dict, Iterable, List
 import file_helpers
-from data.gigafida import get_sentence_by_id, get_now_string
+from data.gigafida import get_sentence_by_id
 
 
 def count_senses(word_count: Dict[str, List[str]], keys: Iterable[str]):
@@ -59,7 +59,7 @@ class WordSense:
                 dirname = os.path.basename(d)
                 tree.write(os.path.join(self.clean_dir, "%s_%s" % (dirname, filename)))
 
-        """cols_collocations = ['C1_Lemma', 'C2_Lemma', 'C3_Lemma', 'Joint_representative_form_fixed', 'Colocation_ID']
+        cols_collocations = ['C1_Lemma', 'C2_Lemma', 'C3_Lemma', 'Joint_representative_form_fixed', 'Colocation_ID']
         tmp_clean_dir = os.path.join(self.tmp_dir, "clean_unsorted")
 
         if not os.path.exists(tmp_clean_dir):
@@ -77,7 +77,7 @@ class WordSense:
             filepath = os.path.join(tmp_clean_dir, file)
             outf = os.path.join(self.collocations_dir_clean, file)
             file_helpers.write_sorted(filepath, outf, 3)
-            file_helpers.file_to_folders(filepath, self.collocations_dir_clean)"""
+            file_helpers.file_to_folders(filepath, self.collocations_dir_clean)
 
     @staticmethod
     def cleanup_csv(in_csv, out_csv, cols, delimiter=","):
@@ -149,7 +149,7 @@ class WordSense:
         files = os.listdir(self.clean_dir)
 
         for i, file in enumerate(files):
-            print("[%s] %.2f%%: %s" % (get_now_string(), (100*i)/len(files), file))
+            print("[%s] %.2f%%: %s" % (file_helpers.get_now_string(), (100*i)/len(files), file))
 
             lemma_collocations = file in ["WSD-baza-21-04-2022_2,3-pomensko-členjeno.xml",
                                           "WSD-baza-21-04-2022_2,4-pregledani-pomeni.xml",
@@ -166,8 +166,9 @@ class WordSense:
                 for word in sorted(list(self.data_dict.keys())):
                     for sense_data in self.data_dict[word].word_sense_list:
 
+                        sense_data.write_to_file(f)
+
                         if sense_data.examples:
-                            sense_data.write_to_file(f)
 
                             for example in sense_data.examples:
                                 if example:
@@ -181,7 +182,7 @@ class WordSense:
         root = tree.getroot()
         for i, entry in enumerate(root):
             if i % 10 == 0:
-                print("[%s] get_word_data: %d/%d" % (get_now_string(), i, len(root)))
+                print("[%s] get_word_data: %d/%d" % (file_helpers.get_now_string(), i, len(root)))
             try:
                 sense = WordSenseDataList(entry, lemma_multiword=lemma_multiword)
                 word = sense.lemma
@@ -191,7 +192,7 @@ class WordSense:
                 else:
                     self.data_dict[word].merge_duplicate_data(sense)
             except Exception as e:
-                print(f"[{get_now_string()}] Exception: {e}")
+                print(f"[{file_helpers.get_now_string()}] Exception: {e}")
 
 def compare_words_data(file_words: str, info_file: str, examples_file: str):
     words_data = [[line[0], line[2]] for line in file_helpers.load_file(file_words, sep='|')]
@@ -201,6 +202,9 @@ def compare_words_data(file_words: str, info_file: str, examples_file: str):
 
     with open(examples_file, "r", encoding="utf8") as f:
         for line in f.readlines():
+            if line.count("\t") != 5:
+                print(line)
+                continue
             word, pos_tag, word_form, sense_id, idx, sentence = line.split("\t")
             examples_data += [(word, pos_tag, int(sense_id))]
 
@@ -294,7 +298,7 @@ class WordSenseData():
         definition = sense.find("definitionList/definition[@type='indicator']")
 
         if definition and definition.text:
-            if definition.text in ["POMEŠANO", "WSD", "SZ", "FE"]:
+            if definition.text.upper() in ["POMEŠANO", "WSD", "SZ", "FE"]:
                 return
         if definitionList:
             self.description = get_text_from_element(definitionList, join_str="; ")
@@ -308,7 +312,7 @@ class WordSenseData():
 
     def get_examples(self, examples, lemma, lemma_multiword=False):
         for i, example in enumerate(examples):
-            #print("[%s] Example %d/%d" % (get_now_string(), i, len(examples)))
+            #print("[%s] Example %d/%d" % (file_helpers.get_now_string(), i, len(examples)))
 
             if example:
                 self.get_example(example, lemma)
@@ -554,7 +558,7 @@ class WordSenseDataList(object):
     def find_senses(self, sense_list, lemma_multiword=False):
         for i, sense in enumerate(sense_list):
             if i % 10 == 0:
-                print("[%s] %s - find_senses: %d/%d" % (get_now_string(), self.lemma, i, len(sense_list)))
+                print("[%s] %s - find_senses: %d/%d" % (file_helpers.get_now_string(), self.lemma, i, len(sense_list)))
             sense_data = WordSenseData(sense, i, len(sense_list), self.lemma, self.category,
                                        lemma_multiword=lemma_multiword)
             if sense_data:

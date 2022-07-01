@@ -1,10 +1,15 @@
 import hashlib
 import os
 import pickle
+from datetime import datetime
+from difflib import get_close_matches
 from io import TextIOWrapper
 
+import classla
 import numpy as np
 from typing import List, Dict, Union
+
+from data.lemmatization import get_sentence_lemmas_list
 
 
 def get_words_data_from_file(words_file: str, sep='|', header=True, skip_num=False) -> List[Dict]:
@@ -97,6 +102,8 @@ def get_unique_words(word_file: str, sep: str='|'):
 def get_unique_words_pos(word_file: str, sep: str='|'):
     words = {}
     for line in load_file(word_file, sep=sep):
+        if len(line) < 2:
+            continue
 
         word, pos = line[:2]
 
@@ -148,7 +155,7 @@ def file_len(filename: str):
     return i + 1
 
 def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bool=False, embeddings: bool=False,
-                                 sep='\t') -> Dict[str, Dict]:
+                                 sep='\t', use_pos=True) -> Dict[str, Dict]:
     """
     Parses data in 'file' and returns a dictionary of parsed data per word.
 
@@ -163,10 +170,18 @@ def load_validation_file_grouped(file: str, all_strings: bool=False, indices: bo
 
     for line in data:
 
-        if embeddings:
-            word, pos, label, sentence, embedding = line
+        if use_pos:
+            if embeddings:
+                word, pos, label, sentence, embedding = line
+            else:
+                word, pos, word_form, label, index, sentence = line
         else:
-            word, pos, word_form, label, index, sentence = line
+            if embeddings:
+                word, label, sentence, embedding = line
+            else:
+                word, word_form, label, index, sentence = line
+            pos = "all"
+
         index = None
 
         if indices:
@@ -281,7 +296,7 @@ def count_words(in_file: str, sep='\t') -> Dict[str, int]:
     return words
 
 def filter_file_by_words(file: str, words_file_or_list: Union[str, List[str]], out_file: str, word_idx: int=0,
-                         split_by: str='\t', split_by_2:str="\t", complement: bool=False, skip_idx: int=None):
+                         split_by: str='\t', split_by_2:str='\t', complement: bool=False, skip_idx: int=None):
     """
     Filter 'file' by words in 'word_file'. Output lines starting with words in 'word_file' to 'out_file'.
 
@@ -440,3 +455,162 @@ def get_multisense_words(in_file, out_file, sep='|'):
     wc = count_words(in_file, sep=sep)
     multisense_words = [w for w, c in wc.items() if c > 1]
     filter_file_by_words(in_file, multisense_words, out_file, split_by=sep, split_by_2=sep)
+
+def fix_indices(in_file, out_file, sep="\t", batch_size=100, indices_idx=3, use_form=True):
+    lemmatizer = classla.Pipeline('sl', processors='tokenize,pos,lemma', use_gpu=True)
+
+    with open(in_file, "r", encoding="utf8") as f:
+        data = [line.split(sep) for line in f]
+
+    print(f"[{get_now_string()}] Data loaded!")
+
+    words = [d[0] for d in data]
+    sentences_split = [d[-1].strip().split(" ") for d in data]
+
+    n = len(words) // batch_size
+    with open(out_file, "w", encoding="utf8") as f:
+
+        for batch in range(n):
+            print(f"[{get_now_string()}] Starting batch {batch} / {n}")
+
+            start = batch * batch_size
+            end = min((batch + 1) * batch_size, len(words))
+
+            fix_indices_batch(data[start:end], sentences_split[start:end], lemmatizer, f,
+                              sep, indices_idx=indices_idx, use_form=use_form)
+
+        if n == 0:
+            fix_indices_batch(data, sentences_split, lemmatizer, f, sep, indices_idx=indices_idx, use_form=use_form)
+
+def fix_indices_batch(data_batch, sentences_split_batch, lemmatizer, out_file, sep, indices_idx=3, use_form=True, insert_form=False):
+    data_to_fix = []
+
+    for d, s in zip(data_batch, sentences_split_batch):
+        word, idx = d[0], d[indices_idx]
+        word = word.replace("-", " - ")
+        word = word.replace("  ", " ")
+        word_len = word.count(" ") + 1
+
+        # find previously defined word form (may be incorrect)
+        if use_form:
+            form = d[indices_idx - 2]
+        else:
+            form = " ".join(s[int(idx): int(idx) + word.count(" ") + 1])
+
+        matches = [get_close_matches(w, s, cutoff=0.1) for w in word.split(" ")]
+
+        # if lengths and first three chars match, it is probably ok
+        if form.count(" ") == word.count(" ") and form.lower()[:3] == word.lower()[:3]:
+            out_file.write(sep.join(d))
+
+        # if all the words are matched in text and they equate the form, it is ok
+        elif all(matches) and " ".join([m[0] for m in matches]) == form:
+            if word.count(" ") < form.count(" "):
+                d[indices_idx - 2] = " ".join(form.split(" ")[:word.count(" ") + 1])
+            out_file.write(sep.join(d))
+
+        # take a look at closest matches for word
+        else:
+            close = [get_close_matches(w, s, cutoff=0.2) for w in word.split(" ")]
+
+            # if match is close to original index, that could be the right match
+            if all(close) and abs(s.index(close[0][0]) - int(idx)) < 5:
+                counts = [s.count(m[0]) for m in close]
+                indices = [s.index(c[0]) for c in close]
+
+                # does the first match occur only once and are indices consecutive?
+                if counts[0] == 1 and indices == list(range(indices[0], indices[-1] + 1)):
+                    d[indices_idx] = str(s.index(close[0][0]))
+
+                    if use_form:
+                        close_forms = [c[0] for c in close]
+
+                        dists = [abs(s.index(fp) - int(idx)) for fp, word_part in zip(close_forms, word.split(" "))]
+                        if all([x < 5 for x in dists]):
+                            d[indices_idx - 2] = " ".join(close_forms)
+
+                    out_file.write(sep.join(d))
+
+                else:
+                    data_to_fix.append(d)
+
+            # one word
+            elif all(close) and word_len == 1:
+                d[indices_idx] = str(s.index(close[0][0]))
+
+                if use_form:
+                    d[indices_idx - 2] = close[0][0]
+
+                out_file.write(sep.join(d))
+
+            else:
+                data_to_fix.append(d)
+
+    if not data_to_fix:
+        return
+
+    sentences_split_to_fix = [d[-1].strip().split(" ") for d in data_to_fix]
+    words_to_fix = [d[0] for d in data_to_fix]
+    indices_to_fix = [int(d[indices_idx]) for d in data_to_fix]
+
+    print(f"[{get_now_string()}] Lemmatizing sentences ...")
+    word_lemmas, lemmatized_sentences = get_sentence_lemmas_list(words_to_fix, sentences_split_to_fix, lemmatizer=lemmatizer)
+
+    for ii, lemma, sentence_lemmas, idx in zip(range(len(word_lemmas)), word_lemmas, lemmatized_sentences, indices_to_fix):
+
+        if lemma != lemmatized_sentences[ii][idx] and lemma != sentences_split_to_fix[ii]:
+            new_idx, found_lemma = find_new_index(lemma, idx, sentence_lemmas)
+
+            len_lemma = lemma.count(" ") + 1
+
+            indices_to_fix[ii] = new_idx
+            data_to_fix[ii][indices_idx] = str(new_idx)
+
+            if use_form:
+                data_to_fix[ii][indices_idx - 2] = " ".join(sentences_split_to_fix[ii][new_idx: new_idx + len_lemma])
+
+        out_file.write(sep.join(data_to_fix[ii]))
+
+def find_new_index(lemma, idx, sentence_lemmas):
+    n = lemma.count(" ") + 1
+    m = len(sentence_lemmas)
+
+    word_form = " ".join(sentence_lemmas[idx: idx + n])
+    if lemma.lower() == word_form.lower():
+        return idx, word_form
+
+    i = 1
+    while idx + i < m or idx - i >= 0:
+
+        new_idx = idx + i
+        if new_idx < m:
+
+            word_form = " ".join(sentence_lemmas[new_idx: new_idx + n])
+            if lemma.lower() == word_form.lower():
+                return new_idx, word_form
+
+        new_idx = idx - i
+        if new_idx >= 0:
+
+            word_form = " ".join(sentence_lemmas[new_idx: new_idx + n])
+            if lemma.lower() == word_form.lower():
+                return new_idx, word_form
+
+        i += 1
+
+    if lemma in sentence_lemmas:
+        idx = sentence_lemmas.index(lemma)
+        return idx, lemma
+
+    close = get_close_matches(lemma, sentence_lemmas, cutoff=0.4)
+    #print(f"{lemma} close matches:", close)
+    if close:
+        idx = sentence_lemmas.index(close[0])
+        return idx, " ".join(sentence_lemmas[idx: idx + n])
+    else:
+        print("Something was not ok", lemma, sentence_lemmas, idx, sentence_lemmas[idx: idx + n])
+        return idx, " ".join(sentence_lemmas[idx: idx + n])
+
+def get_now_string():
+    return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+

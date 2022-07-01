@@ -31,7 +31,7 @@ def get_sentences_multiprocess(gigafida_dir: str, words_file: str, tmp_dir: str=
     :param n_folders: number of folders to loop through in GigaFida directory (default 100, which is all)
     :return: None
     """
-    print("[%s] Starting ..." % get_now_string())
+    print("[%s] Starting ..." % file_helpers.get_now_string())
 
     if not os.path.exists(tmp_dir):
         os.mkdir(tmp_dir)
@@ -40,7 +40,7 @@ def get_sentences_multiprocess(gigafida_dir: str, words_file: str, tmp_dir: str=
     if not preexisting:
 
         prepare_word_data(words_file, sep=sep)
-        print("[%s] Word data prepared!" % get_now_string())
+        print("[%s] Word data prepared!" % file_helpers.get_now_string())
         serialize_globals()
 
     pool = Pool(min(20, len(folders_range)))
@@ -53,7 +53,7 @@ def get_sentences_multiprocess(gigafida_dir: str, words_file: str, tmp_dir: str=
     pool.join()
 
     serialize_globals()
-    print("[%s] Finished." % get_now_string())
+    print("[%s] Finished." % file_helpers.get_now_string())
 
 def serialize_globals(tmp_folder="tmp"):
     global words_data
@@ -70,7 +70,7 @@ def serialize_globals(tmp_folder="tmp"):
     with open(tmp_file, "w", encoding="utf8") as f:
         f.write(json.dumps(words_data_copy))
 
-    print("[%s] Globals serialized." % get_now_string())
+    print("[%s] Globals serialized." % file_helpers.get_now_string())
 
 def deserialize_globals(tmp_folder="tmp"):
     global words_data
@@ -89,7 +89,7 @@ def deserialize_globals(tmp_folder="tmp"):
         for word in words_data.keys():
             words_data[word]['pattern'] = re.compile(r'\b%s\b' % words_data[word]['lemma'])
 
-        print("[%s] Globals deserialized." % get_now_string())
+        print("[%s] Globals deserialized." % file_helpers.get_now_string())
         return True
 
 def finalize_sentence_search(words_file: str, sample_out: str, info_out: str, tmp_dir: str="tmp", sample_size: int=100,
@@ -98,7 +98,7 @@ def finalize_sentence_search(words_file: str, sample_out: str, info_out: str, tm
     all_sentences_file = gather_sentence_data(files, tmp_dir=tmp_dir)
     get_sample_sentences(words_file, all_sentences_file, sample_out, info_out, sample_size=sample_size)
 
-    print("[%s] Missing words\n" % get_now_string(), missing_words(words_file, sample_out, sep=sep))
+    print("[%s] Missing words\n" % file_helpers.get_now_string(), missing_words(words_file, sample_out, sep=sep))
 
 def prepare_word_data(words_file: str, sep: str="|"):
     global words_data
@@ -144,14 +144,14 @@ def get_sentences_part(gigafida_dir: str, out_path: str, i: int, limit: int):
         global words_data
 
         with open(os.path.join(out_path, "%02d.txt" % i), "w", encoding="utf8") as outf:
-            print("[%s] Opened out-file #%d" % (get_now_string(), i))
+            print("[%s] Opened out-file #%d" % (file_helpers.get_now_string(), i))
 
             gigafida_subdir = os.path.join(gigafida_dir, "GF%02d/" % i)
             re_whitespace = re.compile(r"\s+")
 
             for j, file in enumerate(os.listdir(gigafida_subdir)):
                 if j % 100 == 0:
-                    print("[%s] Opened file #%d / 384 in folder #%d" % (get_now_string(), j, i))
+                    print("[%s] Opened file #%d / 384 in folder #%d" % (file_helpers.get_now_string(), j, i))
 
                 tree = ET.parse(os.path.join(gigafida_subdir, file))
 
@@ -161,10 +161,10 @@ def get_sentences_part(gigafida_dir: str, out_path: str, i: int, limit: int):
                 get_sentences_from_tree(tree, outf, re_whitespace, limit=limit)
 
     except Exception as e:
-        print("[%s] Get Sentences Error:" % get_now_string(), e)
+        print("[%s] Get Sentences Error:" % file_helpers.get_now_string(), e)
 
     finally:
-        print("[%s] Closed out-file #%d" % (get_now_string(), i))
+        print("[%s] Closed out-file #%d" % (file_helpers.get_now_string(), i))
 
 def get_sentences_from_tree(tree: ET.ElementTree, out_file: TextIOWrapper, re_whitespace: Pattern, limit: int, min_tokens: int=8):
     """
@@ -256,7 +256,7 @@ def update_word_count_in_globals(word: str, pos_tag: str, limit):
                 n = len(words_data)
 
                 if n % 100 == 0:
-                    print("[%s] Finished sampling word '%s'. Remaining %d words." % (get_now_string(), word, n))
+                    print("[%s] Finished sampling word '%s'. Remaining %d words." % (file_helpers.get_now_string(), word, n))
 
                 if n == 0:
                     return
@@ -273,7 +273,7 @@ def update_word_count_in_globals(word: str, pos_tag: str, limit):
             n = len(words_data)
 
             if n % 100 == 0:
-                print("[%s] Finished sampling word '%s'. Remaining %d words." % (get_now_string(), word, n))
+                print("[%s] Finished sampling word '%s'. Remaining %d words." % (file_helpers.get_now_string(), word, n))
 
             if n == 0:
                 return
@@ -436,8 +436,6 @@ def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out
             for pos, val in vals.items():
                 info_file.write("%s\t%s\t%d\n" % (key, pos, val))
 
-def get_now_string():
-    return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
 def get_sentence_by_id(file, sentence_id):
     re_whitespace = re.compile(r"\s+")

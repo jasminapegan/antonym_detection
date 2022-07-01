@@ -4,10 +4,8 @@ from io import TextIOWrapper
 import classla
 import torch
 from typing import Iterable, List, Tuple
-from difflib import get_close_matches
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, BatchEncoding
 from file_helpers import load_file
-from data.lemmatization import get_word_lemmas_list
 
 
 class WordEmbeddings:
@@ -25,47 +23,8 @@ class WordEmbeddings:
         self.model = AutoModelForSequenceClassification.from_pretrained(model, output_hidden_states=True)
         self.model.eval()
 
-    def get_words_embeddings(self, word: str, sentences: List[str]) -> (List, List[int]):
-        """
-        Given a word and a list of sentences containing this word, calculates embeddings of the word in each sentence.
-
-        :param word: the observed word
-        :param sentences: a list of sentences where observed word is used
-        :return: a list of embeddings and a list of skipped indices due to errors
-        """
-
-        word_lemma = get_word_lemmas_list([word], lemmatizer=self.lemmatizer)[0]
-        sentences_lemmatized = get_word_lemmas_list(sentences[:], lemmatizer=self.lemmatizer)
-        words = len(sentences) * [word]
-        skipped_idx = []
-
-        for i in range(len(sentences_lemmatized)):
-            s = sentences_lemmatized[i]
-
-            if word_lemma not in s:
-                matches = get_close_matches(word_lemma, s.split(' '), n=1)
-
-                if len(matches) == 0:
-                    skipped_idx.append(i)
-                else:
-                    sentences_lemmatized[i] = s.replace(matches[0], word_lemma)
-
-        indices = [s[:s.index(word_lemma) + 1].count(' ') for s in sentences_lemmatized if word_lemma in s]
-
-        if len(indices) == 0:
-            return []
-
-        sentences, dataset, indices = self.prepare_data(words, indices, sentences)
-
-        with torch.no_grad():
-            outputs = self.model(**dataset, output_hidden_states=True)
-
-        results = self.get_embeddings_from_results(outputs, words, sentences, indices)
-
-        return [r[-1] for r in results], skipped_idx
-
-    def data_file_to_embeddings(self, files: Iterable[str], out_file: str, batch_size: int = 50, labeled: bool = False,
-                                pseudoword: bool = False):
+    def data_file_to_embeddings(self, files: Iterable[str], out_file: str, batch_size: int = 5,
+                                labeled: bool = False, lemmatized=True):
         """
         Iterates through 'files', loads data, calculates embeddings and writes them to 'out_file'.
 
@@ -73,7 +32,6 @@ class WordEmbeddings:
         :param out_file: where to write resulting embeddings tsv data: word, sentence, embedding
         :param batch_size: size of batches of word data to be processed (default 50)
         :param labeled: do the files contain sense labels?
-        :param pseudoword: use pseudoword embeddings? (default False)
         :return: None
         """
 
@@ -86,26 +44,23 @@ class WordEmbeddings:
                 n_batches = len(data) // batch_size
 
                 for i, data_batch in enumerate(batches):
-
                     if i % 10000 == 0:
                         print("[%s] %d%% (%d / %d)" %
                               (get_now_string(), (100 * i) // n_batches, i, n_batches))
-                    try:
-                        self.data_batch_to_embeddings(data_batch, outf, labeled, pseudoword)
-                    except Exception as e:
-                        print("Failed to process batch %d: %s" % (i, e))
+                    #try:
+                    self.data_batch_to_embeddings(data_batch, outf, labeled, lemmatized=lemmatized)
+                    #except Exception as e:
+                    #    print(f"Failed to process batch {i}: {e}")
 
-    def data_batch_to_embeddings(self, data_batch: List, outf: TextIOWrapper, labeled: bool = False,
-                                 pseudoword: bool = False):
+    def data_batch_to_embeddings(self, data_batch: List, outf: TextIOWrapper, labeled: bool = False, lemmatized=True):
         """
         :param data_batch: batch of data to process
         :param outf: file to write embeddings data
         :param labeled: do the files contain sense labels?
-        :param pseudoword: use pseudoword embeddings? (default False)
         :return: None
         """
         words, pos_tags, labels, word_indices, sentences = self.parse_data(data_batch, labeled, label_idx=3)
-        sentences, dataset, indices = self.prepare_data(words, word_indices, sentences)
+        sentences, dataset, indices = self.prepare_data(words, word_indices, sentences, lemmatized=lemmatized)
 
         if not sentences:
             return
@@ -113,31 +68,22 @@ class WordEmbeddings:
         with torch.no_grad():
             outputs = self.model(**dataset, output_hidden_states=True)
 
-        if pseudoword:
-            raise NotImplementedError("Pseudoword embeddings not implemented")
-            # result = get_psewdoword_embedding_from_results(outputs, word, sentences, indices)
+        if labeled:
+            result = self.get_embeddings_from_results(outputs, words, pos_tags, sentences, indices, labels=labels)
         else:
-            if labeled:
-                result = self.get_embeddings_from_results(outputs, words, pos_tags, sentences, indices, labels=labels)
-            else:
-                result = self.get_embeddings_from_results(outputs, words, pos_tags, sentences, indices)
+            result = self.get_embeddings_from_results(outputs, words, pos_tags, sentences, indices)
 
 
         if result:
             self.write_results_to_file(result, outf)
 
-    def get_words_embeddings_2(self, words: List[str], word_indices: List[int], sentences: List[str],
-                               pseudoword: bool=False) -> List:
+    def get_words_embeddings(self, words: List[str], pos_tags: List[str], word_indices: List[int], sentences: List[str]) -> List:
         sentences, dataset, indices = self.prepare_data(words, word_indices, sentences)
 
         with torch.no_grad():
             outputs = self.model(**dataset, output_hidden_states=True)
 
-        if pseudoword:
-            raise NotImplementedError("Pseudoword embeddings not implemented")
-            # result = get_psewdoword_embedding_from_results(outputs, word, sentences, indices)
-        else:
-            return self.get_embeddings_from_results(outputs, words, sentences, indices)
+        return self.get_embeddings_from_results(outputs, words, pos_tags, sentences, indices)
 
     @staticmethod
     def get_embeddings_from_results(outputs, words: List[str], pos_tags: List[str], sentences: List[str],
@@ -197,7 +143,7 @@ class WordEmbeddings:
             line[-1] = embedding
             outf.write("\t".join(line) + "\n")
 
-    def prepare_data(self, words: List[str], word_indices: List[int], sentences: List[str]) \
+    def prepare_data(self, words: List[str], word_indices: List[int], sentences: List[str], lemmatized=True) \
             -> (List[str], BatchEncoding, List[Indices]):
         """
         Accepts data on usages of a word in sentences and returns sentences where word is switched to its base form,
@@ -208,8 +154,8 @@ class WordEmbeddings:
         :param sentences: sentences where the observed word is used
         :return: tuple (sentences, dataset, indices)
         """
-        original_sentences = sentences[:]
-        word_tokens = []
+
+        indices = []
         n = len(word_indices)
 
         if n == 0:
@@ -218,77 +164,21 @@ class WordEmbeddings:
         for i in range(n):
             sentence = sentences[i].split(' ')
             word_split = words[i].split(' ')
-            n_words = len(sentence)
             idx = word_indices[i]
 
-            sentence[idx: idx + len(
-                word_split)] = word_split
+            if lemmatized:
+                sentence[idx: idx + len(word_split)] = word_split
 
             sentences[i] = " ".join(sentence)
-            word_tokens.append(self.tokenizer.tokenize(words[i]))
+            new_sentence, word_tokens_range, _ = get_token_range(sentence, words[i], idx, self.tokenizer)
 
-            if n_words > 100:
-                j = sentence.index(word_split[0])
-                sentences[i] = ' '.join(sentence[max(0, j - 50): min(n_words, j + 50)])
+            sentences[i] = new_sentence
+            indices.append(word_tokens_range)
 
-        dataset = self.tokenizer(sentences, padding='longest', return_tensors="pt", is_split_into_words=False)
-        indices = [self.get_token_range(word_tokens[k], dataset.tokens(k)) for k in range(n)]
-        sentences = original_sentences
-
-        missing_indices = [i for i in range(n) if indices[i] == (-1, -1)]
-        if missing_indices:
-            print("Missing indices: ", missing_indices)
-            return self.prepare_data(
-                [w for i, w in enumerate(words) if i not in missing_indices],
-                [x for i, x in enumerate(word_indices) if i not in missing_indices],
-                [s for i, s in enumerate(sentences) if i not in missing_indices]
-            )
-
-        for k in range(n - len(missing_indices)):
-            dataset['input_ids'][k] = self.trim_index(indices[k][1], dataset['input_ids'][k])
+        dataset = self.tokenizer([s.split(" ") for s in sentences], padding='longest', return_tensors="pt",
+                                 is_split_into_words=True, max_length=512, truncation=True)
 
         return sentences, dataset, indices
-
-    @staticmethod
-    def trim_index(idx_to: int, tokens: List, limit: int=512) -> List:
-        """
-        Returns trimmed token list, with regards to index of the word we want to keep in resulting token list.
-
-        :param idx_to: index of the last token we want to keep in resulting token list
-        :param tokens: list of tokens we want trimmed
-        :param limit: how many tokens to trim to (default 512)
-        :return: trimmed token list
-        """
-
-        length = len(tokens)
-
-        if length > limit:
-            diff = length - limit
-
-            if idx_to < 512:
-                return tokens[:limit]
-            else:
-                return tokens[diff:]
-
-        return tokens
-
-    @staticmethod
-    def get_token_range(word_tokens: List, tokens: List) -> Indices:
-        """
-        Calculates index of first and last token of the word represented by 'word_tokens'.
-
-        :param word_tokens: a list of tokens representing observed word
-        :param tokens: a list of tokens representing observed word in context, ex. a sentence
-        :return: a tuple containing index of the first word token and index of the last word token in given token list.
-        """
-
-        n = len(word_tokens)
-
-        for idx in (i for i, token in enumerate(tokens) if token == word_tokens[0]):
-            if tokens[idx: idx+n] == word_tokens:
-                return idx, idx + n
-
-        return -1, -1
 
     @staticmethod
     def parse_data(data: List[List], labeled: bool=False, label_idx: int=1) -> (List[str], List, List[int], List[str]):
@@ -327,3 +217,33 @@ class WordEmbeddings:
 
 def get_now_string():
     return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
+def get_token_range(sentence: List[str], word: str, idx: int, tokenizer) -> (str, WordEmbeddings.Indices):
+    """
+    Calculates index of first and last token of the word represented by 'word_tokens'.
+    """
+
+    sentence_tokens = tokenizer(sentence, is_split_into_words=True)
+
+    words_ids = sentence_tokens.word_ids()
+    j, k = 0, len(words_ids) - 1
+    word_start = words_ids.index(idx)
+
+    if word_start > 250:
+        j = max(0, word_start - 250)
+    if k - word_start > 250:
+        k = min(word_start + 250, len(words_ids) - 1)
+
+    i1, i2 = sentence_tokens.token_to_word(j), sentence_tokens.token_to_word(k)
+    if i1 is None: i1 = 0
+    if i2 is None: i2 = len(sentence) - 1
+    idx -= i1
+    new_sentence = " ".join(sentence[i1: i2 + 1])
+
+    sentence_tokens = tokenizer(new_sentence.split(" "), is_split_into_words=True)
+    word_idx_range = (idx, idx + word.count(" "))
+    word_tokens_range = (sentence_tokens.word_to_tokens(word_idx_range[0])[0],
+                         sentence_tokens.word_to_tokens(word_idx_range[1])[1])
+
+    return new_sentence, word_tokens_range, word_idx_range
+

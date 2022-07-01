@@ -1,8 +1,11 @@
 import itertools
+import os
 from random import shuffle
 
 import classla
 import numpy as np
+
+from classification.union import DisjunctUnion
 from clustering.scoring import parse_cluster_file, parse_score_data
 
 import file_helpers
@@ -10,7 +13,9 @@ from data.embeddings import WordEmbeddings
 
 
 def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, out_file_syn, out_file_ant,
-                   out_anti_syn, out_anti_ant, out_syn_test, out_ant_test, out_syn_train, out_ant_train):
+                   out_anti_syn, out_anti_ant, out_syn_dir, out_ant_dir):
+    print("Loading cluster data ...")
+
     clusters = parse_cluster_file(cluster_file)
     score_data_ant = parse_score_data(score_file_ant)
     score_data_syn = parse_score_data(score_file_syn)
@@ -18,11 +23,14 @@ def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, 
     score_data.update({x: ('syn', y) for x, y in score_data_syn.items()})
     examples_data = file_helpers.load_validation_file_grouped(examples_file, indices=True, embeddings=False, use_pos=False)
 
+    print("Data loaded!")
+
     f = open(out_file_syn, "w", encoding="utf8")
     g = open(out_file_ant, "w", encoding="utf8")
     f2 = open(out_anti_syn, "w", encoding="utf8")
     g2 = open(out_anti_ant, "w", encoding="utf8")
 
+    print("Creating datasets ...")
     for pair_data in clusters.keys():
 
         cluster = clusters[pair_data]
@@ -32,7 +40,11 @@ def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, 
             #w1, w2, pos = pair_data
             w1, w2 = pair_data
             sense_w1, sense_w2 = cluster["w1_sense"], cluster["w2_sense"]
-            pos1, pos2 = list(examples_data[w1].keys())[0], list(examples_data[w2].keys())[0]
+            try:
+                pos1, pos2 = list(examples_data[w1].keys())[0], list(examples_data[w2].keys())[0]
+            except Exception as e:
+                print(e, w1, w2)
+                continue
             if pos1 != pos2:
                 continue
             #w1_data, w2_data = examples_data[w1]["all"], examples_data[w2]["all"] #[pos]
@@ -45,8 +57,10 @@ def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, 
                 write_data_to_file(f, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
                 write_other_pairs(f2, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
 
-    join_to_dataset(out_file_syn, out_anti_syn, out_syn_test, out_syn_train)
-    join_to_dataset(out_file_ant, out_anti_ant, out_ant_test, out_ant_train)
+    join_to_dataset(out_file_syn, out_anti_syn, out_syn_dir)
+    join_to_dataset(out_file_ant, out_anti_ant, out_ant_dir)
+
+
 
 def write_data_to_file(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data):
     w1_examples = [(s, i) for l, s, i in zip(w1_data['labels'], w1_data['sentences'], w1_data['indices']) if
@@ -88,7 +102,7 @@ def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data):
         file.write(f"{w1}\t/\t{f1}\t{sense_w1}\t{i1}\t{s1}\t")
         file.write(f"{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t1\n")
 
-def join_to_dataset(f1, f2, outf_test, outf_train, split=0.2):
+def join_to_dataset(f1, f2, out_dir):
     n1, n2 = file_helpers.file_len(f1), file_helpers.file_len(f2)
     m = min(n1, n2)
 
@@ -102,15 +116,71 @@ def join_to_dataset(f1, f2, outf_test, outf_train, split=0.2):
     shuffle(lines2)
 
     all_lines = lines1[:m] + lines2[:m]
-    shuffle(all_lines)
+    words_dict = lines_list_to_word_dict(all_lines)  # both words in one line
+    words_disjunct_sets = get_quick_union_sets(all_lines)
 
-    r = int(split * m)
+    test, train = split_data(words_dict, words_disjunct_sets, 0.2)
 
-    with open(outf_test, "w", encoding="utf8") as f:
-        f.writelines(all_lines[:r])
+    words_dict = {k: v for k, v in words_dict.items() if k in train}
 
-    with open(outf_train, "w", encoding="utf8") as f:
-        f.writelines(all_lines[r:])
+    words_disjunct_sets_2 = []
+    for s in words_disjunct_sets:
+        if s.intersection(train):
+            words_disjunct_sets_2.append(s)
+
+    val, train = split_data(words_dict, words_disjunct_sets_2, 0.2)
+
+    out_train = os.path.join(out_dir, "train.txt")
+    out_val = os.path.join(out_dir, "val.txt")
+    out_test = os.path.join(out_dir, "test.txt")
+
+    with open(out_test, "w", encoding="utf8") as f:
+        with open(out_val, "w", encoding="utf8") as g:
+            with open(out_train, "w", encoding="utf8") as h:
+                for w, lines_list in words_dict.items():
+                    if w in test:
+                        f.writelines(lines_list)
+                    elif w in val:
+                        g.writelines(lines_list)
+                    else:
+                        h.writelines(lines_list)
+
+def split_data(words_dict, words_disjunct_sets, ratio):
+    words_count = {w: len(s) for w, s in words_dict.items()}
+    n_sets = len(words_disjunct_sets)
+
+    set_counts = {i: 0 for i in range(n_sets)}
+    for i in range(n_sets):
+        for w in words_disjunct_sets[i]:
+            if w in words_count.keys():
+                set_counts[i] += words_count[w]
+
+    n_examples = sum(list(words_count.values()))
+
+    i = n_examples
+    while abs(i - ratio * n_examples) > 0.01 * n_examples:
+        test, train = divide_word_senses(words_dict, words_disjunct_sets, set_counts, ratio)
+        i = sum([v for k, v in words_count.items() if k in test])
+
+        print(i)
+
+    print("test/train example count:", i, n_examples - i)
+    print("test/train word count:", len(test), len(train))
+
+    return test, train
+
+def get_quick_union_sets(all_lines):
+    lines = [line.strip().split("\t") for line in all_lines]
+    words = sorted(list(set([x[0] for x in lines] + [x[6] for x in lines])))
+    pair_unions = DisjunctUnion(len(words))
+
+    for line in lines:
+        w1, w2 = line[0], line[6]
+        pair_unions.union(words.index(w1), words.index(w2))
+
+    components = pair_unions.components()
+    return [{words[i] for i in v} for v in components.values()]
+
 
 def get_bert_embeddings(sentence_file, embeddings_out_file, limit=None):
     # w1, pos1, form1, label1, idx1, sentence1, w2, pos2, form2, label2, idx2, sentence2
@@ -123,7 +193,7 @@ def get_bert_embeddings(sentence_file, embeddings_out_file, limit=None):
     with open(embeddings_out_file, "w", encoding="utf8") as outf:
         for i, line in enumerate(data):
             w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, label = parse_line(line, embeddings=False)
-            res1, res2 = we.get_words_embeddings_2([w1, w2], [pos1, pos2], [idx1, idx2], [s1, s2], lemmatizer=lemmatizer, lemmatized=False)
+            res1, res2 = we.get_words_embeddings([w1, w2], [pos1, pos2], [idx1, idx2], [s1, s2])
             e1 = " ".join([str(float(x)) for x in res1[-1]])
             e2 = " ".join([str(float(x)) for x in res2[-1]])
             outf.write(f"{w1}\t{pos1}\t{form1}\t{idx1}\t{l1}\t{s1}\t{e1}\t")
@@ -144,9 +214,9 @@ def parse_line(line, embeddings=False, only_embeddings=False, labels=True):
         return data
     else:
         # w1, pos1, form1, l1, idx1, s1, e1, w2, pos2, form2, l2, idx2, s2, e2, (label)
-        data[4], data[11] = int(data[4]), int(data[11])
-        e1 = [float(x) for x in data[6].split(" ")]
-        e2 = [float(x) for x in data[13].split(" ")]
+        data[3], data[9] = int(data[3]), int(data[9])
+        e1 = [float(x) for x in data[5].split(" ")]
+        e2 = [float(x) for x in data[12].split(" ")]
 
         if labels:
             if len(data) != 15:
@@ -162,6 +232,46 @@ def parse_line(line, embeddings=False, only_embeddings=False, labels=True):
                 return e1, e2
             else:
                 return data
+
+def lines_list_to_word_dict(lines):
+    word_dict = {}
+
+    for line in lines:
+        word = line.split("\t")[0]
+
+        if word in word_dict.keys():
+            word_dict[word].append(line)
+        else:
+            word_dict[word] = [line]
+
+    return word_dict
+
+def divide_word_senses(words_dict, words_disjunct_sets, set_counts, ratio):
+    if not 0 < ratio < 1:
+        raise ValueError("Ratio must lay in interval (0, 1).")
+
+    set_counts_items = list(set_counts.items())
+    shuffle(set_counts_items)
+    n = sum(set_counts.values())
+    n_part = n * ratio
+
+    assert len(set_counts_items) >= 2, "Cannot divide less than 2 words."
+
+    sum_senses = 0
+    idx = 0
+    words_part = set()
+
+    while sum_senses < n_part:
+        word_set, count = set_counts_items[idx]
+        words_part.add(word_set)
+        sum_senses += count
+        idx += 1
+
+    words_part_set = set()
+    for s in words_part:
+        words_part_set |= words_disjunct_sets[s]
+
+    return words_part_set, set(words_dict.keys()).difference(words_part)
 
 def compare_with_new_data(old_examples, new_examples, words, out_file):
     with open(old_examples, "r", encoding="utf8") as f:
@@ -210,13 +320,14 @@ def parse_embeddings_data(filename, limit_range):
     labels = np.array(labels).astype('int')
     return data, labels
 
-def parse_sentence_data(filename, limit_range):
-    data = {'labels': [], 'sentence_pairs': [], 'index_pairs': []}
+def parse_sentence_data(filename, limit_range, embeddings=False):
+    data = {'labels': [], 'sentence_pairs': [], 'index_pairs': [], 'word_pairs': [], 'form_pairs': []}
     with open(filename, "r", encoding="utf8") as f:
         for i, line in enumerate(f):
-            if not limit_range or i in range(limit_range):
+            if not limit_range or i in range(*limit_range):
 
-                w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, label = parse_line(line, embeddings=True, only_embeddings=True)
+                w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, label = \
+                    parse_line(line, embeddings=embeddings, only_embeddings=True)
 
                 data['word_pairs'].append((w1, w2))
                 data['form_pairs'].append((form1, form2))
