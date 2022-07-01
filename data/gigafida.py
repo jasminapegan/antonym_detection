@@ -8,7 +8,7 @@ from multiprocessing.pool import ThreadPool as Pool
 from typing import Pattern, List, Iterable
 
 import file_helpers
-from file_helpers import get_unique_words
+from file_helpers import get_unique_words_pos
 from data.lemmatization import get_word_lemmas_list
 
 
@@ -33,6 +33,9 @@ def get_sentences_multiprocess(gigafida_dir: str, words_file: str, tmp_dir: str=
     """
     print("[%s] Starting ..." % get_now_string())
 
+    if not os.path.exists(tmp_dir):
+        os.mkdir(tmp_dir)
+
     preexisting = deserialize_globals()
     if not preexisting:
 
@@ -44,7 +47,7 @@ def get_sentences_multiprocess(gigafida_dir: str, words_file: str, tmp_dir: str=
 
     for i in folders_range:
         pool.apply_async(get_sentences_part, (gigafida_dir, tmp_dir, i, sample_size),
-                         error_callback=lambda x: print("Error:", x))
+                         error_callback=lambda x: print("Thread Error:", x))
 
     pool.close()
     pool.join()
@@ -59,7 +62,7 @@ def serialize_globals(tmp_folder="tmp"):
     for word in words_data.keys():
         words_data_copy[word] = {
             'lemma': words_data[word]['lemma'],
-            'count': words_data[word]['count']
+            'pos': words_data[word]['pos']
         }
 
     tmp_file = os.path.join(tmp_folder, "globals.txt")
@@ -70,10 +73,6 @@ def serialize_globals(tmp_folder="tmp"):
     print("[%s] Globals serialized." % get_now_string())
 
 def deserialize_globals(tmp_folder="tmp"):
-    """global words
-    global words_lemmatized
-    global words_count
-    global patterns"""
     global words_data
 
     tmp_file = os.path.join(tmp_folder, "globals.txt")
@@ -94,36 +93,36 @@ def deserialize_globals(tmp_folder="tmp"):
         return True
 
 def finalize_sentence_search(words_file: str, sample_out: str, info_out: str, tmp_dir: str="tmp", sample_size: int=100,
-                             folders_range: Iterable[int]=range(100)):
-
+                             folders_range: Iterable[int]=range(100), sep: str="\t"):
     files = [os.path.join(tmp_dir, "%02d.txt" % i) for i in folders_range]
     all_sentences_file = gather_sentence_data(files, tmp_dir=tmp_dir)
     get_sample_sentences(words_file, all_sentences_file, sample_out, info_out, sample_size=sample_size)
 
-    print("[%s] Missing words\n" % get_now_string(), missing_words(words_file, sample_out, sep="\t"))
+    print("[%s] Missing words\n" % get_now_string(), missing_words(words_file, sample_out, sep=sep))
 
 def prepare_word_data(words_file: str, sep: str="|"):
     global words_data
 
-    words = get_unique_words(words_file, sep=sep)
-    phrases = [w for w in words if re.findall("[-\s]", w)]
-    singular_words = [w for w in words if w not in phrases]
+    words = get_unique_words_pos(words_file, sep=sep)
+    phrases = {w: pos for w, pos in words.items() if re.findall("[-\s]", w)}
+    singular_words = {w: pos for w, pos in words.items() if w not in phrases}
 
     pattern = re.compile("-|\s+")
-    deconstructed_words = [pattern.split(w) for w in phrases]
+    deconstructed_words = [pattern.split(w) for w in phrases.keys()]
 
     words_lemmatized = get_word_lemmas_list([" ".join(w) for w in deconstructed_words])
     words_lemmatized += singular_words
 
     patterns = [re.compile(r'\b%s\b' % w) for w in words_lemmatized]
 
-    words = phrases + singular_words
+    words = dict(phrases)
+    words.update(singular_words)
 
     words_data = {
         word: {'lemma': l,
                'pattern': p,
-               'count': 0}
-        for word, l, p in zip(words, words_lemmatized, patterns)
+               'pos': {x: 0 for x in words[word]}}
+        for word, l, p in zip(words.keys(), words_lemmatized, patterns)
     }
 
     serialize_globals()
@@ -162,7 +161,7 @@ def get_sentences_part(gigafida_dir: str, out_path: str, i: int, limit: int):
                 get_sentences_from_tree(tree, outf, re_whitespace, limit=limit)
 
     except Exception as e:
-        print("[%s] Error:" % get_now_string(), e)
+        print("[%s] Get Sentences Error:" % get_now_string(), e)
 
     finally:
         print("[%s] Closed out-file #%d" % (get_now_string(), i))
@@ -188,10 +187,10 @@ def get_sentences_from_tree(tree: ET.ElementTree, out_file: TextIOWrapper, re_wh
         if not words_data:
             return
 
-        sentences, lemma_sentences = parse_paragraph(p, re_whitespace)
-        process_sentences(sentences, lemma_sentences, min_tokens, limit, out_file)
+        sentences, lemma_sentences, pos_tags_list = parse_paragraph(p, re_whitespace)
+        process_sentences(sentences, lemma_sentences, pos_tags_list, min_tokens, limit, out_file)
 
-def process_sentences(sentences, lemma_sentences, min_tokens, limit, out_file):
+def process_sentences(sentences, lemma_sentences, pos_tags_list, min_tokens, limit, out_file):
     global words_data
 
     n = len(sentences)
@@ -199,26 +198,33 @@ def process_sentences(sentences, lemma_sentences, min_tokens, limit, out_file):
     for i in range(n):
         sentence = sentences[i]
         lemma_sentence = lemma_sentences[i]
+        pos_tags = pos_tags_list[i]
 
         for word, word_data in {**words_data}.items(): # no problem if we get too much of some words
-            lemma, pattern = word_data['lemma'], word_data['pattern']
+            lemma, pattern, pos_count = word_data['lemma'], word_data['pattern'], word_data['pos']
 
             match = pattern.search(lemma_sentence)
 
             if match:
                 idx = match.start()
-                sentence, idx = lengthen_sentence(sentence, sentences, lemma_sentences, i, min_tokens, idx)
+
+                sentence, idx, pos_tags = lengthen_sentence(sentence, sentences, lemma_sentences, pos_tags,
+                                                            pos_tags_list, i, min_tokens, idx)
 
                 if sentence.count(' ') < min_tokens:
                     continue
 
                 spaces = lemma_sentence[:idx].count(' ')
+                pos_tag = pos_tags[spaces]
+                pos = get_pos(pos_tags[spaces][0])
 
-                out_file.write("\t".join([word, str(spaces), sentence]) + "\n")
+                if pos == "N/A" or pos in words_data[word]['pos'].keys():
 
-                update_word_count_in_globals(word, limit)
+                    out_file.write("\t".join([word, pos_tag, str(spaces), sentence]) + "\n")
+                    update_word_count_in_globals(word, pos_tag, limit)
 
-def lengthen_sentence(sentence: str, sentences: List[str], lemma_sentences: List[str], i: int, min_tokens: int,
+def lengthen_sentence(sentence: str, sentences: List[str], lemma_sentences: List[str], pos_tags: List[str],
+                      pos_tags_list: List[List[str]], i: int, min_tokens: int,
                       idx: int) -> (str, int):
     n = len(sentences)
     k = i
@@ -227,21 +233,42 @@ def lengthen_sentence(sentence: str, sentences: List[str], lemma_sentences: List
 
         if k + 1 < n:
             sentence += " " + sentences[k + 1]
+            pos_tags += ["X"] + pos_tags_list[k + 1]
 
         elif k > 0:
             sentence = sentences[k - 1] + " " + sentence
+            pos_tags = pos_tags_list[k + 1] + ["X"] + pos_tags
             idx += len(lemma_sentences[k - 1]) + 1
 
-    return sentence, idx
+    return sentence, idx, pos_tags
 
-def update_word_count_in_globals(word: str, limit):
+def update_word_count_in_globals(word: str, pos_tag: str, limit):
     global words_data
 
     try:
-        words_data[word]['count'] += 1
+        if list(words_data[word]['pos'].keys()) == ["N/A"]:
+            tag = "N"
+            words_data[word]['pos'][0] += 1
 
-        if words_data[word]['count'] >= limit:
-            del words_data[word]
+            if words_data[word]['pos']['N/A'] >= limit:
+                del words_data[word]
+
+                n = len(words_data)
+
+                if n % 100 == 0:
+                    print("[%s] Finished sampling word '%s'. Remaining %d words." % (get_now_string(), word, n))
+
+                if n == 0:
+                    return
+        else:
+            tag = get_pos(pos_tag)
+            words_data[word]['pos'][tag] += 1
+
+        if words_data[word]['pos'][tag] >= limit:
+            del words_data[word]['pos'][tag]
+
+            if not words_data[word]['pos']:
+                del words_data[word]
 
             n = len(words_data)
 
@@ -266,59 +293,60 @@ def parse_paragraph(paragraph: ET.Element, re_whitespace: Pattern) -> (List[str]
 
     sentences = []
     lemma_sentences = []
+    pos_tags_list = []
 
     for s in paragraph:
-        """sentence = ""
-        lemmas = ""
-
-        for w in s:
-
-            if w.tag[-1] == 'w':
-                sentence += w.text
-                lemmas += w.attrib["lemma"]
-
-            elif w.tag[-1] == 'S':
-                sentence += " "
-                lemmas += " "
-
-            elif w.tag[-1] == 'c':
-                sentence += " " + w.text + " "
-                lemmas += " " + w.text + " "
-
-        sentence = re_whitespace.sub(" ", sentence.strip())
-        lemmas = re_whitespace.sub(" ", lemmas.strip())"""
-
-        sentence, lemmas = parse_sentence(s, re_whitespace)
+        sentence, lemmas, pos_tags = parse_sentence(s, re_whitespace)
 
         if len(sentence) > 0:
             sentences.append(sentence)
             lemma_sentences.append(lemmas)
+            pos_tags_list.append(pos_tags)
 
-    return sentences, lemma_sentences
+    return sentences, lemma_sentences, pos_tags_list
 
 def parse_sentence(s: ET.Element, re_whitespace: Pattern):
     sentence = ""
+    pos_tags = []
     lemmas = ""
 
     for w in s:
 
+        pos_tag = get_pos_tag_from_xml(w)
+
         if w.tag[-1] == 'w':
             sentence += w.text
             lemmas += w.attrib["lemma"]
+            pos_tags.append(pos_tag)
 
         elif w.tag[-1] == 'S':
             sentence += " "
             lemmas += " "
+            pos_tags.append(pos_tag)
 
         elif w.tag[-1] == 'c':
             sentence += " " + w.text + " "
             lemmas += " " + w.text + " "
+            pos_tags.append(pos_tag)
 
-        sentence = re_whitespace.sub(" ", sentence.strip())
-        lemmas = re_whitespace.sub(" ", lemmas.strip())
+    sentence = re_whitespace.sub(" ", sentence.strip())
+    lemmas = re_whitespace.sub(" ", lemmas.strip())
 
-    return sentence, lemmas
+    return sentence, lemmas, pos_tags
 
+def get_pos_tag_from_xml(w):
+    if "ana" in w.attrib.keys():
+        tag_text = w.attrib["ana"]
+
+        if ":" in tag_text:
+            return tag_text.split(":")[1]
+        else:
+            print("ana tag not complete: %s" % tag_text)
+
+    #else:
+    #    print("not found pos:", w.attrib.keys())
+
+    return "X"
 
 def missing_words(words_file: str, data_file: str, sep: str="|") -> List[str]:
     """
@@ -330,17 +358,22 @@ def missing_words(words_file: str, data_file: str, sep: str="|") -> List[str]:
     :return: a list of words that did not occur in 'data_file' at index 0
     """
 
-    words = get_unique_words(words_file, sep=sep)
+    #words = file_helpers.get_unique_words(words_file, sep=sep)
+    words = get_unique_words_pos(words_file, sep=sep)
 
     with open(data_file, "r", encoding="utf8") as f:
 
         for line in f:
-            word = line.split("\t")[0]
+            word, pos = line.split("\t")[:2]
 
-            if word in words:
-                words.remove(word)
+            if word in words.keys() and pos in words[word]:
+                words[word].remove(pos)
+                #words.remove(word)
 
-            if len(words) == 0:
+                if not words[word]:
+                    del words[word]
+
+            if not words:
                 return words
 
     return words
@@ -359,12 +392,13 @@ def gather_sentence_data(files: Iterable[str], tmp_dir: str="tmp"):
     all_deduplicated = os.path.join(tmp_dir, "sentences_deduplicated.txt")
 
     file_helpers.concatenate_files(list(files), all_sentences)
-    file_helpers.sort_lines(all_sentences, all_sorted)
+    file_helpers.sort_lines(all_sentences, all_sorted, n=2)
     file_helpers.remove_duplicate_lines(all_sorted, all_deduplicated)
 
     return all_deduplicated
 
-def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out_info: str, sample_size: int=100):
+def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out_info: str, sample_size: int=100,
+                         sep: str="|"):
     """
     Reads a sample of sentences gathered from GigaFida. Outputs sentences data to 'out_file' and info about number of
     sentences per word in 'out_info' file.
@@ -377,41 +411,74 @@ def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out
     :return: None
     """
 
-    words = get_unique_words(words_file, sep="\t")
-    words_dict = {w: 0 for w in words}
+    #words = file_helpers.get_unique_words(words_file, sep="\t")
+    words = get_unique_words_pos(words_file, sep=sep)
+    words_dict = {w: {p: 0 for p in set(pos + ["N/A"])} for w, pos in words.items()}
 
     with open(out_file, "w", encoding="utf8") as outf:
         with open(sentences_all, "r", encoding="utf8") as f:
             for line in f:
-                w, _, _ = line.split("\t")
+                w, pos = line.split("\t")[:2]
+                pos = get_pos(pos)
 
                 if w not in words_dict.keys():
                     continue # print("Not in keys: %s" % w)
 
-                if words_dict[w] < sample_size:
+                if words_dict[w][pos] < sample_size:
                     outf.write(line)
-                    words_dict[w] += 1
+                    words_dict[w][pos] += 1
 
     keyval = list(words_dict.items())
-    keyval.sort(key=lambda x: x[1])
+    keyval.sort(key=lambda x: sum(list(x[1].values())))
 
     with open(out_info, "w", encoding="utf8") as info_file:
-        for key, val in keyval:
-            info_file.write("%s\t%d\n" % (key, val))
+        for key, vals in keyval:
+            for pos, val in vals.items():
+                info_file.write("%s\t%s\t%d\n" % (key, pos, val))
 
 def get_now_string():
     return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
 def get_sentence_by_id(file, sentence_id):
     re_whitespace = re.compile(r"\s+")
+    regex = re.compile(r'<s xml:id="%s">[.\s]' % sentence_id)
+    regex_end = re.compile(r'</s>')
+    tree_data = ""
+    found = False
 
-    tree = ET.parse(file)
-    root = tree.getroot()
+    with open(file, "r", encoding="utf8") as f:
+        for line in f:
 
-    for s in root.find(".//{http://www.tei-c.org/ns/1.0}s[@{http://www.w3.org/XML/1998/namespace}id=%s]" % sentence_id):
+            if found:
+                tree_data += line
 
-        if '{http://www.w3.org/XML/1998/namespace}id' in s.attrib:
-            if s.attrib['{http://www.w3.org/XML/1998/namespace}id'] == sentence_id:
-                sentence, lemmas = parse_sentence(s, re_whitespace)
-                return sentence, lemmas
+                if regex_end.match(line):
+                    tree = ET.ElementTree(ET.fromstring(tree_data))
+                    sentence, lemmas, _ = parse_sentence(tree.getroot(), re_whitespace)
+                    return sentence, lemmas
 
+            elif regex.match(line):
+                tree_data += line
+                found = True
+
+    tree = ET.ElementTree(ET.fromstring(tree_data))
+    sentence, lemmas, _ = parse_sentence(tree.getroot(), re_whitespace)
+    return sentence, lemmas
+
+def get_pos(pos_label):
+    pos_dict = {"S": "samostalnik",
+                "G": "glagol",
+                "P": "pridevnik",
+                "R": "prislov",
+                "Z": "zaimek",
+                "K": "števnik",
+                "D": "predlog",
+                "V": "veznik",
+                "L": "členek",
+                "M": "medmet",
+                "O": "okrajšava"}
+    pos = pos_label[0]
+    if pos in pos_dict.keys():
+        return pos_dict[pos]
+    else:
+        return "N/A"

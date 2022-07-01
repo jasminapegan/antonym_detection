@@ -30,15 +30,15 @@ def create_val_test_set(in_data: str, in_examples: str, given_data: str, val_fil
     intersection = os.path.join(tmp_dir, "intersection.txt")
     difference = os.path.join(tmp_dir, "difference.txt")
 
-    file_helpers.filter_file_by_words(in_data, given_data, intersection, skip_idx=2, split_by=sep) # skip classification
-    file_helpers.filter_file_by_words(in_data, given_data, difference, skip_idx=2, split_by=sep, complement=True)
+    file_helpers.filter_file_by_words(in_data, given_data, intersection, skip_idx=2, split_by=sep, split_by_2=sep) # skip classification
+    file_helpers.filter_file_by_words(in_data, given_data, difference, skip_idx=2, split_by=sep, split_by_2=sep, complement=True)
 
     assert not file_helpers.is_empty_or_whitespace(intersection), "No words in %s and %s are common" % (in_data, given_data)
 
     pt1 = os.path.join(tmp_dir, "pt1.txt")
 
     intersection_examples = os.path.join(tmp_dir, "intersection_examples.txt")
-    file_helpers.filter_file_by_words("sources/sense_examples.txt", "tmp/intersection.txt", intersection_examples)
+    file_helpers.filter_file_by_words(in_examples, intersection, intersection_examples, split_by_2=sep)
     n_examples = file_helpers.file_len(intersection_examples)
     print(n_examples / 2, 0.001 * n_examples)
 
@@ -47,7 +47,7 @@ def create_val_test_set(in_data: str, in_examples: str, given_data: str, val_fil
         info_data = divide_word_senses(intersection, pt1, test_file, sep, ratio=ratio)
 
         test_examples_file = os.path.join(tmp_dir, "test.txt")
-        file_helpers.filter_file_by_words(in_examples, test_file, test_examples_file)
+        file_helpers.filter_file_by_words(in_examples, test_file, test_examples_file, split_by_2=sep)
         test_examples = file_helpers.file_len(test_examples_file)
 
         i = test_examples
@@ -55,7 +55,7 @@ def create_val_test_set(in_data: str, in_examples: str, given_data: str, val_fil
 
     file_helpers.concatenate_files([pt1, difference], val_file)
     val_examples_file = os.path.join(tmp_dir, "val.txt")
-    file_helpers.filter_file_by_words(in_examples, val_file, val_examples_file)
+    file_helpers.filter_file_by_words(in_examples, val_file, val_examples_file, split_by_2=sep)
     val_examples = file_helpers.file_len(val_examples_file)
 
     with open(info_file, "w", encoding="utf8") as info:
@@ -124,3 +124,17 @@ def divide_word_senses(in_file: str, out_file1: str, out_file2: str, sep: str, r
     info += "Senses\tFile1: %d, File2: %d, total: %d\n" % (sum_senses, n-sum_senses, n)
 
     return info
+
+def create_syn_ant_dataset(synonym_file, antonym_file, out_file):
+    with open(out_file, "w", encoding="utf8") as outf:
+        with open(antonym_file, "r", encoding="utf8") as f:
+            for line in f:
+                data = line.split("\t")
+                w1, w2, score = data[1], data[2], data[9]
+                if score.count("d") > 3:
+                    outf.write(f"{w1}\t{w2}\t0\n")
+        with open(synonym_file, "r", encoding="utf8") as f:
+            for line in f:
+                w1, w2 = line.strip().split(" ")
+                outf.write(f"{w1}\t{w2}\t1\n")
+

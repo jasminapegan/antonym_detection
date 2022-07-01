@@ -113,7 +113,7 @@ def find_best_all(data_file: str, words_file: str, validation_file: str, out_dir
     find_best_clustering(data_file, words_file, validation_file, out_dir, kmeans + spectral + agglomerative,
                          res_file="best_results.txt", output_vectors=output_vectors)
 
-def ensemble_clustering(data_file: str, words_file: str, validation_file: str, out_dir: str = 'best', output_vectors=True):
+"""def ensemble_clustering(data_file: str, words_file: str, validation_file: str, out_dir: str = 'best', output_vectors=True):
 
     #kmeans = "out/kmeans/kmeans-algorithm=full,n_init=130_data.tsv"
     #spectral = "out/spectral/spectral-affinity=cosine,n_neighbors=3_data.tsv"
@@ -131,7 +131,7 @@ def ensemble_clustering(data_file: str, words_file: str, validation_file: str, o
     ensemble.set_clusterer_list(kmeans + spectral + agglomerative)
 
     find_best_clustering(data_file, words_file, validation_file, out_dir, [ensemble],
-                         res_file="best_results.txt", output_vectors=output_vectors)
+                         res_file="best_results.txt", output_vectors=output_vectors)"""
 
 def find_best_clustering(data_file: str,
                          words_file: str,
