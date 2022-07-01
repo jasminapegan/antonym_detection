@@ -141,7 +141,7 @@ def get_bert_embeddings(sentence_file, embeddings_out_file):
     with open(embeddings_out_file, "w", encoding="utf8") as outf:
         for line in data:
             w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, label = parse_line(line, embeddings=False)
-            res1, res2 = we.get_words_embeddings_2([w1, w2], [pos1, pos2], [idx1, idx2], [s1, s2], lemmatizer=lemmatizer, lemmatized=False)
+            res1, res2 = we.get_words_embeddings([w1, w2], [pos1, pos2], [idx1, idx2], [s1, s2])
             e1 = " ".join([str(float(x)) for x in res1[-1]])
             e2 = " ".join([str(float(x)) for x in res2[-1]])
             outf.write(f"{w1}\t{pos1}\t{form1}\t{idx1}\t{l1}\t{s1}\t{e1}\t")

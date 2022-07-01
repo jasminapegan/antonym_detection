@@ -1,3 +1,5 @@
+import re
+
 from scipy.spatial.distance import cosine
 from io import TextIOWrapper
 from math import floor
@@ -39,6 +41,7 @@ class SenseClusters():
 
         self.set_algorithm(algo)
         self.ratio = ratio
+        self.results = []
 
         with open(out_file, "w", encoding='utf8') as outf:
             for i, line in enumerate(self.lines):
@@ -72,10 +75,7 @@ class SenseClusters():
         word_data_labels_2 = sorted(list(set([int(x) for x in self.word_data2['labels']])))
 
         # check there is no weird gap between sense labels
-        print(word_data_labels_1)
-        print(word_data_labels_2)
-        if word_data_labels_1 != list(range(len(word_data_labels_1))) \
-                or word_data_labels_2 != list(range(len(word_data_labels_2))):
+        if not self.check_senses(word_data_labels_1, word_data_labels_2):
             return
 
         if clean_data:
@@ -86,21 +86,16 @@ class SenseClusters():
         sense_data_labels_1 = sorted(list(set([int(x['num']) for x in self.sense_data1])))
         sense_data_labels_2 = sorted(list(set([int(x['num']) for x in self.sense_data2])))
 
-        # n1, n2 = len(set(self.word_data1['labels'])), len(set(self.word_data2['labels']))
-
-        # every sense needs atleast one example
-        print(sense_data_labels_1)
-        print(sense_data_labels_2)
-        if word_data_labels_1 != sense_data_labels_1 or word_data_labels_2 != sense_data_labels_2:  # n1 != len(self.sense_data1) or n2 != len(self.sense_data2):
-            print(self.word_data1.values())
+        # every sense needs at least one example
+        if not self.check_examples(word_data_labels_1, word_data_labels_2, sense_data_labels_1, sense_data_labels_2):
             return
 
         ant_syn = "antonym" if self.label == 0 else "synonym"
 
         if self.out_sentences:
-            self.out_sentences.write(f"Data for {ant_syn} pair {self.w1} - {self.w2}\n")
+            self.out_sentences.write(f"Data for {ant_syn} pair {self.w1} - {self.w2} (POS {self.pos})\n")
 
-        out_lines = [f"Data for {ant_syn} pair {self.w1} - {self.w2}\n"]
+        out_lines = [f"Data for {ant_syn} pair {self.w1} - {self.w2} (POS {self.pos})\n"]
         out_lines += [f"Sense data for {self.w1}\nSense\tdescription\n"]
         out_lines += [f"\t{s['num']}\t{s['description']}\n" for s in self.sense_data1]
         out_lines += [f"Sense data for {self.w2}:\nSense\t description\n"]
@@ -152,6 +147,9 @@ class SenseClusters():
         elif self.algo == 'avg_max_dist':
             dists = calculate_avg_max_distance(labels1, labels2, X1_by_label, X2_by_label)
 
+        self.X1_by_label = X1_by_label
+        self.X2_by_label = X2_by_label
+
         self.write_output(labels1, labels2, sentences1, sentences2, dists, outf)
 
     def write_sentences(self, s1, s2):
@@ -198,6 +196,44 @@ class SenseClusters():
         if min_label1 != None and min_label2 != None:
             outf.write(f"{self.w1}({min_label1}): {sentences1[min_label1][0]}\n")
             outf.write(f"{self.w2}({min_label2}): {sentences2[min_label2][0]}\n\n")
+
+            self.results.append({"w1": self.w1, "w2": self.w2,
+                                 "sentences1": sentences1[min_label1], "sentences2": sentences2[min_label2],
+                                 "embeddings1": self.X1_by_label[min_label1], "embeddings2": self.X2_by_label[min_label2]})
+
+    def check_senses(self, word_data_labels_1, word_data_labels_2):
+        diff1 = set(word_data_labels_1).difference(set(range(len(word_data_labels_1))))
+        diff2 = set(word_data_labels_2).difference(set(range(len(word_data_labels_2))))
+        if len(diff1) > 0:
+            descriptions = {int(x['num']): x['description'] for x in self.sense_data[self.w1]}
+            missing = [descriptions[d].lower() for d in diff1]
+            if set(missing) == {"nov pomen"}:
+                pass
+            else:
+                print(f"word {self.w1} (POS {self.pos}) - missing some sense examples for senses: {descriptions}")
+                return False
+        if len(diff2) > 0:
+            descriptions = {int(x['num']): x['description'] for x in self.sense_data[self.w2]}
+            missing = [descriptions[d].lower() for d in diff2]
+            if set(missing) == {"nov pomen"}:
+                pass
+            else:
+                print(f"word {self.w2} (POS {self.pos}) - missing some sense examples for senses: {descriptions}")
+                return False
+        return True
+
+    def check_examples(self, word_data_labels_1, word_data_labels_2, sense_data_labels_1, sense_data_labels_2):
+        diff1 = set(sense_data_labels_1).difference(set(word_data_labels_1))
+        diff2 = set(sense_data_labels_2).difference(set(word_data_labels_2))
+
+        if len(diff1) > 0:
+                print(f"word {self.w1} (POS {self.pos}) missing {len(diff1)} examples: {diff1}")
+                return False
+        if len(diff2) > 0:
+                print(f"word {self.w2} (POS {self.pos}) missing {len(diff2)} examples: {diff2}")
+                return False
+
+        return True
 
 def get_sentences_by_label(word_data):
     sentences = {i: [] for i in set(word_data['labels'])}
@@ -321,3 +357,40 @@ def calculate_avg_max_distance(labels1, labels2, X1_by_label, X2_by_label):
                          for x1 in X1_by_label[label1]])
                  for label2 in labels2}
             for label1 in labels1}
+
+def print_missing_senses(sense_data_file, sense_examples_file, word_data):
+    cluster_data = file_helpers.load_validation_file_grouped(sense_examples_file, embeddings=True)
+    sense_data = file_helpers.words_data_to_dict(sense_data_file, header=False, skip_num=False)
+
+    with open(word_data, "r", encoding="utf8") as f:
+        text = f.readlines()
+
+    for line in text:
+        matches = re.match("pair (.*)-(.*) \(POS (.*)\)", line)
+
+        if not matches:
+            continue
+
+        w1, w2, pos = matches.groups()
+
+        print(f"Data for pair {w1}-{w2} (POS {pos})")
+
+        print(f"sense data for {w1}")
+        for sense in sense_data[w1]:
+            print(f"\t{sense['num']}\t{sense['description']}")
+
+        print(f"sense data for {w2}")
+        for sense in sense_data[w2]:
+            print(f"\t{sense['num']}\t{sense['description']}")
+
+        print(f"Number of examples for {w1}")
+        labels = cluster_data[w1][pos]['labels']
+        for label in set(labels):
+            print(f"\t{label}\t{labels.count(label)}")
+
+        print(f"Number of examples for {w2}")
+        labels = cluster_data[w2][pos]['labels']
+        for label in sorted(list(set(labels)), key=lambda x: int(x)):
+            print(f"\t{label}\t{labels.count(label)}")
+
+        print()

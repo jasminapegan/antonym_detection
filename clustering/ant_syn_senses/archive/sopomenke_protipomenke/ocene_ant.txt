@@ -1,36 +1,3 @@
-administracija	vlada		DA (problem s podatki)
-agresiven	napadalen		DA
-agrum		citrus			DA*
-aktiven		dejaven			DA (dejaven še ni končan)
-aktualen	obstoječ		NE
-aretirati	prijeti			DA
-aristokracija	plemstvo	DA (problem členitve pri plemstvo?)
-arktičen	polaren			DA
-armada		množica			NE (napačen pomen)
-atlas		titan			NE
-avtoritaren	diktatorski		NE (napačen pomen)
-avtoritaren	avtoritativen	DA
-bajka		izmišljotina	NE
-barbar		surovina		NE
-besednjak	slovar			DA
-besneti		napasti			NE
-birokrat	uradnik			DA
-blag		prijeten		NE*
-blag		zmeren			DA*
-blag		blagodejen		NE
-blag		prijazen		NE
-blago		zmerno			NE (napačna besedna vrsta za blago)
-blagodejen	prijeten		NE (napačen pomen)
-blagodejen	blažen			NE*
-bogat		plodovit		NE
-boks		boksanje		NE* (manjka prvi pomen pri boks)
-bolan		nezdrav			DA
-boleti		težiti			DA
-boleč		razbolel		DA
-bolečina	križ			DA
-brat		prijatelj		NE
-brezobziren	grob			NE (napačna besedna vrsta)
-briljanten	imeniten		NE (napačen pomen)
 živahen		miren			DA
 akuten		kroničen		DA
 živ			mrtev			DA

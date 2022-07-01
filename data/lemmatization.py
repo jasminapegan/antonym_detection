@@ -54,17 +54,45 @@ def get_word_lemmas_list(words_list: List[str], lemmatizer: classla.Pipeline=Non
 
     lemmatized = []
     for word in words_list:
-        doc = lemmatizer(word)
-        lemmas = []
+        try:
+            doc = lemmatizer(word)
+            lemmas = []
 
-        for sentence in doc.sentences:
-            lemma = []
+            for sentence in doc.sentences:
+                lemma = []
 
-            for i, word in enumerate(sorted(sentence.words, key=lambda x: x.id)):
-                lemma.append(word.lemma)
+                for i, word in enumerate(sorted(sentence.words, key=lambda x: x.id)):
+                    lemma.append(word.lemma)
 
-            lemmas.append(" ".join(lemma))
+                lemmas.append(" ".join(lemma))
 
-        lemmatized.append(" ".join(lemmas))
+            lemmatized.append(" ".join(lemmas))
+        except:
+            #print("Not lemmatized:", word)
+            lemmatized.append(word)
 
     return lemmatized
+
+def get_sentence_lemmas_list(words: List[str], sentences: List[str], lemmatizer: classla.Pipeline=None) \
+        -> (List[str], List[List[str]]):
+    """
+    Lemmatizes phrases in 'sentences' word by word. Caution: phrases containing '-' will loose it after lemmatization.
+
+    :param words: a list of words to lemmatize
+    :param sentences: a list of sentences to lemmatize
+    :param lemmatizer: preexisting lemmatizer for efficiency
+    :return: a list of lemmatized phrases
+    """
+
+    if not lemmatizer:
+        lemmatizer = classla.Pipeline('sl', processors='tokenize,pos,lemma', use_gpu=True)
+
+    word_lemmas = get_word_lemmas_list(words, lemmatizer)
+
+    lemmatized = []
+    for i, sentence in enumerate(sentences):
+        if i % 50 == 0:
+            print(f"Sentences lemmatized: {i} / {len(sentences)}")
+        lemmatized.append(get_word_lemmas_list(sentence, lemmatizer))
+
+    return word_lemmas, lemmatized
