@@ -25,11 +25,15 @@ antSynModel.build_model("model/cse_full_model.ckpt")
 antSynModel.fit("dataset/dataset_embeddings.txt", range=range(25))
 antSynModel.predict("dataset/dataset_embeddings.txt", range=range(25, 30))"""
 
-model_name = "antonym_detection"
-antSynModel = model.AntSynModel()#tokenizer_path="model/saved")
-#antSynModel.update_tokenizer()
-#antSynModel.finetune("dataset/ant/train.txt", model_name) #, "out/ant")
-antSynModel.predict("dataset/ant/val.txt", model_name) #, "out/ant")
+#antSynModel = model.AntSynModel()
+#antSynModel.find_best("dataset/ant/train", "dataset/ant/val", "dataset/ant/out", epochs=5)
+#antSynModel.find_best("dataset/syn/train", "dataset/syn/val", "dataset/syn/out", epochs=5)
+
+antSynModel = model.AntSynModel(tokenizer_path="model/saved")
+#antSynModel.update_tokenizer(new_tokens=["[BOW]", "[EOW]"])
+antSynModel.find_best("dataset/ant/train", "dataset/ant/val", "dataset/ant/out/tokens", epochs=5, mark_word=True)
+antSynModel.find_best("dataset/syn/train", "dataset/syn/val", "dataset/syn/out/tokens", epochs=5, mark_word=True)
+
 
 """words = {"akuten": "0", "avtomatičen": "0", "bivši": "1", "brat": "0", "dekle": "0", "deklica": "0",
          "deček": "0", "distribucija": "1", "fant": "0", "fant": "1", "fant": "3", "gostitelj": "4",

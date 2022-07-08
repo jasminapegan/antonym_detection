@@ -419,7 +419,7 @@ def get_sample_sentences(words_file: str, sentences_all: str, out_file: str, out
         with open(sentences_all, "r", encoding="utf8") as f:
             for line in f:
                 w, pos = line.split("\t")[:2]
-                pos = get_pos(pos)
+                pos = file_helpers.get_pos(pos)
 
                 if w not in words_dict.keys():
                     continue # print("Not in keys: %s" % w)
@@ -463,20 +463,3 @@ def get_sentence_by_id(file, sentence_id):
     sentence, lemmas, _ = parse_sentence(tree.getroot(), re_whitespace)
     return sentence, lemmas
 
-def get_pos(pos_label):
-    pos_dict = {"S": "samostalnik",
-                "G": "glagol",
-                "P": "pridevnik",
-                "R": "prislov",
-                "Z": "zaimek",
-                "K": "števnik",
-                "D": "predlog",
-                "V": "veznik",
-                "L": "členek",
-                "M": "medmet",
-                "O": "okrajšava"}
-    pos = pos_label[0]
-    if pos in pos_dict.keys():
-        return pos_dict[pos]
-    else:
-        return "N/A"
