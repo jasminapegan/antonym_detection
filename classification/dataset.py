@@ -31,6 +31,7 @@ def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, 
     g2 = open(out_anti_ant, "w", encoding="utf8")
 
     print("Creating datasets ...")
+    diff, data = 0, None
     for pair_data in clusters.keys():
 
         cluster = clusters[pair_data]
@@ -51,16 +52,14 @@ def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, 
             w1_data, w2_data = examples_data[w1][pos1], examples_data[w2][pos2] #[pos]
 
             if ant_syn == "ant":
-                write_data_to_file(g, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
-                write_other_pairs(g2, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
+                count = write_data_to_file(g, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
+                diff, data = write_other_pairs(g2, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff, data)
             else:
-                write_data_to_file(f, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
-                write_other_pairs(f2, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
+                count = write_data_to_file(f, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
+                diff, data = write_other_pairs(f2, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff, data)
 
     join_to_dataset(out_file_syn, out_anti_syn, out_syn_dir)
     join_to_dataset(out_file_ant, out_anti_ant, out_ant_dir)
-
-
 
 def write_data_to_file(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data):
     w1_examples = [(s, i) for l, s, i in zip(w1_data['labels'], w1_data['sentences'], w1_data['indices']) if
@@ -68,6 +67,7 @@ def write_data_to_file(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data):
     w2_examples = [(s, i) for l, s, i in zip(w2_data['labels'], w2_data['sentences'], w2_data['indices']) if
                    l == sense_w2]
     # w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, (label)
+    count = 0
     for s_i_1, s_i_2 in itertools.product(w1_examples, w2_examples):
         s1, i1 = s_i_1
         s2, i2 = s_i_2
@@ -75,8 +75,11 @@ def write_data_to_file(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data):
 
         file.write(f"{w1}\t/\t{f1}\t{sense_w1}\t{i1}\t{s1}\t")
         file.write(f"{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t1\n")
+        count += 1
 
-def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data):
+    return count
+
+def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff, data):
     w1_examples = [(s, i) for l, s, i in zip(w1_data['labels'], w1_data['sentences'], w1_data['indices']) if
                    l == sense_w1]
     w2_examples = [(s, i) for l, s, i in zip(w2_data['labels'], w2_data['sentences'], w2_data['indices']) if
@@ -85,41 +88,73 @@ def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data):
                    l != sense_w1]
     w2_anti_examples = [(s, i) for l, s, i in zip(w2_data['labels'], w2_data['sentences'], w2_data['indices']) if
                    l != sense_w2]
+
+    product = []
+
+    # if there was not enough sentences in previous round, add them now
+    if diff > 0:
+        product = list(itertools.product(data, w1_examples + w2_examples + w1_anti_examples + w2_anti_examples))
+        shuffle(product)
+        if diff > len(product):
+            print("diff", len(product) - diff)
+        product = product[:diff]
+
     # w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, (label)
-    for s_i_1, s_i_2 in itertools.product(w1_examples, w2_anti_examples):
+    product += list(itertools.product(w1_examples, w2_anti_examples)) + list(itertools.product(w1_anti_examples, w2_examples))
+    shuffle(product)
+
+    if len(product) < count:
+        diff = count - len(product)
+        diff_product = list(itertools.product(w1_anti_examples, w2_anti_examples))
+        shuffle(diff_product)
+        product += diff_product[:diff]
+
+    for s_i_1, s_i_2 in product[:count]:
         s1, i1 = s_i_1
         s2, i2 = s_i_2
         f1, f2 = s1.split(" ")[int(i1)], s2.split(" ")[int(i2)]
 
         file.write(f"{w1}\t/\t{f1}\t{sense_w1}\t{i1}\t{s1}\t")
-        file.write(f"{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t1\n")
+        file.write(f"{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t0\n")
 
-    for s_i_1, s_i_2 in itertools.product(w1_anti_examples, w2_examples):
-        s1, i1 = s_i_1
-        s2, i2 = s_i_2
-        f1, f2 = s1.split(" ")[int(i1)], s2.split(" ")[int(i2)]
-
-        file.write(f"{w1}\t/\t{f1}\t{sense_w1}\t{i1}\t{s1}\t")
-        file.write(f"{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t1\n")
+    if len(product) < count:
+        return count - len(product), w1_examples + w2_examples
+    else:
+        return 0, None
 
 def join_to_dataset(f1, f2, out_dir):
     n1, n2 = file_helpers.file_len(f1), file_helpers.file_len(f2)
     m = min(n1, n2)
 
     with open(f1, "r", encoding="utf8") as f:
-        lines1 = f.readlines()
+        lines1 = [x for x in f.readlines() if x.strip()]
 
     with open(f2, "r", encoding="utf8") as f:
-        lines2 = f.readlines()
+        lines2 = [x for x in f.readlines() if x.strip()]
 
     shuffle(lines1)
     shuffle(lines2)
 
     all_lines = lines1[:m] + lines2[:m]
+
+    out_train = os.path.join(out_dir, "train.txt")
+    out_test = os.path.join(out_dir, "test.txt")
+
+    divide_data(all_lines, out_test, out_train, 0.2)
+
+    with open(out_train, "r", encoding="utf8") as f:
+        train_lines = [x for x in f.readlines() if x.strip()]
+
+    for i in range(3):
+        out_train_real = os.path.join(out_dir, f"train{i}.txt")
+        out_val = os.path.join(out_dir, f"val{i}.txt")
+        divide_data(train_lines, out_val, out_train_real, 0.2)
+
+def divide_data(all_lines, filename_1, filename_2, ratio):
     words_dict = lines_list_to_word_dict(all_lines)  # both words in one line
     words_disjunct_sets = get_quick_union_sets(all_lines)
 
-    test, train = split_data(words_dict, words_disjunct_sets, 0.2)
+    test, train = split_data(words_dict, words_disjunct_sets, ratio)
 
     words_dict = {k: v for k, v in words_dict.items() if k in train}
 
@@ -128,25 +163,25 @@ def join_to_dataset(f1, f2, out_dir):
         if s.intersection(train):
             words_disjunct_sets_2.append(s)
 
-    val, train = split_data(words_dict, words_disjunct_sets_2, 0.2)
-
-    out_train = os.path.join(out_dir, "train.txt")
-    out_val = os.path.join(out_dir, "val.txt")
-    out_test = os.path.join(out_dir, "test.txt")
-
-    with open(out_test, "w", encoding="utf8") as f:
-        with open(out_val, "w", encoding="utf8") as g:
-            with open(out_train, "w", encoding="utf8") as h:
-                for w, lines_list in words_dict.items():
-                    if w in test:
-                        f.writelines(lines_list)
-                    elif w in val:
-                        g.writelines(lines_list)
-                    else:
-                        h.writelines(lines_list)
+    with open(filename_1, "w", encoding="utf8") as f, open(filename_2, "w", encoding="utf8") as g:
+        for w, lines_list in words_dict.items():
+            if w in test:
+                f.writelines(lines_list)
+            else:
+                g.writelines(lines_list)
 
 def split_data(words_dict, words_disjunct_sets, ratio):
     words_count = {w: len(s) for w, s in words_dict.items()}
+    n_examples = sum(list(words_count.values()))
+
+    while max(words_count.values()) > ratio * n_examples:
+        for w, c in words_count.items():
+            if c > ratio * n_examples:
+                # word with too many examples --> artificially lower the count
+                c = ratio * n_examples // 2
+                words_count[w] = c
+        n_examples = sum(list(words_count.values()))
+
     n_sets = len(words_disjunct_sets)
 
     set_counts = {i: 0 for i in range(n_sets)}
@@ -155,14 +190,12 @@ def split_data(words_dict, words_disjunct_sets, ratio):
             if w in words_count.keys():
                 set_counts[i] += words_count[w]
 
-    n_examples = sum(list(words_count.values()))
-
     i = n_examples
     while abs(i - ratio * n_examples) > 0.01 * n_examples:
         test, train = divide_word_senses(words_dict, words_disjunct_sets, set_counts, ratio)
         i = sum([v for k, v in words_count.items() if k in test])
 
-        print(i)
+        print("split_data - n_examples:", i)
 
     print("test/train example count:", i, n_examples - i)
     print("test/train word count:", len(test), len(train))
@@ -170,7 +203,7 @@ def split_data(words_dict, words_disjunct_sets, ratio):
     return test, train
 
 def get_quick_union_sets(all_lines):
-    lines = [line.strip().split("\t") for line in all_lines]
+    lines = [line.strip().split("\t") for line in all_lines if line.count("\t") > 6]
     words = sorted(list(set([x[0] for x in lines] + [x[6] for x in lines])))
     pair_unions = DisjunctUnion(len(words))
 
@@ -320,23 +353,27 @@ def parse_embeddings_data(filename, limit_range):
     labels = np.array(labels).astype('int')
     return data, labels
 
-def parse_sentence_data(filename, limit_range, embeddings=False):
+def parse_sentence_data(filename, limit_range, embeddings=False, shuffle_lines=False):
     data = {'labels': [], 'sentence_pairs': [], 'index_pairs': [], 'word_pairs': [], 'form_pairs': []}
     with open(filename, "r", encoding="utf8") as f:
-        for i, line in enumerate(f):
-            if not limit_range or i in range(*limit_range):
+        lines = f.readlines()
+        if shuffle_lines:
+            shuffle(lines)
 
-                w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, label = \
-                    parse_line(line, embeddings=embeddings, only_embeddings=True)
+    for i, line in enumerate(lines):
+        if not limit_range or i in range(*limit_range):
 
-                data['word_pairs'].append((w1, w2))
-                data['form_pairs'].append((form1, form2))
-                data['index_pairs'].append((idx1, idx2))
-                data['sentence_pairs'].append((s1, s2))
-                data['labels'].append(label)
+            w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, label = \
+                parse_line(line, embeddings=embeddings, only_embeddings=True)
 
-            if limit_range and i > limit_range[1]:
-                break
+            data['word_pairs'].append((w1, w2))
+            data['form_pairs'].append((form1, form2))
+            data['index_pairs'].append((idx1, idx2))
+            data['sentence_pairs'].append((s1, s2))
+            data['labels'].append(label)
+
+        if limit_range and i > limit_range[1]:
+            break
 
     data['labels'] = np.array(data['labels']).astype('int')
     return data

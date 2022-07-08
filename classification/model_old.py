@@ -48,14 +48,14 @@ class AntSynModel:
         self.model.load_weights(checkpoint_filename).expect_partial()
         print('loaded model from', checkpoint_filename)
 
-    def fit_old(self, data_file, batch_size=4, range=None):
+    def fit_old(self, data_file, range=None):
         X, y = self.get_data(data_file, range=range)
         print(X.shape)
         print(X[0])
         y = to_categorical(y, num_classes=3)
 
         print('predicting')
-        preds = self.model.predict(X, verbose=1, batch_size=batch_size)
+        preds = self.model.predict(X, verbose=1)
         for i, p in zip(y, preds):
             print(i, p)
 

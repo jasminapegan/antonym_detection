@@ -51,6 +51,11 @@ out_file = "sentences/sentences.txt"
 #                            "dataset/test_words.txt",
 #                            "dataset/info.txt", '|')
 
+#dataset.create_val_test_set("sources/sense/multisense/sense_data.txt","sources/sense/multisense/sense_examples.txt",
+#                            "sources/sense/multisense/words.txt", "dataset/val_words.txt",
+#                            "dataset/test_words.txt",
+#                            "dataset/info.txt", '|')
+
 # 3. pridobi sample dodatnih stavkov
 #missing_sentences
 #file_helpers.filter_file_by_words("sources/sense_data_new_multisense.txt", "sample/gigafida_all_bkp.txt", "sources/new_words_multisense.txt",
@@ -93,13 +98,11 @@ out_file = "sentences/sentences.txt"
 #file_helpers.get_all_words(["dataset/val_words.txt", "dataset/test_words.txt"], "sources/besede_s_pomeni_sorted.txt", "dataset/all_words.txt")
 
 we = embeddings.WordEmbeddings()
-we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/labeled_embeddings.txt",
+"""we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/embeddings.txt",
                            labeled=True, batch_size=1, lemmatized=False)
-we.data_file_to_embeddings(["sample/sample_diff.txt"], "embeddings/unlabeled_embeddings.txt",
-                           labeled=True, batch_size=1, lemmatized=False)
-we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/labeled_embeddings_lemmatized.txt",
-                           labeled=True, batch_size=1, lemmatized=True)
-we.data_file_to_embeddings(["sample/sample_diff.txt"], "embeddings/unlabeled_embeddings_lemmatized.txt",
+we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/lemmatized/embeddings.txt",
+                           labeled=True, batch_size=1, lemmatized=True)"""
+we.data_file_to_embeddings(["sources/sense/sense_examples.txt"], "embeddings/lemmatized/labeled_embeddings.txt",
                            labeled=True, batch_size=1, lemmatized=True)
 
 #dataset.create_syn_ant_dataset("sources/syn_ant/synonyms_cjvt.tsv", "sources/syn_ant/antonyms_sokol.tsv", "sources/syn_ant/syn_ant_dataset.tsv")
@@ -108,3 +111,13 @@ we.data_file_to_embeddings(["sample/sample_diff.txt"], "embeddings/unlabeled_emb
 #file_helpers.fix_indices("sources/sense/archive/sense_examples_new_multisense.txt", "sources/sense/archive/sense_examples_new_multisense_fixed.txt", batch_size=10000)
 #print(file_helpers.file_len("sources/sense/archive/sense_examples_new_multisense.txt"))
 
+#file_helpers.filter_file_by_words("embeddings/embeddings_multisense_sorted.txt", "dataset/test_words.txt", "embeddings/test.txt", split_by_2='|')
+#file_helpers.filter_file_by_words("embeddings/embeddings_multisense_sorted.txt", "dataset/val_words.txt", "embeddings/val.txt", split_by_2='|')
+#file_helpers.filter_file_by_words("embeddings/lemmatized/embeddings_multisense_sorted.txt", "dataset/test_words.txt", "embeddings/lemmatized/test.txt", split_by_2='|')
+#file_helpers.filter_file_by_words("embeddings/lemmatized/embeddings_multisense_sorted.txt", "dataset/val_words.txt", "embeddings/lemmatized/val.txt", split_by_2='|')
+
+#file_helpers.filter_file_by_words("sources/sense/sense_examples.txt", "dataset/test_words.txt", "dataset/test.txt", split_by_2='|')
+#file_helpers.filter_file_by_words("sources/sense/sense_examples.txt", "dataset/val_words.txt", "dataset/val.txt", split_by_2='|')
+
+#file_helpers.get_all_words(["dataset/val_words.txt", "dataset/test_words.txt"], "sources/besede_s_pomeni_sorted.txt", "dataset/all_words.txt")
+#file_helpers.sort_lines("dataset/val.txt", "dataset/val_sorted.txt")

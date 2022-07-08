@@ -5,7 +5,7 @@ from data import word
 from clustering import algorithms
 from clustering.scoring import get_avg_scores
 from data.embeddings import WordEmbeddings
-from typing import List, Dict
+from typing import List, Dict, Union
 from sklearn import metrics
 
 
@@ -100,7 +100,7 @@ def find_best_dbscan(data_file: str, words_file: str, validation_file: str, out_
     find_best_clustering(data_file, words_file, validation_file, out_dir, dbscan,
                          res_file="dbscan_all.txt", output_vectors=output_vectors)
 
-def find_best_all(data_file: str, words_file: str, validation_file: str, out_dir: str = 'best', output_vectors=True):
+def find_best_all(data_file: str, words_file: str, validation_file: str, out_dir: str = 'best', output_vectors=True, use_pos=False):
 
     kmeans = algorithms.KMeansAlgorithm.get_clusterer_list(algorithms=['full'], n_inits=[130], out_dir=out_dir)
 
@@ -111,7 +111,7 @@ def find_best_all(data_file: str, words_file: str, validation_file: str, out_dir
                                                                          distance=['relative_cosine'], out_dir=out_dir)
 
     find_best_clustering(data_file, words_file, validation_file, out_dir, kmeans + spectral + agglomerative,
-                         res_file="best_results.txt", output_vectors=output_vectors)
+                         res_file="best_results.txt", output_vectors=output_vectors, use_pos=use_pos)
 
 """def ensemble_clustering(data_file: str, words_file: str, validation_file: str, out_dir: str = 'best', output_vectors=True):
 
@@ -139,14 +139,15 @@ def find_best_clustering(data_file: str,
                          out_dir: str,
                          algorithm_list: List[algorithms.ClusteringAlgorithm],
                          res_file: str,
-                         output_vectors: bool=True) -> None:
+                         output_vectors: bool=True,
+                         use_pos: bool=False) -> None:
 
     print("*****\nSTARTING %s" % str([a.id for a in algorithm_list]))
 
     #best_clustering = BestClustering(words_file, validation_file, data_file)
     #best_clustering.process_single_clusters(out_dir)
 
-    best_clustering = BestClustering(words_file, validation_file, data_file, out_dir=out_dir)#, reduce_embeddings=False)
+    best_clustering = BestClustering(words_file, validation_file, data_file, out_dir=out_dir, use_pos=use_pos)#, reduce_embeddings=False)
     best_clustering.find_best(algorithm_list, out_dir, output_vectors=output_vectors, res_file=res_file)
 
 class BestClustering:
@@ -154,11 +155,11 @@ class BestClustering:
     Scores = Dict[str, Dict[str, float]]
 
     def __init__(self, words_file: str, validation_file: str, data_file: str, out_dir: str='out',
-                 reduce_embeddings: bool=False):
+                 reduce_embeddings: bool=False, use_pos=False):
         if words_file:
             self.words_json = file_helpers.words_data_to_dict(words_file, header=False, skip_num=True)
         if validation_file:
-            self.val_data = file_helpers.load_validation_file_grouped(validation_file, indices=True)
+            self.val_data = file_helpers.load_validation_file_grouped(validation_file, indices=True, use_pos=use_pos)
         if data_file:
             self.word_data_generator = word.word_data_gen(data_file, progress=5000)
         self.word_embeddings = WordEmbeddings()
@@ -223,7 +224,10 @@ class BestClustering:
         for word_data in self.word_data_generator:
 
             word = word_data.words[0]
+            pos = word_data.pos
             n = len(self.words_json[word])
+
+            print(word, pos, n)
 
             if n < 2:
                 #print("skipping word", word)
@@ -234,7 +238,10 @@ class BestClustering:
                 #print(word)
                 continue
 
-            word_data = self.prepare_word_data(word, word_data)#, reduce_embeddings=self.reduce_embeddings)
+            word_data = self.prepare_word_data(word, pos, word_data)#, reduce_embeddings=self.reduce_embeddings)
+
+            if word_data is None:
+                continue
 
             for algorithm_data in algorithm_list:
                 self.execute_clustering(algorithm_data, word_data, n=n, output_vectors=output_vectors)
@@ -295,7 +302,7 @@ class BestClustering:
             #else:
             #    print("Too little validation labels to score word %s" % word_data.word)
 
-    def prepare_word_data(self, word: str, word_data: word.WordData, reduce_embeddings=False) -> word.WordData:
+    def prepare_word_data(self, word: str, pos: str, word_data: word.WordData, reduce_embeddings=False) -> Union[word.WordData, None]:
         """
         Check if validation data contains sentences not included in WordData. For each sentence, calculate the observed
         word's embedding.
@@ -305,12 +312,25 @@ class BestClustering:
         :return: updated WordData object
         """
 
-        word_val_data = self.val_data[word]
+        pos_tags = list(self.val_data[word].keys())
+        pos_tag = pos
+        if pos not in pos_tags and pos not in "SGPRZKDVLMO":
+            if len(pos_tags) == 1:
+                pos_tag = pos_tags[0]
+            elif "X" in pos_tags:
+                pos_tag = "X"
+            elif "U" in pos_tags:
+                pos_tag = "U"
+            else:
+                print("POS tag not in list:", pos, pos_tags)
+                return None
+
+        word_val_data = self.val_data[word][pos_tag]
 
         # add missing sentences + embeddings
         missing_sentences = [s for s in word_val_data['sentences'] if s not in word_data.sentences]
         if missing_sentences:
-            word_data.add_missing_sentences(missing_sentences, self.word_embeddings, word_val_data)
+            word_data.add_missing_sentences(missing_sentences, [pos_tag] * len(missing_sentences), self.word_embeddings, word_val_data)
 
         word_data.val_ids = [word_data.sentences.index(s) for s in word_val_data['sentences']]
         word_data.validation_labels = word_val_data['labels']

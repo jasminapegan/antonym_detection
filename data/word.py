@@ -1,7 +1,7 @@
 """ Works only with files sorted by words. """
 from datetime import datetime
 
-from file_helpers import convert_to_np_array, file_len
+from file_helpers import convert_to_np_array, file_len, get_pos
 from typing import List, Dict, Iterator
 import numpy as np
 
@@ -16,9 +16,16 @@ class WordData:
         """
 
         self.words = [d[0] for d in data]
+        pos_list = [get_pos(d[1]) for d in data]
+        if len(set(pos_list)) > 1:
+            pos_list = list(set(pos_list).difference({"N/A"}))
+            assert len(list(pos_list)) == 1
+            pos_list = len(self.words) * [pos_list[0]]
+
         assert len(set(self.words)) <= 1
 
         self.word = self.words[0]
+        self.pos = pos_list[0]
 
         self.sentences = [d[-2].strip() for d in data]
         self.embeddings = convert_to_np_array([d[-1] for d in data])
@@ -29,10 +36,10 @@ class WordData:
         self.validation_labels = None
 
 
-    def add_missing_sentences(self, missing_sentences: List[str], word_embeddings, word_val_data: Dict):
+    def add_missing_sentences(self, missing_sentences: List[str], pos_tags: List[str], word_embeddings, word_val_data: Dict):
         words = len(missing_sentences) * [self.word]
         indices = [i for i, s in zip(word_val_data['indices'], word_val_data['sentences']) if s in missing_sentences]
-        results = word_embeddings.get_words_embeddings(words, indices, missing_sentences[:])
+        results = word_embeddings.get_words_embeddings(words, pos_tags, indices, missing_sentences[:])
         missing_embeddings = [r[-1] for r in results]
 
         self.sentences += missing_sentences
@@ -57,7 +64,7 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
     """
 
     data = []
-    word = None
+    word, pos = None, None
     n_lines = 0
 
     if progress:
@@ -70,19 +77,23 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
                 print("[%s] Word data progress: %d%% (%d / %d)" % (get_now_string(), (100 * i) // n_lines, i, n_lines))
 
             data_line = line.strip().split('\t')
-            data_word = data_line[0]
+            data_word, data_pos = data_line[0], get_pos(data_line[1])
 
             # finished reading word data
-            if data_word != word and word != None and len(data) > 0:
+            unknown = ["X", "U", "N/A"]
+            if (data_word != word or data_pos != pos and data_pos not in unknown and pos not in unknown)\
+                    and (word != None and pos != None) and len(data) > 0:
 
                 if len(data) > 0:
                     yield WordData(data)
                     word = data_word
+                    pos = data_pos
                     data = []
 
             else:
                 data.append(data_line)
                 word = data_word
+                pos = data_pos
 
     yield WordData(data + [data_line])
 

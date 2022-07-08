@@ -614,3 +614,20 @@ def find_new_index(lemma, idx, sentence_lemmas):
 def get_now_string():
     return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
+def get_pos(pos_label):
+    pos_dict = {"S": "samostalnik",
+                "G": "glagol",
+                "P": "pridevnik",
+                "R": "prislov",
+                "Z": "zaimek",
+                "K": "števnik",
+                "D": "predlog",
+                "V": "veznik",
+                "L": "členek",
+                "M": "medmet",
+                "O": "okrajšava"}
+    pos = pos_label[0]
+    if pos in pos_dict.keys():
+        return pos_dict[pos]
+    else:
+        return "N/A"
