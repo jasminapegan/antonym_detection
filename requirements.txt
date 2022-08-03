@@ -1,4 +1,6 @@
+datasets
 keras=1.9.0
+matplotlib
 numpy
 scikit-learn
 scipy

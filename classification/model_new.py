@@ -1,4 +1,7 @@
 import os
+
+from torch import nn
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import time
 from datetime import timedelta
@@ -7,7 +10,8 @@ import torch
 import numpy as np
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
-from transformers import AutoTokenizer, BertForSequenceClassification, get_linear_schedule_with_warmup
+from transformers import AutoTokenizer, BertForSequenceClassification, get_linear_schedule_with_warmup, \
+    BertPreTrainedModel, AutoModel
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 from datasets import load_metric
 from matplotlib import pyplot as plt
@@ -26,31 +30,90 @@ import file_helpers
 #gpus = tf.config.experimental.list_physical_devices('GPU')
 #gpus = tf.config.list_physical_devices('GPU')
 
+class FCLayer(nn.Module):
+    def __init__(self, input_dim, output_dim, dropout_rate=0.0, use_activation=True):
+        super(FCLayer, self).__init__()
+        self.use_activation = use_activation
+        self.dropout = nn.Dropout(dropout_rate)
+        self.linear = nn.Linear(input_dim, output_dim)
+        self.tanh = nn.Tanh()
 
-class AntSynModel:
+    def forward(self, x):
+        x = self.dropout(x)
+        if self.use_activation:
+            x = self.tanh(x)
+        return self.linear(x)
 
-    def __init__(self, model_name="EMBEDDIA/crosloengual-bert", tokenizer_path=None, resize_model=False):
-        if tokenizer_path:
-            self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
-        else:
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-        self.model = BertForSequenceClassification.from_pretrained(
-            model_name, num_labels=2, output_attentions = False, output_hidden_states = False)
+class RelationModel(BertPreTrainedModel):
 
-        if resize_model:
-            self.model.resize_token_embeddings(len(self.tokenizer))
+    def __init__(self, config, args): #model_name="EMBEDDIA/crosloengual-bert", tokenizer_path=None, resize_model=False):
+        super(RelationModel, self).__init__(config)
 
-        self.model_name = model_name
-        modules = [self.model.base_model.embeddings, *self.model.base_model.encoder.layer[:7]] # up to 9 layers can be frozen
-        for module in modules:
-            for param in module.parameters():
-                param.requires_grad = False
+        self.bert = BertForSequenceClassification(config=config)
+        self.n_labels = config.n_labels
 
-        self.model.eval()
-        self.metric = load_metric('glue', 'sst2')
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.model.to(self.device)
+        self.cls_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
+        self.entity_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
+        self.label_classifier = FCLayer(
+            config.hidden_size * 3,
+            config.num_labels,
+            args.dropout_rate,
+            use_activation=False,
+        )
+
+
+    @staticmethod
+    def entity_average(hidden_output, e_mask):
+        """
+        Average the entity hidden state vectors (H_i ~ H_j)
+        :param hidden_output: [batch_size, j-i+1, dim]
+        :param e_mask: [batch_size, max_seq_len]
+                e.g. e_mask[0] == [0, 0, 0, 1, 1, 1, 0, 0, ... 0]
+        :return: [batch_size, dim]
+        """
+        e_mask_unsqueeze = e_mask.unsqueeze(1)  # [b, 1, j-i+1]
+        length_tensor = (e_mask != 0).sum(dim=1).unsqueeze(1)  # [batch_size, 1]
+
+        # [b, 1, j-i+1] * [b, j-i+1, dim] = [b, 1, dim] -> [b, dim]
+        sum_vector = torch.bmm(e_mask_unsqueeze.float(), hidden_output).squeeze(1)
+        avg_vector = sum_vector.float() / length_tensor.float()  # broadcasting
+        return avg_vector
+
+    def forward(self, input_ids, attention_mask, token_type_ids, labels, e1_mask, e2_mask):
+        outputs = self.bert(
+            input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids
+        )  # sequence_output, pooled_output, (hidden_states), (attentions)
+        sequence_output = outputs[0]
+        pooled_output = outputs[1]  # [CLS]
+
+        # Average
+        e1_h = self.entity_average(sequence_output, e1_mask)
+        e2_h = self.entity_average(sequence_output, e2_mask)
+
+        # Dropout -> tanh -> fc_layer (Share FC layer for e1 and e2)
+        pooled_output = self.cls_fc_layer(pooled_output)
+        e1_h = self.entity_fc_layer(e1_h)
+        e2_h = self.entity_fc_layer(e2_h)
+
+        # Concat -> fc_layer
+        concat_h = torch.cat([pooled_output, e1_h, e2_h], dim=-1)
+        logits = self.label_classifier(concat_h)
+
+        outputs = (logits,) + outputs[2:]  # add hidden states and attention if they are here
+
+        # Softmax
+        if labels is not None:
+            if self.num_labels == 1:
+                loss_fct = nn.MSELoss()
+                loss = loss_fct(logits.view(-1), labels.view(-1))
+            else:
+                loss_fct = nn.CrossEntropyLoss()
+                loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
+
+            outputs = (loss,) + outputs
+
+        return outputs  # (loss), logits, (hidden_states), (attentions)
 
     def compute_metrics(self, eval_pred):
         predictions, labels = eval_pred
@@ -282,21 +345,21 @@ class AntSynModel:
 
         return val_f1
 
-def update_tokenizer(tokenizer, new_tokens=["[BOW]", "[EOW]"], out_dir="model/saved"):
+def update_tokenizer(tokenizer, new_tokens=["[W1]", "[W2]"], out_dir="model/saved"):
     tokenizer.add_tokens(new_tokens)
     model = BertForSequenceClassification.from_pretrained(
             "EMBEDDIA/crosloengual-bert", num_labels=2, output_attentions = False, output_hidden_states = False)
     model.resize_token_embeddings(len(tokenizer))
     tokenizer.save_pretrained(out_dir)
 
-def prepare_data_crossval(train_fname, val_fname, tokenizer, batch_size=32, n=3, mark_word=False, syn=False):
+def prepare_data_crossval(train_fname, val_fname, tokenizer, batch_size=32, n=3, mark_word=False):
     train_dataloaders = []
     val_dataloaders = []
 
     for i in range(n):
         train_file, val_file = f"{train_fname}{i}.txt", f"{val_fname}{i}.txt"
 
-        token_id, attention_masks, labels  = get_data(train_file, tokenizer, mark_word=mark_word, syn=syn)
+        token_id, attention_masks, labels  = get_data(train_file, tokenizer, mark_word=mark_word)
         train_set = TensorDataset(token_id, attention_masks, labels)
         train_dataloader = DataLoader(
             train_set,
@@ -316,10 +379,10 @@ def prepare_data_crossval(train_fname, val_fname, tokenizer, batch_size=32, n=3,
 
     return train_dataloaders, val_dataloaders
 
-def get_data(filename, tokenizer, limit_range=None, shuffle_data=True, mark_word=False, syn=False):
+def get_data(filename, tokenizer, limit_range=None, shuffle_data=True, mark_word=False):
     data_dict = parse_sentence_data(filename, limit_range, shuffle_lines=shuffle_data)
     data_dict = trim_sentences(data_dict, tokenizer)
-    data = add_special_tokens(data_dict, mark_word=mark_word, syn=syn)
+    data = add_special_tokens(data_dict, mark_word=mark_word)
 
     labels = torch.tensor(data_dict['labels'], dtype=torch.long)
 
@@ -332,7 +395,7 @@ def get_data(filename, tokenizer, limit_range=None, shuffle_data=True, mark_word
 
     return input_ids, attention_masks, labels
 
-def add_special_tokens(data_dict, mark_word=False, syn=True):
+def add_special_tokens(data_dict, mark_word=False):
     if mark_word:
         data = []
         for ss, ii in zip(data_dict['sentence_pairs'], data_dict['index_pairs']):
@@ -340,16 +403,9 @@ def add_special_tokens(data_dict, mark_word=False, syn=True):
             i1, i2 = ii
 
             s1_split, s2_split = s1.split(" "), s2.split(" ")
-            #s1_new = s1_split[:i1[0]] + ["[BOW]"] + s1_split[i1[0]: i1[1] + 1] + ["[EOW]"] + s1_split[i1[1] + 1:] + ["[SEP]"]
-            #s2_new = s2_split[:i2[0]] + ["[BOW]"] + s2_split[i2[0]: i2[1] + 1] + ["[EOW]"] + s2_split[i2[1] + 1:]
 
-            #self.data.append(["[CLS]"] + s1_new + s2_new)
-
-            syn_ant_token = "[SYN]" if syn else "[ANT]"
-            base_token = "[BASE]"
-
-            s1_new = s1_split[:i1[0]] + [base_token] + s1_split[i1[0]: i1[1] + 1] + [base_token] + s1_split[i1[1] + 1:] + ["[SEP]"]
-            s2_new = s2_split[:i2[0]] + [syn_ant_token] + s2_split[i2[0]: i2[1] + 1] + [syn_ant_token] + s2_split[i2[1] + 1:]
+            s1_new = s1_split[:i1[0]] + ["[W1]"] + s1_split[i1[0]: i1[1] + 1] + ["[W1]"] + s1_split[i1[1] + 1:] + ["[SEP]"]
+            s2_new = s2_split[:i2[0]] + ["[W2]"] + s2_split[i2[0]: i2[1] + 1] + ["[W2]"] + s2_split[i2[1] + 1:]
 
             data.append(s1_new + s2_new)
     else:
@@ -379,7 +435,7 @@ def trim_sentences(data_dict, tokenizer):
     return data_dict
 
 def find_best(train_filename, val_filename, out_path, lrs=[3e-4, 1e-4, 5e-5, 3e-5], epochs=5,
-              mark_word=False, batch_sizes=[128], resize_model=False, tokenizer_path="model/saved", syn=False):
+              mark_word=False, batch_sizes=[128], resize_model=False, tokenizer_path="model/saved"):
     if tokenizer_path:
         tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
     else:
@@ -394,7 +450,7 @@ def find_best(train_filename, val_filename, out_path, lrs=[3e-4, 1e-4, 5e-5, 3e-
 
         for batch_size in batch_sizes:
             train_dataloaders, val_dataloaders = prepare_data_crossval(train_filename, val_filename, tokenizer,
-                                                                       mark_word=mark_word, batch_size=batch_size, n=3, syn=syn)
+                                                                       mark_word=mark_word, batch_size=batch_size, n=3)
 
             for lr in lrs:
                 print(f"Using learning rate {lr}")

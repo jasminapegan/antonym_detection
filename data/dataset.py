@@ -125,14 +125,27 @@ def divide_word_senses(in_file: str, out_file1: str, out_file2: str, sep: str, r
 
     return info
 
-def create_syn_ant_dataset(synonym_file, antonym_file, out_file, d=3):
+def create_syn_ant_dataset(synonym_file, antonym_file, out_file, d=3, antonym_file2=None):
     with open(out_file, "w", encoding="utf8") as outf:
+
+        visited = []
         with open(antonym_file, "r", encoding="utf8") as f:
             for line in f:
                 data = line.split("\t")
                 w1, w2, score = data[1], data[2], data[9]
+
                 if score.count("d") > d:
+                    visited.append((w1, w2))
                     outf.write(f"{w1}\t{w2}\t0\n")
+
+        if antonym_file2:
+            with open(antonym_file2, "r", encoding="utf8") as f:
+                for line in f:
+                    w1, w2 = line.strip().split("\t")
+
+                    if (w1, w2) not in visited and (w2, w1) not in visited:
+                        outf.write(f"{w1}\t{w2}\t0\n")
+
         with open(synonym_file, "r", encoding="utf8") as f:
             for line in f:
                 w1, w2 = line.strip().split(" ")

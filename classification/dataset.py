@@ -13,10 +13,17 @@ from data.embeddings import WordEmbeddings
 
 
 def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, out_file_syn, out_file_ant,
-                   out_anti_syn, out_anti_ant, out_syn_dir, out_ant_dir):
+                   out_anti_syn, out_anti_ant, out_syn_dir, out_ant_dir,
+                   additional_cluster_file=None, additional_examples_file=None, max_examples=1500):
     print("Loading cluster data ...")
 
     clusters = parse_cluster_file(cluster_file)
+
+    if additional_cluster_file:
+        clusters2 = parse_cluster_file(additional_cluster_file)
+    if additional_examples_file:
+        examples_data2 = file_helpers.load_validation_file_grouped(additional_examples_file, indices=True, embeddings=False, use_pos=True)
+
     score_data_ant = parse_score_data(score_file_ant)
     score_data_syn = parse_score_data(score_file_syn)
     score_data = {x: ('ant', y) for x, y in score_data_ant.items()}
@@ -31,55 +38,79 @@ def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, 
     g2 = open(out_anti_ant, "w", encoding="utf8")
 
     print("Creating datasets ...")
-    diff, data = 0, None
+    diff_data_list = []
+
     for pair_data in clusters.keys():
 
         cluster = clusters[pair_data]
         ant_syn, is_correct = score_data[pair_data]
 
         if "DA" in is_correct:
-            #w1, w2, pos = pair_data
-            w1, w2 = pair_data
-            sense_w1, sense_w2 = cluster["w1_sense"], cluster["w2_sense"]
-            try:
-                pos1, pos2 = list(examples_data[w1].keys())[0], list(examples_data[w2].keys())[0]
-            except Exception as e:
-                print(e, w1, w2)
-                continue
-            if pos1 != pos2:
-                continue
-            #w1_data, w2_data = examples_data[w1]["all"], examples_data[w2]["all"] #[pos]
-            w1_data, w2_data = examples_data[w1][pos1], examples_data[w2][pos2] #[pos]
+            diff_data_list = write_pair_data(pair_data, cluster, examples_data, ant_syn, f, f2, g, g2,
+                                             diff_data_list, other_clusters=clusters2, max_examples=max_examples)
 
-            if ant_syn == "ant":
-                count = write_data_to_file(g, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
-                diff, data = write_other_pairs(g2, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff, data)
-            else:
-                count = write_data_to_file(f, w1, w2, sense_w1, sense_w2, w1_data, w2_data)
-                diff, data = write_other_pairs(f2, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff, data)
+    for pair_data in clusters2.keys():
+        cluster = clusters2[pair_data]
+        ant_syn = 'syn' if cluster['synonym'] else 'ant'
+        diff_data_list = write_pair_data(pair_data, cluster, examples_data2, ant_syn, f, f2, g, g2, diff_data_list, max_examples=max_examples)
+
+    if len(diff_data_list) > 0:
+        print(diff_data_list)
 
     join_to_dataset(out_file_syn, out_anti_syn, out_syn_dir)
     join_to_dataset(out_file_ant, out_anti_ant, out_ant_dir)
 
-def write_data_to_file(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data):
+def write_pair_data(pair_data, cluster, examples_data, ant_syn, f, f2, g, g2, diff_data_list, other_clusters=None, max_examples=250):
+    w1, w2 = pair_data
+    if w1 not in examples_data.keys() or w2 not in examples_data.keys():
+        return diff_data_list
+
+    sense_w1, sense_w2 = cluster["w1_sense"], cluster["w2_sense"]
+    pos1, pos2 = list(examples_data[w1].keys())[0], list(examples_data[w2].keys())[0]
+
+    if pos1 != pos2:
+        return  diff_data_list
+
+    w1_data, w2_data = examples_data[w1][pos1], examples_data[w2][pos2]
+
+    if ant_syn == "ant":
+        count = write_examples_to_file(g, w1, w2, sense_w1, sense_w2, w1_data, w2_data, max_examples=max_examples)
+        diff_data_list = write_other_pairs(g2, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff_data_list)
+    else:
+        count = write_examples_to_file(f, w1, w2, sense_w1, sense_w2, w1_data, w2_data, max_examples=max_examples)
+        diff_data_list = write_other_pairs(f2, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff_data_list)
+
+    if other_clusters:
+        if (w1, w2) in other_clusters.keys():
+            del other_clusters[(w1, w2)]
+        if (w2, w1) in other_clusters.keys():
+            del other_clusters[(w2, w1)]
+
+    return diff_data_list
+
+def write_examples_to_file(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data, max_examples=250):
     w1_examples = [(s, i) for l, s, i in zip(w1_data['labels'], w1_data['sentences'], w1_data['indices']) if
                    l == sense_w1]
     w2_examples = [(s, i) for l, s, i in zip(w2_data['labels'], w2_data['sentences'], w2_data['indices']) if
                    l == sense_w2]
-    # w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, (label)
-    count = 0
-    for s_i_1, s_i_2 in itertools.product(w1_examples, w2_examples):
+
+    all_pairs = list(itertools.product(w1_examples, w2_examples))
+    shuffle(all_pairs)
+    if max_examples < len(all_pairs):
+        print(len(all_pairs))
+
+    count = min(len(all_pairs), max_examples)
+
+    for s_i_1, s_i_2 in all_pairs[:count]:
         s1, i1 = s_i_1
         s2, i2 = s_i_2
         f1, f2 = s1.split(" ")[int(i1)], s2.split(" ")[int(i2)]
 
-        file.write(f"{w1}\t/\t{f1}\t{sense_w1}\t{i1}\t{s1}\t")
-        file.write(f"{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t1\n")
-        count += 1
+        file.write(f"{w1}\t/\t{f1}\t{sense_w1}\t{i1}\t{s1}\t{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t1\n")
 
     return count
 
-def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff, data):
+def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count, diff_data_list):
     w1_examples = [(s, i) for l, s, i in zip(w1_data['labels'], w1_data['sentences'], w1_data['indices']) if
                    l == sense_w1]
     w2_examples = [(s, i) for l, s, i in zip(w2_data['labels'], w2_data['sentences'], w2_data['indices']) if
@@ -92,12 +123,23 @@ def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count,
     product = []
 
     # if there was not enough sentences in previous round, add them now
-    if diff > 0:
-        product = list(itertools.product(data, w1_examples + w2_examples + w1_anti_examples + w2_anti_examples))
-        shuffle(product)
-        if diff > len(product):
-            print("diff", len(product) - diff)
-        product = product[:diff]
+    for i, diff_data in enumerate(diff_data_list):
+
+        diff = diff_data['diff']
+        w1_prev, w2_prev = diff_data['w1_prev'], ['w2_prev']
+        examples = diff_data['examples']
+
+        if diff > 0:
+            new_product = []
+            if w1 not in [w1_prev, w2_prev]:
+                new_product = list(itertools.product(examples, w1_examples + w1_anti_examples))
+            if w2 not in [w1_prev, w2_prev]:
+                new_product += list(itertools.product(examples, w2_examples + w2_anti_examples))
+
+            diff_data_list[i]['diff'] = max(0, diff - len(new_product))
+
+            shuffle(new_product)
+            product += new_product[:diff]
 
     # w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, (label)
     product += list(itertools.product(w1_examples, w2_anti_examples)) + list(itertools.product(w1_anti_examples, w2_examples))
@@ -114,13 +156,17 @@ def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count,
         s2, i2 = s_i_2
         f1, f2 = s1.split(" ")[int(i1)], s2.split(" ")[int(i2)]
 
-        file.write(f"{w1}\t/\t{f1}\t{sense_w1}\t{i1}\t{s1}\t")
-        file.write(f"{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t0\n")
+        file.write(f"{w1}\t/\t{f1}\t{sense_w1}\t{i1}\t{s1}\t{w2}\t/\t{f2}\t{sense_w2}\t{i2}\t{s2}\t0\n")
 
     if len(product) < count:
-        return count - len(product), w1_examples + w2_examples
-    else:
-        return 0, None
+        diff_data_list.append({
+            'diff': count - len(product),
+            'w1_prev': w1,
+            'w2_prev': w2,
+            'examples': w1_examples + w2_examples
+        })
+
+    return [x for x in diff_data_list if x['diff'] > 0]
 
 def join_to_dataset(f1, f2, out_dir):
     n1, n2 = file_helpers.file_len(f1), file_helpers.file_len(f2)
@@ -140,21 +186,27 @@ def join_to_dataset(f1, f2, out_dir):
     out_train = os.path.join(out_dir, "train.txt")
     out_test = os.path.join(out_dir, "test.txt")
 
-    divide_data(all_lines, out_test, out_train, 0.2)
+    with open(os.path.join(out_dir, "info.txt"), "w", encoding="utf8") as info_file:
+        info_file.write(f"Out train/test: {m} example pairs each\n")
 
-    with open(out_train, "r", encoding="utf8") as f:
-        train_lines = [x for x in f.readlines() if x.strip()]
+        info_file.write("All training data\n")
+        divide_data(all_lines, out_test, out_train, 0.2, info_file)
 
-    for i in range(3):
-        out_train_real = os.path.join(out_dir, f"train{i}.txt")
-        out_val = os.path.join(out_dir, f"val{i}.txt")
-        divide_data(train_lines, out_val, out_train_real, 0.2)
+        with open(out_train, "r", encoding="utf8") as f:
+            train_lines = [x for x in f.readlines() if x.strip()]
 
-def divide_data(all_lines, filename_1, filename_2, ratio):
+        for i in range(3):
+            out_train_real = os.path.join(out_dir, f"train{i}.txt")
+            out_val = os.path.join(out_dir, f"val{i}.txt")
+
+            info_file.write(f"train{i}.txt\n")
+            divide_data(train_lines, out_val, out_train_real, 0.2, info_file)
+
+def divide_data(all_lines, filename_1, filename_2, ratio, info_out):
     words_dict = lines_list_to_word_dict(all_lines)  # both words in one line
     words_disjunct_sets = get_quick_union_sets(all_lines)
 
-    test, train = split_data(words_dict, words_disjunct_sets, ratio)
+    test, train = split_data(words_dict, words_disjunct_sets, ratio, info_out)
 
     words_dict = {k: v for k, v in words_dict.items() if k in train}
 
@@ -165,14 +217,17 @@ def divide_data(all_lines, filename_1, filename_2, ratio):
 
     with open(filename_1, "w", encoding="utf8") as f, open(filename_2, "w", encoding="utf8") as g:
         for w, lines_list in words_dict.items():
+
             if w in test:
                 f.writelines(lines_list)
             else:
                 g.writelines(lines_list)
 
-def split_data(words_dict, words_disjunct_sets, ratio):
+def split_data(words_dict, words_disjunct_sets, ratio, info_out):
     words_count = {w: len(s) for w, s in words_dict.items()}
+    words_count_copy = {**words_count}
     n_examples = sum(list(words_count.values()))
+    n_examples_copy = n_examples
 
     while max(words_count.values()) > ratio * n_examples:
         for w, c in words_count.items():
@@ -191,14 +246,19 @@ def split_data(words_dict, words_disjunct_sets, ratio):
                 set_counts[i] += words_count[w]
 
     i = n_examples
-    while abs(i - ratio * n_examples) > 0.01 * n_examples:
+    while abs(i - ratio * n_examples) > 0.001 * n_examples:
         test, train = divide_word_senses(words_dict, words_disjunct_sets, set_counts, ratio)
         i = sum([v for k, v in words_count.items() if k in test])
 
-        print("split_data - n_examples:", i)
+        print(f"split_data - n_examples: {i}")
 
-    print("test/train example count:", i, n_examples - i)
-    print("test/train word count:", len(test), len(train))
+    i = sum([v for k, v in words_count_copy.items() if k in test])
+
+    for k, v in sorted(list(words_count_copy.items()), key=lambda x: -x[1]):
+        info_out.write(f"{k}\t{v}\n")
+
+    info_out.write(f"test/train example count: {i}, {n_examples_copy - i}\n")
+    info_out.write(f"test/train word count: {len(test)}, {len(train)}\n")
 
     return test, train
 
@@ -242,9 +302,11 @@ def parse_line(line, embeddings=False, only_embeddings=False, labels=True):
 
     if not embeddings:
         # w1, pos1, form1, l1, idx1, s1, w2, pos2, form2, l2, idx2, s2, (label)
-        assert 12 <= len(data) <= 13
-        data[4], data[10] = int(data[4]), int(data[10])
-        return data
+        if 12 <= len(data) <= 13:
+            data[4], data[10] = int(data[4]), int(data[10])
+            return data
+        else:
+            print("Data not ok:", data)
     else:
         # w1, pos1, form1, l1, idx1, s1, e1, w2, pos2, form2, l2, idx2, s2, e2, (label)
         data[3], data[9] = int(data[3]), int(data[9])

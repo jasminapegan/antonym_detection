@@ -135,10 +135,11 @@ def evaluate_cluster_results(in_cluster_old, in_score, in_cluster_new):
                 else:
                     nok += 1
             else:
-                print(pair)
-                print(prev_sense_desc_w1, "|", prev_sense_desc_w2)
-                print(new_sense_desc_w1, "|", new_sense_desc_w2)
-                print()
+                pass
+                #print(pair)
+                #print(prev_sense_desc_w1, "|", prev_sense_desc_w2)
+                #print(new_sense_desc_w1, "|", new_sense_desc_w2)
+                #print()
 
     print(f"ok: {ok}, nok: {nok}")
     print(f"all ok: {all_pos}, all nok: {all_neg}")

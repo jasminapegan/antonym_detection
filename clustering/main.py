@@ -57,11 +57,11 @@ score_files =  ["out/agglomerative/agglomerative-affinity=precomputed,distance=r
 #processing.write_stats(score_files, result_files, "stats.tsv", "scores_plot_data_2.tsv")
 #plotting.plot_data("scores_plot_data_2.tsv")
 
-syn_ant_dataset = "../data/sources/syn_ant/syn_ant_dataset_2.tsv"
+syn_ant_dataset = "../data/sources/syn_ant/syn_ant_dataset_all.tsv"
 labeled_embeddings = "../data/embeddings/lemmatized/labeled_embeddings.txt"
 sense_data = "../data/sources/sense/sense_data.txt"
-f = "ant_syn_senses/"
-f2 = "ant_syn_senses/no_outliers/"
+f = "ant_syn_senses/new/"
+#f2 = "ant_syn_senses/no_outliers/"
 
 #SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f + "ent_no_outl.txt", algo='weighed_entropy', clean_data=True)
 #SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f + "ent_with_outl.txt", algo='weighed_entropy', clean_data=False)
@@ -76,7 +76,12 @@ sc.execute_algorithm(f"{f}min_dist.txt", algo='min_dist')
 sc.execute_algorithm(f"{f}avg_min_dist.txt", algo='avg_min_dist')
 sc.execute_algorithm(f"{f}avg_dist.txt", algo='avg_dist')
 
+#sc = SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}description_dist.txt", algo='description_dist', ignore_missing=True)
+
 #scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/min_avg_dist.txt")
-scoring.evaluate_cluster_results("ant_syn_senses/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/min_avg_dist.txt")
+#scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/min_avg_dist.txt")
+#scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/avg_min_dist.txt") # best: ok: 12, nok: 3
+#scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/min_dist.txt")
+#scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/avg_dist.txt")
 
 #print_missing_senses(sense_data, labeled_embeddings, "ant_syn_senses/missing_examples.txt")
