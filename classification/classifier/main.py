@@ -33,7 +33,7 @@ if __name__ == "__main__":
         type=str,
         help="The input data dir. Should contain the .tsv files (or other data files) for the task.",
     )
-    parser.add_argument("--model_dir", default="./model", type=str, help="Path to model")
+    parser.add_argument("--model_dir", default="./model/ant", type=str, help="Path to model")
     parser.add_argument(
         "--eval_dir",
         default="./eval",
@@ -115,3 +115,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args)
+
+
+# main.py --

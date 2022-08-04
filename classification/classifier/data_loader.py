@@ -295,4 +295,4 @@ def load_and_cache_examples(args, tokenizer, mode):
         all_e1_mask,
         all_e2_mask,
     )
-    return
+    return dataset
