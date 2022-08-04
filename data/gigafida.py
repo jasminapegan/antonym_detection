@@ -1,7 +1,6 @@
 import json
 import os
 import re
-from datetime import datetime
 from io import TextIOWrapper
 from lxml import etree as ET
 from multiprocessing.pool import ThreadPool as Pool
@@ -216,7 +215,7 @@ def process_sentences(sentences, lemma_sentences, pos_tags_list, min_tokens, lim
 
                 spaces = lemma_sentence[:idx].count(' ')
                 pos_tag = pos_tags[spaces]
-                pos = get_pos(pos_tags[spaces][0])
+                pos = file_helpers.get_pos(pos_tags[spaces][0])
 
                 if pos == "N/A" or pos in words_data[word]['pos'].keys():
 
@@ -261,7 +260,7 @@ def update_word_count_in_globals(word: str, pos_tag: str, limit):
                 if n == 0:
                     return
         else:
-            tag = get_pos(pos_tag)
+            tag = file_helpers.get_pos(pos_tag)
             words_data[word]['pos'][tag] += 1
 
         if words_data[word]['pos'][tag] >= limit:

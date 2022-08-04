@@ -10,7 +10,7 @@ import file_helpers
 class SenseClusters():
 
     def __init__(self, syn_ant_file: str,  cluster_file: str, sense_file: str,  out_file: str, out_sentences: str=None,
-                 k: int=1, algo: str='avg_dist', clean_data: bool=True, ratio: float=0.05, weights='distance'):
+                 k: int=1, algo: str='avg_dist', clean_data: bool=True, ratio: float=0.05, weights='distance', ignore_missing=False):
         print(f"Reading data ...")
 
         self.cluster_data = file_helpers.load_validation_file_grouped(cluster_file, embeddings=True)
@@ -27,16 +27,16 @@ class SenseClusters():
         with open(syn_ant_file, "r", encoding='utf8') as f:
             self.lines = f.readlines()
 
-        self.execute_algorithm(out_file, algo=algo, clean_data=clean_data, ratio=ratio)
+        self.execute_algorithm(out_file, algo=algo, clean_data=clean_data, ratio=ratio, ignore_missing=ignore_missing)
 
         if self.out_sentences:
             self.out_sentences.close()
 
     def set_algorithm(self, algo):
-        assert algo in ['avg_dist', 'min_dist', 'avg_min_dist', 'min_avg_dist', 'max_dist', 'max_avg_dist', 'avg_max_dist']
+        assert algo in ['avg_dist', 'min_dist', 'avg_min_dist', 'min_avg_dist', 'max_dist', 'max_avg_dist', 'avg_max_dist', 'description_dist']
         self.algo = algo
 
-    def execute_algorithm(self, out_file: str, algo: str='avg_dist', clean_data: bool=False, ratio: float=0.05):
+    def execute_algorithm(self, out_file: str, algo: str='avg_dist', clean_data: bool=False, ratio: float=0.05, ignore_missing=False):
         print(f"Initiating algorithm {algo} ...")
 
         self.set_algorithm(algo)
@@ -67,15 +67,15 @@ class SenseClusters():
 
                 for pos in set(pos_tags1).intersection(pos_tags2):
                     self.pos = pos
-                    self.find_clusters_for_pair(clean_data, outf)
+                    self.find_clusters_for_pair(clean_data, outf, ignore_missing=ignore_missing)
 
-    def find_clusters_for_pair(self, clean_data, outf):
+    def find_clusters_for_pair(self, clean_data, outf, ignore_missing=False):
         self.word_data1, self.word_data2 = self.cluster_data[self.w1][self.pos], self.cluster_data[self.w2][self.pos]
         word_data_labels_1 = sorted(list(set([int(x) for x in self.word_data1['labels']])))
         word_data_labels_2 = sorted(list(set([int(x) for x in self.word_data2['labels']])))
 
         # check there is no weird gap between sense labels
-        if not self.check_senses(word_data_labels_1, word_data_labels_2):
+        if not ignore_missing and not self.check_senses(word_data_labels_1, word_data_labels_2):
             return
 
         if clean_data:
@@ -87,7 +87,7 @@ class SenseClusters():
         sense_data_labels_2 = sorted(list(set([int(x['num']) for x in self.sense_data2])))
 
         # every sense needs at least one example
-        if not self.check_examples(word_data_labels_1, word_data_labels_2, sense_data_labels_1, sense_data_labels_2):
+        if not ignore_missing and not self.check_examples(word_data_labels_1, word_data_labels_2, sense_data_labels_1, sense_data_labels_2):
             return
 
         ant_syn = "antonym" if self.label == 0 else "synonym"
@@ -146,6 +146,8 @@ class SenseClusters():
             dists = calculate_max_avg_distance(labels1, labels2, X1_by_label, X2_by_label)
         elif self.algo == 'avg_max_dist':
             dists = calculate_avg_max_distance(labels1, labels2, X1_by_label, X2_by_label)
+        elif self.algo == 'description_dist':
+            dists = calculate_description_distance(labels1, labels2, self.sense_data1, self.sense_data2)
 
         self.X1_by_label = X1_by_label
         self.X2_by_label = X2_by_label
@@ -189,6 +191,10 @@ class SenseClusters():
 
                 if self.out_sentences:
                     self.write_sentences(sentences1[label1], sentences2[label2])
+
+        # skip description pairs that are too far away
+        if self.algo == 'description_dist' and min_dist > 5:
+            return
 
         outf.write(f"Predicted sense pair: {self.w1}({min_label1}) and {self.w2}({min_label2}) " +
                    f"with distance score: {min_dist}\n")
@@ -357,6 +363,51 @@ def calculate_avg_max_distance(labels1, labels2, X1_by_label, X2_by_label):
                          for x1 in X1_by_label[label1]])
                  for label2 in labels2}
             for label1 in labels1}
+
+def calculate_description_distance(labels1, labels2, sense_data1, sense_data2):
+    return {label1:
+                {label2:
+                    description_distance(get_description(sense_data1, label1).lower(),
+                                         get_description(sense_data2, label2).lower())
+            for label2 in labels2}
+        for label1 in labels1}
+
+def description_distance(s1, s2):
+    skip = ["?", "Nov pomen"]
+    if s1 in skip or s2 in skip:
+        return 100
+
+    if s1 == s2:
+        return 0
+
+    m = min(len(s1), len(s2))
+    if m > 5 and (s1 in s2 or s2 in s1):
+        print(s1, "|", s2, 0)
+        return 0
+
+    d = levenshtein(s1, s2)
+
+    if d <= 3 and m - d > 7 or d / m < 0.2:
+        print(s1, "|", s2, levenshtein(s1, s2))
+        return levenshtein(s1, s2)
+
+    return 100
+
+def levenshtein(seq1, seq2):
+    # from wikipedia
+    oneago = None
+    thisrow = list(range(1, len(seq2) + 1)) + [0]
+
+    for x in range(len(seq1)):
+        twoago, oneago, thisrow = oneago, thisrow, [0] * len(seq2) + [x + 1]
+
+        for y in range(len(seq2)):
+            delcost = oneago[y] + 1
+            addcost = thisrow[y - 1] + 1
+            subcost = oneago[y - 1] + (seq1[x] != seq2[y])
+            thisrow[y] = min(delcost, addcost, subcost)
+
+    return thisrow[len(seq2) - 1]
 
 def print_missing_senses(sense_data_file, sense_examples_file, word_data):
     cluster_data = file_helpers.load_validation_file_grouped(sense_examples_file, embeddings=True)

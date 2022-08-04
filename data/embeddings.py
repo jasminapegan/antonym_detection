@@ -102,6 +102,7 @@ class WordEmbeddings:
         # hidden states is 4dim: layers / batches / tokens / features (0, 1, 2, 3)
         hidden_states = outputs.hidden_states
         token_embeddings_batch = torch.stack(hidden_states, dim=0)
+        print(token_embeddings_batch.shape)
 
         # order we want: batches / tokens / layers / features (1, 2, 0, 3)
         token_embeddings_batch = token_embeddings_batch.permute(1, 2, 0, 3)
