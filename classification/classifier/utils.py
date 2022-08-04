@@ -6,7 +6,7 @@ import numpy as np
 import torch
 from transformers import AutoTokenizer
 
-from classification.classifier.eval import official_f1
+from matplotlib import pyplot as plt
 
 ADDITIONAL_SPECIAL_TOKENS = ["<e1>", "</e1>", "<e2>", "</e2>"]
 
@@ -57,10 +57,64 @@ def compute_metrics(preds, labels):
 def simple_accuracy(preds, labels):
     return (preds == labels).mean()
 
-
-def acc_and_f1(preds, labels, average="macro"):
+def acc_and_f1(preds, labels):
     acc = simple_accuracy(preds, labels)
+    f1 = f1_score(preds, labels)
+    print("acc, f1", acc, f1)
     return {
         "acc": acc,
-        "f1": official_f1(),
+        "f1": f1
     }
+
+def plot_scores(tr_loss, val_loss, out_dir, model_name):
+    print(f"Plotting scores for model {model_name}...")
+
+    epochs = range(1, len(val_loss) + 1)
+    fig = plt.figure(figsize=(10, 6))
+    fig.tight_layout()
+
+    plt.subplot(2, 1, 1)
+    plt.plot(epochs, tr_loss, 'r', label='Training loss')
+    plt.plot(epochs, val_loss, 'b', label='Validation loss')
+    plt.title(f'Metrics for model {model_name}')
+    plt.xlabel('Epochs')
+    plt.legend(loc='lower right')
+
+    fname = os.path.join(out_dir, f"plot_{model_name}.png")
+    plt.savefig(fname)
+
+
+def b_tp(preds, labels):
+    '''Returns True Positives (TP): count of correct predictions of actual class 1'''
+    return sum([preds == labels and preds == 1 for preds, labels in zip(preds, labels)])
+
+def b_fp(preds, labels):
+    '''Returns False Positives (FP): count of wrong predictions of actual class 1'''
+    return sum([preds != labels and preds == 1 for preds, labels in zip(preds, labels)])
+
+def b_tn(preds, labels):
+    '''Returns True Negatives (TN): count of correct predictions of actual class 0'''
+    return sum([preds == labels and preds == 0 for preds, labels in zip(preds, labels)])
+
+def b_fn(preds, labels):
+    '''Returns False Negatives (FN): count of wrong predictions of actual class 0'''
+    return sum([preds != labels and preds == 0 for preds, labels in zip(preds, labels)])
+
+def f1_score(preds, labels):
+    '''
+    Returns the following metrics:
+      - accuracy    = (TP + TN) / N
+      - precision   = TP / (TP + FP)
+      - recall      = TP / (TP + FN)
+      - specificity = TN / (TN + FP)
+    '''
+    eps = np.finfo(np.float32).eps
+    preds = np.argmax(preds).flatten()
+    labels = labels.flatten()
+    tp = b_tp(preds, labels)
+    fp = b_fp(preds, labels)
+    fn = b_fn(preds, labels)
+    divide_by = tp + (fp + fn) / 2
+    if divide_by == 0:
+        return tp / (eps + divide_by)
+    return tp / divide_by

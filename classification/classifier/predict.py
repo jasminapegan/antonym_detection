@@ -11,6 +11,7 @@ from classification.classifier.model import RelationModel
 from classification.classifier.utils import get_label, init_logger, load_tokenizer
 
 logger = logging.getLogger(__name__)
+#logger.setLevel(logging.WARNING)
 
 
 def get_device(pred_config):

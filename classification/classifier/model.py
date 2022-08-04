@@ -1,6 +1,6 @@
 from torch import nn
 import torch
-from transformers import BertPreTrainedModel, AutoModelForSequenceClassification, AutoModel
+from transformers import BertPreTrainedModel, AutoModel
 
 
 class FCLayer(nn.Module):
@@ -24,7 +24,7 @@ class RelationModel(BertPreTrainedModel):
         super(RelationModel, self).__init__(config)
 
         self.bert = AutoModel.from_pretrained("EMBEDDIA/crosloengual-bert")
-        self.n_labels = 2 #config.n_labels
+        self.num_labels = 2 #config.num_labels
 
         self.cls_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
         self.entity_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
