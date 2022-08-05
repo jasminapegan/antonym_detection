@@ -15,17 +15,17 @@ def main(args):
 
     trainer = Trainer(args, train_dataset=train_dataset, test_dataset=test_dataset)
 
+    out_filename = f"{args.task}_{args.dropout_rate}_{args.learning_rate}"
+
     if args.do_train:
-        global_step, tr_loss, loss_by_epoch, val_loss_by_epoch = trainer.train()
+        global_step, tr_loss, loss_by_epoch, val_loss_by_epoch = trainer.train(out_filename)
+        plot_scores(loss_by_epoch, val_loss_by_epoch, args.eval_dir,
+                    f"plot_{out_filename}.png")
 
     if args.do_eval:
-        trainer.load_model()
+        trainer.load_model(out_filename)
         results = trainer.evaluate("test")
         print("Eval score:", results)
-
-    if args.do_train and args.do_eval:
-        plot_scores(loss_by_epoch, val_loss_by_epoch, args.eval_dir,
-                    f"plot_{args.task}_{args.dropout}_{args.learning_rate}.png")
 
 
 if __name__ == "__main__":
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     parser.add_argument("--max_grad_norm", default=1.0, type=float, help="Max gradient norm.")
     parser.add_argument(
         "--max_steps",
-        default=1,#-1,
+        default=-1,
         type=int,
         help="If > 0: set total number of training steps to perform. Override num_train_epochs.",
     )
@@ -100,11 +100,11 @@ if __name__ == "__main__":
         help="Dropout for fully-connected layers",
     )
 
-    parser.add_argument("--logging_steps", type=int, default=250, help="Log every X updates steps.")
+    parser.add_argument("--logging_steps", type=int, default=1000, help="Log every X updates steps.")
     parser.add_argument(
         "--save_steps",
         type=int,
-        default=250,
+        default=1000,
         help="Save checkpoint every X updates steps.",
     )
 

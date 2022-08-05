@@ -37,7 +37,7 @@ class Trainer(object):
         self.device = "cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu"
         self.model.to(self.device)
 
-    def train(self):
+    def train(self, out_filename):
         train_sampler = RandomSampler(self.train_dataset)
         train_dataloader = DataLoader(
             self.train_dataset,
@@ -94,7 +94,7 @@ class Trainer(object):
         train_iterator = trange(int(self.args.num_train_epochs), desc="Epoch")
 
         for i, _ in enumerate(train_iterator):
-            epoch_iterator = tqdm(train_dataloader, desc="Iteration")
+            epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=True)
             epoch_steps = 0
             epoch_loss = 0
 
@@ -133,7 +133,7 @@ class Trainer(object):
                         self.evaluate("test")  # There is no dev set for semeval task
 
                     if self.args.save_steps > 0 and global_step % self.args.save_steps == 0:
-                        self.save_model(epoch=i)
+                        self.save_model(out_filename, epoch=i)
 
                 if 0 < self.args.max_steps < global_step:
                     epoch_iterator.close()
@@ -142,7 +142,7 @@ class Trainer(object):
             loss_by_epoch.append(epoch_loss / epoch_steps)
             results = self.evaluate("test")
             val_loss_by_epoch.append(results["loss"])
-            self.save_model(epoch=i)
+            self.save_model(out_filename, epoch=i)
 
             if 0 < self.args.max_steps < global_step:
                 train_iterator.close()
@@ -173,7 +173,7 @@ class Trainer(object):
 
         self.model.eval()
 
-        for batch in tqdm(eval_dataloader, desc="Evaluating"):
+        for batch in tqdm(eval_dataloader, desc="Evaluating", disable=True):
             batch = tuple(t.to(self.device) for t in batch)
             with torch.no_grad():
                 inputs = {
@@ -212,11 +212,10 @@ class Trainer(object):
 
         return results
 
-    def save_model(self, epoch=-1):
+    def save_model(self, filename, epoch=-1):
         model_dir = self.args.model_dir
         if epoch > -1:
-            model_dir = os.path.join(model_dir,
-                                     f"{self.args.task}_{self.args.dropout}_{self.args.learning_rate}_{epoch}")
+            model_dir = os.path.join(model_dir, f"{filename}_{epoch}")
 
         # Save model checkpoint (Overwrite)
         if not os.path.exists(model_dir):
@@ -228,9 +227,11 @@ class Trainer(object):
         torch.save(self.args, os.path.join(model_dir, "training_args.bin"))
         logger.info("Saving model checkpoint to %s", model_dir)
 
-    def load_model(self):
-        model_dir = os.path.join(self.args.model_dir,
-                                 f"{self.args.task}_{self.args.dropout}_{self.args.learning_rate}_{self.args.num_train_epochs-1}")
+    def load_model(self, filename):
+        fnames = os.listdir(self.args.model_dir)
+        epochs = [int(f.split("_")[-1]) for f in fnames]
+        epoch = sorted(epochs)[-1]  # get latest model
+        model_dir = os.path.join(self.args.model_dir, f"{filename}_{epoch}")
         # Check whether model exists
         if not os.path.exists(model_dir):
             raise Exception("Model doesn't exists! Train first!")

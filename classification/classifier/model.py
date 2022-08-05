@@ -35,8 +35,6 @@ class RelationModel(BertPreTrainedModel):
             use_activation=False,
         )
 
-        print(config.hidden_size)
-
     @staticmethod
     def entity_average(hidden_output, e_mask):
         """
