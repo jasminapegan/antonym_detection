@@ -2,7 +2,7 @@ import argparse
 
 from classification.classifier.data_loader import load_and_cache_examples
 from classification.classifier.trainer import Trainer
-from classification.classifier.utils import init_logger, load_tokenizer, set_seed
+from classification.classifier.utils import init_logger, load_tokenizer, set_seed, plot_scores
 
 
 def main(args):
@@ -15,12 +15,17 @@ def main(args):
 
     trainer = Trainer(args, train_dataset=train_dataset, test_dataset=test_dataset)
 
+    out_filename = f"{args.task}_{args.dropout_rate}_{args.learning_rate}"
+
     if args.do_train:
-        trainer.train()
+        global_step, tr_loss, loss_by_epoch, val_loss_by_epoch = trainer.train(out_filename)
+        plot_scores(loss_by_epoch, val_loss_by_epoch, args.eval_dir,
+                    f"plot_{out_filename}.png")
 
     if args.do_eval:
-        trainer.load_model()
-        trainer.evaluate("test")
+        trainer.load_model(out_filename)
+        results = trainer.evaluate("test")
+        print("Eval score:", results)
 
 
 if __name__ == "__main__":
@@ -33,15 +38,15 @@ if __name__ == "__main__":
         type=str,
         help="The input data dir. Should contain the .tsv files (or other data files) for the task.",
     )
-    parser.add_argument("--model_dir", default="./model", type=str, help="Path to model")
+    parser.add_argument("--model_dir", default="model/ant", type=str, help="Path to model")
     parser.add_argument(
         "--eval_dir",
         default="./eval",
         type=str,
         help="Evaluation script, result directory",
     )
-    parser.add_argument("--train_file", default="train0.txt", type=str, help="Train file")
-    parser.add_argument("--test_file", default="val0.txt", type=str, help="Test file")
+    parser.add_argument("--train_file", default="minitrain.txt", type=str, help="Train file")
+    parser.add_argument("--test_file", default="minival.txt", type=str, help="Test file")
     parser.add_argument("--label_file", default="label.txt", type=str, help="Label file")
 
     parser.add_argument(
@@ -68,7 +73,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--num_train_epochs",
-        default=10.0,
+        default=1.0,#10.0,
         type=float,
         help="Total number of training epochs to perform.",
     )
@@ -95,11 +100,11 @@ if __name__ == "__main__":
         help="Dropout for fully-connected layers",
     )
 
-    parser.add_argument("--logging_steps", type=int, default=250, help="Log every X updates steps.")
+    parser.add_argument("--logging_steps", type=int, default=1000, help="Log every X updates steps.")
     parser.add_argument(
         "--save_steps",
         type=int,
-        default=250,
+        default=1000,
         help="Save checkpoint every X updates steps.",
     )
 
@@ -115,3 +120,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args)
+

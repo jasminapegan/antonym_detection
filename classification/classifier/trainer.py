@@ -11,6 +11,7 @@ from classification.classifier.model import RelationModel
 from classification.classifier.utils import compute_metrics, get_label, write_prediction
 
 logger = logging.getLogger(__name__)
+#logger.setLevel(logging.WARNING)
 
 
 class Trainer(object):
@@ -36,7 +37,7 @@ class Trainer(object):
         self.device = "cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu"
         self.model.to(self.device)
 
-    def train(self):
+    def train(self, out_filename):
         train_sampler = RandomSampler(self.train_dataset)
         train_dataloader = DataLoader(
             self.train_dataset,
@@ -87,12 +88,16 @@ class Trainer(object):
 
         global_step = 0
         tr_loss = 0.0
+        loss_by_epoch, val_loss_by_epoch = [], []
         self.model.zero_grad()
 
         train_iterator = trange(int(self.args.num_train_epochs), desc="Epoch")
 
-        for _ in train_iterator:
-            epoch_iterator = tqdm(train_dataloader, desc="Iteration")
+        for i, _ in enumerate(train_iterator):
+            epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=True)
+            epoch_steps = 0
+            epoch_loss = 0
+
             for step, batch in enumerate(epoch_iterator):
                 self.model.train()
                 batch = tuple(t.to(self.device) for t in batch)  # GPU or CPU
@@ -113,6 +118,8 @@ class Trainer(object):
                 loss.backward()
 
                 tr_loss += loss.item()
+                epoch_loss += loss.item()
+
                 if (step + 1) % self.args.gradient_accumulation_steps == 0:
                     torch.nn.utils.clip_grad_norm_(self.model.parameters(), self.args.max_grad_norm)
 
@@ -120,22 +127,28 @@ class Trainer(object):
                     scheduler.step()  # Update learning rate schedule
                     self.model.zero_grad()
                     global_step += 1
+                    epoch_steps += 1
 
                     if self.args.logging_steps > 0 and global_step % self.args.logging_steps == 0:
                         self.evaluate("test")  # There is no dev set for semeval task
 
                     if self.args.save_steps > 0 and global_step % self.args.save_steps == 0:
-                        self.save_model()
+                        self.save_model(out_filename, epoch=i)
 
                 if 0 < self.args.max_steps < global_step:
                     epoch_iterator.close()
                     break
 
+            loss_by_epoch.append(epoch_loss / epoch_steps)
+            results = self.evaluate("test")
+            val_loss_by_epoch.append(results["loss"])
+            self.save_model(out_filename, epoch=i)
+
             if 0 < self.args.max_steps < global_step:
                 train_iterator.close()
                 break
 
-        return global_step, tr_loss / global_step
+        return global_step, tr_loss / global_step, loss_by_epoch, val_loss_by_epoch
 
     def evaluate(self, mode):
         # We use test dataset because semeval doesn't have dev dataset
@@ -160,7 +173,7 @@ class Trainer(object):
 
         self.model.eval()
 
-        for batch in tqdm(eval_dataloader, desc="Evaluating"):
+        for batch in tqdm(eval_dataloader, desc="Evaluating", disable=True):
             batch = tuple(t.to(self.device) for t in batch)
             with torch.no_grad():
                 inputs = {
@@ -174,7 +187,8 @@ class Trainer(object):
                 outputs = self.model(**inputs)
                 tmp_eval_loss, logits = outputs[:2]
 
-                eval_loss += tmp_eval_loss.mean().item()
+                curr_loss = tmp_eval_loss.mean().item()
+                eval_loss += curr_loss
             nb_eval_steps += 1
 
             if preds is None:
@@ -198,23 +212,31 @@ class Trainer(object):
 
         return results
 
-    def save_model(self):
+    def save_model(self, filename, epoch=-1):
+        model_dir = self.args.model_dir
+        if epoch > -1:
+            model_dir = os.path.join(model_dir, f"{filename}_{epoch}")
+
         # Save model checkpoint (Overwrite)
-        if not os.path.exists(self.args.model_dir):
-            os.makedirs(self.args.model_dir)
+        if not os.path.exists(model_dir):
+            os.makedirs(model_dir)
         model_to_save = self.model.module if hasattr(self.model, "module") else self.model
-        model_to_save.save_pretrained(self.args.model_dir)
+        model_to_save.save_pretrained(model_dir)
 
         # Save training arguments together with the trained model
-        torch.save(self.args, os.path.join(self.args.model_dir, "training_args.bin"))
-        logger.info("Saving model checkpoint to %s", self.args.model_dir)
+        torch.save(self.args, os.path.join(model_dir, "training_args.bin"))
+        logger.info("Saving model checkpoint to %s", model_dir)
 
-    def load_model(self):
+    def load_model(self, filename):
+        fnames = os.listdir(self.args.model_dir)
+        epochs = [int(f.split("_")[-1]) for f in fnames]
+        epoch = sorted(epochs)[-1]  # get latest model
+        model_dir = os.path.join(self.args.model_dir, f"{filename}_{epoch}")
         # Check whether model exists
-        if not os.path.exists(self.args.model_dir):
+        if not os.path.exists(model_dir):
             raise Exception("Model doesn't exists! Train first!")
 
-        self.args = torch.load(os.path.join(self.args.model_dir, "training_args.bin"))
-        self.model = RelationModel.from_pretrained(self.args.model_dir, args=self.args)
+        self.args = torch.load(os.path.join(model_dir, "training_args.bin"))
+        self.model = RelationModel.from_pretrained(model_dir, args=self.args)
         self.model.to(self.device)
         logger.info("***** Model Loaded *****")
