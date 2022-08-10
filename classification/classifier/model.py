@@ -27,10 +27,10 @@ class RelationModel(BertPreTrainedModel):
         self.bert = AutoModel.from_pretrained("EMBEDDIA/crosloengual-bert")
         self.num_labels = 2 #config.num_labels
         self.n_layers = args.n_layers
+        self.layer_size_divisor = args.layer_size_divisor
 
         self.cls_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
         self.entity_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
-
 
         if self.n_layers == 0:
             self.label_classifier = FCLayer(
@@ -41,21 +41,21 @@ class RelationModel(BertPreTrainedModel):
                     )
 
         else:
-            if self.n.layers > 2 :
+            if self.n_layers > 2 :
                 # number of layers cannot be greater than this divide it each time by args.layer_size_divisor
-                assert self.n_layers - 2 < math.log(config.hidden_size // 3, args.layer_size_divisor)
+                assert self.n_layers - 2 < math.log(config.hidden_size // 3, self.layer_size_divisor)
             self.input_layer = FCLayer(config.hidden_size * 3,
                                        config.hidden_size,
                                        args.dropout_rate)
 
-            d = args.layer_size_divisor
+            d = 1
             self.middle_layers = []
 
             for i in range(self.n_layers - 2):
+                d *= self.layer_size_divisor
                 self.middle_layers.append(FCLayer(config.hidden_size // d,
-                                                  config.hidden_size // (d * args.layer_size_divisor)),
+                                                  config.hidden_size // (d * self.layer_size_divisor)),
                                                   args.dropout_rate)
-                d *= args.layer_size_divisor
 
             self.label_classifier = FCLayer(
                 config.hidden_size // d,

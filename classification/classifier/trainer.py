@@ -5,10 +5,11 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from tqdm import tqdm, trange
-from transformers import AdamW, BertConfig, get_linear_schedule_with_warmup
+from transformers import BertConfig, get_linear_schedule_with_warmup
+from torch.optim import AdamW
 
 from classification.classifier.model import RelationModel
-from classification.classifier.utils import compute_metrics, get_label, write_prediction
+from classification.classifier.utils import compute_metrics, get_label, write_prediction, plot_scores
 
 logging.basicConfig(filename="logs.txt",
                     filemode="a",
@@ -89,14 +90,18 @@ class Trainer(object):
         logger.info("  Num Epochs = %d", self.args.num_train_epochs)
         logger.info("  Total train batch size = %d", self.args.train_batch_size)
         logger.info("  Learning rate = %d", self.args.learning_rate)
+        logger.info("  Number of layers = %d", self.args.n_layers)
+        logger.info("  Layer size divisor = %d", self.args.layer_size_divisor)
         logger.info("  Gradient Accumulation steps = %d", self.args.gradient_accumulation_steps)
         logger.info("  Total optimization steps = %d", t_total)
-        logger.info("  Logging steps = %d", self.args.logging_steps)
-        logger.info("  Save steps = %d", self.args.save_steps)
+        logger.info("  Save epochs = %d", self.args.save_epochs)
 
         global_step = 0
         tr_loss = 0.0
-        loss_by_epoch, val_loss_by_epoch = [], []
+        metrics_by_epoch = {"loss": [],
+                            "val_loss": [],
+                            "val_acc": [],
+                            "val_f1": []}
         self.model.zero_grad()
 
         train_iterator = trange(int(self.args.num_train_epochs), desc="Epoch")
@@ -137,26 +142,31 @@ class Trainer(object):
                     global_step += 1
                     epoch_steps += 1
 
-                    if self.args.logging_steps > 0 and global_step % self.args.logging_steps == 0:
-                        self.evaluate("test")  # There is no dev set for semeval task
-
-                    if self.args.save_steps > 0 and global_step % self.args.save_steps == 0:
-                        self.save_model(out_filename, epoch=i)
-
                 if 0 < self.args.max_steps < global_step:
                     epoch_iterator.close()
                     break
 
-            loss_by_epoch.append(epoch_loss / epoch_steps)
+            metrics_by_epoch["loss"].append(epoch_loss / epoch_steps)
             results = self.evaluate("test")
-            val_loss_by_epoch.append(results["loss"])
-            self.save_model(out_filename, epoch=i)
+            metrics_by_epoch["val_loss"].append(results["loss"])
+            metrics_by_epoch["val_acc"].append(results["acc"])
+            metrics_by_epoch["val_f1"].append(results["f1"])
+
+            if self.args.save_epochs > 0 and global_step % self.args.save_epochs == 0:
+                self.save_model(out_filename, epoch=i)
 
             if 0 < self.args.max_steps < global_step:
                 train_iterator.close()
                 break
 
-        return global_step, tr_loss / global_step, loss_by_epoch, val_loss_by_epoch
+            try:
+                plot_scores(metrics_by_epoch, self.args.eval_dir, out_filename)
+            except:
+                pass
+
+        self.save_model(out_filename, epoch=-1)
+
+        return global_step, tr_loss / global_step, metrics_by_epoch
 
     def evaluate(self, mode):
         # We use test dataset because semeval doesn't have dev dataset
@@ -222,8 +232,7 @@ class Trainer(object):
 
     def save_model(self, filename, epoch=-1):
         model_dir = self.args.model_dir
-        if epoch > -1:
-            model_dir = os.path.join(model_dir, f"{filename}_{epoch}")
+        model_dir = os.path.join(model_dir, f"{filename}_{epoch}")
 
         # Save model checkpoint (Overwrite)
         if not os.path.exists(model_dir):
@@ -236,10 +245,7 @@ class Trainer(object):
         logger.info("Saving model checkpoint to %s", model_dir)
 
     def load_model(self, filename):
-        fnames = os.listdir(self.args.model_dir)
-        epochs = [int(f.split("_")[-1]) for f in fnames]
-        epoch = sorted(epochs)[-1]  # get latest model
-        model_dir = os.path.join(self.args.model_dir, f"{filename}_{epoch}")
+        model_dir = os.path.join(self.args.model_dir, filename)
         # Check whether model exists
         if not os.path.exists(model_dir):
             raise Exception("Model doesn't exists! Train first!")

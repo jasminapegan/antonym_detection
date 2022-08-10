@@ -10,8 +10,6 @@ def main(args):
     set_seed(args)
     tokenizer = load_tokenizer(args)
 
-    print(args.train_file)
-
     train_dataset = load_and_cache_examples(args, tokenizer, mode="train")
     test_dataset = load_and_cache_examples(args, tokenizer, mode="test")
 
@@ -20,11 +18,11 @@ def main(args):
     out_filename = f"{args.task}_{args.train_file}_{args.n_layers}_{args.layer_size_divisor}"
 
     if args.do_train:
-        global_step, tr_loss, loss_by_epoch, val_loss_by_epoch = trainer.train(out_filename)
-        plot_scores(loss_by_epoch, val_loss_by_epoch, args.eval_dir, out_filename)
+        global_step, tr_loss, metrics = trainer.train(out_filename)
+        plot_scores(metrics, args.eval_dir, out_filename)
 
     if args.do_eval:
-        trainer.load_model(out_filename)
+        trainer.load_model(f"{out_filename}_-1")
         results = trainer.evaluate("test")
         print("Eval score:", results)
 
@@ -46,8 +44,8 @@ if __name__ == "__main__":
         type=str,
         help="Evaluation script, result directory",
     )
-    parser.add_argument("--train_file", default="train0.txt", type=str, help="Train file")
-    parser.add_argument("--test_file", default="val0.txt", type=str, help="Test file")
+    parser.add_argument("--train_file", default="minitrain.txt", type=str, help="Train file")
+    parser.add_argument("--test_file", default="minival.txt", type=str, help="Test file")
     parser.add_argument("--label_file", default="label.txt", type=str, help="Label file")
 
     parser.add_argument(
@@ -74,21 +72,21 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--num_train_epochs",
-        default=25.0,
-        type=float,
+        default=2,
+        type=int,
         help="Total number of training epochs to perform.",
     )
 
     parser.add_argument(
         "--n_layers",
-        default=1,
-        type=float,
+        default=2,
+        type=int,
         help="Number of layers following the BERT part.",
     )
     parser.add_argument(
         "--layer_size_divisor",
         default=4,
-        type=float,
+        type=int,
         help="Number by which to divide to get layer sizes.",
     )
 
@@ -115,12 +113,11 @@ if __name__ == "__main__":
         help="Dropout for fully-connected layers",
     )
 
-    parser.add_argument("--logging_steps", type=int, default=1000, help="Log every X updates steps.")
     parser.add_argument(
-        "--save_steps",
+        "--save_epochs",
         type=int,
-        default=1000,
-        help="Save checkpoint every X updates steps.",
+        default=5,
+        help="Save checkpoint every X epochs.",
     )
 
     parser.add_argument("--do_train", default=True, action="store_true", help="Whether to run training.")
