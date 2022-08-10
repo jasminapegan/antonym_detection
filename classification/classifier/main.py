@@ -15,15 +15,14 @@ def main(args):
 
     trainer = Trainer(args, train_dataset=train_dataset, test_dataset=test_dataset)
 
-    out_filename = f"{args.task}_{args.dropout_rate}_{args.learning_rate}"
+    out_filename = f"{args.task}_{args.train_file}_{args.n_layers}_{args.layer_size_divisor}"
 
     if args.do_train:
-        global_step, tr_loss, loss_by_epoch, val_loss_by_epoch = trainer.train(out_filename)
-        plot_scores(loss_by_epoch, val_loss_by_epoch, args.eval_dir,
-                    f"plot_{out_filename}.png")
+        global_step, tr_loss, metrics = trainer.train(out_filename)
+        plot_scores(metrics, args.eval_dir, out_filename)
 
     if args.do_eval:
-        trainer.load_model(out_filename)
+        trainer.load_model(f"{out_filename}_-1")
         results = trainer.evaluate("test")
         print("Eval score:", results)
 
@@ -73,10 +72,24 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--num_train_epochs",
-        default=1.0,#10.0,
-        type=float,
+        default=2,
+        type=int,
         help="Total number of training epochs to perform.",
     )
+
+    parser.add_argument(
+        "--n_layers",
+        default=2,
+        type=int,
+        help="Number of layers following the BERT part.",
+    )
+    parser.add_argument(
+        "--layer_size_divisor",
+        default=4,
+        type=int,
+        help="Number by which to divide to get layer sizes.",
+    )
+
     parser.add_argument("--weight_decay", default=0.0, type=float, help="Weight decay if we apply some.")
     parser.add_argument(
         "--gradient_accumulation_steps",
@@ -100,12 +113,11 @@ if __name__ == "__main__":
         help="Dropout for fully-connected layers",
     )
 
-    parser.add_argument("--logging_steps", type=int, default=1000, help="Log every X updates steps.")
     parser.add_argument(
-        "--save_steps",
+        "--save_epochs",
         type=int,
-        default=1000,
-        help="Save checkpoint every X updates steps.",
+        default=5,
+        help="Save checkpoint every X epochs.",
     )
 
     parser.add_argument("--do_train", default=True, action="store_true", help="Whether to run training.")
