@@ -10,6 +10,7 @@ from torch.utils.data import TensorDataset
 from classification.classifier.utils import get_label
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.WARNING)
 
 
 class InputExample(object):
@@ -258,7 +259,7 @@ def load_and_cache_examples(args, tokenizer, mode):
         ),
     )
 
-    if os.path.exists(cached_features_file):
+    if False: # os.path.exists(cached_features_file):
         logger.info("Loading features from cached file %s", cached_features_file)
         features = torch.load(cached_features_file)
     else:

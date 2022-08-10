@@ -1,3 +1,4 @@
+import math
 from torch import nn
 import torch
 from transformers import BertPreTrainedModel, AutoModel
@@ -25,15 +26,43 @@ class RelationModel(BertPreTrainedModel):
 
         self.bert = AutoModel.from_pretrained("EMBEDDIA/crosloengual-bert")
         self.num_labels = 2 #config.num_labels
+        self.n_layers = args.n_layers
 
         self.cls_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
         self.entity_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
-        self.label_classifier = FCLayer(
-            config.hidden_size * 3,
-            config.num_labels,
-            args.dropout_rate,
-            use_activation=False,
-        )
+
+
+        if self.n_layers == 0:
+            self.label_classifier = FCLayer(
+                        config.hidden_size * 3,
+                        config.num_labels,
+                        args.dropout_rate,
+                        use_activation=False,
+                    )
+
+        else:
+            if self.n.layers > 2 :
+                # number of layers cannot be greater than this divide it each time by args.layer_size_divisor
+                assert self.n_layers - 2 < math.log(config.hidden_size // 3, args.layer_size_divisor)
+            self.input_layer = FCLayer(config.hidden_size * 3,
+                                       config.hidden_size,
+                                       args.dropout_rate)
+
+            d = args.layer_size_divisor
+            self.middle_layers = []
+
+            for i in range(self.n_layers - 2):
+                self.middle_layers.append(FCLayer(config.hidden_size // d,
+                                                  config.hidden_size // (d * args.layer_size_divisor)),
+                                                  args.dropout_rate)
+                d *= args.layer_size_divisor
+
+            self.label_classifier = FCLayer(
+                config.hidden_size // d,
+                config.num_labels,
+                args.dropout_rate,
+                use_activation=False
+            )
 
     @staticmethod
     def entity_average(hidden_output, e_mask):
@@ -70,7 +99,14 @@ class RelationModel(BertPreTrainedModel):
 
         # Concat -> fc_layer
         concat_h = torch.cat([pooled_output, e1_h, e2_h], dim=-1)
-        logits = self.label_classifier(concat_h)
+
+        if self.n_layers == 0:
+            logits = self.label_classifier(concat_h)
+        else:
+            output = self.input_layer(concat_h)
+            for layer in self.middle_layers:
+                output = layer(output)
+            logits = self.label_classifier(output)
 
         outputs = (logits,) + outputs[2:]  # add hidden states and attention if they are here
 

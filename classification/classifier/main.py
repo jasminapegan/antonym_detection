@@ -10,17 +10,18 @@ def main(args):
     set_seed(args)
     tokenizer = load_tokenizer(args)
 
+    print(args.train_file)
+
     train_dataset = load_and_cache_examples(args, tokenizer, mode="train")
     test_dataset = load_and_cache_examples(args, tokenizer, mode="test")
 
     trainer = Trainer(args, train_dataset=train_dataset, test_dataset=test_dataset)
 
-    out_filename = f"{args.task}_{args.dropout_rate}_{args.learning_rate}"
+    out_filename = f"{args.task}_{args.train_file}_{args.n_layers}_{args.layer_size_divisor}"
 
     if args.do_train:
         global_step, tr_loss, loss_by_epoch, val_loss_by_epoch = trainer.train(out_filename)
-        plot_scores(loss_by_epoch, val_loss_by_epoch, args.eval_dir,
-                    f"plot_{out_filename}.png")
+        plot_scores(loss_by_epoch, val_loss_by_epoch, args.eval_dir, out_filename)
 
     if args.do_eval:
         trainer.load_model(out_filename)
@@ -45,8 +46,8 @@ if __name__ == "__main__":
         type=str,
         help="Evaluation script, result directory",
     )
-    parser.add_argument("--train_file", default="minitrain.txt", type=str, help="Train file")
-    parser.add_argument("--test_file", default="minival.txt", type=str, help="Test file")
+    parser.add_argument("--train_file", default="train0.txt", type=str, help="Train file")
+    parser.add_argument("--test_file", default="val0.txt", type=str, help="Test file")
     parser.add_argument("--label_file", default="label.txt", type=str, help="Label file")
 
     parser.add_argument(
@@ -73,10 +74,24 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--num_train_epochs",
-        default=1.0,#10.0,
+        default=25.0,
         type=float,
         help="Total number of training epochs to perform.",
     )
+
+    parser.add_argument(
+        "--n_layers",
+        default=1,
+        type=float,
+        help="Number of layers following the BERT part.",
+    )
+    parser.add_argument(
+        "--layer_size_divisor",
+        default=4,
+        type=float,
+        help="Number by which to divide to get layer sizes.",
+    )
+
     parser.add_argument("--weight_decay", default=0.0, type=float, help="Weight decay if we apply some.")
     parser.add_argument(
         "--gradient_accumulation_steps",

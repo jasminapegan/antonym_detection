@@ -10,8 +10,14 @@ from transformers import AdamW, BertConfig, get_linear_schedule_with_warmup
 from classification.classifier.model import RelationModel
 from classification.classifier.utils import compute_metrics, get_label, write_prediction
 
+logging.basicConfig(filename="logs.txt",
+                    filemode="a",
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.INFO)
+
 logger = logging.getLogger(__name__)
-#logger.setLevel(logging.WARNING)
+
 
 
 class Trainer(object):
@@ -79,8 +85,10 @@ class Trainer(object):
         # Train!
         logger.info("***** Running training *****")
         logger.info("  Num examples = %d", len(self.train_dataset))
+        logger.info("  Train data = %s", (self.train_dataset))
         logger.info("  Num Epochs = %d", self.args.num_train_epochs)
         logger.info("  Total train batch size = %d", self.args.train_batch_size)
+        logger.info("  Learning rate = %d", self.args.learning_rate)
         logger.info("  Gradient Accumulation steps = %d", self.args.gradient_accumulation_steps)
         logger.info("  Total optimization steps = %d", t_total)
         logger.info("  Logging steps = %d", self.args.logging_steps)
