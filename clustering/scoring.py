@@ -1,6 +1,8 @@
 import re
 from itertools import permutations
 from statistics import mean, stdev
+import ast
+import numpy as np
 
 from scipy.stats import moment, gmean
 from sklearn import metrics
@@ -212,3 +214,25 @@ def parse_cluster_file(filename):
                     print("Error: unknown line format:", line, w1, w2)
 
     return clusters
+
+def float_or_none(string):
+    return None if string == 'None' else float(string)
+
+def load_cluster_scores_dict(filename):
+    scores = {}
+    with open(filename, "r", encoding="utf8") as f:
+        for i, line in enumerate(f):
+
+            if i == 0:
+                continue
+
+            word, silhouette, ari, completeness, f1, labels, conf_matrix, n_samples, n_senses = line.strip().split("\t")
+            scores[word] = {'silhouette': float_or_none(silhouette),
+                            'adjusted_rand': float_or_none(ari),
+                            'completeness': float_or_none(completeness),
+                            'f1_score': float_or_none(f1),
+                            'labels': ast.literal_eval(labels),
+                            'confusion_matrix': np.fromstring(conf_matrix, dtype=np.uint8),
+                            'n_samples': int(n_samples),
+                            'n_senses': int(n_senses)}
+    return scores

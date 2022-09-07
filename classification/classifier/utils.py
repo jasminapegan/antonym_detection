@@ -92,3 +92,4 @@ def plot_scores(metrics, out_dir, model_name):
 
     fname = os.path.join(out_dir, f"plot_{model_name}.png")
     plt.savefig(fname)
+    plt.close(fig)

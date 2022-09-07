@@ -245,9 +245,13 @@ def load_result_file_grouped(file: str, embeddings: bool=False, skip_header: boo
                 words_data[word]['embeddings'].append(embedding)
 
         else:
-            words_data[word] = {'labels': [label],
-                                'sentences': [sentence],
-                                'embeddings': [embedding]}
+            if embeddings:
+                words_data[word] = {'labels': [label],
+                                    'sentences': [sentence],
+                                    'embeddings': [embedding]}
+            else:
+                words_data[word] = {'labels': [label],
+                                    'sentences': [sentence]}
 
     return words_data
 
@@ -272,7 +276,7 @@ def write_data_for_classification(outf: TextIOWrapper, data: List):
         centroid_string = " ".join([str(x) for x in centroid])
         outf.write("\t".join([str(label), word, centroid_string]) + "\n")
 
-def count_words(in_file: str, sep='\t') -> Dict[str, int]:
+def count_words(in_file: str, sep='\t', indices=[0]) -> Dict[str, int]:
     """
     Read data from 'in_file' and return dictionary of word counts.
 
@@ -286,12 +290,13 @@ def count_words(in_file: str, sep='\t') -> Dict[str, int]:
         lines = input.readlines()
 
         for line in lines:
-            word = line.split(sep)[0]
+            new_words = [x for i, x in enumerate(line.split(sep)) if i in indices]
 
-            if word in words.keys():
-                words[word] += 1
-            else:
-                words[word] = 1
+            for word in new_words:
+                if word in words.keys():
+                    words[word] += 1
+                else:
+                    words[word] = 1
 
     return words
 
@@ -373,6 +378,12 @@ def convert_to_np_array(string_list: List[str]):
 
 def count_lines(folder: str):
     return sum([file_len(folder + "/" + file) for file in os.listdir(folder)])
+
+def count_lines_all(folder: str):
+    for file in os.listdir(folder):
+        filepath = os.path.join(folder, file)
+        if os.path.isfile(filepath):
+            print(filepath, file_len(filepath))
 
 def get_all_words(words_file_list, words_file_source, out_file, tmp_dir='tmp'):
     tmp_all = os.path.join(tmp_dir, "all_words")
@@ -631,3 +642,23 @@ def get_pos(pos_label):
         return pos_dict[pos]
     else:
         return "N/A"
+
+def get_pos_short(pos_label):
+    pos_dict = {"samostalnik": "S",
+                "glagol": "G",
+                "pridevnik": "P",
+                "prislov": "R",
+                "zaimek": "Z",
+                "števnik": "K",
+                "predlog": "D",
+                "veznik": "V",
+                "členek": "L",
+                "medmet": "M",
+                "okrajšava": "O",
+                "N/A": "U"}
+    pos = pos_label[0]
+    if pos in pos_dict.keys():
+        return pos_dict[pos]
+    else:
+        return "U"
+

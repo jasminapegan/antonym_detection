@@ -15,7 +15,7 @@ def main(args):
 
     trainer = Trainer(args, train_dataset=train_dataset, test_dataset=test_dataset)
 
-    out_filename = f"{args.task}_{args.train_file}_{args.n_layers}_{args.layer_size_divisor}"
+    out_filename = f"{args.task}_{args.train_file}_layers={args.n_layers}_div={args.layer_size_divisor}_d={args.dropout_rate}_lr={args.learning_rate}"
 
     if args.do_train:
         global_step, tr_loss, metrics = trainer.train(out_filename)
@@ -114,6 +114,19 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--early_stopping_epochs",
+        type=int,
+        default=10,
+        help="Minimum number of epochs before early stopping.",
+    )
+    parser.add_argument(
+        "--early_stopping_patience",
+        type=int,
+        default=5,
+        help="How many epochs can loss increase before early stopping.",
+    )
+
+    parser.add_argument(
         "--save_epochs",
         type=int,
         default=5,
@@ -121,7 +134,7 @@ if __name__ == "__main__":
     )
 
     parser.add_argument("--do_train", default=True, action="store_true", help="Whether to run training.")
-    parser.add_argument("--do_eval", default=True, action="store_true", help="Whether to run eval on the test set.")
+    parser.add_argument("--do_eval", default=False, action="store_true", help="Whether to run eval on the test set.")
     parser.add_argument("--no_cuda", action="store_true", help="Avoid using CUDA when available")
     parser.add_argument(
         "--add_sep_token",

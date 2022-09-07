@@ -77,7 +77,8 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
                 print("[%s] Word data progress: %d%% (%d / %d)" % (get_now_string(), (100 * i) // n_lines, i, n_lines))
 
             data_line = line.strip().split('\t')
-            data_word, data_pos = data_line[0], get_pos(data_line[1])
+            data_word, data_pos = data_line[0], 'all' #get_pos(data_line[1])
+            data_line = [data_word, 'all'] + data_line[1:]
 
             # finished reading word data
             unknown = ["X", "U", "N/A"]
@@ -85,7 +86,13 @@ def word_data_gen(file_path: str, progress: int=None) -> Iterator[WordData]:
                     and (word != None and pos != None) and len(data) > 0:
 
                 if len(data) > 0:
-                    yield WordData(data)
+                    try:
+                        d = WordData(data)
+                    except Exception as e:
+                        d = None
+                        print(word, pos, e)
+                    if d:
+                        yield d
                     word = data_word
                     pos = data_pos
                     data = []

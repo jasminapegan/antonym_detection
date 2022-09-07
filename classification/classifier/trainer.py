@@ -95,11 +95,15 @@ class Trainer(object):
         logger.info("  Gradient Accumulation steps = %d", self.args.gradient_accumulation_steps)
         logger.info("  Total optimization steps = %d", t_total)
         logger.info("  Save epochs = %d", self.args.save_epochs)
+        logger.info("  Min epochs before early stopping = %d", self.args.early_stopping_epochs)
+        logger.info("  Patience for early stopping = %d", self.args.early_stopping_patience)
 
         global_step = 0
         tr_loss = 0.0
+        trigger_f1 = 0
+        max_f1 = 0.0
         metrics_by_epoch = {"loss": [],
-                            "val_loss": [],
+                            #"val_loss": [],
                             "val_acc": [],
                             "val_f1": []}
         self.model.zero_grad()
@@ -146,25 +150,41 @@ class Trainer(object):
                     epoch_iterator.close()
                     break
 
-            metrics_by_epoch["loss"].append(epoch_loss / epoch_steps)
+            curr_loss = epoch_loss / epoch_steps
+            metrics_by_epoch["loss"].append(curr_loss)
             results = self.evaluate("test")
-            metrics_by_epoch["val_loss"].append(results["loss"])
+            #metrics_by_epoch["val_loss"].append(results["loss"])
             metrics_by_epoch["val_acc"].append(results["acc"])
             metrics_by_epoch["val_f1"].append(results["f1"])
 
-            if self.args.save_epochs > 0 and global_step % self.args.save_epochs == 0:
+            do_save = False
+            if results["f1"] < max_f1:
+                trigger_f1 += 1
+            else:
+                trigger_f1 = 0
+                max_f1 = results["f1"]
+                do_save = True
+
+            if i > self.args.early_stopping_epochs:
+                if trigger_f1 > self.args.early_stopping_patience:
+                    logger.info(f"  Early stopping after {i} epochs!")
+                    self.save_model(out_filename, epoch=i)
+                    train_iterator.close()
+                    break
+
+            if self.args.save_epochs > 0 and global_step % self.args.save_epochs == 0 or do_save:
                 self.save_model(out_filename, epoch=i)
+
+                try:
+                    plot_scores(metrics_by_epoch, self.args.eval_dir, out_filename)
+                except:
+                    pass
 
             if 0 < self.args.max_steps < global_step:
                 train_iterator.close()
                 break
 
-            try:
-                plot_scores(metrics_by_epoch, self.args.eval_dir, out_filename)
-            except:
-                pass
-
-        self.save_model(out_filename, epoch=-1)
+        self.save_model(out_filename)
 
         return global_step, tr_loss / global_step, metrics_by_epoch
 
@@ -191,7 +211,7 @@ class Trainer(object):
 
         self.model.eval()
 
-        for batch in tqdm(eval_dataloader, desc="Evaluating", disable=True):
+        for batch in tqdm(eval_dataloader, desc="Evaluating", disable=False):
             batch = tuple(t.to(self.device) for t in batch)
             with torch.no_grad():
                 inputs = {
@@ -219,7 +239,7 @@ class Trainer(object):
         eval_loss = eval_loss / nb_eval_steps
         results = {"loss": eval_loss}
         preds = np.argmax(preds, axis=1)
-        write_prediction(self.args, os.path.join(self.args.eval_dir, "proposed_answers.txt"), preds)
+        #write_prediction(self.args, os.path.join(self.args.eval_dir, "proposed_answers.txt"), preds)
 
         result = compute_metrics(preds, out_label_ids)
         results.update(result)
@@ -248,6 +268,7 @@ class Trainer(object):
         model_dir = os.path.join(self.args.model_dir, filename)
         # Check whether model exists
         if not os.path.exists(model_dir):
+            print(model_dir)
             raise Exception("Model doesn't exists! Train first!")
 
         self.args = torch.load(os.path.join(model_dir, "training_args.bin"))

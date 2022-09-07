@@ -18,6 +18,7 @@ def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, 
     print("Loading cluster data ...")
 
     clusters = parse_cluster_file(cluster_file)
+    clusters2 = None
 
     if additional_cluster_file:
         clusters2 = parse_cluster_file(additional_cluster_file)
@@ -49,10 +50,11 @@ def create_dataset(cluster_file, score_file_ant, score_file_syn, examples_file, 
             diff_data_list = write_pair_data(pair_data, cluster, examples_data, ant_syn, f, f2, g, g2,
                                              diff_data_list, other_clusters=clusters2, max_examples=max_examples)
 
-    for pair_data in clusters2.keys():
-        cluster = clusters2[pair_data]
-        ant_syn = 'syn' if cluster['synonym'] else 'ant'
-        diff_data_list = write_pair_data(pair_data, cluster, examples_data2, ant_syn, f, f2, g, g2, diff_data_list, max_examples=max_examples)
+    if clusters2:
+        for pair_data in clusters2.keys():
+            cluster = clusters2[pair_data]
+            ant_syn = 'syn' if cluster['synonym'] else 'ant'
+            diff_data_list = write_pair_data(pair_data, cluster, examples_data2, ant_syn, f, f2, g, g2, diff_data_list, max_examples=max_examples)
 
     if len(diff_data_list) > 0:
         print(diff_data_list)

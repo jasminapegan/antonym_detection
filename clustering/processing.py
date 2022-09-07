@@ -13,7 +13,7 @@ def get_results(data_file: str):
 
     with open(data_file, "r", encoding="utf8") as f:
         for i, line in enumerate(f):
-            if i == 0:
+            if i == 0 or line.strip()[0] == "[":
                 continue
 
             data = line.strip().split("\t")
@@ -27,7 +27,7 @@ def get_results(data_file: str):
         outf.write("Correctly grouped: %d - %s\n" % (len(correct), ",".join([x[0] for x in correct])))
         outf.write("Badly grouped: %d - %s\n" % (len(bad), ",".join([x[0] for x in bad])))
 
-        close = [[x for x in results if x[1] > 0.1 * i] for i in range(0, 9)]
+        close = [[x for x in results if x[1] > 0.1 * i] for i in range(0, 10)]
         for i, c in enumerate(close):
             outf.write("Score %f or higher: %d - %s\n" % (0.1 * i, len(c), ",".join([x[0] for x in c])))
 
@@ -35,8 +35,7 @@ def get_results(data_file: str):
         loss.sort(key=lambda x: -x[1])
         outf.writelines(["\t".join([str(y) for y in x]) + "\n" for x in loss])
 
-    return correct, close[5], close[0], bad
-
+    return correct, close[6], close[0], bad
 
 def find_best_clusters(file_list):
     correct, close, ok, bad = [], [], [], []
@@ -64,6 +63,16 @@ def find_best_clusters(file_list):
             set.intersection(close[1], close[2])
         )
     )
+    ok_two = set.intersection(ok[0], ok[1]).union(
+        set.intersection(ok[0], ok[2]).union(
+            set.intersection(ok[1], ok[2])
+        )
+    )
+    bad_two = set.intersection(bad[0], bad[1]).union(
+        set.intersection(bad[0], bad[2]).union(
+            set.intersection(bad[1], bad[2])
+        )
+    )
 
     print("#Correct - all common: %d words: %s" % (len(correct_common), ", ".join(correct_common)))
     print("#Close - all common: %d words: %s" % (len(close_common), ", ".join(close_common)))
@@ -74,6 +83,8 @@ def find_best_clusters(file_list):
 
     print("#Correct - two common: %d words: %s" % (len(correct_two), ", ".join(correct_two)))
     print("#Close - two common: %d words: %s" % (len(close_two), ", ".join(close_two)))
+    print("#OK (>0) - two common: %d words: %s" % (len(ok_two), ", ".join(ok_two)))
+    print("#Bad (<=0) - two common: %d words: %s" % (len(bad_two), ", ".join(bad_two)))
 
 def compare_clusters(words, cluster_files, clustering_names, validation_data, validation_words, out_file, filename, sep="|"):
     if isinstance(words, str):
@@ -83,7 +94,7 @@ def compare_clusters(words, cluster_files, clustering_names, validation_data, va
 
     print("loading data ...")
     val_words = file_helpers.count_words(validation_words, sep=sep)
-    val_data = file_helpers.load_validation_file_grouped(validation_data)
+    val_data = file_helpers.load_validation_file_grouped(validation_data, use_pos=False)
     words = [w for w in words if w in val_words.keys() and w in val_data.keys() and val_words[w] > 1]
 
     cluster_data = []
@@ -100,6 +111,8 @@ def compare_clusters(words, cluster_files, clustering_names, validation_data, va
 
         cluster_data.append(new_data)
 
+    words = [w for w in words if len(cluster_data[0][w].items()) > 0]
+
     print("writing data ...")
 
     with open(out_file, "w", encoding="utf8") as f:
@@ -109,9 +122,9 @@ def compare_clusters(words, cluster_files, clustering_names, validation_data, va
             f.write((37 + len(word)) * "*" + "\n")
             f.write("%s\tValidation data\tSentence\n" % "\t".join(clustering_names))
 
-            for i, sentence in enumerate(val_data[word]['sentences']):
+            for i, sentence in enumerate(val_data[word]['all']['sentences']):
                 predicted = [x[word][sentence] if sentence in x[word] else "None" for x in cluster_data]
-                f.write("\t".join(predicted + [val_data[word]['labels'][i], sentence]) + "\n")
+                f.write("\t".join(predicted + [val_data[word]['all']['labels'][i], sentence]) + "\n")
 
 def write_stats(score_files, data_files, out_file_stats, plot_data_file, skip_header=True):
     all_scores = {}
@@ -135,9 +148,6 @@ def write_stats(score_files, data_files, out_file_stats, plot_data_file, skip_he
                 score = unsupervised_cluster_score(embeddings, labels)
                 fs.writelines("\t".join([str(x) for x in score]) + "\n")
                 scores[word] = score
-
-                if word == "Anglija":
-                    break
 
         all_scores[data_file] = scores
 
