@@ -90,37 +90,7 @@ class AntSynModel:
 
         return train_dataloader, validation_dataloader
 
-    def finetune(self, val_dataloader, train_dataloader, outf, epochs=1, lr=2e-5, out_path=None):
-        outf.write(f"Model with learning rate {lr}\n")
-
-        self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=lr, eps=1e-08)
-
-        self.tr_loss = []
-        self.val_f1_all = []
-        self.n_tr_steps = []
-        self.lr = lr
-
-        for i in range(1, epochs + 1):
-            print(f'[{file_helpers.get_now_string()}] Starting epoch {i}')
-            outf.write(f'\nEpoch {i}\n')
-
-            self.name = f"{lr}_{i}"
-            model_path = os.path.join(out_path, self.name)
-
-            # training metrics
-            tr_loss, n_tr_examples, n_tr_steps = self.train(train_dataloader, out_model_path=model_path)
-            self.tr_loss.append(tr_loss / n_tr_steps)
-            outf.write('\n\t - Train loss: {:.4f}\n'.format(tr_loss / n_tr_steps))
-
-            # validation metrics
-            val_f1_scores = self.validate(val_dataloader)
-            avg_f1 = sum(val_f1_scores) / len(val_f1_scores) if len(val_f1_scores) > 0 else 0
-            self.val_acc.append(avg_f1)
-            outf.write('\t - Validation Accuracy: {:.4f}\n'.format(avg_f1))
-
-        plot_scores(self, out_path)
-
-    def finetune_2(self, val_dataloader, train_dataloader, outf, epochs=1, lr=2e-5, out_path=None, out_name=None):
+    def finetune(self, val_dataloader, train_dataloader, outf, epochs=1, lr=2e-5, out_path=None, out_name=None):
 
         # Total number of training steps
         total_steps = len(train_dataloader) * epochs
@@ -319,8 +289,8 @@ def prepare_data_crossval(train_fname, val_fname, tokenizer, batch_size=32, n=3,
     train_dataloaders = []
     val_dataloaders = []
 
-    for i in [1, 2]: #range(n):
-        train_file, val_file = f"{train_fname}minitrain.txt", f"{val_fname}minival.txt" # f"{train_fname}{i}.txt", f"{val_fname}{i}.txt"
+    for i in range(n):
+        train_file, val_file = f"{train_fname}{i}.txt", f"{val_fname}{i}.txt"
 
         token_id, attention_masks, labels  = get_data(train_file, tokenizer, mark_word=mark_word)
         train_set = TensorDataset(token_id, attention_masks, labels)
@@ -400,10 +370,10 @@ def trim_sentences(data_dict, tokenizer):
 
     return data_dict
 
-def find_best(train_filename, val_filename, out_path, lrs=[3e-4], epochs=5, # 5e-5, 3e-5], epochs=5,
-              mark_word=False, batch_sizes=[128], syn=False):
+def find_best(train_filename, val_filename, out_path, lrs=[3e-4, 5e-5, 3e-5], epochs=4,
+              mark_word=False, batch_sizes=[16], syn=False, n=1, model_name="EMBEDDIA/crosloengual-bert"):
 
-    tokenizer = AutoTokenizer.from_pretrained("EMBEDDIA/crosloengual-bert")
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
     if mark_word:
         tokenizer.add_special_tokens({"additional_special_tokens": ["<R1>", "</R1>", "<R2>", "</R2>"]})
 
@@ -416,7 +386,7 @@ def find_best(train_filename, val_filename, out_path, lrs=[3e-4], epochs=5, # 5e
 
         for batch_size in batch_sizes:
             train_dataloaders, val_dataloaders = prepare_data_crossval(train_filename, val_filename, tokenizer,
-                                                                       mark_word=mark_word, batch_size=batch_size, n=1, syn=syn)
+                                                                       mark_word=mark_word, batch_size=batch_size, n=n, syn=syn)
 
             for lr in lrs:
                 print(f"Using learning rate {lr}")
@@ -476,7 +446,7 @@ def run_crossval_models(train_dataloaders, val_dataloaders, f, lr, n_epochs, bat
         model_name = f"train{i}_{lr}_{batch_size}_{i}"
 
         model = AntSynModel(resize_model=resize_model, use_tokenizer=tokenizer)
-        model.finetune_2(val_dataloader, train_dataloader, f, lr=lr, epochs=n_epochs, out_path=out_path, out_name=model_name)
+        model.finetune(val_dataloader, train_dataloader, f, lr=lr, epochs=n_epochs, out_path=out_path, out_name=model_name)
 
         val_f1s.append(model.metrics_by_epoch["val_f1"])
         i += 1
