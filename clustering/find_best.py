@@ -224,7 +224,11 @@ class BestClustering:
         for word_data in self.word_data_generator:
 
             word = word_data.words[0]
-            pos = word_data.pos
+            pos = 'all' #word_data.pos
+
+            if word not in self.words_json:
+                continue
+
             n = len(self.words_json[word])
 
             print(word, pos, n)
@@ -314,13 +318,11 @@ class BestClustering:
 
         pos_tags = list(self.val_data[word].keys())
         pos_tag = pos
-        if pos not in pos_tags and pos not in "SGPRZKDVLMO":
+        if pos not in pos_tags and file_helpers.get_pos_short(pos) not in "SGPRZKDVLMO":
             if len(pos_tags) == 1:
                 pos_tag = pos_tags[0]
-            elif "X" in pos_tags:
-                pos_tag = "X"
-            elif "U" in pos_tags:
-                pos_tag = "U"
+            elif "N/A" in pos_tags:
+                pos_tag = "N/A"
             else:
                 print("POS tag not in list:", pos, pos_tags)
                 return None

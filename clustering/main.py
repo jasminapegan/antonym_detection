@@ -1,13 +1,19 @@
 import file_helpers
-from clustering import find_best, plotting, scoring, processing
+from clustering import find_best, plotting, scoring, processing, algorithms
 from clustering.find_sense import SenseClusters, print_missing_senses
 
 #validation_embeddings = "../data/embeddings/val_embeddings_sorted.txt" # "../../embeddings/val_embeddings_sorted.txt"
+from clustering.scoring import load_cluster_scores_dict, get_avg_scores
+
 validation_embeddings = "../data/embeddings/val.txt" # "../../embeddings/val_embeddings_sorted.txt"
 validation_embeddings2 = "../data/embeddings/lemmatized/val.txt" # "../../embeddings/val_embeddings_sorted.txt"
-validation_data = "../data/dataset/val_sorted.txt" # "../../data/val.txt"
-validation_words = "../data/dataset/val_words.txt" # "../../data/val_words.txt"
-word_data = "../data/dataset/all_words.txt" #"../../data/all_words.txt"
+validation_data = "../data/dataset/bkp/val.txt" #"../data/dataset/val_sorted.txt" # "../../data/val.txt"
+validation_words = "../data/dataset/bkp/val_words_all.txt" #"../data/dataset/val_words.txt" # "../../data/val_words.txt"
+word_data ="../data/dataset/bkp/val_words_all.txt" #"../data/dataset/all_words.txt" #"../../data/all_words.txt"
+
+test_embeddings = "../data/embeddings/archive/clustering_test.txt"
+test_data = "../data/dataset/bkp/clustering_test.txt"
+test_words = "../data/dataset/bkp/clustering_test_words.txt"
 
 # KMeans - params: n_clusters, n_init
 # Spectral - params: n_clusters, separate: distance metric
@@ -22,16 +28,17 @@ word_data = "../data/dataset/all_words.txt" #"../../data/all_words.txt"
 #find_best.find_best_agglomerative(validation_embeddings, word_data, validation_data)
 #find_best.find_best_dbscan(validation_embeddings, word_data, validation_data, output_vectors=True)
 #find_best.find_best_all(validation_embeddings2, word_data, validation_data, output_vectors=True, use_pos=True)
+find_best.find_best_all(test_embeddings, word_data, test_data, output_vectors=False, use_pos=False)
 
 #find_best.ensemble_clustering(validation_embeddings, word_data, validation_data, output_vectors=True, out_dir='best')
 
-result_files =  ["out/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20_data.tsv",
-                 "out/kmeans/kmeans-algorithm=full,n_init=130_data.tsv",
-                 "out/spectral/spectral-affinity=cosine,n_neighbors=3_data.tsv"]
+result_files =  ["out_latest/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20_data.tsv",
+                 "out_latest/kmeans/kmeans-algorithm=full,n_init=130_data.tsv",
+                 "out_latest/spectral-affinity=cosine,n_neighbors=3_data.tsv"]
 
-score_files =  ["out/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20.tsv",
-                "out/kmeans/kmeans-algorithm=full,n_init=130.tsv",
-                "out/spectral/spectral-affinity=cosine,n_neighbors=3.tsv"]
+score_files =  ["out_latest/agglomerative/agglomerative-affinity=precomputed,distance=relative_cosine,k=20.tsv",
+                "out_latest/kmeans/kmeans-algorithm=full,n_init=130.tsv",
+                "out_latest/spectral/spectral-affinity=cosine,n_neighbors=3.tsv"]
 
 #processing.find_best_clusters(score_files)
 
@@ -41,8 +48,8 @@ score_files =  ["out/agglomerative/agglomerative-affinity=precomputed,distance=r
 #plotting.prepare_data(result_files, "mehkužec_data.tsv", "mehkužec_labels.tsv", words=["mehkužec"])
 #plotting.prepare_data(result_files, "orbita_data.tsv", "orbita_labels.tsv", words=["orbita"])
 
-#evaluation.compare_clusters(word_data, result_files, ["agglomerative", "kmeans", "spectral"],
-#                            validation_data, validation_words, "out/compare_clusters.tsv", "clusters_data.tsv")
+#processing.compare_clusters(word_data, result_files, ["agglomerative", "kmeans", "spectral"],
+#                            validation_data, validation_words, "out_latest/compare_clusters.tsv", "clusters_data_latest.tsv")
 
 #evaluation.compare_clusters(["živo srebro", "oljčen", "administratorski", "kadriranje", "seviljska pomaranča", "ionosfera", "boksarski", "kros", "monsunski", "korintski", "mahagonijev", "karatejski", "plastično", "navadna borovnica", "arktičen", "mehiška", "pehtranov", "topolov", "manifest", "izbira", "pastorek", "širiti", "EMŠO", "amortizer", "angleški", "kutina", "etan", "hraniti", "tamarindov", "dvoletnica", "boks", "živčen", "atlet", "fokstrot", "abolicionist", "modrikavost", "tenis", "vziti", "brusiti", "vratarjenje", "artičoka", "ligenj", "tektonski", "divjačina", "oslič", "nadležno", "riž", "akumulativnost", "dohodek", "jahačica", "lešnikast", "gvajanski", "brin", "saški", "perutnička", "kumkvat", "maklura", "lizika", "vzhod", "peroksid", "zmikastiti", "eliptičen", "pasat", "kontraritem", "evrski", "analognost", "gozdna jagoda", "odbojka", "mašen", "abotnost", "trepalnica", "akacija", "žvečilec", "dren", "bordar", "bodibilderski", "ananas", "sednica", "banana", "rokomet", "žonglerka", "leskovina", "državljan", "gramofonski", "Tehtnica", "erg", "pokeraški", "Karavanke", "marelica", "brezov", "Ariadnina nit", "mandljevo mleko", "magnetofon", "fiziologija", "medicinka", "kočura", "pav", "slamnik"],
 #                            result_files, ["agglomerative", "kmeans", "spectral"],
@@ -71,10 +78,10 @@ f = "ant_syn_senses/new/"
 
 #SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}avg_d_with_outl_uniform.txt", algo='avg_dist', weights='uniform')
 
-sc = SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}min_avg_dist.txt", algo='min_avg_dist')
-sc.execute_algorithm(f"{f}min_dist.txt", algo='min_dist')
-sc.execute_algorithm(f"{f}avg_min_dist.txt", algo='avg_min_dist')
-sc.execute_algorithm(f"{f}avg_dist.txt", algo='avg_dist')
+#sc = SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}min_avg_dist.txt", algo='min_avg_dist')
+#sc.execute_algorithm(f"{f}min_dist.txt", algo='min_dist')
+#sc.execute_algorithm(f"{f}avg_min_dist.txt", algo='avg_min_dist')
+#sc.execute_algorithm(f"{f}avg_dist.txt", algo='avg_dist')
 
 #sc = SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}description_dist.txt", algo='description_dist', ignore_missing=True)
 
@@ -85,3 +92,11 @@ sc.execute_algorithm(f"{f}avg_dist.txt", algo='avg_dist')
 #scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/avg_dist.txt")
 
 #print_missing_senses(sense_data, labeled_embeddings, "ant_syn_senses/missing_examples.txt")
+
+
+"""for f in score_files:
+    print(f)
+    score_dict = load_cluster_scores_dict(f)
+
+    avg_scores = get_avg_scores(score_dict, ['adjusted_rand', 'completeness', 'f1_score', 'silhouette'])
+    print("Avg score: %s\n\n" % str(avg_scores))"""

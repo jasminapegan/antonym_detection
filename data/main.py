@@ -123,3 +123,34 @@ we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/lemmatiz
 
 #file_helpers.get_all_words(["dataset/val_words.txt", "dataset/test_words.txt"], "sources/besede_s_pomeni_sorted.txt", "dataset/all_words.txt")
 #file_helpers.sort_lines("dataset/val.txt", "dataset/val_sorted.txt")
+"""
+def count_words(file):
+    words = {}
+
+    with open(file, 'r', encoding="utf8") as input:
+        line = input.readline()
+
+        while line.strip():
+            word = line.split("\t")[0]
+
+            if word in words.keys():
+                words[word] += 1
+            else:
+                words[word] = 1
+
+            line = input.readline()
+
+    return len(list(words.keys()))
+
+print(file_helpers.count_lines_all("embeddings/archive"))
+print(count_words("embeddings/archive/test_embeddings_new.txt"))
+print(count_words("embeddings/archive/val_embeddings_new.txt"))
+"""
+
+#file_helpers.filter_file_by_words("embeddings/archive/val_embeddings_new.txt", "embeddings/archive/cluster_val.txt", out_file="embeddings/archive/clustering_1.txt", complement=False)
+#file_helpers.filter_file_by_words("embeddings/archive/test_embeddings_new.txt", "embeddings/archive/cluster_val.txt", out_file="embeddings/archive/clustering_2.txt", complement=False)
+#file_helpers.concatenate_files(["embeddings/archive/clustering_1.txt", "embeddings/archive/clustering_2.txt"], "embeddings/archive/clustering_test.txt")
+
+#file_helpers.filter_file_by_words("dataset/bkp/val_words_new.txt", "embeddings/archive/cluster_val.txt", out_file="embeddings/archive/clustering_1.txt", complement=False, split_by="|")
+#file_helpers.filter_file_by_words("dataset/bkp/test_words_new.txt", "embeddings/archive/cluster_val.txt", out_file="embeddings/archive/clustering_2.txt", complement=False, split_by="|")
+#file_helpers.concatenate_files(["embeddings/archive/clustering_1.txt", "embeddings/archive/clustering_2.txt"], "dataset/bkp/clustering_test_words.txt")

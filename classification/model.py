@@ -1,4 +1,7 @@
 import os
+
+from tqdm import tqdm
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import time
 from datetime import timedelta
@@ -10,10 +13,9 @@ from sklearn.model_selection import train_test_split
 from transformers import AutoTokenizer, BertForSequenceClassification, get_linear_schedule_with_warmup
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 from datasets import load_metric
-from matplotlib import pyplot as plt
 
 from classification.dataset import parse_sentence_data
-from classification.scoring import f1_score
+from classification.utils import compute_metrics, plot_scores
 from data.embeddings import get_token_range
 
 import file_helpers
@@ -29,9 +31,9 @@ import file_helpers
 
 class AntSynModel:
 
-    def __init__(self, model_name="EMBEDDIA/crosloengual-bert", tokenizer_path=None, resize_model=False):
-        if tokenizer_path:
-            self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
+    def __init__(self, model_name="EMBEDDIA/crosloengual-bert", use_tokenizer=None, resize_model=False):
+        if use_tokenizer:
+            self.tokenizer = use_tokenizer
         else:
             self.tokenizer = AutoTokenizer.from_pretrained(model_name)
 
@@ -88,37 +90,7 @@ class AntSynModel:
 
         return train_dataloader, validation_dataloader
 
-    def finetune(self, val_dataloader, train_dataloader, outf, epochs=1, lr=2e-5, out_path=None):
-        outf.write(f"Model with learning rate {lr}\n")
-
-        self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=lr, eps=1e-08)
-
-        self.tr_loss = []
-        self.val_f1_all = []
-        self.n_tr_steps = []
-        self.lr = lr
-
-        for i in range(1, epochs + 1):
-            print(f'[{file_helpers.get_now_string()}] Starting epoch {i}')
-            outf.write(f'\nEpoch {i}\n')
-
-            self.name = f"{lr}_{i}"
-            model_path = os.path.join(out_path, self.name)
-
-            # training metrics
-            tr_loss, n_tr_examples, n_tr_steps = self.train(train_dataloader, out_model_path=model_path)
-            self.tr_loss.append(tr_loss / n_tr_steps)
-            outf.write('\n\t - Train loss: {:.4f}\n'.format(tr_loss / n_tr_steps))
-
-            # validation metrics
-            val_f1_scores = self.validate(val_dataloader)
-            avg_f1 = sum(val_f1_scores) / len(val_f1_scores) if len(val_f1_scores) > 0 else 0
-            self.val_acc.append(avg_f1)
-            outf.write('\t - Validation Accuracy: {:.4f}\n'.format(avg_f1))
-
-        plot_scores(self, out_path)
-
-    def finetune_2(self, val_dataloader, train_dataloader, outf, epochs=1, lr=2e-5, out_path=None):
+    def finetune(self, val_dataloader, train_dataloader, outf, epochs=1, lr=2e-5, out_path=None, out_name=None):
 
         # Total number of training steps
         total_steps = len(train_dataloader) * epochs
@@ -131,12 +103,16 @@ class AntSynModel:
         self.n_tr_steps = []
         self.lr = lr
 
-        print(f"{'Epoch':^7} | {'Batch':^7} | {'Train Loss':^12} | {'Val Loss':^10} | {'Val Acc':^9} | {'Elapsed':^12}")
-        print("-"*70)
+        trigger_f1 = 0
+        max_f1 = 0.0
+
+        self.metrics_by_epoch = {"loss": [],
+                                 "val_acc": [],
+                                 "val_f1": []}
 
         for i in range(1, epochs + 1):
 
-            out_dir = f"{out_path}_{i}"
+            out_epoch_name = f"{out_name}_{i}"
 
             # Measure the elapsed time of each epoch
             t0_epoch, t0_batch = time.time(), time.time()
@@ -182,13 +158,11 @@ class AntSynModel:
                 self.scheduler.step()
 
                 # Print the loss values and time elapsed
-                if (step % 50 == 0 and step != 0) or (step == len(train_dataloader) - 1):
-                    # Calculate time elapsed for 20 batches
+                if (step % 500 == 0 and step != 0) or (step == len(train_dataloader) - 1):
+                    # Calculate time elapsed
                     elapsed_sec = time.time() - t0_batch
                     time_elapsed = str(timedelta(seconds=elapsed_sec))
-
-                    # Print training results
-                    print(f"{i + 1:^7} | {step:^7} | {batch_loss / batch_counts:^12.6f} | {'-':^10} | {'-':^9} | {time_elapsed:^12}")
+                    print(f"Epoch progress {step / len(train_dataloader)} Time elapsed: {time_elapsed}")
 
                     # Reset batch tracking variables
                     batch_loss, batch_counts = 0, 0
@@ -201,25 +175,37 @@ class AntSynModel:
                 n_tr_examples += b_input_ids.size(0)
                 n_tr_steps += 1
 
-            if not os.path.exists(out_dir):
-                os.mkdir(out_dir)
-            print(f"Saving model to {out_dir}...")
-            self.model.save_pretrained(out_dir)
-
             # training metrics
-            self.tr_loss_epoch.append(tr_loss / n_tr_steps)
-            outf.write('\n\t - Train loss: {:.4f}\n'.format(tr_loss / n_tr_steps))
+            loss = tr_loss / n_tr_steps
+            self.tr_loss_epoch.append(loss)
+            self.metrics_by_epoch["loss"].append(loss)
+
+            if not os.path.exists(out_path):
+                os.mkdir(out_path)
+            print(f"Saving model to {out_path}...")
+            self.model.save_pretrained(os.path.join(out_path, out_epoch_name))
 
             # validation metrics
-            val_f1_scores = self.validate(val_dataloader)
-            avg_f1 = sum(val_f1_scores) / len(val_f1_scores) if len(val_f1_scores) > 0 else 0
-            self.val_f1_epoch.append(avg_f1)
-            outf.write('\t - Validation F1 score: {:.4f}\n'.format(avg_f1))
+            results = self.validate(val_dataloader)
+            acc, f1 = results["acc"], results["f1"]
+            self.metrics_by_epoch["val_acc"].append(acc)
+            self.metrics_by_epoch["val_f1"].append(f1)
+            now = file_helpers.get_now_string()
+            outf.write(f"\t [{now}] - Train loss: {loss}, Val acc: {acc}, Val F1: {f1}\n")
 
             # plot progress
-            plot_scores(self, out_path)
+            plot_scores(self.metrics_by_epoch, out_path, out_epoch_name)
 
-        plot_scores(self, out_path)
+            if results["f1"] < max_f1:
+                trigger_f1 += 1
+            else:
+                trigger_f1 = 0
+                max_f1 = results["f1"]
+
+            if trigger_f1 > 2:
+                return
+
+        plot_scores(self.metrics_by_epoch, out_path, out_epoch_name)
 
     def train(self, train_dataloader, out_model_path=None):
         self.model.train()
@@ -260,10 +246,12 @@ class AntSynModel:
 
     def validate(self, validation_dataloader):
         self.model.eval()
+        preds = None
+        out_label_ids = None
 
-        val_f1 = []
+        batch_iterator = tqdm(validation_dataloader, desc="Epochs", disable=False)
 
-        for batch in validation_dataloader:
+        for batch in batch_iterator: #validation_dataloader:
             batch = tuple(t.to(self.device) for t in batch)
             b_input_ids, b_input_mask, b_labels = batch
 
@@ -276,11 +264,19 @@ class AntSynModel:
             logits = eval_output.logits.detach().cpu().numpy()
             label_ids = b_labels.to('cpu').numpy()
 
-            # Calculate validation metrics
-            f1 = f1_score(logits, label_ids)
-            val_f1.append(f1)
+            """if preds is None:
+                preds = logits.detach().cpu().numpy()
+                out_label_ids = b_input_ids["labels"].detach().cpu().numpy()
+            else:
+                preds = np.append(preds, logits.detach().cpu().numpy(), axis=0)
+                out_label_ids = np.append(out_label_ids, b_input_ids["labels"].detach().cpu().numpy(), axis=0)"""
 
-        return val_f1
+        preds = np.argmax(logits, axis=1)
+
+        # Calculate validation metrics
+        results = compute_metrics(preds, label_ids)
+
+        return results
 
 def update_tokenizer(tokenizer, new_tokens=["[BOW]", "[EOW]"], out_dir="model/saved"):
     tokenizer.add_tokens(new_tokens)
@@ -296,7 +292,7 @@ def prepare_data_crossval(train_fname, val_fname, tokenizer, batch_size=32, n=3,
     for i in range(n):
         train_file, val_file = f"{train_fname}{i}.txt", f"{val_fname}{i}.txt"
 
-        token_id, attention_masks, labels  = get_data(train_file, tokenizer, mark_word=mark_word, syn=syn)
+        token_id, attention_masks, labels  = get_data(train_file, tokenizer, mark_word=mark_word)
         train_set = TensorDataset(token_id, attention_masks, labels)
         train_dataloader = DataLoader(
             train_set,
@@ -316,10 +312,10 @@ def prepare_data_crossval(train_fname, val_fname, tokenizer, batch_size=32, n=3,
 
     return train_dataloaders, val_dataloaders
 
-def get_data(filename, tokenizer, limit_range=None, shuffle_data=True, mark_word=False, syn=False):
+def get_data(filename, tokenizer, limit_range=None, shuffle_data=True, mark_word=False):
     data_dict = parse_sentence_data(filename, limit_range, shuffle_lines=shuffle_data)
     data_dict = trim_sentences(data_dict, tokenizer)
-    data = add_special_tokens(data_dict, mark_word=mark_word, syn=syn)
+    data = add_special_tokens(data_dict, mark_word=mark_word)
 
     labels = torch.tensor(data_dict['labels'], dtype=torch.long)
 
@@ -332,7 +328,7 @@ def get_data(filename, tokenizer, limit_range=None, shuffle_data=True, mark_word
 
     return input_ids, attention_masks, labels
 
-def add_special_tokens(data_dict, mark_word=False, syn=True):
+def add_special_tokens(data_dict, mark_word=False):
     if mark_word:
         data = []
         for ss, ii in zip(data_dict['sentence_pairs'], data_dict['index_pairs']):
@@ -340,16 +336,12 @@ def add_special_tokens(data_dict, mark_word=False, syn=True):
             i1, i2 = ii
 
             s1_split, s2_split = s1.split(" "), s2.split(" ")
-            #s1_new = s1_split[:i1[0]] + ["[BOW]"] + s1_split[i1[0]: i1[1] + 1] + ["[EOW]"] + s1_split[i1[1] + 1:] + ["[SEP]"]
-            #s2_new = s2_split[:i2[0]] + ["[BOW]"] + s2_split[i2[0]: i2[1] + 1] + ["[EOW]"] + s2_split[i2[1] + 1:]
 
-            #self.data.append(["[CLS]"] + s1_new + s2_new)
+            t1_start, t1_end = "<R1>", "</R1>"
+            t2_start, t2_end = "<R2>", "</R2>"
 
-            syn_ant_token = "[SYN]" if syn else "[ANT]"
-            base_token = "[BASE]"
-
-            s1_new = s1_split[:i1[0]] + [base_token] + s1_split[i1[0]: i1[1] + 1] + [base_token] + s1_split[i1[1] + 1:] + ["[SEP]"]
-            s2_new = s2_split[:i2[0]] + [syn_ant_token] + s2_split[i2[0]: i2[1] + 1] + [syn_ant_token] + s2_split[i2[1] + 1:]
+            s1_new = s1_split[:i1[0]] + [t1_start] + s1_split[i1[0]: i1[1] + 1] + [t1_end] + s1_split[i1[1] + 1:] + ["[SEP]"]
+            s2_new = s2_split[:i2[0]] + [t2_start] + s2_split[i2[0]: i2[1] + 1] + [t2_end] + s2_split[i2[1] + 1:]
 
             data.append(s1_new + s2_new)
     else:
@@ -378,12 +370,12 @@ def trim_sentences(data_dict, tokenizer):
 
     return data_dict
 
-def find_best(train_filename, val_filename, out_path, lrs=[3e-4, 1e-4, 5e-5, 3e-5], epochs=5,
-              mark_word=False, batch_sizes=[128], resize_model=False, tokenizer_path="model/saved", syn=False):
-    if tokenizer_path:
-        tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
-    else:
-        tokenizer = AutoTokenizer.from_pretrained('EMBEDDIA/crosloengual-bert')
+def find_best(train_filename, val_filename, out_path, lrs=[3e-4, 5e-5, 3e-5], epochs=4,
+              mark_word=False, batch_sizes=[16], syn=False, n=1, model_name="EMBEDDIA/crosloengual-bert"):
+
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    if mark_word:
+        tokenizer.add_special_tokens({"additional_special_tokens": ["<R1>", "</R1>", "<R2>", "</R2>"]})
 
     max_accuracy = -1
     idx = -1
@@ -394,25 +386,25 @@ def find_best(train_filename, val_filename, out_path, lrs=[3e-4, 1e-4, 5e-5, 3e-
 
         for batch_size in batch_sizes:
             train_dataloaders, val_dataloaders = prepare_data_crossval(train_filename, val_filename, tokenizer,
-                                                                       mark_word=mark_word, batch_size=batch_size, n=3, syn=syn)
+                                                                       mark_word=mark_word, batch_size=batch_size, n=n, syn=syn)
 
             for lr in lrs:
                 print(f"Using learning rate {lr}")
                 f.write(f"\nModels with learning rate {lr}, batch size {batch_size}\n")
 
-                avg_val_acc = run_crossval_models(train_dataloaders, val_dataloaders, out_path, f, lr, epochs,
-                                                  batch_size, resize_model=resize_model, tokenizer_path=tokenizer_path)
+                val_f1s = run_crossval_models(train_dataloaders, val_dataloaders, f, lr, epochs, batch_size,
+                                                  resize_model=mark_word, tokenizer=tokenizer, out_path=out_path)
 
-                if max(avg_val_acc) > max_accuracy:
-                    idx = np.argmax(avg_val_acc)
-                    max_accuracy = avg_val_acc[idx]
-                    best_model = f"{lr}_{batch_size}_0_{idx}"
+                if max([max(x) for x in val_f1s]) > max_accuracy:
+                    idx = np.argmax([np.argmax(x) for x in val_f1s])
+                    max_accuracy = val_f1s[idx]
+                    epoch = np.argmax(val_f1s[idx])
+                    best_model = f"train{idx}_{lr}_{batch_size}_{epoch}"
 
     print(f"\n\nBest model {best_model} at epoch {idx} with val_accuracy: {max_accuracy}")
 
-def score_models(in_folder, test_file, out_file, tokenizer):
+def score_models(in_folder, test_file, out_file, tokenizer, mark_word=True):
     with open(out_file, "w", encoding="utf8") as f:
-        best_model, best_score = None, 0
 
         for folder in os.listdir(in_folder):
             f.write(f"\nScore for model {folder}\n")
@@ -423,7 +415,7 @@ def score_models(in_folder, test_file, out_file, tokenizer):
             model = BertForSequenceClassification.from_pretrained(model_path)
             model_name = folder
 
-            token_id, attention_masks, labels = get_data(test_file, tokenizer)
+            token_id, attention_masks, labels = get_data(test_file, tokenizer, mark_word=mark_word)
             test_data = TensorDataset(token_id,
                                     attention_masks,
                                     labels)
@@ -431,58 +423,32 @@ def score_models(in_folder, test_file, out_file, tokenizer):
             test_dataloader = DataLoader(
                 test_data,
                 sampler=SequentialSampler(test_data),
-                batch_size=100
+                batch_size=32
             )
 
-            f1_score = model.validate(test_dataloader)
+            my_model = AntSynModel(use_tokenizer=tokenizer)
+            my_model.model = model
 
-            if f1_score > best_score:
-                best_model, best_score = model_name, f1_score
+            scores = my_model.validate(test_dataloader)
+            f1, acc = scores["f1"], scores["acc"]
 
-            f.write(f"F1 score: {f1_score}\n")
+            f.write(f"F1 score: {f1}, acc: {acc}\n")
 
-        f.write(f"\nBest F1 score {best_score} for model {best_model}\n")
 
-def run_crossval_models(train_dataloaders, val_dataloaders, out_path, f, lr, n_epochs, batch_size, resize_model=False, tokenizer_path="model/saved"):
+def run_crossval_models(train_dataloaders, val_dataloaders, f, lr, n_epochs, batch_size, resize_model=False,
+                        tokenizer=None, out_path=None):
     val_f1s = []
     i = 0
     for train_dataloader, val_dataloader in zip(train_dataloaders, val_dataloaders):
         print(f"Model #{i}")
         f.write(f"Model #{i}\n")
 
-        model_path = os.path.join(out_path, f"{lr}_{batch_size}_{i}")
-        model = run_model(val_dataloader, train_dataloader, model_path, f, lr, n_epochs, resize_model=resize_model, tokenizer_path=tokenizer_path)
-        val_f1s.append(model.val_f1_epoch)
+        model_name = f"train{i}_{lr}_{batch_size}_{i}"
+
+        model = AntSynModel(resize_model=resize_model, use_tokenizer=tokenizer)
+        model.finetune(val_dataloader, train_dataloader, f, lr=lr, epochs=n_epochs, out_path=out_path, out_name=model_name)
+
+        val_f1s.append(model.metrics_by_epoch["val_f1"])
         i += 1
 
-    val_f1_by_epoch = [[x[i] for i in range(len(val_f1s[0]))] for x in val_f1s]
-    avg_val_f1 = [sum(x) / len(x) for x in val_f1_by_epoch]
-
-    return avg_val_f1
-
-def run_model(val_dataloader, train_dataloader, out_path, f, lr, n_epochs, resize_model=False, tokenizer_path="model/saved"):
-    model = AntSynModel(resize_model=resize_model, tokenizer_path=tokenizer_path)
-    #model.finetune(val_dataloader, train_dataloader, f, lr=lr, epochs=n_epochs, out_path=out_path)
-    model.finetune_2(val_dataloader, train_dataloader, f, lr=lr, epochs=n_epochs, out_path=out_path)
-    return model
-
-def plot_scores(model, out_path):
-    val_f1, train_loss = model.val_f1_epoch, model.tr_loss_epoch
-    model_name = os.path.split(out_path)[-1]
-    out_dir = os.path.dirname(os.path.dirname(out_path))
-    print(f"Plotting scores for model {model_name}...")
-
-    epochs = range(1, len(val_f1) + 1)
-    fig = plt.figure(figsize=(10, 6))
-    fig.tight_layout()
-
-    plt.subplot(2, 1, 1)
-    plt.plot(epochs, train_loss, 'r', label='Training loss')
-    plt.plot(epochs, val_f1, 'b', label='Validation F1 score')
-    plt.title(f'Metrics for model {model_name}')
-    plt.xlabel('Epochs')
-    plt.legend(loc='lower right')
-
-    fname = os.path.join(out_dir, f"plot_{model_name}.png")
-    plt.savefig(fname)
-
+    return val_f1s

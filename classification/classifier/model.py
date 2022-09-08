@@ -26,7 +26,7 @@ class RelationModel(BertPreTrainedModel):
 
         self.bert = AutoModel.from_pretrained("EMBEDDIA/crosloengual-bert")
         self.num_labels = 2 #config.num_labels
-        self.n_layers = args.n_layers
+        self.n_layers = 0 #args.n_layers
         self.layer_size_divisor = args.layer_size_divisor
 
         self.cls_fc_layer = FCLayer(config.hidden_size, config.hidden_size, args.dropout_rate)
@@ -36,7 +36,7 @@ class RelationModel(BertPreTrainedModel):
             self.label_classifier = FCLayer(
                         config.hidden_size * 3,
                         config.num_labels,
-                        args.dropout_rate,
+                        0.0, #args.dropout_rate,
                         use_activation=False,
                     )
 

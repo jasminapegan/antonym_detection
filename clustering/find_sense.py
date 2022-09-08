@@ -97,14 +97,14 @@ class SenseClusters():
 
         out_lines = [f"Data for {ant_syn} pair {self.w1} - {self.w2} (POS {self.pos})\n"]
         out_lines += [f"Sense data for {self.w1}\nSense\tdescription\n"]
-        out_lines += [f"\t{s['num']}\t{s['description']}\n" for s in self.sense_data1]
+        out_lines += [f"\t{s['num'] + 1}\t{s['description']}\n" for s in self.sense_data1]
         out_lines += [f"Sense data for {self.w2}:\nSense\t description\n"]
-        out_lines += [f"\t{s['num']}\t{s['description']}\n" for s in self.sense_data2]
+        out_lines += [f"\t{s['num'] + 1}\t{s['description']}\n" for s in self.sense_data2]
 
         outf.writelines(out_lines)
 
         self.fit_predict(outf)
-        self.find_senses(outf)
+        self.find_senses(outf, ant_syn)
 
     def fit_predict(self, outf: TextIOWrapper):
         self.X1 = file_helpers.convert_to_np_array(self.word_data1['embeddings'])
@@ -122,7 +122,7 @@ class SenseClusters():
             outf.write("Error: %s\n" % e)
             return
 
-    def find_senses(self, outf: TextIOWrapper):
+    def find_senses(self, outf: TextIOWrapper, ant_syn: str):
         sentences1 = get_sentences_by_label(self.word_data1)
         sentences2 = get_sentences_by_label(self.word_data2)
 
@@ -152,7 +152,7 @@ class SenseClusters():
         self.X1_by_label = X1_by_label
         self.X2_by_label = X2_by_label
 
-        self.write_output(labels1, labels2, sentences1, sentences2, dists, outf)
+        self.write_output(labels1, labels2, sentences1, sentences2, dists, ant_syn, outf)
 
     def write_sentences(self, s1, s2):
         self.out_sentences.write(f"{self.w1}\n")
@@ -163,7 +163,7 @@ class SenseClusters():
             self.out_sentences.write(f"\t{s}\n")
         self.out_sentences.write("\n")
 
-    def write_output(self, labels1, labels2, sentences1, sentences2, dists, outf):
+    def write_output(self, labels1, labels2, sentences1, sentences2, dists, ant_syn, outf):
         best_scores = {x: [] for x in labels2}
 
         for label1 in labels1:
@@ -196,12 +196,12 @@ class SenseClusters():
         if self.algo == 'description_dist' and min_dist > 5:
             return
 
-        outf.write(f"Predicted sense pair: {self.w1}({min_label1}) and {self.w2}({min_label2}) " +
+        outf.write(f"Predicted sense {ant_syn} pair: {self.w1}({min_label1 + 1}) and {self.w2}({min_label2 + 1}) " +
                    f"with distance score: {min_dist}\n")
 
         if min_label1 != None and min_label2 != None:
-            outf.write(f"{self.w1}({min_label1}): {sentences1[min_label1][0]}\n")
-            outf.write(f"{self.w2}({min_label2}): {sentences2[min_label2][0]}\n\n")
+            outf.write(f"{self.w1}({min_label1 + 1}): {sentences1[min_label1][0]}\n")
+            outf.write(f"{self.w2}({min_label2 + 1}): {sentences2[min_label2][0]}\n\n")
 
             self.results.append({"w1": self.w1, "w2": self.w2,
                                  "sentences1": sentences1[min_label1], "sentences2": sentences2[min_label2],
