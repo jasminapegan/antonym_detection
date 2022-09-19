@@ -8,7 +8,7 @@ from datetime import timedelta
 
 import torch
 import numpy as np
-import tensorflow as tf
+#import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from transformers import AutoTokenizer, BertForSequenceClassification, get_linear_schedule_with_warmup
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
@@ -186,7 +186,7 @@ class AntSynModel:
             self.model.save_pretrained(os.path.join(out_path, out_epoch_name))
 
             # validation metrics
-            results = self.validate(val_dataloader)
+            results, _, _ = self.validate(val_dataloader)
             acc, f1 = results["acc"], results["f1"]
             self.metrics_by_epoch["val_acc"].append(acc)
             self.metrics_by_epoch["val_f1"].append(f1)
@@ -245,8 +245,10 @@ class AntSynModel:
         return tr_loss, n_tr_examples, n_tr_steps
 
     def validate(self, validation_dataloader):
+
         self.model.eval()
-        preds = None
+        logits_all, preds_all = [], []
+        label_ids_all = []
         out_label_ids = None
 
         batch_iterator = tqdm(validation_dataloader, desc="Epochs", disable=False)
@@ -265,18 +267,21 @@ class AntSynModel:
             label_ids = b_labels.to('cpu').numpy()
 
             """if preds is None:
-                preds = logits.detach().cpu().numpy()
-                out_label_ids = b_input_ids["labels"].detach().cpu().numpy()
+                preds = logits #.detach().cpu().numpy()
+                out_label_ids = b_input_ids["labels"] #.detach().cpu().numpy()
             else:
-                preds = np.append(preds, logits.detach().cpu().numpy(), axis=0)
-                out_label_ids = np.append(out_label_ids, b_input_ids["labels"].detach().cpu().numpy(), axis=0)"""
+                preds = np.append(preds, logits, axis=0) #.detach().cpu().numpy(), axis=0)
+                out_label_ids = np.append(out_label_ids, b_input_ids["labels"], axis=0) #.detach().cpu().numpy(), axis=0)"""
 
-        preds = np.argmax(logits, axis=1)
+            preds = np.argmax(logits, axis=1)
+            logits_all += np.ndarray.tolist(logits)
+            preds_all += np.ndarray.tolist(preds)
+            label_ids_all += np.ndarray.tolist(label_ids)
 
         # Calculate validation metrics
-        results = compute_metrics(preds, label_ids)
+        results = compute_metrics(preds_all, label_ids_all)
 
-        return results
+        return results, logits_all, preds_all
 
 def update_tokenizer(tokenizer, new_tokens=["[BOW]", "[EOW]"], out_dir="model/saved"):
     tokenizer.add_tokens(new_tokens)
@@ -403,7 +408,7 @@ def find_best(train_filename, val_filename, out_path, lrs=[3e-4, 5e-5, 3e-5], ep
 
     print(f"\n\nBest model {best_model} at epoch {idx} with val_accuracy: {max_accuracy}")
 
-def score_models(in_folder, test_file, out_file, tokenizer, mark_word=True):
+def score_models(in_folder, test_file, out_file, tokenizer, mark_word=True, write_preds=False):
     with open(out_file, "w", encoding="utf8") as f:
 
         for folder in os.listdir(in_folder):
@@ -423,16 +428,30 @@ def score_models(in_folder, test_file, out_file, tokenizer, mark_word=True):
             test_dataloader = DataLoader(
                 test_data,
                 sampler=SequentialSampler(test_data),
-                batch_size=32
+                batch_size=32,
+                shuffle=False
             )
 
             my_model = AntSynModel(use_tokenizer=tokenizer)
             my_model.model = model
 
-            scores = my_model.validate(test_dataloader)
-            f1, acc = scores["f1"], scores["acc"]
+            scores, logits, preds = my_model.validate(test_dataloader)
+            f1, acc, rec, prec = scores["f1"], scores["acc"], scores["rec"], scores["prec"]
+            print(scores)
 
-            f.write(f"F1 score: {f1}, acc: {acc}\n")
+            if write_preds:
+                with open("model/ant/chosen/predictions.txt", "a", encoding="utf8") as outf:
+                    data = parse_sentence_data(test_file)
+                    words = data["word_pairs"]
+                    sentences = data["sentence_pairs"]
+                    labels = data["labels"]
+                    for wp, sp, label, logit, pred in zip(words, sentences, labels, logits, preds):
+                        w1, w2 = wp
+                        s1, s2 = sp
+                        text = f"{w1}\t{w2}\t{s1}\t{s2}\t{label}\t{logit}\t{pred}\n"
+                        f.write(text)
+
+            f.write(f"F1 score: {f1}, acc: {acc},  rec: {rec}, prec: {prec}\n")
 
 
 def run_crossval_models(train_dataloaders, val_dataloaders, f, lr, n_epochs, batch_size, resize_model=False,

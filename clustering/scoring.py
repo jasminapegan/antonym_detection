@@ -203,9 +203,11 @@ def parse_cluster_file(filename):
 
                 elif "w1_sense" not in data.keys() and line.startswith(w1):
                     data["w1_sense"] = line.split("(")[1].split(")")[0]
+                    data["w1_example"] = line.split(":")[1].strip()
 
                 elif line.startswith(w2):
                     data["w2_sense"] = line.split("(")[1].split(")")[0]
+                    data["w2_example"] = line.split(":")[1].strip()
 
                 elif line.strip().lower().replace(" ", '') == "sense\tdescription":
                     continue

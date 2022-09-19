@@ -238,10 +238,10 @@ class Trainer(object):
 
         eval_loss = eval_loss / nb_eval_steps
         results = {"loss": eval_loss}
-        preds = np.argmax(preds, axis=1)
-        #write_prediction(self.args, os.path.join(self.args.eval_dir, "proposed_answers.txt"), preds)
+        preds_bin = np.argmax(preds, axis=1)
+        write_prediction(self.args, os.path.join(self.args.eval_dir, "proposed_answers.txt"), preds, preds_bin)
 
-        result = compute_metrics(preds, out_label_ids)
+        result = compute_metrics(preds_bin, out_label_ids)
         results.update(result)
 
         logger.info("***** Eval results *****")
