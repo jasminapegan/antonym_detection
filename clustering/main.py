@@ -28,7 +28,7 @@ test_words = "../data/dataset/bkp/clustering_test_words.txt"
 #find_best.find_best_agglomerative(validation_embeddings, word_data, validation_data)
 #find_best.find_best_dbscan(validation_embeddings, word_data, validation_data, output_vectors=True)
 #find_best.find_best_all(validation_embeddings2, word_data, validation_data, output_vectors=True, use_pos=True)
-find_best.find_best_all(test_embeddings, word_data, test_data, output_vectors=False, use_pos=False)
+#find_best.find_best_all(test_embeddings, word_data, test_data, output_vectors=False, use_pos=False)
 
 #find_best.ensemble_clustering(validation_embeddings, word_data, validation_data, output_vectors=True, out_dir='best')
 
@@ -66,6 +66,7 @@ score_files =  ["out_latest/agglomerative/agglomerative-affinity=precomputed,dis
 
 syn_ant_dataset = "../data/sources/syn_ant/syn_ant_dataset_all.tsv"
 labeled_embeddings = "../data/embeddings/lemmatized/labeled_embeddings.txt"
+labeled_embeddings_nonlemmatized = "../data/embeddings/labeled_embeddings.txt"
 sense_data = "../data/sources/sense/sense_data.txt"
 f = "ant_syn_senses/new/"
 #f2 = "ant_syn_senses/no_outliers/"
@@ -83,7 +84,7 @@ f = "ant_syn_senses/new/"
 #sc.execute_algorithm(f"{f}avg_min_dist.txt", algo='avg_min_dist')
 #sc.execute_algorithm(f"{f}avg_dist.txt", algo='avg_dist')
 
-#sc = SenseClusters(syn_ant_dataset, labeled_embeddings, sense_data, f"{f}description_dist.txt", algo='description_dist', ignore_missing=True)
+sc = SenseClusters(syn_ant_dataset, labeled_embeddings_nonlemmatized, sense_data, f"{f}description_dist.txt", algo='description_dist', ignore_missing=True)
 
 #scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/min_avg_dist.txt")
 #scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/min_avg_dist.txt")
@@ -100,3 +101,30 @@ f = "ant_syn_senses/new/"
 
     avg_scores = get_avg_scores(score_dict, ['adjusted_rand', 'completeness', 'f1_score', 'silhouette'])
     print("Avg score: %s\n\n" % str(avg_scores))"""
+
+from clustering.scoring import parse_cluster_file
+from classification.dataset import write_pair_data
+clusters = parse_cluster_file("ant_syn_senses/description_dist.txt")
+with open("razširjene_protipomenke_v_pomenih.txt", "w", encoding="utf8") as f:
+    for wp in clusters:
+        w1, w2 = wp
+        data = clusters[wp]
+        if not data['synonym']:
+            if "score" in data.keys():
+                s1s, s2s = data['w1_senses'], data['w2_senses']
+                s1, s2 = data["w1_sense"], data["w2_sense"]
+                e1, e2 = data["w1_example"], data["w2_example"]
+                score = data['score']
+
+                f.write(f"Podatki o pomenih za par protipomenk {w1} - {w2}:\n")
+                f.write(f"Pomeni besede {w1}\n")
+                f.write(f"\tŠt. pomena\topis pomena\n")
+                for s in s1s:
+                    f.write(f"\t{s}\t{s1s[s]}\n")
+                f.write(f"Pomeni besede {w2}\n")
+                f.write(f"\tŠt. pomena\topis pomena\n")
+                for s in s2s:
+                    f.write(f"\t{s}\t{s2s[s]}\n")
+                f.write(f"Napovedani par pomenov: {w1}({s1}) - {w2}({s2}) z oceno razdalje {score}:\n")
+                f.write(f"{w1}({s1}): {e1}\n")
+                f.write(f"{w2}({s2}): {e2}\n\n")

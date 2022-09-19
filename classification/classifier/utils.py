@@ -9,7 +9,7 @@ from transformers import AutoTokenizer
 
 from matplotlib import pyplot as plt
 
-ADDITIONAL_SPECIAL_TOKENS = ["<e1>", "</e1>", "<e2>", "</e2>"]
+ADDITIONAL_SPECIAL_TOKENS = ["<R1>", "</R1>", "<R2>", "</R2>"]
 
 
 def get_label(args):
@@ -22,7 +22,7 @@ def load_tokenizer(args):
     return tokenizer
 
 
-def write_prediction(args, output_file, preds):
+def write_prediction(args, output_file, preds, preds_bin):
     """
     For official evaluation script
     :param output_file: prediction_file_path (e.g. eval/proposed_answers.txt)
@@ -31,7 +31,7 @@ def write_prediction(args, output_file, preds):
     relation_labels = get_label(args)
     with open(output_file, "w", encoding="utf-8") as f:
         for idx, pred in enumerate(preds):
-            f.write("{}\t{}\n".format(8001 + idx, relation_labels[pred]))
+            f.write("{}\t{}\t{}\n".format(idx, relation_labels[pred], preds_bin))
 
 
 def init_logger():

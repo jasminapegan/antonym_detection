@@ -417,7 +417,7 @@ def parse_embeddings_data(filename, limit_range):
     labels = np.array(labels).astype('int')
     return data, labels
 
-def parse_sentence_data(filename, limit_range, embeddings=False, shuffle_lines=False):
+def parse_sentence_data(filename, limit_range=None, embeddings=False, shuffle_lines=False):
     data = {'labels': [], 'sentence_pairs': [], 'index_pairs': [], 'word_pairs': [], 'form_pairs': []}
     with open(filename, "r", encoding="utf8") as f:
         lines = f.readlines()

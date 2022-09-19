@@ -97,13 +97,15 @@ out_file = "sentences/sentences.txt"
 
 #file_helpers.get_all_words(["dataset/val_words.txt", "dataset/test_words.txt"], "sources/besede_s_pomeni_sorted.txt", "dataset/all_words.txt")
 
-#we = embeddings.WordEmbeddings()
+we = embeddings.WordEmbeddings()
 """we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/embeddings.txt",
                            labeled=True, batch_size=1, lemmatized=False)
 we.data_file_to_embeddings(["sample/sample_wordsense.txt"], "embeddings/lemmatized/embeddings.txt",
                            labeled=True, batch_size=1, lemmatized=True)"""
 #we.data_file_to_embeddings(["sources/sense/sense_examples.txt"], "embeddings/lemmatized/labeled_embeddings.txt",
 #                           labeled=True, batch_size=1, lemmatized=True)
+we.data_file_to_embeddings(["sources/sense/sense_examples.txt"], "embeddings/labeled_embeddings.txt",
+                           labeled=True, batch_size=1, lemmatized=False)
 
 #dataset.create_syn_ant_dataset("sources/syn_ant/synonyms_cjvt.tsv", "sources/syn_ant/antonyms_sokol.tsv", "sources/syn_ant/syn_ant_dataset.tsv")
 #dataset.create_syn_ant_dataset("sources/syn_ant/synonyms_cjvt.tsv", "sources/syn_ant/antonyms_sokol.tsv", "sources/syn_ant/syn_ant_dataset_2.tsv", d=2)

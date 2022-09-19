@@ -53,13 +53,13 @@ class InputFeatures(object):
         token_type_ids: Segment token indices to indicate first and second portions of the inputs.
     """
 
-    def __init__(self, input_ids, attention_mask, token_type_ids, label_id, e1_mask, e2_mask):
+    def __init__(self, input_ids, attention_mask, token_type_ids, label_id, R1_mask, R2_mask):
         self.input_ids = input_ids
         self.attention_mask = attention_mask
         self.token_type_ids = token_type_ids
         self.label_id = label_id
-        self.e1_mask = e1_mask
-        self.e2_mask = e2_mask
+        self.R1_mask = R1_mask
+        self.R2_mask = R2_mask
 
     def __repr__(self):
         return str(self.to_json_string())
@@ -94,8 +94,8 @@ class AntSynProcessor(object):
                 idx1, idx2 = int(idx1), int(idx2)
                 s1_split, s2_split = s1.split(" "), s2.split(" ")
 
-                s1_with_tokens = s1_split[:idx1] + ["<e1>", s1_split[idx1], "</e1>"] + s1_split[idx1 + 1:]
-                s2_with_tokens = s2_split[:idx2] + ["<e2>", s2_split[idx2], "</e2>"] + s2_split[idx2 + 1:]
+                s1_with_tokens = s1_split[:idx1] + ["<R1>", s1_split[idx1], "</R1>"] + s1_split[idx1 + 1:]
+                s2_with_tokens = s2_split[:idx2] + ["<R2>", s2_split[idx2], "</R2>"] + s2_split[idx2 + 1:]
 
                 new_s1, new_s2 = " ".join(s1_with_tokens), " ".join(s2_with_tokens)
                 new_line = [f"{label}", f"{new_s1} [SEP] {new_s2}"]
@@ -156,22 +156,22 @@ def convert_examples_to_features(
 
         tokens_a = tokenizer.tokenize(example.text_a)
 
-        e11_p = tokens_a.index("<e1>")  # the start position of entity1
-        e12_p = tokens_a.index("</e1>")  # the end position of entity1
-        e21_p = tokens_a.index("<e2>")  # the start position of entity2
-        e22_p = tokens_a.index("</e2>")  # the end position of entity2
+        R11_p = tokens_a.index("<R1>")  # the start position of entity1
+        R12_p = tokens_a.index("</R1>")  # the end position of entity1
+        R21_p = tokens_a.index("<R2>")  # the start position of entity2
+        R22_p = tokens_a.index("</R2>")  # the end position of entity2
 
         # Replace the token
-        tokens_a[e11_p] = "$"
-        tokens_a[e12_p] = "$"
-        tokens_a[e21_p] = "#"
-        tokens_a[e22_p] = "#"
+        tokens_a[R11_p] = "$" # "<R1>"
+        tokens_a[R12_p] = "$" # "</R1>"
+        tokens_a[R21_p] = "#" # "<R2>"
+        tokens_a[R22_p] = "#" # "</R2>"
 
         # Add 1 because of the [CLS] token
-        e11_p += 1
-        e12_p += 1
-        e21_p += 1
-        e22_p += 1
+        R11_p += 1
+        R12_p += 1
+        R21_p += 1
+        R22_p += 1
 
         # Account for [CLS] and [SEP] with "- 2" and with "- 3" for RoBERTa.
         #if add_sep_token:
@@ -201,14 +201,14 @@ def convert_examples_to_features(
         attention_mask = attention_mask + ([0 if mask_padding_with_zero else 1] * padding_length)
         token_type_ids = token_type_ids + ([pad_token_segment_id] * padding_length)
 
-        # e1 mask, e2 mask
-        e1_mask = [0] * len(attention_mask)
-        e2_mask = [0] * len(attention_mask)
+        # R1 mask, R2 mask
+        R1_mask = [0] * len(attention_mask)
+        R2_mask = [0] * len(attention_mask)
 
-        for i in range(e11_p, e12_p + 1):
-            e1_mask[i] = 1
-        for i in range(e21_p, e22_p + 1):
-            e2_mask[i] = 1
+        for i in range(R11_p, R12_p + 1):
+            R1_mask[i] = 1
+        for i in range(R21_p, R22_p + 1):
+            R2_mask[i] = 1
 
         assert len(input_ids) == max_seq_len, "Error with input length {} vs {}".format(len(input_ids), max_seq_len)
         assert len(attention_mask) == max_seq_len, "Error with attention mask length {} vs {}".format(
@@ -228,8 +228,8 @@ def convert_examples_to_features(
             logger.info("attention_mask: %s" % " ".join([str(x) for x in attention_mask]))
             logger.info("token_type_ids: %s" % " ".join([str(x) for x in token_type_ids]))
             logger.info("label: %s (id = %d)" % (example.label, label_id))
-            logger.info("e1_mask: %s" % " ".join([str(x) for x in e1_mask]))
-            logger.info("e2_mask: %s" % " ".join([str(x) for x in e2_mask]))
+            logger.info("R1_mask: %s" % " ".join([str(x) for x in R1_mask]))
+            logger.info("R2_mask: %s" % " ".join([str(x) for x in R2_mask]))
 
         features.append(
             InputFeatures(
@@ -237,8 +237,8 @@ def convert_examples_to_features(
                 attention_mask=attention_mask,
                 token_type_ids=token_type_ids,
                 label_id=label_id,
-                e1_mask=e1_mask,
-                e2_mask=e2_mask,
+                R1_mask=R1_mask,
+                R2_mask=R2_mask,
             )
         )
 
@@ -283,8 +283,8 @@ def load_and_cache_examples(args, tokenizer, mode):
     all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)
     all_attention_mask = torch.tensor([f.attention_mask for f in features], dtype=torch.long)
     all_token_type_ids = torch.tensor([f.token_type_ids for f in features], dtype=torch.long)
-    all_e1_mask = torch.tensor([f.e1_mask for f in features], dtype=torch.long)  # add e1 mask
-    all_e2_mask = torch.tensor([f.e2_mask for f in features], dtype=torch.long)  # add e2 mask
+    all_R1_mask = torch.tensor([f.R1_mask for f in features], dtype=torch.long)  # add R1 mask
+    all_R2_mask = torch.tensor([f.R2_mask for f in features], dtype=torch.long)  # add R2 mask
 
     all_label_ids = torch.tensor([f.label_id for f in features], dtype=torch.long)
 
@@ -293,7 +293,7 @@ def load_and_cache_examples(args, tokenizer, mode):
         all_attention_mask,
         all_token_type_ids,
         all_label_ids,
-        all_e1_mask,
-        all_e2_mask,
+        all_R1_mask,
+        all_R2_mask,
     )
     return dataset
