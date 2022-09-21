@@ -170,7 +170,7 @@ def write_other_pairs(file, w1, w2, sense_w1, sense_w2, w1_data, w2_data, count,
 
     return [x for x in diff_data_list if x['diff'] > 0]
 
-def join_to_dataset(f1, f2, out_dir):
+def join_to_dataset(f1, f2, out_dir, n=1):
     n1, n2 = file_helpers.file_len(f1), file_helpers.file_len(f2)
     m = min(n1, n2)
 
@@ -197,7 +197,7 @@ def join_to_dataset(f1, f2, out_dir):
         with open(out_train, "r", encoding="utf8") as f:
             train_lines = [x for x in f.readlines() if x.strip()]
 
-        for i in range(3):
+        for i in range(n):
             out_train_real = os.path.join(out_dir, f"train{i}.txt")
             out_val = os.path.join(out_dir, f"val{i}.txt")
 

@@ -33,7 +33,7 @@ if __name__ == "__main__":
     parser.add_argument("--task", default="ant", type=str, help="The name of the task to train")
     parser.add_argument(
         "--data_dir",
-        default="../dataset/ant", #"./data",
+        default="../dataset/ant",
         type=str,
         help="The input data dir. Should contain the .tsv files (or other data files) for the task.",
     )
@@ -44,14 +44,14 @@ if __name__ == "__main__":
         type=str,
         help="Evaluation script, result directory",
     )
-    parser.add_argument("--train_file", default="minitrain.txt", type=str, help="Train file")
-    parser.add_argument("--test_file", default="minival.txt", type=str, help="Test file")
+    parser.add_argument("--train_file", default="train0.txt", type=str, help="Train file")
+    parser.add_argument("--test_file", default="val0.txt", type=str, help="Test file")
     parser.add_argument("--label_file", default="label.txt", type=str, help="Label file")
 
     parser.add_argument(
         "--model_name_or_path",
         type=str,
-        default="EMBEDDIA/crosloengual-bert", #"bert-base-uncased",
+        default="EMBEDDIA/crosloengual-bert",
         help="Model Name or Path",
     )
 
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     parser.add_argument("--eval_batch_size", default=32, type=int, help="Batch size for evaluation.")
     parser.add_argument(
         "--max_seq_len",
-        default=500, #384,
+        default=500,
         type=int,
         help="The maximum total input sequence length after tokenization.",
     )
