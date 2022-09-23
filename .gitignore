@@ -21,3 +21,5 @@ classification/best
 classification/model
 classification/classifier/eval
 classification/classifier/model
+classification/dataset/ant/out
+classification/dataset/syn/out
