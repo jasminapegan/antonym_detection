@@ -1,0 +1,110 @@
+Data for train0: 21 words
+zapreti 4065
+izpustiti 4065
+oče 787
+mati 787
+punca 543
+fant 848
+deklica 505
+deček 231
+bivši 1374
+prihodnji 1374
+koristen 62
+jalov 62
+brat 48
+sestra 48
+sladek 6
+kisel 6
+mož 34
+žena 34
+hladen 37
+naklonjen 37
+dekle 31
+
+Data for val0: 7 words
+parazit 1066
+gostitelj 1145
+akuten 123
+kroničen 123
+zajedalec 79
+živ 2
+mrtev 2
+
+Data for train1: 21 words
+zapreti 4065
+izpustiti 4065
+oče 787
+mati 787
+punca 543
+fant 848
+deklica 505
+deček 231
+bivši 1374
+prihodnji 1374
+koristen 62
+jalov 62
+brat 48
+sestra 48
+sladek 6
+kisel 6
+mož 34
+žena 34
+hladen 37
+naklonjen 37
+dekle 31
+
+Data for val1: 7 words
+parazit 1066
+gostitelj 1145
+akuten 123
+kroničen 123
+zajedalec 79
+živ 2
+mrtev 2
+
+Data for train2: 20 words
+zapreti 4065
+izpustiti 4065
+oče 787
+mati 787
+punca 543
+fant 848
+deklica 505
+deček 231
+parazit 1066
+gostitelj 1145
+akuten 123
+kroničen 123
+brat 48
+sestra 48
+sladek 6
+kisel 6
+zajedalec 79
+mož 34
+žena 34
+dekle 31
+
+Data for val2: 8 words
+bivši 1374
+prihodnji 1374
+koristen 62
+jalov 62
+hladen 37
+naklonjen 37
+živ 2
+mrtev 2
+
+Data for test: 13 words
+samica 840
+samec 840
+avtomatičen 165
+ročen 165
+živahen 112
+miren 112
+stric 300
+teta 268
+tetica 32
+distribucija 20
+koncentracija 20
+vzhod 8
+zahod 8

@@ -1,0 +1,83 @@
+Data for train0: 14 words
+blag 35501
+zmeren 35501
+agresiven 1600
+napadalen 1600
+administracija 66
+vlada 66
+boleč 887
+razbolel 887
+boleti 40
+težiti 40
+bolan 126
+nezdrav 126
+avtoritaren 14
+avtoritativen 14
+
+Data for val0: 6 words
+bolečina 144
+križ 144
+besednjak 4
+slovar 4
+agrum 2
+citrus 2
+
+Data for train1: 14 words
+blag 35501
+zmeren 35501
+agresiven 1600
+napadalen 1600
+administracija 66
+vlada 66
+boleč 887
+razbolel 887
+boleti 40
+težiti 40
+bolan 126
+nezdrav 126
+avtoritaren 14
+avtoritativen 14
+
+Data for val1: 6 words
+bolečina 144
+križ 144
+besednjak 4
+slovar 4
+agrum 2
+citrus 2
+
+Data for train2: 14 words
+blag 35501
+zmeren 35501
+agresiven 1600
+napadalen 1600
+administracija 66
+vlada 66
+boleč 887
+razbolel 887
+boleti 40
+težiti 40
+bolan 126
+nezdrav 126
+avtoritaren 14
+avtoritativen 14
+
+Data for val2: 6 words
+bolečina 144
+križ 144
+besednjak 4
+slovar 4
+agrum 2
+citrus 2
+
+Data for test: 10 words
+aretirati 248
+prijeti 248
+arktičen 44
+polaren 44
+aktiven 10
+dejaven 10
+aristokracija 8
+plemstvo 8
+birokrat 16
+uradnik 16

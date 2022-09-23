@@ -1,0 +1,112 @@
+Data for train0: 22 words
+deklica 517
+fant 612
+deček 237
+parazit 300
+gostitelj 378
+punca 300
+oče 300
+mati 300
+zapreti 300
+izpustiti 300
+akuten 126
+kroničen 126
+bivši 300
+prihodnji 300
+avtomatičen 168
+ročen 168
+dekle 32
+vzhod 8
+zahod 8
+zajedalec 78
+sladek 6
+kisel 6
+
+Data for val0: 7 words
+stric 304
+teta 272
+tetica 32
+obolenje 268
+zdravje 268
+hladen 40
+naklonjen 40
+
+Data for train1: 22 words
+deklica 517
+fant 612
+deček 237
+parazit 300
+gostitelj 378
+punca 300
+oče 300
+mati 300
+zapreti 300
+izpustiti 300
+akuten 126
+kroničen 126
+bivši 300
+prihodnji 300
+avtomatičen 168
+ročen 168
+dekle 32
+vzhod 8
+zahod 8
+zajedalec 78
+sladek 6
+kisel 6
+
+Data for val1: 7 words
+stric 304
+teta 272
+tetica 32
+obolenje 268
+zdravje 268
+hladen 40
+naklonjen 40
+
+Data for train2: 22 words
+deklica 517
+fant 612
+deček 237
+parazit 300
+gostitelj 378
+punca 300
+obolenje 268
+zdravje 268
+oče 300
+mati 300
+akuten 126
+kroničen 126
+bivši 300
+prihodnji 300
+avtomatičen 168
+ročen 168
+dekle 32
+vzhod 8
+zahod 8
+hladen 40
+naklonjen 40
+zajedalec 78
+
+Data for val2: 7 words
+stric 304
+teta 272
+tetica 32
+zapreti 300
+izpustiti 300
+sladek 6
+kisel 6
+
+Data for test: 12 words
+koristen 61
+jalov 61
+distribucija 20
+koncentracija 20
+samica 300
+samec 300
+najmanj 300
+najbolj 300
+komedija 36
+tragedija 36
+brat 48
+sestra 48
