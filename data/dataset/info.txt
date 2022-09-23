@@ -1,5 +1,0 @@
-Words	File1: 401, File2: 409, total: 810
-Senses	File1: 1065, File2: 1065, total: 2130
-
-Validation file - words: 2720 senses: 8748 examples: 159226
-Test file - words: 409 senses: 1065 examples: 5732

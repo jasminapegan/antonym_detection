@@ -84,7 +84,7 @@ f = "ant_syn_senses/new/"
 #sc.execute_algorithm(f"{f}avg_min_dist.txt", algo='avg_min_dist')
 #sc.execute_algorithm(f"{f}avg_dist.txt", algo='avg_dist')
 
-sc = SenseClusters(syn_ant_dataset, labeled_embeddings_nonlemmatized, sense_data, f"{f}description_dist.txt", algo='description_dist', ignore_missing=True)
+#sc = SenseClusters(syn_ant_dataset, labeled_embeddings_nonlemmatized, sense_data, f"{f}description_dist.txt", algo='description_dist', ignore_missing=True)
 
 #scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/min_avg_dist.txt")
 #scoring.evaluate_cluster_results("ant_syn_senses/archive/sopomenke_protipomenke/napovedi.txt", "ant_syn_senses/archive/sopomenke_protipomenke/ocene.txt", "ant_syn_senses/min_avg_dist.txt")
@@ -104,7 +104,7 @@ sc = SenseClusters(syn_ant_dataset, labeled_embeddings_nonlemmatized, sense_data
 
 from clustering.scoring import parse_cluster_file
 from classification.dataset import write_pair_data
-clusters = parse_cluster_file("ant_syn_senses/description_dist.txt")
+"""clusters = parse_cluster_file("ant_syn_senses/description_dist.txt")
 with open("razširjene_protipomenke_v_pomenih.txt", "w", encoding="utf8") as f:
     for wp in clusters:
         w1, w2 = wp
@@ -127,4 +127,10 @@ with open("razširjene_protipomenke_v_pomenih.txt", "w", encoding="utf8") as f:
                     f.write(f"\t{s}\t{s2s[s]}\n")
                 f.write(f"Napovedani par pomenov: {w1}({s1}) - {w2}({s2}) z oceno razdalje {score}:\n")
                 f.write(f"{w1}({s1}): {e1}\n")
-                f.write(f"{w2}({s2}): {e2}\n\n")
+                f.write(f"{w2}({s2}): {e2}\n\n")"""
+
+
+from clustering import visualize
+
+#visualize.prepare_data("../clustering/clusters/kmeans/kmeans-algorithm=full,n_init=25,random_state=42",
+#                       "test/data.tsv", "test/info.tsv")
