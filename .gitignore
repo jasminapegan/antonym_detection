@@ -3,6 +3,8 @@
 venv/
 **/tmp/
 
+data/sources
+data/dataset
 data/embeddings
 data/sample
 data/sources/gigafida/
@@ -10,3 +12,12 @@ data/sources/wordsense/
 data/sources/wordsense_clean/
 data/sources/slohun/slohun_clarin.xml
 /data/tmp/
+
+clustering/ant_syn_senses
+clustering/best
+clustering/out_latest
+
+classification/best
+classification/model
+classification/classifier/eval
+classification/classifier/model

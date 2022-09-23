@@ -462,7 +462,7 @@ def run_crossval_models(train_dataloaders, val_dataloaders, f, lr, n_epochs, bat
         print(f"Model #{i}")
         f.write(f"Model #{i}\n")
 
-        model_name = f"train{i}_{lr}_{batch_size}_{i}"
+        model_name = f"train0_{lr}_{batch_size}_{i}"
 
         model = AntSynModel(resize_model=resize_model, use_tokenizer=tokenizer)
         model.finetune(val_dataloader, train_dataloader, f, lr=lr, epochs=n_epochs, out_path=out_path, out_name=model_name)
